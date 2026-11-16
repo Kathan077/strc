@@ -1,0 +1,759 @@
+/* ==========================================================================
+   SRTC / SITC - Trust & Quality Section (Values & Core Principles)
+   Exact Visual Replica of Reference Mockup (media_1794810215711_4b67c7cc.jpg)
+   Official Corporate Palette:
+     Primary Blue:   #1769D2
+     Dark Navy:      #102D50
+     Secondary Blue: #2856A3
+     Light Blue:     #EAF2FF
+     Background:     #FFFFFF
+     Main Text:      #17212F
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Natural Flow Outer Section Wrapper (No Scroll Pinned / Sticky Hijacking)
+   -------------------------------------------------------------------------- */
+.sitc-trust-section-wrapper {
+  position: relative;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 4.5rem 1.5rem 3.5rem;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Stage Viewport Container
+   -------------------------------------------------------------------------- */
+.sitc-trust-sticky-viewport {
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1025px) {
+  .sitc-trust-sticky-viewport {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sitc-trust-section-wrapper {
+    padding: 3.5rem 1.25rem 2.5rem;
+  }
+
+  .sitc-trust-sticky-viewport {
+    position: relative;
+    height: auto;
+    padding: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Background Ambiance: Radial Gradient + Atmospheric Halos + Corner Dot Meshes
+   -------------------------------------------------------------------------- */
+.sitc-trust-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sitc-trust-bg__grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(23, 105, 210, 0.04) 1.2px, transparent 1.2px);
+  background-size: 26px 26px;
+  opacity: 0.9;
+}
+
+.sitc-trust-bg__glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.sitc-trust-bg__glow--center {
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(234, 242, 255, 0.8) 0%, rgba(220, 235, 255, 0.3) 50%, transparent 75%);
+  filter: blur(80px);
+}
+
+.sitc-trust-bg__glow--top {
+  top: -8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 750px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(23, 105, 210, 0.06) 0%, transparent 70%);
+  filter: blur(90px);
+}
+
+.sitc-trust-bg__glow--bottom {
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(16, 45, 80, 0.04) 0%, transparent 70%);
+  filter: blur(100px);
+}
+
+/* Micro Dot Pattern in Corners (exact reference pattern) */
+.sitc-mesh-dots {
+  position: absolute;
+  width: 72px;
+  height: 52px;
+  background-image: radial-gradient(#CBD5E1 1.8px, transparent 1.8px);
+  background-size: 14px 14px;
+  opacity: 0.6;
+}
+
+.sitc-mesh-dots--top-left { top: 70px; left: 35px; }
+.sitc-mesh-dots--bot-left { bottom: 90px; left: 35px; }
+.sitc-mesh-dots--bot-right { bottom: 90px; right: 35px; }
+
+/* --------------------------------------------------------------------------
+   Top-Right Live GPS Indicator (exact reference component)
+   -------------------------------------------------------------------------- */
+.sitc-top-gps-hud {
+  position: absolute;
+  top: 1.5rem;
+  right: clamp(1rem, 3.5vw, 2.5rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #102D50;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  padding: 0.38rem 0.95rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 14px rgba(16, 45, 80, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 30;
+}
+
+.sitc-gps-icon {
+  color: #1769D2;
+}
+
+.sitc-gps-text {
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.sitc-gps-signal {
+  color: #22C55E;
+}
+
+@media (max-width: 640px) {
+  .sitc-top-gps-hud {
+    position: static;
+    margin: 0 auto 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Container
+   -------------------------------------------------------------------------- */
+.sitc-trust-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   1. Section Header: Pill Badge + Main Title + Subtitle
+   -------------------------------------------------------------------------- */
+.sitc-trust-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto clamp(1rem, 2.5vh, 2rem);
+}
+
+/* Pill Tag with Sparkles Icon */
+.sitc-trust-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #1769D2;
+  color: #FFFFFF;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  padding: 0.35rem 1.05rem;
+  box-shadow: 0 4px 14px rgba(23, 105, 210, 0.28);
+  margin-bottom: 0.75rem;
+}
+
+.sitc-badge-pill-icon {
+  color: #FFFFFF;
+}
+
+/* Main Title: Trust Built Into Every Mile. */
+.sitc-trust-title {
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  font-weight: 800;
+  color: #102D50;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.55rem;
+}
+
+.sitc-trust-title--blue {
+  color: #1769D2;
+}
+
+/* Subtitle */
+.sitc-trust-desc {
+  color: #64748B;
+  font-size: clamp(0.88rem, 1.35vw, 0.98rem);
+  line-height: 1.58;
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+/* --------------------------------------------------------------------------
+   2. The Central Circular Orbit System (Desktop Absolute Radial Geometry)
+   -------------------------------------------------------------------------- */
+.sitc-orbit-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  height: 560px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* SVG Concentric Orbit Rings & Connector Lines */
+.sitc-orbit-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Pulse Traveling on Middle Ring */
+.sitc-orbit-pulse-beam {
+  animation: sitcOrbitStream 6s linear infinite;
+}
+
+@keyframes sitcOrbitStream {
+  0% { stroke-dashoffset: 400; }
+  100% { stroke-dashoffset: -400; }
+}
+
+/* --------------------------------------------------------------------------
+   Central Circular Truck Showcase (Exact Reference Center Element)
+   -------------------------------------------------------------------------- */
+.sitc-central-circle-truck {
+  position: absolute;
+  top: 53.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 236px;
+  height: 236px;
+  z-index: 8;
+}
+
+/* Core Guarantee Badge on Top of Circle */
+.sitc-core-guarantee-badge {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #102D50;
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  padding: 0.3rem 0.85rem;
+  box-shadow: 0 4px 14px rgba(16, 45, 80, 0.25);
+  white-space: nowrap;
+  z-index: 20;
+}
+
+.sitc-core-guarantee-icon {
+  color: #FACC15;
+}
+
+.sitc-circle-halo {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(23, 105, 210, 0.3) 0%, rgba(23, 105, 210, 0.08) 60%, transparent 75%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.sitc-circle-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3.5px solid #1769D2;
+  box-shadow: 
+    0 0 35px rgba(23, 105, 210, 0.32),
+    0 12px 30px rgba(16, 45, 80, 0.2);
+  overflow: hidden;
+  background-color: #102D50;
+  box-sizing: border-box;
+}
+
+.sitc-circle-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform: scale(1.03);
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sitc-central-circle-truck:hover .sitc-circle-img {
+  transform: scale(1.08);
+}
+
+.sitc-circle-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(16, 45, 80, 0.02) 40%, rgba(16, 45, 80, 0.55) 100%);
+  pointer-events: none;
+}
+
+/* Overlaid HUD Telematics Pill */
+.sitc-circle-hud-badge {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(16, 45, 80, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(23, 105, 210, 0.5);
+  border-radius: 9999px;
+  padding: 0.28rem 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Trust Micro Badges on Top of Circle */
+.sitc-circle-trust-badges {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.sitc-circle-micro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 9999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #102D50;
+  box-shadow: 0 2px 8px rgba(16, 45, 80, 0.08);
+}
+
+.sitc-micro-badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.sitc-micro-badge-dot--green {
+  background-color: #22C55E;
+  box-shadow: 0 0 4px #22C55E;
+}
+
+.sitc-micro-badge-dot--blue {
+  background-color: #1769D2;
+  box-shadow: 0 0 4px #1769D2;
+}
+
+.sitc-hud-beacon-dot {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background-color: #22C55E;
+  box-shadow: 0 0 8px #22C55E;
+  animation: sitcHudBlink 1.6s ease-in-out infinite;
+}
+
+@keyframes sitcHudBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+.sitc-hud-badge-text {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   4 Feature Cards - Desktop Positions: 2x2 Grid Around Central Truck
+   -------------------------------------------------------------------------- */
+.sitc-orbit-cards-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.sitc-feature-card {
+  position: absolute;
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 1.25rem 1.15rem 1rem;
+  box-shadow: 0 8px 24px rgba(16, 45, 80, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease, border-color 300ms ease;
+  box-sizing: border-box;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.sitc-feature-card:hover {
+  transform: translateY(-5px) scale(1.02) !important;
+  border-color: #1769D2;
+  box-shadow: 0 16px 36px rgba(23, 105, 210, 0.15), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Active Highlight when selected */
+.sitc-feature-card.is-stage-active {
+  border-color: #1769D2;
+  box-shadow: 0 16px 38px rgba(23, 105, 210, 0.18), 0 0 24px rgba(234, 242, 255, 0.8);
+  transform: translateY(-4px);
+  opacity: 1;
+}
+
+.sitc-feature-card.is-stage-done {
+  opacity: 1;
+  border-color: #E2E8F0;
+  box-shadow: 0 8px 24px rgba(16, 45, 80, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* Desktop Exact Card Positioning Coordinates: 2x2 Grid */
+@media (min-width: 1025px) {
+  /* 1. Top Left Card: Safety First Protocol */
+  .sitc-card-pos--top-left {
+    top: 15px;
+    left: 25px;
+    width: 275px;
+    z-index: 12;
+  }
+
+  /* 2. Top Right Card: Customer-Centric Focus */
+  .sitc-card-pos--top-right {
+    top: 15px;
+    right: 25px;
+    width: 275px;
+    z-index: 12;
+  }
+
+  /* 3. Bottom Left Card: Sustainable Logistics */
+  .sitc-card-pos--bot-left {
+    bottom: 15px;
+    left: 25px;
+    width: 275px;
+    z-index: 12;
+  }
+
+  /* 4. Bottom Right Card: Operational Excellence */
+  .sitc-card-pos--bot-right {
+    bottom: 15px;
+    right: 25px;
+    width: 275px;
+    z-index: 12;
+  }
+}
+
+/* Card Top Row: Icon + KPI Badge */
+.sitc-card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sitc-card-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #1769D2;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(23, 105, 210, 0.25);
+  transition: transform 260ms ease, background 260ms ease;
+}
+
+.sitc-card-icon-box--green {
+  background: #059669;
+  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.25);
+}
+
+.sitc-feature-card:hover .sitc-card-icon-box {
+  transform: scale(1.08);
+}
+
+.sitc-card-kpi-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #1769D2;
+  background: #EAF2FF;
+  border: 1px solid rgba(23, 105, 210, 0.3);
+  border-radius: 9999px;
+  padding: 0.22rem 0.65rem;
+}
+
+/* Card Middle: Title + Description */
+.sitc-card-title {
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #102D50;
+  margin: 0.65rem 0 0.35rem;
+  line-height: 1.25;
+  transition: color 200ms ease;
+}
+
+.sitc-feature-card:hover .sitc-card-title,
+.sitc-feature-card.is-stage-active .sitc-card-title {
+  color: #1769D2;
+}
+
+.sitc-card-desc {
+  font-size: 0.77rem;
+  line-height: 1.48;
+  color: #64748B;
+  margin: 0 0 0.75rem;
+}
+
+/* Card Bottom: Metric Dot + Arrow */
+.sitc-card-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 0.65rem;
+}
+
+.sitc-card-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #102D50;
+}
+
+.sitc-card-metric-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #1769D2;
+}
+
+.sitc-card-arrow {
+  color: #1769D2;
+  transition: transform 240ms ease;
+}
+
+.sitc-feature-card:hover .sitc-card-arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   RESPONSIVE ARCHITECTURE
+   Tablet & Mobile Friendly Alternatives (Zero Overlaps • Standard Scrolling)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tablet Viewport (641px - 1024px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .sitc-orbit-stage {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .sitc-orbit-svg {
+    display: none;
+  }
+
+  .sitc-central-circle-truck {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 0 auto 1.5rem;
+    width: 220px;
+    height: 220px;
+  }
+
+  .sitc-orbit-cards-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .sitc-feature-card {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    opacity: 1 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Mobile Viewport (<= 640px down to 320px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .sitc-orbit-stage {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sitc-orbit-svg {
+    display: none;
+  }
+
+  .sitc-mesh-dots {
+    display: none;
+  }
+
+  /* Circular Truck Centered at Top of Mobile */
+  .sitc-central-circle-truck {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+  }
+
+  .sitc-orbit-cards-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .sitc-feature-card {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    padding: 1.15rem 1rem 0.95rem;
+    opacity: 1 !important;
+  }
+
+  .sitc-card-title {
+    font-size: 0.98rem;
+  }
+
+  .sitc-card-desc {
+    font-size: 0.76rem;
+  }
+
+}
+
+/* --------------------------------------------------------------------------
+   3. Small Mobile (<= 340px, e.g. 320px iPhone SE)
+   -------------------------------------------------------------------------- */
+@media (max-width: 340px) {
+  .sitc-central-circle-truck {
+    width: 175px;
+    height: 175px;
+    margin-bottom: 1.5rem;
+  }
+
+  .sitc-circle-hud-badge {
+    bottom: 8px;
+    padding: 0.2rem 0.55rem;
+  }
+
+  .sitc-hud-badge-text {
+    font-size: 0.52rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility: Prefers-Reduced-Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .sitc-orbit-pulse-beam,
+  .sitc-hud-beacon-dot {
+    animation: none !important;
+  }
+
+  .sitc-feature-card,
+  .sitc-circle-img {
+    transition: none !important;
+  }
+}

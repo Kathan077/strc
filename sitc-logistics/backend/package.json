@@ -1,0 +1,20 @@
+{
+  "name": "sitc-backend",
+  "version": "1.0.0",
+  "description": "SITC Logistics & Transportation Backend API",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "logistics",
+    "transportation",
+    "express",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC"
+}
+

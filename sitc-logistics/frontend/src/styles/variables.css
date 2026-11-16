@@ -1,0 +1,75 @@
+/* ==========================================================================
+   SITC / SRTC Logistics & Transportation - Official Brand Design System
+   Theme: Premium Deep Navy Blue & Premium Gold System
+   ========================================================================== */
+
+:root {
+  /* Official Brand Colors (Finalized Specification) */
+  --color-navy: #0B2F4A;             /* Deep Navy Blue - Hero, Navbar, Dark Sections & Headings */
+  --color-gold: #E8B94F;             /* Premium Gold - Primary CTAs, Badges & Luxury Accents */
+  --color-white: #FFFFFF;            /* Pure White - Dominant Content & Card Backgrounds */
+  --color-logistics-blue: #07557A;   /* Logistics Blue - Sub-headings, Icons & Tech Elements */
+  --color-light-gold: #FFF1A8;       /* Light Gold - Subtle Highlights, Badges & Shimmer */
+  --color-soft-grey: #F4F6F8;        /* Soft Grey - Alternate Section Backgrounds */
+  --color-body: #263746;             /* Body Text - Primary Corporate Typography */
+  --color-footer-dark: #071F33;      /* Footer Dark - High-contrast Deep Ground */
+  --color-border: #E3E8ED;           /* Border Grey - Crisp Subtle Card & Divider Outlines */
+  --color-border-subtle: #E3E8ED;
+  --color-border-hover: #E8B94F;
+
+  /* Aliases & Complementary System Tokens */
+  --color-primary: #E8B94F;          /* Primary Accent = Premium Gold */
+  --color-primary-text: #0B2F4A;     /* Contrast Text on Gold = Deep Navy Blue */
+  --color-royal: #07557A;            /* Logistics Blue */
+  --color-text-primary: #0B2F4A;     /* Primary Headings */
+  --color-text-secondary: #5A6E82;   /* Secondary Subtitles */
+  --color-charcoal: #263746;         /* Body Text */
+  --color-light-blue: #F4F6F8;       /* Soft Grey for neutral cards */
+  --color-gradient-blue: #07557A;
+
+  /* Official Brand Gradients */
+  --gradient-navy: linear-gradient(120deg, #0B2F4A 0%, #07557A 100%);
+  --gradient-gold: linear-gradient(120deg, #E8B94F 0%, #FFF1A8 100%);
+  --gradient-light: linear-gradient(120deg, #FFFFFF 0%, #F4F6F8 100%);
+  --gradient-hero: linear-gradient(135deg, #0B2F4A 0%, #07557A 55%, #071F33 100%);
+  --gradient-card: linear-gradient(180deg, #FFFFFF 0%, #F4F6F8 100%);
+
+  /* Typography Tokens */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Shadow Elevations (Subtle & Corporate) */
+  --shadow-sm: 0 1px 3px rgba(11, 47, 74, 0.05);
+  --shadow-md: 0 4px 14px rgba(11, 47, 74, 0.08);
+  --shadow-lg: 0 10px 30px rgba(11, 47, 74, 0.12);
+  --shadow-primary: 0 4px 16px rgba(232, 185, 79, 0.28);
+  --shadow-header: 0 4px 20px rgba(7, 31, 51, 0.35);
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout & Spacing */
+  --container-max-width: 1280px;
+  --container-padding: 1.5rem;
+  --header-height-topbar: 36px;
+  --header-height-main: 76px;
+  --header-height-total: 112px;
+  --z-header: 1000;
+  --z-dropdown: 1050;
+  --z-modal: 1100;
+}
+

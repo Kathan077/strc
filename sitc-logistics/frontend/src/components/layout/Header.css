@@ -1,0 +1,364 @@
+/* ==========================================================================
+   SRTC / SITC Header Styles - Deep Navy Blue & Premium Gold Theme
+   Dead-Center Capsule Dock, Prominent Logo & Connecting Accent Lines
+   ========================================================================== */
+
+.sitc-main-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #0B2F4A; /* Official Deep Navy Blue */
+  border-bottom-left-radius: 0; /* Zero gap at top - perfectly flush with hero */
+  border-bottom-right-radius: 0;
+  box-shadow: none;
+  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Radiant Gold Gradient Bottom Edge Line */
+.sitc-main-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(232, 185, 79, 0.25) 12%, 
+    #E8B94F 50%, 
+    rgba(232, 185, 79, 0.25) 88%, 
+    transparent 100%
+  );
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 0 14px rgba(232, 185, 79, 0.5);
+  pointer-events: none;
+  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   ONLY ON SCROLL: Floating Rounded Corners & Elevated Luxury Shadow
+   ========================================================================== */
+
+.sitc-main-header--scrolled {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 8px 32px rgba(7, 31, 51, 0.55), 0 0 20px rgba(232, 185, 79, 0.25);
+}
+
+.sitc-main-header--scrolled::after {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Fluid Full-Width Container */
+.sitc-header-container {
+  width: 100%;
+  max-width: 1680px;
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 3vw, 2.5rem);
+  padding-right: clamp(1.25rem, 3vw, 2.5rem);
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   1. Top Utility Micro Bar with Continuous Connecting Divider Line
+   ========================================================================== */
+
+.sitc-header-topbar {
+  background-color: #071F33; /* Footer Dark ground */
+  height: 38px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(232, 185, 79, 0.22); /* Connecting top line */
+  font-size: 0.775rem;
+}
+
+.sitc-header-topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sitc-header-topbar__left,
+.sitc-header-topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.sitc-header-topbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  color: #D6E2EC;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.sitc-header-topbar__link:hover {
+  color: #E8B94F; /* Premium Gold */
+  transform: translateY(-0.5px);
+}
+
+.sitc-header-topbar__icon {
+  color: #E8B94F;
+  flex-shrink: 0;
+}
+
+.sitc-header-topbar__sep {
+  height: 12px;
+  width: 1px;
+  background-color: rgba(232, 185, 79, 0.28);
+}
+
+.sitc-header-topbar__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #E8B94F;
+  background-color: rgba(232, 185, 79, 0.12);
+  border: 1px solid rgba(232, 185, 79, 0.28);
+  padding: 0.18rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.725rem;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   2. Main Navigation Header Bar
+   ========================================================================== */
+
+.sitc-header-main {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(232, 185, 79, 0.18); /* Connecting bottom line */
+  box-sizing: border-box;
+}
+
+.sitc-header-main__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+/* Left: Brand Logo (Prominent & Larger) */
+.sitc-header-brand-wrap {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  min-width: 180px;
+}
+
+.sitc-header-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 220ms ease;
+}
+
+.sitc-header-brand:hover {
+  transform: scale(1.05);
+}
+
+.sitc-header-brand__img {
+  height: 72px; /* Increased logo size as requested */
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
+  transition: height 200ms ease;
+}
+
+/* Center: Capsule Nav Dock (100% Dead Center) */
+.sitc-header-nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+/* Right: Action Buttons */
+.sitc-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  min-width: 180px;
+}
+
+/* Action Buttons */
+.sitc-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.52rem 1.2rem;
+  border-radius: 9999px;
+  font-size: 0.865rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sitc-btn-pill__circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 220ms ease;
+  flex-shrink: 0;
+}
+
+.sitc-btn-pill:hover .sitc-btn-pill__circle {
+  transform: translate(2px, -2px);
+}
+
+/* Button 1: White Pill */
+.sitc-btn-pill--white {
+  background-color: #FFFFFF;
+  color: #0B2F4A;
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.sitc-btn-pill--white:hover {
+  background-color: #F4F6F8;
+  border-color: #E8B94F;
+  color: #0B2F4A;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 14px rgba(232, 185, 79, 0.3);
+}
+
+.sitc-btn-pill__circle--navy {
+  background-color: #0B2F4A;
+  color: #FFFFFF;
+}
+
+/* Button 2: Premium Gold Pill */
+.sitc-btn-pill--gold {
+  background-color: #E8B94F;
+  color: #0B2F4A;
+  border: 1.5px solid #E8B94F;
+  box-shadow: 0 2px 12px rgba(232, 185, 79, 0.4);
+}
+
+.sitc-btn-pill--gold:hover {
+  background-color: #FFF1A8;
+  border-color: #FFF1A8;
+  color: #0B2F4A;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 18px rgba(232, 185, 79, 0.55);
+}
+
+.sitc-btn-pill__circle--dark {
+  background-color: #0B2F4A;
+  color: #E8B94F;
+}
+
+/* Mobile Toggle */
+.sitc-header-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.sitc-header-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: #E8B94F;
+  color: #E8B94F;
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 1240px) {
+  .sitc-header-nav-center {
+    display: none;
+  }
+  .sitc-header-toggle {
+    display: flex;
+  }
+  .sitc-header-brand-wrap {
+    min-width: auto;
+  }
+  .sitc-header-actions {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .sitc-header-topbar {
+    display: none;
+  }
+  .sitc-header-brand__img {
+    height: 48px;
+  }
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sitc-header-container {
+    padding-left: 0.95rem;
+    padding-right: 0.95rem;
+  }
+  .sitc-header-brand__img {
+    height: 42px;
+  }
+  .sitc-header-toggle {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sitc-header-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .sitc-header-brand__img {
+    height: 38px;
+  }
+  .sitc-header-toggle {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 340px) {
+  .sitc-header-container {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+  .sitc-header-brand__img {
+    height: 34px;
+    max-width: 140px;
+    object-fit: contain;
+  }
+  .sitc-header-toggle {
+    width: 34px;
+    height: 34px;
+  }
+}

@@ -1,0 +1,215 @@
+/* ==========================================================================
+   Global SRTC Real-Time GPS Dispatch Tag (Option 3 - Ultra Compact)
+   Features Dynamic Active Section Indicator (Hero, About, Brand System, etc.)
+   Official Brand Navy & Gold Aesthetic
+   ========================================================================== */
+
+.sitc-global-hud {
+  position: fixed;
+  top: clamp(8.6rem, 11vh, 9.4rem);
+  right: clamp(1.5rem, 3.5vw, 3.5rem);
+  z-index: 95;
+  pointer-events: auto;
+  user-select: none;
+  animation: hudFadeIn 450ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes hudFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   Ultra-Compact GPS Tag Pill
+   ========================================================================== */
+.sitc-gps-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.36rem 0.95rem;
+  border-radius: 9999px;
+  background: rgba(7, 31, 51, 0.92); /* Official Dark Navy glass */
+  border: 1.2px solid rgba(232, 185, 79, 0.4); /* Premium Gold border */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), 0 0 12px rgba(232, 185, 79, 0.15);
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+.sitc-gps-tag:hover {
+  border-color: #E8B94F;
+  box-shadow: 0 8px 24px rgba(7, 31, 51, 0.55), 0 0 18px rgba(232, 185, 79, 0.32);
+  transform: translateY(-2px);
+}
+
+.sitc-gps-tag.is-moving {
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 8px 24px rgba(7, 31, 51, 0.6), 0 0 16px rgba(56, 189, 248, 0.25);
+}
+
+/* ==========================================================================
+   Radar Beacon (Pulse Dot)
+   ========================================================================== */
+.sitc-gps-tag__beacon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+.sitc-gps-tag__dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 8px #38BDF8;
+  transition: all 240ms ease;
+}
+
+.sitc-gps-tag__ping {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #38BDF8;
+  opacity: 0.6;
+  animation: gpsPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes gpsPing {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* In Motion Beacon Transition */
+.sitc-gps-tag.is-moving .sitc-gps-tag__dot {
+  background: #34D399;
+  box-shadow: 0 0 10px #34D399;
+}
+
+.sitc-gps-tag.is-moving .sitc-gps-tag__ping {
+  background: #34D399;
+  animation: gpsPingFast 0.9s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes gpsPingFast {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  80%, 100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   Speed Readout
+   ========================================================================== */
+.sitc-gps-tag__readout {
+  display: flex;
+  align-items: baseline;
+  gap: 0.32rem;
+}
+
+.sitc-gps-tag__label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #CBD5E1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.sitc-gps-tag__val {
+  font-size: 0.88rem;
+  font-weight: 850;
+  color: #FFFFFF;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.sitc-gps-tag__val strong {
+  font-weight: 900;
+  color: #E8B94F;
+  transition: color 200ms ease;
+}
+
+.sitc-gps-tag.is-moving .sitc-gps-tag__val strong {
+  color: #FFF1A8;
+}
+
+.sitc-gps-tag__val small {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #94A3B8;
+  margin-left: 2px;
+}
+
+/* ==========================================================================
+   Translucent Divider
+   ========================================================================== */
+.sitc-gps-tag__divider {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.22);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Dynamic Section Indicator (Hero Section, About Section, etc.)
+   ========================================================================== */
+.sitc-gps-tag__status {
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFF1A8;
+  animation: sectionLabelFade 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  transition: color 200ms ease, text-shadow 200ms ease;
+}
+
+@keyframes sectionLabelFade {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sitc-gps-tag__status.is-active {
+  color: #38BDF8;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+/* ==========================================================================
+   Mobile Responsiveness
+   ========================================================================== */
+@media (max-width: 992px) {
+  .sitc-global-hud.hide-on-mobile {
+    display: none;
+  }
+}

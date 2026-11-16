@@ -1,0 +1,83 @@
+/* ==========================================================================
+   SITC Logistics & Transportation - Global Stylesheet
+   ========================================================================== */
+
+@import "../styles/variables.css";
+@import "../styles/reset.css";
+@import "../styles/typography.css";
+@import "../styles/responsive.css";
+
+/* Core HTML & Body Styling - 100% Horizontal Overflow Lock */
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-charcoal);
+  font-family: var(--font-family-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+main {
+  flex: 1;
+}
+
+/* Section Background Rules */
+.section-white {
+  background-color: var(--color-white);
+}
+
+.section-soft-grey {
+  background-color: var(--color-soft-grey);
+}
+
+.section-light-blue {
+  background-color: var(--color-light-blue);
+}
+
+.section-hero-gradient {
+  background: var(--gradient-hero);
+}
+
+.section-light-gradient {
+  background: var(--gradient-light-section);
+}
+
+.section-blue-gradient {
+  background: var(--gradient-blue);
+  color: var(--color-white);
+}
+
+.section-navy {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+/* Corporate Card Style */
+.sitc-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.sitc-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* Accessibility Focus Ring */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
