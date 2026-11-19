@@ -1,22 +1,31 @@
 import Header from '../components/layout/Header';
-import CruiseVelocityHUD from '../components/common/CruiseVelocityHUD';
+import Footer from '../components/layout/Footer';
+import SRTCPreloader from '../components/common/SRTCPreloader';
 import './globals.css';
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'SRTC – Logistics & Transportation | Fastest, Secured, Trustable',
   description:
-    'SRTC delivers premier international ocean freight, air cargo, intermodal trucking, and global supply chain solutions with real-time tracking.',
+    'SRTC delivers premier FTL & PTL transportation, port-to-plant container haulage, warehousing, and nationwide freight supply chain solutions with guaranteed transit integrity.',
   keywords: [
     'SRTC logistics',
     'SITC logistics',
     'freight forwarding',
     'transportation',
-    'ocean freight',
-    'air cargo',
+    'container haulage',
+    'FTL transport',
+    'PTL transport',
     'intermodal logistics',
-    'cargo tracking',
     'supply chain management',
+    'warehousing Gujarat',
   ],
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
+  manifest: '/manifest.json',
 };
 
 export const viewport = {
@@ -27,10 +36,27 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Service Worker Cleanup Script: Guarantees 0 lingering SW on localhost */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                  for (var i = 0; i < registrations.length; i++) {
+                    registrations[i].unregister();
+                  }
+                }).catch(function(e) {});
+              }
+            `,
+          }}
+        />
+      </head>
       <body>
+        <SRTCPreloader />
         <Header />
-        <CruiseVelocityHUD />
         <main id="main-content">{children}</main>
+        <Footer />
       </body>
     </html>
   );

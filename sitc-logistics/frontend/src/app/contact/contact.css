@@ -1,0 +1,1240 @@
+/* ==========================================================================
+   SRTC LOGISTICS - CONTACT DISPATCH HUB & BOOKING MANIFEST
+   Photorealistic Shipping Container Architecture (Containers Only)
+   - 40ft High-Cube Freight Dispatch Booking Container Vault
+   - 4 Intermodal Corten Steel Container Vaults
+   - Heavy Welded Box Framing with 3D Rivet Lines along Structural Beams
+   - Forged ISO 1161 Corner Castings with Beveled Twist-Lock Sockets
+   - Metallic CSC Safety Approval Certification Data Plate
+   - Realistic 3D Corrugated Sheet Metal Fluting (खांचेदार शीट)
+   Palette: Imperial Navy (#0B2F4A, #071F33), Radiant Gold (#E8B94F, #D49D28)
+   ========================================================================== */
+
+.srtc-contact-page {
+  background-color: #F8FAFC;
+  color: #0B2F4A;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   HERO BANNER: Central Dispatch Gate 01
+   -------------------------------------------------------------------------- */
+.srtc-contact-hero {
+  position: relative;
+  background: linear-gradient(180deg, #051320 0%, #0B2F4A 100%);
+  color: #FFFFFF;
+  padding: clamp(3.5rem, 5vw, 4.5rem) 1.5rem clamp(2.5rem, 4vw, 3.25rem);
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 3px solid #E8B94F;
+}
+
+.srtc-contact-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 15%, rgba(232, 185, 79, 0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.srtc-contact-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(232, 185, 79, 0.8) 50%, transparent 100%);
+  box-shadow: 0 0 12px rgba(232, 185, 79, 0.5);
+}
+
+.srtc-contact-hero__container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.srtc-contact-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, 'Consolas', monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94A3B8;
+  margin-bottom: 1rem;
+}
+
+.srtc-contact-breadcrumb a {
+  color: #CBD5E1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.srtc-contact-breadcrumb a:hover {
+  color: #E8B94F;
+}
+
+.srtc-contact-breadcrumb__sep {
+  color: #E8B94F;
+}
+
+.srtc-contact-hero__title {
+  font-size: clamp(2.4rem, 4.8vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  margin: 0 0 0.85rem 0;
+}
+
+.srtc-contact-hero__title span {
+  color: #E8B94F;
+}
+
+.srtc-contact-hero__subtitle {
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.6;
+  color: #CBD5E1;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   DISPATCH STATUS TICKER BAR (HIGHWAY RADAR)
+   -------------------------------------------------------------------------- */
+.srtc-contact-ticker-bar {
+  background: #071F33;
+  color: #94A3B8;
+  border-bottom: 1px solid #1E3A5F;
+  padding: 0.65rem 1.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  overflow: hidden;
+}
+
+.srtc-contact-ticker-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.srtc-ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.srtc-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 8px #22C55E;
+}
+
+.srtc-ticker-highlight {
+  color: #4ADE80;
+  font-weight: 800;
+}
+
+.srtc-ticker-gold {
+  color: #E8B94F;
+  font-weight: 800;
+}
+
+.srtc-ticker-sep {
+  color: #475569;
+}
+
+/* --------------------------------------------------------------------------
+   MAIN CONTACT CONTAINER
+   -------------------------------------------------------------------------- */
+.srtc-contact-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: clamp(3rem, 5vw, 4.5rem) 1.5rem clamp(4rem, 6vw, 5.5rem);
+  box-sizing: border-box;
+}
+
+.srtc-contact-main-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.35fr;
+  gap: clamp(1.75rem, 3vw, 2.75rem);
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   CONTAINER CARDS ARCHITECTURE (CONTAINERS ONLY - PRO LEVEL)
+   -------------------------------------------------------------------------- */
+.srtc-contact-mini-container,
+.srtc-booking-container-vault {
+  position: relative;
+  background: #FFFFFF;
+  border: 3px solid #0B2F4A;
+  border-radius: 6px;
+  box-shadow: 0 18px 45px rgba(11, 47, 74, 0.12), 0 4px 12px rgba(11, 47, 74, 0.08);
+  box-sizing: border-box;
+  overflow: visible;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.srtc-contact-mini-container:hover,
+.srtc-booking-container-vault:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 55px rgba(11, 47, 74, 0.18), 0 8px 18px rgba(11, 47, 74, 0.1);
+  border-color: #E8B94F;
+}
+
+/* Forged Steel ISO 1161 Corner Castings */
+.srtc-iso-casting {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, #1E293B 0%, #071F33 60%, #030810 100%);
+  border: 2px solid #E8B94F;
+  z-index: 10;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.srtc-iso-casting::after {
+  content: '';
+  width: 12px;
+  height: 7px;
+  background: #000000;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.srtc-iso-tl {
+  top: -8px;
+  left: -8px;
+  border-top-left-radius: 4px;
+}
+
+.srtc-iso-tr {
+  top: -8px;
+  right: -8px;
+  border-top-right-radius: 4px;
+}
+
+.srtc-iso-bl {
+  bottom: -8px;
+  left: -8px;
+  border-bottom-left-radius: 4px;
+}
+
+.srtc-iso-br {
+  bottom: -8px;
+  right: -8px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Container Structural Steel Rails (Top & Bottom Beams) */
+.srtc-container-top-rail {
+  background: #0B2F4A;
+  height: 10px;
+  border-bottom: 1px solid #1E466A;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.srtc-top-rail--compact {
+  height: 8px;
+}
+
+.srtc-container-bottom-rail {
+  background: #0B2F4A;
+  border-top: 1px solid #1E466A;
+  box-sizing: border-box;
+}
+
+.srtc-bottom-rail--compact {
+  border-top: 1px solid #1E466A;
+}
+
+.srtc-container-rivet-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.srtc-rivet-head {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #94A3B8 0%, #475569 60%, #1E293B 100%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+/* Stencil Top Bar */
+.srtc-container-stencil-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #071F33;
+  color: #FFFFFF;
+  padding: 0.65rem 1.4rem;
+  border-bottom: 2px solid #0B2F4A;
+  font-family: var(--font-mono, 'Consolas', 'Courier New', monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.srtc-stencil-bar--compact {
+  padding: 0.5rem 1rem;
+}
+
+.srtc-stencil-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.srtc-stencil-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 8px #22C55E;
+}
+
+.srtc-stencil-unit {
+  color: #E8B94F;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.srtc-stencil-type {
+  color: #94A3B8;
+  font-size: 0.68rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  padding-left: 0.75rem;
+}
+
+.srtc-stencil-status-pill {
+  background: rgba(34, 197, 94, 0.12);
+  color: #4ADE80;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.srtc-unit-axle-tag {
+  color: #CBD5E1;
+  font-size: 0.65rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+}
+
+.srtc-stencil-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.srtc-stencil-spec {
+  color: #CBD5E1;
+  font-size: 0.68rem;
+}
+
+.srtc-stencil-chevrons {
+  color: #E8B94F;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+}
+
+/* Subtle, Soft Container Corrugation (Light & Non-intrusive) */
+.srtc-container-corrugated-wall {
+  background-color: #FFFFFF;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #FFFFFF 0px,
+    #FFFFFF 44px,
+    #F8FAFC 44px,
+    #F1F5F9 46px,
+    #E2E8F0 47px,
+    #F1F5F9 48px,
+    #F8FAFC 50px,
+    #FFFFFF 50px,
+    #FFFFFF 94px
+  );
+}
+
+/* Bottom Warning Hazard Tape */
+.srtc-container-hazard-strip {
+  height: 9px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #E8B94F 0px,
+    #E8B94F 12px,
+    #0F172A 12px,
+    #0F172A 24px
+  );
+  border-bottom: 1px solid #070B12;
+}
+
+.srtc-hazard-strip--compact {
+  height: 7px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #E8B94F 0px,
+    #E8B94F 9px,
+    #0F172A 9px,
+    #0F172A 18px
+  );
+}
+
+/* --------------------------------------------------------------------------
+   LEFT COLUMN: 4 CONTAINER DISPATCH VAULTS
+   -------------------------------------------------------------------------- */
+.srtc-contact-vaults-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.srtc-vault-card-body {
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.srtc-vault-icon-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #071F33;
+  color: #E8B94F;
+  border: 1px solid #1E3A5F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(11, 47, 74, 0.15);
+}
+
+.srtc-vault-icon-badge--wa {
+  background: #064E3B;
+  color: #34D399;
+  border-color: #059669;
+}
+
+.srtc-vault-info {
+  flex: 1;
+}
+
+.srtc-vault-kicker {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748B;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+
+.srtc-vault-headline-link {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0B2F4A;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.45rem;
+  transition: color 0.2s ease;
+}
+
+.srtc-vault-headline-link:hover {
+  color: #1E527B;
+}
+
+.srtc-vault-headline-static {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0B2F4A;
+  display: block;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.65rem;
+}
+
+.srtc-hubs-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.srtc-hub-chip {
+  background: #F1F5F9;
+  color: #0B2F4A;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  letter-spacing: 0.02em;
+}
+
+.srtc-email-link {
+  font-size: 1.1rem;
+  word-break: break-all;
+}
+
+.srtc-vault-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #475569;
+  margin: 0 0 1rem 0;
+}
+
+.srtc-vault-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #0B2F4A;
+  background: #E8B94F;
+  padding: 0.45rem 0.85rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(232, 185, 79, 0.35);
+}
+
+.srtc-vault-cta-btn:hover {
+  background: #D49D28;
+  color: #FFFFFF;
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px rgba(212, 157, 40, 0.45);
+}
+
+.srtc-vault-cta-btn--wa {
+  background: #10B981;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.35);
+}
+
+.srtc-vault-cta-btn--wa:hover {
+  background: #059669;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.45);
+}
+
+.srtc-hq-address-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+  color: #475569;
+  margin-top: 0.5rem;
+  border-top: 1px dashed #CBD5E1;
+  padding-top: 0.75rem;
+}
+
+.srtc-hq-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.45;
+}
+
+.srtc-hq-icon {
+  color: #D49D28;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT COLUMN: 40FT HIGH-CUBE DISPATCH BOOKING MANIFEST CONTAINER
+   -------------------------------------------------------------------------- */
+.srtc-booking-manifest-body {
+  padding: clamp(2rem, 3.5vw, 2.75rem);
+}
+
+.srtc-manifest-header {
+  margin-bottom: 1.5rem;
+}
+
+.srtc-manifest-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #64748B;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+}
+
+.srtc-manifest-title {
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  font-weight: 800;
+  color: #0B2F4A;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.65rem 0;
+}
+
+.srtc-manifest-desc {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #475569;
+  margin: 0;
+}
+
+/* Metal CSC Safety Approval Certification Plate (Contact version) */
+.srtc-csc-data-plate {
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 50%, #94A3B8 100%);
+  border: 1.5px solid #475569;
+  border-radius: 4px;
+  padding: 0.45rem 0.75rem;
+  margin-bottom: 1.5rem;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.srtc-csc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #475569;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  font-weight: 900;
+  color: #0F172A;
+  letter-spacing: 0.08em;
+}
+
+.srtc-csc-id {
+  color: #1E3A5F;
+  font-weight: 800;
+}
+
+.srtc-csc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.srtc-csc-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.srtc-csc-lbl {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.52rem;
+  font-weight: 800;
+  color: #475569;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.srtc-csc-val {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 900;
+  color: #0F172A;
+  margin-top: 0.15rem;
+  line-height: 1;
+}
+
+/* Form Controls */
+.srtc-manifest-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.srtc-form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.srtc-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.srtc-field-full {
+  grid-column: 1 / -1;
+}
+
+.srtc-field-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #0B2F4A;
+  letter-spacing: 0.04em;
+}
+
+.srtc-label-icon {
+  color: #D49D28;
+}
+
+.srtc-input-control {
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  font-size: 0.92rem;
+  color: #0B2F4A;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.srtc-input-control:focus {
+  outline: none;
+  border-color: #0B2F4A;
+  box-shadow: 0 0 0 3px rgba(232, 185, 79, 0.35);
+}
+
+.srtc-input-control::placeholder {
+  color: #94A3B8;
+  font-size: 0.88rem;
+}
+
+/* Service Selector Radio Pills */
+.srtc-service-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.srtc-service-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.srtc-service-pill:hover {
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+  color: #0B2F4A;
+}
+
+.srtc-service-pill.is-selected {
+  background: #071F33;
+  border-color: #E8B94F;
+  color: #FFFFFF;
+  box-shadow: 0 3px 8px rgba(7, 31, 51, 0.2);
+}
+
+.srtc-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #94A3B8;
+  flex-shrink: 0;
+}
+
+.srtc-service-pill.is-selected .srtc-pill-dot {
+  background: #E8B94F;
+  box-shadow: 0 0 6px #E8B94F;
+}
+
+/* Form Action Bar */
+.srtc-form-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.srtc-transmit-manifest-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0B2F4A;
+  background: #E8B94F;
+  border: none;
+  padding: 0.85rem 1.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(232, 185, 79, 0.45);
+}
+
+.srtc-transmit-manifest-btn:hover:not(:disabled) {
+  background: #D49D28;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 157, 40, 0.55);
+}
+
+.srtc-transmit-manifest-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.srtc-transmit-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(11, 47, 74, 0.3);
+  border-top-color: #0B2F4A;
+  border-radius: 50%;
+  animation: srtcSpin 0.8s linear infinite;
+}
+
+@keyframes srtcSpin {
+  to { transform: rotate(360deg); }
+}
+
+.srtc-form-trust-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: #64748B;
+  font-weight: 500;
+}
+
+/* Success Box */
+.srtc-booking-success-box {
+  background: #F0FDF4;
+  border: 2px solid #86EFAC;
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+.srtc-success-icon-wrap {
+  flex-shrink: 0;
+}
+
+.srtc-success-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #15803D;
+  margin: 0 0 0.5rem 0;
+}
+
+.srtc-success-desc {
+  font-size: 0.92rem;
+  color: #166534;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.srtc-success-tracking-badge {
+  display: inline-block;
+  background: #DCFCE7;
+  color: #14532D;
+  border: 1px solid #86EFAC;
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.25rem;
+}
+
+.srtc-success-reset-btn {
+  display: inline-block;
+  background: #15803D;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.srtc-success-reset-btn:hover {
+  background: #166534;
+}
+
+/* --------------------------------------------------------------------------
+   FREIGHT CORRIDOR DISPATCH TELEMETRY HUD (4 TRUST METRICS)
+   -------------------------------------------------------------------------- */
+.srtc-contact-metrics-hud {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.srtc-hud-metric-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #FFFFFF;
+  border: 1.5px solid #0B2F4A;
+  border-radius: 6px;
+  padding: 1.25rem;
+  box-shadow: 0 8px 24px rgba(11, 47, 74, 0.06);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.srtc-hud-metric-card:hover {
+  transform: translateY(-3px);
+  border-color: #E8B94F;
+  box-shadow: 0 12px 30px rgba(11, 47, 74, 0.12);
+}
+
+.srtc-hud-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  background: #071F33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid #1E3A5F;
+}
+
+.srtc-hud-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.srtc-hud-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0B2F4A;
+  line-height: 1.2;
+}
+
+.srtc-hud-lbl {
+  font-size: 0.74rem;
+  color: #64748B;
+  font-weight: 500;
+  margin-top: 0.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN
+   -------------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .srtc-contact-main-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  .srtc-service-selector-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .srtc-contact-metrics-hud {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .srtc-csc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .srtc-contact-hero {
+    padding: 3rem 1.25rem 2.5rem;
+  }
+
+  .srtc-contact-container {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .srtc-contact-container {
+    padding: 2rem 1rem 3.5rem;
+  }
+
+  .srtc-form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .srtc-service-selector-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .srtc-booking-manifest-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .srtc-vault-card-body {
+    flex-direction: column;
+    padding: 1.25rem 1rem;
+  }
+
+  .srtc-form-action-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .srtc-transmit-manifest-btn {
+    justify-content: center;
+  }
+
+  .srtc-contact-metrics-hud {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .srtc-contact-hero {
+    padding: 2.5rem 0.85rem 2rem;
+  }
+
+  .srtc-contact-hero__title {
+    font-size: 1.85rem;
+    word-break: break-word;
+  }
+
+  .srtc-contact-hero__subtitle {
+    font-size: 0.88rem;
+  }
+
+  .srtc-contact-ticker-bar {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.66rem;
+  }
+
+  .srtc-contact-ticker-inner {
+    gap: 0.75rem;
+    justify-content: flex-start;
+  }
+
+  .srtc-contact-container {
+    padding: 1.75rem 0.85rem 3rem;
+  }
+
+  .srtc-iso-casting {
+    width: 18px;
+    height: 18px;
+  }
+
+  .srtc-iso-tl { top: -6px; left: -6px; }
+  .srtc-iso-tr { top: -6px; right: -6px; }
+  .srtc-iso-bl { bottom: -6px; left: -6px; }
+  .srtc-iso-br { bottom: -6px; right: -6px; }
+
+  .srtc-booking-manifest-body {
+    padding: 1.25rem 0.85rem;
+  }
+
+  .srtc-manifest-title {
+    font-size: 1.25rem;
+  }
+
+  .srtc-manifest-desc {
+    font-size: 0.85rem;
+  }
+
+  .srtc-vault-headline-link {
+    font-size: 1.15rem;
+  }
+
+  .srtc-vault-headline-static {
+    font-size: 1.1rem;
+  }
+
+  .srtc-email-link {
+    font-size: 0.95rem;
+  }
+
+  .srtc-transmit-manifest-btn {
+    font-size: 0.8rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .srtc-hud-metric-card {
+    padding: 1rem 0.85rem;
+  }
+
+  .srtc-hud-val {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .srtc-contact-hero__title {
+    font-size: 1.6rem;
+  }
+
+  .srtc-contact-container {
+    padding: 1.5rem 0.65rem 2.5rem;
+  }
+
+  .srtc-iso-casting {
+    width: 16px;
+    height: 16px;
+  }
+
+  .srtc-iso-tl { top: -5px; left: -5px; }
+  .srtc-iso-tr { top: -5px; right: -5px; }
+  .srtc-iso-bl { bottom: -5px; left: -5px; }
+  .srtc-iso-br { bottom: -5px; right: -5px; }
+
+  .srtc-booking-manifest-body {
+    padding: 1.1rem 0.75rem;
+  }
+
+  .srtc-manifest-title {
+    font-size: 1.15rem;
+  }
+
+  .srtc-input-control {
+    font-size: 0.85rem;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .srtc-service-pill {
+    font-size: 0.72rem;
+    padding: 0.55rem 0.65rem;
+  }
+
+  .srtc-vault-headline-link {
+    font-size: 1.05rem;
+  }
+
+  .srtc-vault-card-body {
+    padding: 1rem 0.75rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .srtc-contact-hero__title {
+    font-size: 1.45rem;
+  }
+
+  .srtc-contact-container {
+    padding: 1.35rem 0.5rem 2rem;
+  }
+
+  .srtc-booking-manifest-body {
+    padding: 1rem 0.6rem;
+  }
+
+  .srtc-manifest-title {
+    font-size: 1.05rem;
+  }
+
+  .srtc-manifest-desc {
+    font-size: 0.8rem;
+  }
+
+  .srtc-input-control {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.65rem;
+  }
+
+  .srtc-service-pill {
+    font-size: 0.68rem;
+    padding: 0.5rem 0.55rem;
+  }
+
+  .srtc-transmit-manifest-btn {
+    font-size: 0.75rem;
+    padding: 0.65rem 1rem;
+  }
+}
+
+/* 4K UHD TV Display Support */
+@media (min-width: 1921px) {
+  .srtc-contact-hero__container {
+    max-width: 1400px;
+  }
+
+  .srtc-contact-hero__title {
+    font-size: 4.8rem;
+  }
+
+  .srtc-contact-hero__subtitle {
+    font-size: 1.4rem;
+    max-width: 950px;
+  }
+
+  .srtc-contact-container {
+    max-width: 1800px;
+  }
+
+  .srtc-manifest-title {
+    font-size: 2.4rem;
+  }
+
+  .srtc-manifest-desc {
+    font-size: 1.15rem;
+  }
+
+  .srtc-input-control {
+    font-size: 1.1rem;
+    padding: 0.95rem 1.25rem;
+  }
+
+  .srtc-hud-val {
+    font-size: 1.35rem;
+  }
+}

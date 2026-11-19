@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, ShieldCheck, Compass, ArrowUpRight, Menu } from 'lucide-react';
+import { ArrowUpRight, Menu } from 'lucide-react';
 import Navbar from './Navbar';
 import MobileMenu from './MobileMenu';
 import './Header.css';
@@ -22,36 +22,7 @@ export default function Header() {
 
   return (
     <header className={`sitc-main-header ${isScrolled ? 'sitc-main-header--scrolled' : ''}`}>
-      {/* 1. Top Utility Micro-Bar with Connecting Horizontal Line */}
-      <div className="sitc-header-topbar">
-        <div className="sitc-header-container sitc-header-topbar__inner">
-          <div className="sitc-header-topbar__left">
-            <a href="tel:+919426646095" className="sitc-header-topbar__link">
-              <Phone size={12} className="sitc-header-topbar__icon" />
-              <span>+91 9426646095</span>
-            </a>
-            <span className="sitc-header-topbar__sep" />
-            <a href="mailto:srtcpvtltd09@gmail.com" className="sitc-header-topbar__link">
-              <Mail size={12} className="sitc-header-topbar__icon" />
-              <span>srtcpvtltd09@gmail.com</span>
-            </a>
-          </div>
-
-          <div className="sitc-header-topbar__right">
-            <div className="sitc-header-topbar__badge">
-              <ShieldCheck size={12} />
-              <span>Fastest • Secured • Trustable</span>
-            </div>
-            <span className="sitc-header-topbar__sep" />
-            <Link href="/tracking" className="sitc-header-topbar__link">
-              <Compass size={12} className="sitc-header-topbar__icon" />
-              <span>24/7 Cargo Tracker</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. Main Navigation Header Bar */}
+      {/* Main Navigation Header Bar */}
       <div className="sitc-header-main">
         <div className="sitc-header-container sitc-header-main__inner">
           {/* Left: Brand Logo (Prominent & Larger) */}
@@ -70,19 +41,10 @@ export default function Header() {
             <Navbar />
           </div>
 
-          {/* Right: Quick Action Buttons */}
+          {/* Right: Quick Action Button (Single Contact Us CTA) */}
           <div className="sitc-header-actions">
-            {/* Tracking Pill Button */}
-            <Link href="/tracking" className="sitc-btn-pill sitc-btn-pill--white hide-on-mobile">
-              <span>Tracking</span>
-              <span className="sitc-btn-pill__circle sitc-btn-pill__circle--navy">
-                <ArrowUpRight size={13} strokeWidth={2.5} />
-              </span>
-            </Link>
-
-            {/* Primary CTA: Get a Quote */}
-            <Link href="/quote" className="sitc-btn-pill sitc-btn-pill--gold hide-on-mobile">
-              <span>Get a Quote</span>
+            <Link href="/contact" className="sitc-btn-pill sitc-btn-pill--gold hide-on-mobile">
+              <span>Contact Us</span>
               <span className="sitc-btn-pill__circle sitc-btn-pill__circle--dark">
                 <ArrowUpRight size={13} strokeWidth={2.5} />
               </span>

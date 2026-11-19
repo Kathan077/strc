@@ -211,12 +211,13 @@
 
 /* Main Title: Trust Built Into Every Mile. */
 .sitc-trust-title {
-  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  font-size: clamp(1.65rem, 3.4vw, 2.9rem);
   font-weight: 800;
   color: #102D50;
   line-height: 1.18;
   letter-spacing: -0.025em;
   margin: 0 0 0.55rem;
+  word-break: break-word;
 }
 
 .sitc-trust-title--blue {
@@ -665,6 +666,14 @@
    2. Mobile Viewport (<= 640px down to 320px)
    -------------------------------------------------------------------------- */
 @media (max-width: 640px) {
+  .sitc-trust-section-wrapper {
+    padding: 3.5rem 1rem 2.5rem;
+  }
+
+  .sitc-trust-title {
+    font-size: clamp(1.6rem, 6.5vw, 2.15rem);
+  }
+
   .sitc-orbit-stage {
     height: auto;
     display: flex;
@@ -699,6 +708,7 @@
     width: 100%;
     max-width: 440px;
     margin: 0 auto;
+    box-sizing: border-box;
   }
 
   .sitc-feature-card {
@@ -711,35 +721,138 @@
     width: 100% !important;
     padding: 1.15rem 1rem 0.95rem;
     opacity: 1 !important;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  .sitc-card-top-row {
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
 
   .sitc-card-title {
     font-size: 0.98rem;
+    word-break: break-word;
   }
 
   .sitc-card-desc {
     font-size: 0.76rem;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .sitc-trust-section-wrapper {
+    padding: 2.75rem 0.95rem 2rem;
   }
 
+  .sitc-trust-badge-pill {
+    padding: 0.3rem 0.85rem;
+    font-size: 0.68rem;
+  }
+
+  .sitc-trust-title {
+    font-size: 1.55rem;
+  }
+
+  .sitc-trust-desc {
+    font-size: 0.84rem;
+  }
+
+  .sitc-central-circle-truck {
+    width: 185px;
+    height: 185px;
+    margin-bottom: 1.75rem;
+  }
+
+  .sitc-core-guarantee-badge {
+    top: -24px;
+    font-size: 0.62rem;
+    padding: 0.25rem 0.7rem;
+  }
+
+  .sitc-circle-hud-badge {
+    bottom: 10px;
+    padding: 0.22rem 0.6rem;
+  }
+
+  .sitc-hud-badge-text {
+    font-size: 0.56rem;
+  }
 }
 
 /* --------------------------------------------------------------------------
    3. Small Mobile (<= 340px, e.g. 320px iPhone SE)
    -------------------------------------------------------------------------- */
 @media (max-width: 340px) {
+  .sitc-trust-section-wrapper {
+    padding: 2.25rem 0.65rem 1.75rem;
+  }
+
+  .sitc-trust-title {
+    font-size: 1.35rem;
+  }
+
+  .sitc-trust-desc {
+    font-size: 0.78rem;
+  }
+
   .sitc-central-circle-truck {
-    width: 175px;
-    height: 175px;
+    width: 165px;
+    height: 165px;
     margin-bottom: 1.5rem;
+  }
+
+  .sitc-core-guarantee-badge {
+    top: -20px;
+    font-size: 0.56rem;
+    padding: 0.2rem 0.55rem;
   }
 
   .sitc-circle-hud-badge {
     bottom: 8px;
-    padding: 0.2rem 0.55rem;
+    padding: 0.18rem 0.5rem;
   }
 
   .sitc-hud-badge-text {
-    font-size: 0.52rem;
+    font-size: 0.5rem;
+  }
+
+  .sitc-feature-card {
+    padding: 0.95rem 0.75rem 0.85rem !important;
+  }
+
+  .sitc-card-title {
+    font-size: 0.92rem;
+  }
+
+  .sitc-card-desc {
+    font-size: 0.74rem;
+  }
+
+  .sitc-card-kpi-badge {
+    font-size: 0.58rem;
+    padding: 0.18rem 0.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Ultra-Wide 2K / 4K TV Displays (1921px to 3840px+)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1921px) {
+  .sitc-trust-container {
+    max-width: 1440px;
+  }
+  .sitc-orbit-stage {
+    max-width: 1320px;
+    height: 640px;
+  }
+  .sitc-central-circle-truck {
+    width: 280px;
+    height: 280px;
+  }
+  .sitc-trust-title {
+    font-size: 3.4rem;
   }
 }
 

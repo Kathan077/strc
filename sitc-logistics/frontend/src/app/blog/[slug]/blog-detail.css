@@ -1,0 +1,509 @@
+/* ==========================================================================
+   SRTC LOGISTICS - BLOG DETAIL & ARTICLE READER STYLING
+   ========================================================================== */
+
+.srtc-article-page {
+  background-color: #FFFFFF;
+  color: #0B2F4A;
+  min-height: 100vh;
+}
+
+/* --------------------------------------------------------------------------
+   ARTICLE HEADER & HERO
+   -------------------------------------------------------------------------- */
+.srtc-article-header {
+  background: linear-gradient(180deg, #071F33 0%, #0B2F4A 100%);
+  color: #FFFFFF;
+  padding: clamp(3.5rem, 6vw, 5.5rem) 1.5rem clamp(2.5rem, 4vw, 3.5rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid #E8B94F;
+}
+
+.srtc-article-header__container {
+  max-width: 920px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.srtc-article-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(232, 185, 79, 0.12);
+  border: 1px solid rgba(232, 185, 79, 0.4);
+  color: #E8B94F;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+}
+
+.srtc-article-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.5rem 0;
+}
+
+.srtc-article-author-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: #CBD5E1;
+}
+
+.srtc-article-author-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.srtc-article-author-img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid #E8B94F;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   ARTICLE COVER IMAGE SHOWCASE
+   -------------------------------------------------------------------------- */
+.srtc-article-media-container {
+  max-width: 1040px;
+  margin: -2rem auto 3rem auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.srtc-article-cover-frame {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(11, 47, 74, 0.16);
+  border: 1px solid #E2E8F0;
+  background-color: #071F33;
+  aspect-ratio: 16 / 9;
+}
+
+.srtc-article-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   ARTICLE BODY & CONTENT LAYOUT
+   -------------------------------------------------------------------------- */
+.srtc-article-body-layout {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Executive Key Takeaways Callout */
+.srtc-takeaways-box {
+  background: #F8FAFC;
+  border-left: 4px solid #E8B94F;
+  border-top: 1px solid #E2E8F0;
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 16px rgba(11, 47, 74, 0.04);
+}
+
+.srtc-takeaways-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0B2F4A;
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 1rem 0;
+}
+
+.srtc-takeaways-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.srtc-takeaways-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.55;
+}
+
+.srtc-takeaway-check {
+  color: #22C55E;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* Prose Typography */
+.srtc-article-prose {
+  font-size: 1.06rem;
+  line-height: 1.8;
+  color: #263746;
+}
+
+.srtc-article-prose h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0B2F4A;
+  margin: 2.75rem 0 1rem 0;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.srtc-article-prose h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0B2F4A;
+  margin: 2rem 0 0.85rem 0;
+}
+
+.srtc-article-prose p {
+  margin: 0 0 1.5rem 0;
+}
+
+.srtc-article-prose ul {
+  margin: 0 0 1.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.srtc-article-prose li {
+  margin-bottom: 0.65rem;
+  line-height: 1.65;
+}
+
+.srtc-article-prose strong {
+  color: #0B2F4A;
+  font-weight: 700;
+}
+
+.srtc-article-prose hr {
+  border: none;
+  border-top: 1px solid #E2E8F0;
+  margin: 2.5rem 0;
+}
+
+/* Tags & Share Footer */
+.srtc-article-footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 1.5rem 0;
+  margin: 3.5rem 0;
+}
+
+.srtc-article-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.srtc-article-tag {
+  background: #F1F5F9;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+}
+
+/* Author Bio Card */
+.srtc-author-bio-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-bottom: 4rem;
+}
+
+.srtc-author-bio-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 3px solid #E8B94F;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.srtc-author-bio-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0B2F4A;
+  margin: 0 0 0.25rem 0;
+}
+
+.srtc-author-bio-role {
+  font-size: 0.78rem;
+  color: #B88214;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.srtc-author-bio-text {
+  font-size: 0.88rem;
+  color: #64748B;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Back Link */
+.srtc-back-to-hub {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0B2F4A;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-bottom: 2rem;
+}
+
+.srtc-back-to-hub:hover {
+  color: #B88214;
+  transform: translateX(-4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .srtc-article-header {
+    padding: 3rem 1.25rem 2.5rem;
+  }
+
+  .srtc-article-media-container {
+    margin: -1.5rem auto 2rem auto;
+    padding: 0 1.25rem;
+  }
+
+  .srtc-article-body-layout {
+    padding: 0 1.25rem 3.5rem 1.25rem;
+  }
+
+  .srtc-author-bio-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .srtc-article-header {
+    padding: 2.5rem 0.85rem 2rem;
+  }
+
+  .srtc-article-meta-badge {
+    font-size: 0.68rem;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .srtc-article-title {
+    font-size: 1.75rem;
+    line-height: 1.25;
+    word-break: break-word;
+    margin-bottom: 1.15rem;
+  }
+
+  .srtc-article-author-strip {
+    gap: 0.85rem;
+    font-size: 0.78rem;
+  }
+
+  .srtc-article-media-container {
+    margin: -1rem auto 1.5rem auto;
+    padding: 0 0.85rem;
+  }
+
+  .srtc-article-cover-frame {
+    border-radius: 12px;
+  }
+
+  .srtc-article-body-layout {
+    padding: 0 0.85rem 3rem 0.85rem;
+  }
+
+  .srtc-takeaways-box {
+    padding: 1.25rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .srtc-takeaways-title {
+    font-size: 0.95rem;
+  }
+
+  .srtc-takeaways-item {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .srtc-article-prose {
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  .srtc-article-prose h2 {
+    font-size: 1.35rem;
+    margin: 2rem 0 0.75rem 0;
+    word-break: break-word;
+  }
+
+  .srtc-article-prose h3 {
+    font-size: 1.15rem;
+    margin: 1.5rem 0 0.65rem 0;
+  }
+
+  .srtc-article-footer-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 2.5rem 0;
+    padding: 1.25rem 0;
+  }
+
+  .srtc-author-bio-card {
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+  }
+
+  .srtc-author-bio-avatar {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 380px) {
+  .srtc-article-header {
+    padding: 2rem 0.65rem 1.75rem;
+  }
+
+  .srtc-article-title {
+    font-size: 1.5rem;
+  }
+
+  .srtc-article-media-container {
+    padding: 0 0.65rem;
+  }
+
+  .srtc-article-body-layout {
+    padding: 0 0.65rem 2.5rem 0.65rem;
+  }
+
+  .srtc-takeaways-box {
+    padding: 1rem 0.75rem;
+  }
+
+  .srtc-takeaways-item {
+    font-size: 0.84rem;
+  }
+
+  .srtc-article-prose {
+    font-size: 0.92rem;
+  }
+
+  .srtc-article-prose h2 {
+    font-size: 1.25rem;
+  }
+
+  .srtc-author-bio-card {
+    padding: 1rem 0.75rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .srtc-article-header {
+    padding: 1.75rem 0.5rem 1.5rem;
+  }
+
+  .srtc-article-title {
+    font-size: 1.35rem;
+  }
+
+  .srtc-article-media-container {
+    padding: 0 0.5rem;
+  }
+
+  .srtc-article-body-layout {
+    padding: 0 0.5rem 2rem 0.5rem;
+  }
+
+  .srtc-takeaways-box {
+    padding: 0.85rem 0.65rem;
+  }
+
+  .srtc-article-prose h2 {
+    font-size: 1.15rem;
+  }
+}
+
+/* 4K UHD TV Display Support */
+@media (min-width: 1921px) {
+  .srtc-article-header__container {
+    max-width: 1400px;
+  }
+
+  .srtc-article-title {
+    font-size: 4.2rem;
+  }
+
+  .srtc-article-media-container {
+    max-width: 1500px;
+  }
+
+  .srtc-article-body-layout {
+    max-width: 1200px;
+  }
+
+  .srtc-article-prose {
+    font-size: 1.3rem;
+    line-height: 1.9;
+  }
+
+  .srtc-article-prose h2 {
+    font-size: 2.5rem;
+  }
+
+  .srtc-article-prose h3 {
+    font-size: 1.8rem;
+  }
+}
+

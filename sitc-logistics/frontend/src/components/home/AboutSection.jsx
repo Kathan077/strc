@@ -17,40 +17,8 @@ import {
 } from 'lucide-react';
 import './AboutSection.css';
 
-const capabilities = [
-  {
-    id: '01',
-    title: 'FTL & PTL Dedicated Freight Services',
-    detail: 'Specialized Full Truck Load and Part Truck Load logistics tailored for corporate industrial movements across India.',
-    tag: 'FTL & PTL Network',
-  },
-  {
-    id: '02',
-    title: "One of India's Largest Privately Owned Fleets",
-    detail: 'Over two decades of fleet excellence operated by a dedicated team of well-trained, professional driver staff.',
-    tag: '23+ Years Safety',
-  },
-  {
-    id: '03',
-    title: 'Modern Logistics & Warehouse Handling',
-    detail: 'Scalable, technology-driven warehousing and contract logistics solutions designed to eliminate bottlenecks.',
-    tag: 'Scalable Storage',
-  },
-  {
-    id: '04',
-    title: 'Superfast Cargo & Small Package Delivery',
-    detail: 'Expedited transit network connecting Gujarat hubs to pan-India corporate and individual destinations.',
-    tag: 'Superfast Delivery',
-  },
-  {
-    id: '05',
-    title: 'Eco-Friendly & Technology-Driven Solutions',
-    detail: 'Committed to reducing environmental impact with high-efficiency fleet routing and full traffic rule compliance.',
-    tag: 'Tech-Driven',
-  },
-];
-
-export default function AboutSection() {
+export default function AboutSection({ data }) {
+  const capabilities = data?.capabilities || [];
   const [activeCap, setActiveCap] = useState(0);
   const [isAutoCycling, setIsAutoCycling] = useState(true);
 
@@ -140,16 +108,21 @@ export default function AboutSection() {
     let startTime = null;
     const duration = 1600; // 1.6s smooth easing
 
+    const targetShipments = data?.stats?.shipments ?? 1.2;
+    const targetCorridors = data?.stats?.corridors ?? 180;
+    const targetFleet = data?.stats?.fleet ?? 840;
+    const targetSla = data?.stats?.sla ?? 99.4;
+
     const step = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
       // Smooth easeOutCubic curve
       const ease = 1 - Math.pow(1 - progress, 3);
 
-      setShipmentsCount(Number((ease * 1.2).toFixed(1)));
-      setCorridorsCount(Math.floor(ease * 180));
-      setFleetCount(Math.floor(ease * 840));
-      setSlaCount(Number((ease * 99.4).toFixed(1)));
+      setShipmentsCount(Number((ease * targetShipments).toFixed(1)));
+      setCorridorsCount(Math.floor(ease * targetCorridors));
+      setFleetCount(Math.floor(ease * targetFleet));
+      setSlaCount(Number((ease * targetSla).toFixed(1)));
 
       if (progress < 1) {
         requestAnimationFrame(step);
@@ -266,9 +239,9 @@ export default function AboutSection() {
         {/* Ambient Horizontal Laser Horizon */}
         <div className="sitc-about-horizon-laser" />
 
-        {/* Floating Telemetry Watermark */}
+        {/* Floating Dispatch Watermark */}
         <div className="sitc-about-watermark">
-          SRTC HIGHWAY TELEMETRY // 24/7 COMMAND CONTROL // 180+ PAN-INDIA CORRIDORS
+          SRTC CENTRAL FREIGHT DISPATCH // 24/7 FLEET COMMAND // PAN-INDIA EXPRESS CORRIDORS
         </div>
       </div>
 
@@ -280,24 +253,24 @@ export default function AboutSection() {
           <div className="sitc-about-header__left">
             <div className="sitc-about-kicker">
               <Truck size={14} className="sitc-about-kicker__icon" />
-              <span>SRTC SUPPLY CHAIN PVT. LTD.</span>
+              <span>{data?.kicker || 'SRTC SUPPLY CHAIN PVT. LTD.'}</span>
             </div>
             <h2 className="sitc-about-title">
-              Legacy of <br />
-              <span className="sitc-about-title--highlight">Reliability,</span> Delivering <br />
-              Value Every Single Time.
+              {data?.titleLine1 || 'Legacy of'} <br />
+              <span className="sitc-about-title--highlight">{data?.highlightText || 'Reliability,'}</span> Delivering <br />
+              {data?.titleLine2 || 'Value Every Single Time.'}
             </h2>
           </div>
 
           <div className="sitc-about-header__right">
             <p className="sitc-about-desc">
-              Shree Ram Transportation Corporation, founded in 2003 by <strong>Mr. Menandbhai Odedara</strong>, has been Gujarat’s trusted transport benchmark for over two decades. Building on this legacy, <strong>SRTC Supply Chain Pvt. Ltd.</strong> delivers modern, technology-driven, end-to-end logistics & warehousing nationwide.
+              {data?.description || 'Shree Ram Transportation Corporation, founded in 2003 by Mr. Menandbhai Odedara, has been Gujarat’s trusted transport benchmark for over two decades. Building on this legacy, SRTC Supply Chain Pvt. Ltd. delivers modern, technology-driven, end-to-end logistics & warehousing nationwide.'}
             </p>
 
             <div className="sitc-about-header__actions">
-              <Link href="/quote" className="sitc-about-btn-gold">
+              <Link href={data?.ctaLink || '/contact'} className="sitc-about-btn-gold">
                 <span className="sitc-btn-gold__shimmer" aria-hidden="true" />
-                <span className="sitc-btn-gold__text">Get a Quote</span>
+                <span className="sitc-btn-gold__text">{data?.ctaText || 'Contact Us'}</span>
                 <span className="sitc-about-btn-gold__circle">
                   <ArrowUpRight size={14} strokeWidth={2.5} />
                 </span>

@@ -3,225 +3,207 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import {
-  ArrowUpRight,
+  FileText,
+  Compass,
+  Truck,
   ShieldCheck,
+  ArrowRight,
   CheckCircle2,
-  Navigation,
-  Radio,
-  Clock,
-  Sparkles,
-  Layers,
-  Zap,
 } from 'lucide-react';
+import ProcessTruckBlueprint from './ProcessTruckBlueprint';
 import './ProcessSection.css';
 
-const processSteps = [
-  {
-    stepNum: '01',
-    title: 'Request a Quote',
-    desc: 'SHARE YOUR SHIPMENT DETAILS, CARGO REQUIREMENTS, DESTINATION, AND PREFERRED DELIVERY SCHEDULE WITH OUR TEAM.',
-    kpi: '15-MIN QUOTE',
-    kpiLabel: 'Instant Commercial SLA',
-    hudStatus: 'STEP 01 • CARGO INGESTION & DISPATCH QUEUE',
-  },
-  {
-    stepNum: '02',
-    title: 'Plan the Shipment',
-    desc: 'WE DETERMINE THE MOST EFFICIENT ROUTE, TRANSPORTATION METHOD, TIMELINE, AND HANDLING REQUIREMENTS FOR YOUR CARGO.',
-    kpi: 'ROUTE AI OPTIMIZED',
-    kpiLabel: 'Smart Freight Consolidation',
-    hudStatus: 'STEP 02 • MULTI-AXLE ROUTE OPTIMIZATION',
-  },
-  {
-    stepNum: '03',
-    title: 'Move and Track',
-    desc: 'YOUR SHIPMENT MOVES THROUGH OUR TRUSTED NETWORK WITH CLEAR UPDATES AND REAL-TIME VISIBILITY THROUGHOUT TRANSIT.',
-    kpi: 'LIVE TELEMATICS',
-    kpiLabel: 'IoT GPS Highway Monitoring',
-    hudStatus: 'STEP 03 • ACTIVE CORRIDOR TRANSIT • EN ROUTE',
-  },
-  {
-    stepNum: '04',
-    title: 'Deliver with Confidence',
-    desc: 'WE COORDINATE THE FINAL DELIVERY TO ENSURE YOUR SHIPMENT ARRIVES SAFELY, SECURELY, AND ACCORDING TO SCHEDULE.',
-    kpi: 'ZERO-LOSS SLA',
-    kpiLabel: 'Digital Proof of Delivery (e-POD)',
-    hudStatus: 'STEP 04 • SECURE CROSS-DOCK & DESTINATION SIGN-OFF',
-  },
-];
+const STEP_ICONS = [FileText, Compass, Truck, ShieldCheck];
 
-export default function ProcessSection() {
+export default function ProcessSection({ data }) {
   const [activeStep, setActiveStep] = useState(0);
+  const steps = data?.steps || [];
 
   return (
     <section
       id="how-we-deliver"
-      className="sitc-process-section"
+      className="sitc-proc-section"
       data-section-name="HOW WE DELIVER"
       aria-label="How We Deliver - 4 Step Streamlined Logistics Process"
     >
-      {/* Ambient Atmospheric Glows */}
-      <div className="sitc-process-bg-glow sitc-process-bg-glow--top" aria-hidden="true" />
-      <div className="sitc-process-bg-glow sitc-process-bg-glow--bottom" aria-hidden="true" />
-      <div className="sitc-process-bg-grid" aria-hidden="true" />
+      {/* Realistic Technical Truck Blueprint & Highway Transit Corridor Background */}
+      <ProcessTruckBlueprint />
 
-      <div className="sitc-process-container">
-        {/* Main 2-Column Split: Narrative & Steps (Left) + Aerial Drone Telematics (Right) */}
-        <div className="sitc-process-layout">
+      <div className="sitc-proc-container">
+        <div className="sitc-proc-grid">
           {/* ===================================================================
-              LEFT COLUMN: Header, Kicker, Narrative, CTA, and 4-Step Process List
+              LEFT COLUMN: Header, Kicker, CTA, and Sleek 4-Step Cards
               =================================================================== */}
-          <div className="sitc-process-left">
-            {/* Top Monospace / Tech Kicker */}
-            <div className="sitc-process-kicker">
-              <span className="sitc-kicker-bullet" aria-hidden="true" />
-              <span className="sitc-kicker-text">HOW WE DELIVER</span>
-              <span className="sitc-kicker-badge">STREAMLINED 4-STEP FLOW</span>
+          <div className="sitc-proc-left">
+            {/* Header Block */}
+            <div className="sitc-proc-header">
+              <div className="sitc-proc-kicker">
+                <span className="sitc-proc-kicker-dot" />
+                <span className="sitc-proc-kicker-title">{data?.kicker || 'HOW WE DELIVER'}</span>
+              </div>
+
+              <h2 className="sitc-proc-heading">
+                {data?.title || 'A simple process. Every step covered.'}
+              </h2>
+
+              <p className="sitc-proc-lead">
+                {data?.subtitle ||
+                  'We simplify complex logistics through an intelligent, technology-driven workflow that keeps your cargo moving safely and on schedule.'}
+              </p>
+
+              {/* Action Row */}
+              <div className="sitc-proc-action-row">
+                <Link
+                  href="/contact"
+                  className="sitc-proc-btn"
+                  aria-label="Start Shipping with SRTC Logistics"
+                >
+                  <span className="sitc-proc-btn-dot" />
+                  <span>START SHIPPING</span>
+                  <ArrowRight size={15} className="sitc-proc-btn-arrow" />
+                </Link>
+                <div className="sitc-proc-guarantee-pill">
+                  <CheckCircle2 size={13} className="sitc-proc-pill-icon" />
+                  <span>Quotes confirmed in under 15 minutes</span>
+                </div>
+              </div>
             </div>
 
-            {/* Main Headline */}
-            <h2 className="sitc-process-title">
-              A simple process.
-              <span className="sitc-process-title--accent"> Every step covered.</span>
-            </h2>
+            {/* Clean Process Steps */}
+            {steps.length > 0 && (
+              <div className="sitc-proc-steps-list" role="list">
+                {steps.map((step, idx) => {
+                  const isActive = activeStep === idx;
+                  const Icon = STEP_ICONS[idx % STEP_ICONS.length];
 
-            {/* Technical Narrative Subtitle */}
-            <p className="sitc-process-desc">
-              WE SIMPLIFY COMPLEX LOGISTICS THROUGH A STREAMLINED PROCESS THAT KEEPS YOUR SHIPMENTS MOVING EFFICIENTLY FROM ORIGIN TO DESTINATION.
-            </p>
-
-            {/* High-Impact Primary CTA Button */}
-            <div className="sitc-process-cta-wrap">
-              <Link
-                href="#quote"
-                className="sitc-process-cta-btn"
-                aria-label="Start Shipping with SRTC Logistics"
-              >
-                <span className="sitc-cta-bullet" aria-hidden="true" />
-                <span className="sitc-cta-label">START SHIPPING</span>
-                <ArrowUpRight size={17} className="sitc-cta-arrow" />
-              </Link>
-              <span className="sitc-cta-subtext">
-                <CheckCircle2 size={13} className="sitc-cta-check" />
-                Commercial quotes confirmed in under 15 minutes
-              </span>
-            </div>
-
-            {/* The 4-Step Interactive Process List */}
-            <div className="sitc-steps-timeline" role="list">
-              {processSteps.map((step, idx) => {
-                const isActive = activeStep === idx;
-
-                return (
-                  <article
-                    key={step.stepNum}
-                    role="listitem"
-                    className={`sitc-step-card ${isActive ? 'is-active' : ''}`}
-                    onClick={() => setActiveStep(idx)}
-                    onMouseEnter={() => setActiveStep(idx)}
-                  >
-                    {/* Left Step Identifier in Monospace Brackets */}
-                    <div className="sitc-step-id-col">
-                      <div className="sitc-step-bracket-wrap">
-                        <span className="sitc-step-bracket">[</span>
-                        <span className="sitc-step-number">{step.stepNum}</span>
-                        <span className="sitc-step-bracket">]</span>
+                  return (
+                    <div
+                      key={step.stepNum || idx}
+                      role="listitem"
+                      className={`sitc-proc-card ${isActive ? 'is-active' : ''}`}
+                      onClick={() => setActiveStep(idx)}
+                    >
+                      {/* Step Number Badge */}
+                      <div className="sitc-proc-card-badge-wrap">
+                        <span className="sitc-proc-card-num">[{step.stepNum || `0${idx + 1}`}]</span>
                       </div>
-                      {idx < processSteps.length - 1 && (
-                        <div className="sitc-step-rail-link" aria-hidden="true">
-                          <div
-                            className="sitc-step-rail-fill"
-                            style={{ height: isActive ? '100%' : '0%' }}
-                          />
+
+                      {/* Step Content */}
+                      <div className="sitc-proc-card-content">
+                        <div className="sitc-proc-card-top">
+                          <div className="sitc-proc-card-title-row">
+                            <span className="sitc-proc-card-icon-wrap" aria-hidden="true">
+                              <Icon size={14} className="sitc-proc-card-icon" />
+                            </span>
+                            <h3 className="sitc-proc-card-title">{step.title}</h3>
+                          </div>
+                          {step.pill && (
+                            <span className="sitc-proc-card-pill">{step.pill}</span>
+                          )}
                         </div>
-                      )}
-                    </div>
+                        <p className="sitc-proc-card-desc">{step.desc}</p>
+                      </div>
 
-                    {/* Step Content */}
-                    <div className="sitc-step-body">
-                      <div className="sitc-step-header-row">
-                        <h3 className="sitc-step-title">{step.title}</h3>
-                        <span className="sitc-step-pill">{step.kpi}</span>
-                      </div>
-                      <p className="sitc-step-desc">{step.desc}</p>
-                      <div className="sitc-step-meta">
-                        <span className="sitc-step-meta-dot" />
-                        <span className="sitc-step-meta-text">{step.kpiLabel}</span>
+                      {/* Active Indicator Chevron Accent */}
+                      <div className="sitc-proc-card-accent" aria-hidden="true">
+                        <ArrowRight size={14} className="sitc-proc-card-arrow" />
                       </div>
                     </div>
-                  </article>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
           {/* ===================================================================
-              RIGHT COLUMN: Aerial Top-Down Drone Truck Visual + Glassmorphism HUD
+              RIGHT COLUMN: Technical Metric HUD & Highway Corridor Guarantee Box
               =================================================================== */}
-          <div className="sitc-process-right">
-            <div className="sitc-visual-frame">
-              {/* Top HUD Floating Telematics Tag */}
-              <div className="sitc-drone-hud-top" aria-label="Live Fleet Status">
-                <span className="sitc-hud-beacon" />
-                <span className="sitc-hud-tag-text">
-                  {processSteps[activeStep].hudStatus}
-                </span>
-                <Radio size={12} className="sitc-hud-signal-icon" />
-              </div>
+          <div className="sitc-proc-right">
+            <div className="sitc-proc-hud-card">
+              {/* Corner crosshairs for technical precision */}
+              <span className="sitc-proc-hud-corner sitc-proc-hud-corner--tl" aria-hidden="true">+</span>
+              <span className="sitc-proc-hud-corner sitc-proc-hud-corner--tr" aria-hidden="true">+</span>
+              <span className="sitc-proc-hud-corner sitc-proc-hud-corner--bl" aria-hidden="true">+</span>
+              <span className="sitc-proc-hud-corner sitc-proc-hud-corner--br" aria-hidden="true">+</span>
 
-              {/* Drone Camera Reticle / HUD Corner Crosshairs */}
-              <div className="sitc-hud-reticle sitc-hud-reticle--top-left" aria-hidden="true" />
-              <div className="sitc-hud-reticle sitc-hud-reticle--top-right" aria-hidden="true" />
-
-              {/* The Aerial Top-Down Container Truck Photograph */}
-              <div className="sitc-drone-img-wrapper">
-                <img
-                  src="/images/process/drone-truck-topdown.jpg"
-                  alt="Aerial top-down drone photograph of an SRTC commercial freight truck on highway"
-                  className="sitc-drone-truck-img"
-                  loading="lazy"
-                />
-                <div className="sitc-drone-overlay-gradient" aria-hidden="true" />
-              </div>
-
-              {/* Center Coordinate Target HUD Reticle */}
-              <div className="sitc-drone-target-circle" aria-hidden="true">
-                <div className="sitc-target-crosshair-h" />
-                <div className="sitc-target-crosshair-v" />
-                <span className="sitc-target-coord">NH-48 CORRIDOR • 0 KM/H SLA</span>
-              </div>
-
-              {/* ===================================================================
-                  Floating Glassmorphic HUD Metric Overlay (Exact Reference Component)
-                  =================================================================== */}
-              <div className="sitc-hud-glass-card" aria-label="Fleet Performance Metrics">
-                {/* Tech Corner Crosshairs (matching reference design marks) */}
-                <span className="sitc-glass-corner sitc-glass-corner--tl" aria-hidden="true">+</span>
-                <span className="sitc-glass-corner sitc-glass-corner--tr" aria-hidden="true">+</span>
-                <span className="sitc-glass-corner sitc-glass-corner--bl" aria-hidden="true">+</span>
-                <span className="sitc-glass-corner sitc-glass-corner--br" aria-hidden="true">+</span>
-
-                {/* Left Metric: 98% On-Time Delivery Rate */}
-                <div className="sitc-hud-stat-cell">
-                  <div className="sitc-stat-val-row">
-                    <span className="sitc-stat-number">98</span>
-                    <span className="sitc-stat-unit">%</span>
-                  </div>
-                  <div className="sitc-stat-line" />
-                  <span className="sitc-stat-label">ON-TIME DELIVERY RATE</span>
+              {/* HUD Header */}
+              <div className="sitc-proc-hud-header">
+                <div className="sitc-proc-hud-badge">
+                  <span className="sitc-proc-hud-badge-dot" />
+                  <span>LIVE PROTOCOL HUD</span>
                 </div>
-
-                {/* Vertical Subtle Hairline Divider */}
-                <div className="sitc-hud-stat-divider" aria-hidden="true" />
-
-                {/* Right Metric: 24/7 Real-Time Shipment Tracking */}
-                <div className="sitc-hud-stat-cell">
-                  <div className="sitc-stat-val-row">
-                    <span className="sitc-stat-number">24/7</span>
-                  </div>
-                  <div className="sitc-stat-line" />
-                  <span className="sitc-stat-label">REAL-TIME SHIPMENT TRACKING</span>
+                <div className="sitc-proc-hud-status">
+                  <span className="sitc-proc-hud-beacon-wrap">
+                    <span className="sitc-proc-hud-beacon" />
+                    <span className="sitc-proc-hud-beacon-ping" />
+                  </span>
+                  <span>STATUS: ONLINE 24/7</span>
                 </div>
+              </div>
+
+              {/* KPI Performance Metrics */}
+              <div className="sitc-proc-hud-metric-row">
+                <div className="sitc-proc-hud-metric">
+                  <span className="sitc-proc-hud-metric-val">15 MIN</span>
+                  <span className="sitc-proc-hud-metric-lbl">RAPID QUOTE SLA</span>
+                </div>
+                <div className="sitc-proc-hud-metric-sep" />
+                <div className="sitc-proc-hud-metric">
+                  <span className="sitc-proc-hud-metric-val">99.4%</span>
+                  <span className="sitc-proc-hud-metric-lbl">ON-TIME DISPATCH</span>
+                </div>
+                <div className="sitc-proc-hud-metric-sep" />
+                <div className="sitc-proc-hud-metric">
+                  <span className="sitc-proc-hud-metric-val">0%</span>
+                  <span className="sitc-proc-hud-metric-lbl">TRANSIT LOSS</span>
+                </div>
+              </div>
+
+              {/* Active Step Real-time Banner */}
+              {steps[activeStep] && (
+                <div className="sitc-proc-hud-active-bar">
+                  <span className="sitc-proc-hud-phase-tag">ACTIVE PROTOCOL</span>
+                  <span className="sitc-proc-hud-phase-val">
+                    [{steps[activeStep].stepNum || `0${activeStep + 1}`}] {steps[activeStep].title}
+                  </span>
+                </div>
+              )}
+
+              <div className="sitc-proc-hud-divider" />
+
+              {/* HUD Body Description */}
+              <div className="sitc-proc-hud-body">
+                <p className="sitc-proc-hud-body-text">
+                  SRTC’s highway routing engine evaluates live industrial corridor traffic, toll booth wait times, and road conditions across NH-48 and pan-India expressways to assign optimal dual-driver linehauls.
+                </p>
+
+                {/* Technical Protocol Checklist */}
+                <div className="sitc-proc-hud-checklist">
+                  <div className="sitc-proc-hud-check-item">
+                    <span className="sitc-proc-check-icon-wrap">
+                      <CheckCircle2 size={14} className="sitc-proc-check-icon" />
+                    </span>
+                    <span>Real-time GPS telematics with live geofenced corridor alerts</span>
+                  </div>
+                  <div className="sitc-proc-hud-check-item">
+                    <span className="sitc-proc-check-icon-wrap">
+                      <CheckCircle2 size={14} className="sitc-proc-check-icon" />
+                    </span>
+                    <span>Dedicated key account manager assigned to every corporate contract</span>
+                  </div>
+                  <div className="sitc-proc-hud-check-item">
+                    <span className="sitc-proc-check-icon-wrap">
+                      <CheckCircle2 size={14} className="sitc-proc-check-icon" />
+                    </span>
+                    <span>Instant e-POD upload with zero-loss destination verification</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* HUD Footer */}
+              <div className="sitc-proc-hud-footer">
+                <span className="sitc-proc-hud-code">CORRIDOR SYSTEM SPEC // SRTC-VADODARA-COMMAND</span>
+                <span className="sitc-proc-hud-verified">● VERIFIED SLA</span>
               </div>
             </div>
           </div>
@@ -230,4 +212,3 @@ export default function ProcessSection() {
     </section>
   );
 }
-

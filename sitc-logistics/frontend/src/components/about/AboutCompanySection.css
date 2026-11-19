@@ -1,0 +1,1005 @@
+/* ==========================================================================
+   SRTC About Company Section - 100% EXACT EQUAL HEIGHT ALIGNMENT
+   Theme: Deep Navy Blue (#0B2F4A), Imperial Gold (#E8B94F), Pure White (#FFFFFF)
+   Includes Cinematic Load / Entrance Rendering Animations
+   ========================================================================== */
+
+.srtc-about-company {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F9FBFC 50%, #FFFFFF 100%);
+  padding: 5rem 1.5rem 5.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   1. PREMIUM BACKGROUND ANIMATIONS: Highway Pulse Routes & Ambient Glows
+   ========================================================================== */
+
+.srtc-bg-animation-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Highway Transit SVG Curved Flow Lines */
+.srtc-highway-flow-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+}
+
+.srtc-highway-path {
+  fill: none;
+  stroke-dasharray: 12 16;
+  animation: srtcHighwayFlow 24s linear infinite;
+}
+
+.srtc-highway-path--gold {
+  stroke: rgba(232, 185, 79, 0.45);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px rgba(232, 185, 79, 0.4));
+}
+
+.srtc-highway-path--navy {
+  stroke: rgba(11, 47, 74, 0.2);
+  stroke-width: 1.5;
+  animation-direction: reverse;
+  animation-duration: 32s;
+}
+
+@keyframes srtcHighwayFlow {
+  from {
+    stroke-dashoffset: 600;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Ambient Radial Luminous Glows */
+.srtc-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.srtc-ambient-orb--gold {
+  top: 5%;
+  left: 8%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(232, 185, 79, 0.18) 0%, rgba(232, 185, 79, 0) 70%);
+  animation: srtcOrbPulseGold 10s ease-in-out infinite alternate;
+}
+
+.srtc-ambient-orb--navy {
+  bottom: 5%;
+  right: 8%;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, rgba(11, 47, 74, 0.12) 0%, rgba(11, 47, 74, 0) 70%);
+  animation: srtcOrbPulseNavy 12s ease-in-out infinite alternate;
+}
+
+@keyframes srtcOrbPulseGold {
+  0% { transform: scale(0.92) translate(0, 0); opacity: 0.6; }
+  100% { transform: scale(1.14) translate(25px, 20px); opacity: 0.95; }
+}
+
+@keyframes srtcOrbPulseNavy {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
+  100% { transform: scale(1.12) translate(-25px, -20px); opacity: 0.85; }
+}
+
+/* ==========================================================================
+   2. MAIN CONTAINER: EXACT EQUAL-HEIGHT GRID ARCHITECTURE
+   ========================================================================== */
+
+.srtc-about-company__container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 490px) minmax(0, 1fr);
+  gap: 4.5rem;
+  align-items: stretch; /* Forces both left and right columns to EXACT same height! */
+  min-height: 560px;
+}
+
+/* ==========================================================================
+   3. LEFT COLUMN: Multi-Layered Visual Collage (Exact Height Match)
+   ========================================================================== */
+
+.srtc-about-company__media-col {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.srtc-about-company__collage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  min-width: 0;
+}
+
+/* Top-Right Card: Operations Supervisor (Entrance Animation) */
+.srtc-about-company__card-top {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 330px;
+  height: 63%;
+  min-height: 340px;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(11, 47, 74, 0.14);
+  border: 4px solid #FFFFFF;
+  z-index: 2;
+  animation: collageTopEnter 650ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes collageTopEnter {
+  0% {
+    opacity: 0;
+    transform: translate(-25px, -15px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.srtc-about-company__card-top:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+
+.srtc-about-company__img-supervisor {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  display: block;
+}
+
+/* ESTD. 2003 Ribbon Badge with Unfurl Animation */
+.srtc-about-company__ribbon-badge {
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  background: linear-gradient(135deg, #E8B94F 0%, #D49D28 100%);
+  color: #0B2F4A;
+  padding: 0.5rem 1.35rem;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 8px 24px rgba(212, 157, 40, 0.45);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  animation: ribbonUnfurl 550ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+}
+
+@keyframes ribbonUnfurl {
+  0% {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.srtc-about-company__ribbon-badge::before {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 7px solid #9A7015;
+  border-left: 7px solid transparent;
+}
+
+.srtc-ribbon-tag {
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+}
+
+.srtc-ribbon-text {
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+/* Bottom-Left Card: Heavy Blue Rig on Highway (Entrance Animation) */
+.srtc-about-company__card-truck {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 310px;
+  height: 46%;
+  min-height: 250px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 18px 44px rgba(7, 31, 51, 0.18);
+  border: 4px solid #FFFFFF;
+  z-index: 3;
+  animation: collageTruckEnter 650ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes collageTruckEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.srtc-about-company__card-truck:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+
+.srtc-about-company__img-truck {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Center Metallic Seal Badge: "BEST ROAD FREIGHT • SRTC FLEET" (Pop & Rotate Entrance) */
+.srtc-about-company__seal-badge {
+  position: absolute;
+  top: 56%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  width: 102px;
+  height: 102px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF2A8 0%, #E8B94F 50%, #C89020 100%);
+  padding: 4px;
+  box-shadow: 0 12px 32px rgba(200, 144, 32, 0.45), 0 0 20px rgba(232, 185, 79, 0.3);
+  z-index: 5;
+  animation: sealPopRotate 700ms cubic-bezier(0.16, 1, 0.3, 1) 280ms both;
+}
+
+@keyframes sealPopRotate {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3) rotate(-30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
+.srtc-seal-outer {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #0B2F4A;
+  border: 2px dashed rgba(232, 185, 79, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.srtc-seal-core {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.srtc-seal-icon {
+  color: #E8B94F;
+  margin-bottom: 2px;
+}
+
+.srtc-seal-label {
+  font-size: 0.52rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+}
+
+.srtc-seal-sub {
+  font-size: 0.48rem;
+  font-weight: 800;
+  color: #E8B94F;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+/* Bottom-Right Circular Detail: Chrome Grille & Headlights (Scale Entrance) */
+.srtc-about-company__circle-truck {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(11, 47, 74, 0.2);
+  border: 4px solid #FFFFFF;
+  z-index: 4;
+  animation: circleScalePop 650ms cubic-bezier(0.16, 1, 0.3, 1) 220ms both;
+  transition: transform 300ms ease;
+}
+
+@keyframes circleScalePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.srtc-about-company__circle-truck:hover {
+  transform: scale(1.06);
+}
+
+.srtc-about-company__img-detail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ==========================================================================
+   4. RIGHT COLUMN: Structured History & Corporate Credentials
+   ========================================================================== */
+
+.srtc-about-company__content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  height: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Eyebrow Micro-Kicker with Entrance Animation */
+.srtc-about-company__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+  animation: companyItemFadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+}
+
+.srtc-about-company__eyebrow-icon-wrap {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: rgba(232, 185, 79, 0.18);
+  color: #D49D28;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.srtc-about-company__eyebrow-text {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0B2F4A;
+}
+
+/* Headline with Entrance Animation */
+.srtc-about-company__title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(2rem, 2.7vw, 2.65rem);
+  font-weight: 800;
+  line-height: 1.18;
+  color: #071F33;
+  letter-spacing: -0.025em;
+  animation: companyItemFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 140ms both;
+}
+
+.srtc-title-accent {
+  color: #0B2F4A;
+  background: linear-gradient(180deg, transparent 65%, rgba(232, 185, 79, 0.3) 65%);
+}
+
+/* Lead Narrative with Entrance Animation */
+.srtc-about-company__lead {
+  margin: 0 0 1.25rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #475569;
+  animation: companyItemFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+}
+
+.srtc-about-company__lead strong {
+  color: #0B2F4A;
+}
+
+@keyframes companyItemFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Structured History Grid (Staggered Animation) */
+.srtc-about-company__history-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.srtc-history-card {
+  background-color: #FFFFFF;
+  border: 1.5px solid #EDF2F7;
+  border-radius: 16px;
+  padding: 1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(11, 47, 74, 0.04);
+  animation: milestoneEnter 650ms cubic-bezier(0.16, 1, 0.3, 1) var(--milestone-delay, 260ms) both;
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+
+@keyframes milestoneEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.srtc-history-card:hover {
+  border-color: #E8B94F;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 26px rgba(11, 47, 74, 0.08);
+}
+
+.srtc-history-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.srtc-history-card__badge {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #0B2F4A;
+  letter-spacing: -0.02em;
+}
+
+.srtc-history-card__icon-wrap {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(232, 185, 79, 0.18);
+  color: #D49D28;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.srtc-history-card__title {
+  margin: 0 0 0.15rem;
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #071F33;
+  line-height: 1.25;
+}
+
+.srtc-history-card__highlight {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #D49D28;
+  margin-bottom: 0.35rem;
+  line-height: 1.25;
+}
+
+.srtc-history-card__desc {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: #64748B;
+}
+
+/* Trusted Industrial Clients Ribbon with Entrance Animation */
+.srtc-about-company__clients-bar {
+  width: 100%;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 0.65rem 0.95rem;
+  box-sizing: border-box;
+  margin-bottom: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  animation: companyItemFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 480ms both;
+}
+
+.srtc-clients-bar__label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0B2F4A;
+}
+
+.srtc-clients-bar__icon {
+  color: #D49D28;
+}
+
+.srtc-clients-bar__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.srtc-client-tag {
+  display: inline-block;
+  padding: 0.22rem 0.6rem;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #334155;
+  white-space: nowrap;
+  transition: all 180ms ease;
+}
+
+.srtc-client-tag:hover {
+  background-color: #0B2F4A;
+  color: #FFFFFF;
+  border-color: #0B2F4A;
+}
+
+/* Bottom Action Row (Entrance Animation) */
+.srtc-about-company__actions-row {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: auto;
+  animation: companyItemFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 560ms both;
+}
+
+/* Explore Fleet Services Button */
+.srtc-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.88rem 1.65rem;
+  background: linear-gradient(135deg, #E8B94F 0%, #D49D28 100%);
+  color: #0B2F4A;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 10px 26px rgba(212, 157, 40, 0.35);
+  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.srtc-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(212, 157, 40, 0.5);
+  background: linear-gradient(135deg, #F0C462 0%, #DEAA37 100%);
+}
+
+.srtc-action-btn__circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #0B2F4A;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 260ms ease;
+}
+
+.srtc-action-btn:hover .srtc-action-btn__circle {
+  transform: translateX(3px);
+}
+
+/* Phone Helpline Action */
+.srtc-phone-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: transform 220ms ease;
+}
+
+.srtc-phone-action:hover {
+  transform: translateX(2px);
+}
+
+.srtc-phone-action__circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #0B2F4A;
+  color: #E8B94F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(11, 47, 74, 0.22);
+}
+
+.srtc-phone-action__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.srtc-phone-action__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748B;
+  line-height: 1.2;
+}
+
+.srtc-phone-action__number {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #071F33;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 1120px) {
+  .srtc-about-company__container {
+    grid-template-columns: 430px 1fr;
+    gap: 3rem;
+  }
+
+  .srtc-about-company__card-top {
+    width: 290px;
+  }
+
+  .srtc-about-company__card-truck {
+    width: 280px;
+  }
+
+  .srtc-about-company__circle-truck {
+    width: 140px;
+    height: 140px;
+  }
+
+  .srtc-about-company__history-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .srtc-about-company {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .srtc-about-company__container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+    min-height: auto;
+  }
+
+  .srtc-about-company__media-col {
+    height: 480px;
+    min-height: auto;
+  }
+
+  .srtc-about-company__collage {
+    height: 480px;
+    min-height: auto;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .srtc-about-company__card-top {
+    width: 300px;
+    height: 310px;
+  }
+
+  .srtc-about-company__card-truck {
+    width: 270px;
+    height: 220px;
+  }
+
+  .srtc-about-company__circle-truck {
+    width: 130px;
+    height: 130px;
+  }
+
+  .srtc-ambient-orb--gold {
+    width: min(280px, 70vw);
+    height: min(280px, 70vw);
+    left: 2%;
+    top: 2%;
+    filter: blur(60px);
+  }
+
+  .srtc-ambient-orb--navy {
+    width: min(300px, 70vw);
+    height: min(300px, 70vw);
+    right: 2%;
+    bottom: 2%;
+    filter: blur(60px);
+  }
+}
+
+@media (max-width: 480px) {
+  .srtc-about-company {
+    padding: 2.75rem 1rem 3rem;
+  }
+
+  .srtc-about-company__title {
+    font-size: 1.65rem;
+    line-height: 1.22;
+    margin-bottom: 0.65rem;
+  }
+
+  .srtc-about-company__lead {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+
+  .srtc-about-company__media-col {
+    height: 340px;
+  }
+
+  .srtc-about-company__collage {
+    height: 340px;
+    max-width: 100%;
+  }
+
+  .srtc-about-company__card-top {
+    width: 215px;
+    height: 230px;
+    border-radius: 22px;
+  }
+
+  .srtc-about-company__card-truck {
+    width: 195px;
+    height: 160px;
+    border-radius: 20px;
+  }
+
+  .srtc-about-company__circle-truck {
+    width: 95px;
+    height: 95px;
+  }
+
+  .srtc-about-company__seal-badge {
+    width: 76px;
+    height: 76px;
+  }
+
+  .srtc-about-company__ribbon-badge {
+    padding: 0.35rem 0.95rem;
+  }
+
+  .srtc-ribbon-text {
+    font-size: 0.78rem;
+  }
+
+  .srtc-about-company__actions-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.9rem;
+  }
+
+  .srtc-action-btn {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .srtc-phone-action {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .srtc-about-company {
+    padding: 2.25rem 0.85rem 2.5rem;
+  }
+
+  .srtc-about-company__title {
+    font-size: 1.48rem;
+  }
+
+  .srtc-about-company__lead {
+    font-size: 0.84rem;
+  }
+
+  .srtc-about-company__media-col {
+    height: 300px;
+  }
+
+  .srtc-about-company__collage {
+    height: 300px;
+  }
+
+  .srtc-about-company__card-top {
+    width: 190px;
+    height: 205px;
+  }
+
+  .srtc-about-company__card-truck {
+    width: 175px;
+    height: 140px;
+  }
+
+  .srtc-about-company__circle-truck {
+    width: 82px;
+    height: 82px;
+  }
+
+  .srtc-about-company__seal-badge {
+    width: 68px;
+    height: 68px;
+  }
+
+  .srtc-history-card {
+    padding: 0.85rem 0.75rem;
+  }
+
+  .srtc-history-card__badge {
+    font-size: 0.95rem;
+  }
+
+  .srtc-history-card__title {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .srtc-about-company {
+    padding: 2rem 0.65rem 2.25rem;
+  }
+
+  .srtc-about-company__title {
+    font-size: 1.32rem;
+    line-height: 1.25;
+  }
+
+  .srtc-about-company__lead {
+    font-size: 0.8rem;
+  }
+
+  .srtc-about-company__media-col {
+    height: 270px;
+  }
+
+  .srtc-about-company__collage {
+    height: 270px;
+  }
+
+  .srtc-about-company__card-top {
+    width: 170px;
+    height: 180px;
+    border-radius: 18px;
+  }
+
+  .srtc-about-company__card-truck {
+    width: 155px;
+    height: 125px;
+    border-radius: 16px;
+  }
+
+  .srtc-about-company__circle-truck {
+    width: 72px;
+    height: 72px;
+  }
+
+  .srtc-about-company__seal-badge {
+    width: 60px;
+    height: 60px;
+  }
+
+  .srtc-action-btn {
+    font-size: 0.82rem;
+    padding: 0.75rem 1.15rem;
+  }
+
+  .srtc-phone-action__number {
+    font-size: 0.92rem;
+  }
+}
+
+/* 4K UHD TV Display Support */
+@media (min-width: 1921px) {
+  .srtc-about-company {
+    padding: 7rem 3rem 8rem;
+  }
+
+  .srtc-about-company__container {
+    max-width: 1800px;
+    grid-template-columns: minmax(0, 620px) minmax(0, 1fr);
+    gap: 6rem;
+    min-height: 720px;
+  }
+
+  .srtc-about-company__title {
+    font-size: 3.6rem;
+  }
+
+  .srtc-about-company__lead {
+    font-size: 1.25rem;
+  }
+
+  .srtc-history-card {
+    padding: 1.4rem 1.25rem;
+  }
+
+  .srtc-history-card__badge {
+    font-size: 1.35rem;
+  }
+
+  .srtc-history-card__title {
+    font-size: 1.05rem;
+  }
+
+  .srtc-history-card__desc {
+    font-size: 0.92rem;
+  }
+
+  .srtc-action-btn {
+    font-size: 1.1rem;
+    padding: 1.15rem 2.25rem;
+  }
+}

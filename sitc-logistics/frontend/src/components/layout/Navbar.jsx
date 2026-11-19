@@ -1,22 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   Home,
   Boxes,
   Building2,
-  Truck,
-  Compass,
   FileText,
-  ChevronDown,
-  Anchor,
-  Plane,
-  Warehouse,
-  Network,
-  ArrowRight,
-  Sparkles,
+  Phone,
 } from 'lucide-react';
 import './Navbar.css';
 
@@ -189,59 +180,14 @@ function MiniToyRadarShip() {
 
 const navItems = [
   { label: 'Home', href: '/', icon: Home, toy: MiniToyTruck },
-  {
-    label: 'Services',
-    href: '/services',
-    icon: Boxes,
-    toy: MiniToyTruck,
-    hasDropdown: true,
-    dropdownItems: [
-      {
-        title: 'Ocean Freight Forwarding',
-        description: 'FCL & LCL global container shipping & maritime cargo',
-        href: '/services/ocean-freight',
-        icon: Anchor,
-        tag: 'Global Sea',
-      },
-      {
-        title: 'Air Freight Solutions',
-        description: 'Time-critical express air cargo charter worldwide',
-        href: '/services/air-freight',
-        icon: Plane,
-        tag: 'Fast Express',
-      },
-      {
-        title: 'Road Transportation',
-        description: 'Intermodal freight, heavy haulage & cross-border trucking',
-        href: '/services/road-transport',
-        icon: Truck,
-        tag: 'Intermodal',
-      },
-      {
-        title: 'Warehousing & Logistics',
-        description: 'Climate-controlled automated storage & distribution hubs',
-        href: '/services/warehousing',
-        icon: Warehouse,
-        tag: 'Smart Storage',
-      },
-      {
-        title: 'Supply Chain Management',
-        description: 'End-to-end global supply chain visibility & customs',
-        href: '/services/supply-chain',
-        icon: Network,
-        tag: 'End-to-End',
-      },
-    ],
-  },
-  { label: 'Industries', href: '/industries', icon: Building2, toy: MiniToyTruck },
-  { label: 'Fleet', href: '/fleet', icon: Truck, toy: MiniToyTruck },
-  { label: 'Tracking', href: '/tracking', icon: Compass, toy: MiniToyTruck },
+  { label: 'About Us', href: '/about', icon: Building2, toy: MiniToyTruck },
+  { label: 'Services', href: '/services', icon: Boxes, toy: MiniToyTruck },
   { label: 'Blog', href: '/blog', icon: FileText, toy: MiniToyTruck },
+  { label: 'Contact Us', href: '/contact', icon: Phone, toy: MiniToyTruck },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const isActive = (href) => {
     if (href === '/') {
@@ -259,95 +205,6 @@ export default function Navbar() {
             const active = isActive(item.href);
             const IconComponent = item.icon;
             const ToyComponent = item.toy;
-
-            if (item.hasDropdown) {
-              return (
-                <li
-                  key={item.label}
-                  className="sitc-capsule-nav__item sitc-capsule-nav__item--dropdown"
-                  onMouseEnter={() => setDropdownOpen(true)}
-                  onMouseLeave={() => setDropdownOpen(false)}
-                >
-                  <Link
-                    href={item.href}
-                    className={`sitc-pill-btn ${active ? 'sitc-pill-btn--active' : ''}`}
-                    aria-expanded={dropdownOpen}
-                  >
-                    {/* Cruising Miniature Animated Toy (Sails Forward Right-to-Left) */}
-                    <ToyComponent />
-
-                    {/* Seamless Continuous Low-Opacity River Waves */}
-                    <LowOpacityWaves isActive={active} />
-
-                    <IconComponent size={15} className="sitc-pill-btn__icon" />
-                    <span className="sitc-pill-btn__label">{item.label}</span>
-                    <ChevronDown
-                      size={13}
-                      className={`sitc-pill-btn__chevron ${dropdownOpen ? 'is-rotated' : ''}`}
-                    />
-                  </Link>
-
-                  {/* Mega Dropdown */}
-                  <div
-                    className={`sitc-capsule-dropdown ${dropdownOpen ? 'is-open' : ''}`}
-                    role="menu"
-                  >
-                    <div className="sitc-capsule-dropdown__header">
-                      <div className="sitc-capsule-dropdown__badge">
-                        <Sparkles size={13} />
-                        <span>Logistics Capabilities</span>
-                      </div>
-                      <p className="sitc-capsule-dropdown__subtitle">
-                        Multi-modal global shipping, freight forwarding & supply chain
-                      </p>
-                    </div>
-
-                    <div className="sitc-capsule-dropdown__grid">
-                      {item.dropdownItems.map((subItem) => {
-                        const SubIcon = subItem.icon;
-                        return (
-                          <Link
-                            key={subItem.title}
-                            href={subItem.href}
-                            className="sitc-capsule-dropdown__card"
-                            role="menuitem"
-                            onClick={() => setDropdownOpen(false)}
-                          >
-                            <div className="sitc-capsule-dropdown__icon-box">
-                              <SubIcon size={18} />
-                            </div>
-                            <div className="sitc-capsule-dropdown__info">
-                              <div className="sitc-capsule-dropdown__title-row">
-                                <span className="sitc-capsule-dropdown__title">
-                                  {subItem.title}
-                                </span>
-                                <span className="sitc-capsule-dropdown__tag">
-                                  {subItem.tag}
-                                </span>
-                              </div>
-                              <span className="sitc-capsule-dropdown__desc">
-                                {subItem.description}
-                              </span>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-
-                    <div className="sitc-capsule-dropdown__footer">
-                      <Link
-                        href="/services"
-                        className="sitc-capsule-dropdown__link-all"
-                        onClick={() => setDropdownOpen(false)}
-                      >
-                        <span>Explore All Services</span>
-                        <ArrowRight size={14} className="sitc-capsule-dropdown__all-arrow" />
-                      </Link>
-                    </div>
-                  </div>
-                </li>
-              );
-            }
 
             return (
               <li key={item.label} className="sitc-capsule-nav__item">

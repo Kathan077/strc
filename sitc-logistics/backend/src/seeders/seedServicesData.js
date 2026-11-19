@@ -1,0 +1,430 @@
+require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
+const mongoose = require('mongoose');
+const ServicesPageContent = require('../models/ServicesPageContent');
+
+const servicesSeedData = {
+  hero: {
+    backgroundImage: '/images/hero/hero-truck-cinematic.jpg',
+    title: 'Our',
+    titleGold: 'Services',
+    subtitle:
+      'Logistics & Warehouse Handling Services. Delivering Reliability, Speed, and Value Every Single Time.',
+    breadcrumbHome: 'Home',
+    breadcrumbCurrent: 'Our Services',
+  },
+  core: {
+    kicker: 'PROPRIETARY, EASY, CONVENIENT',
+    title: 'Core Logistics & Warehouse Solutions',
+    description:
+      'We specialize in FTL (Full Truck Load), PTL (Part Truck Load), small packages, superfast cargo, warehousing, and contract logistics, ensuring reliable and on-time delivery through a strong network and professional team.',
+    coreServices: [
+      {
+        id: 'ftl',
+        unitCode: 'SRTC // FTL-01',
+        unitType: 'FULL TRUCK LOAD',
+        statusTag: 'DIRECT PLANT CORRIDOR',
+        metricBadge: '42 TONS MAX GVW',
+        title: 'Full Truck Load (FTL)',
+        category: 'DEDICATED FLEET DEPLOYMENT',
+        description:
+          'Dedicated point-to-point fleet deployment for heavy, bulk, and industrial cargo across Gujarat and nationwide corridors with zero mid-route transshipment.',
+        image: '/images/services/service-truck-1.jpg',
+        icon: 'Truck',
+        specs: [
+          { label: 'FLEET CONFIG', val: 'Heavy Multi-Axle Dedicated Trailers' },
+          { label: 'TRANSIT SLA', val: 'Direct Point-to-Point Corridors' },
+          { label: 'SECURITY SEAL', val: 'Digital E-Lock + Geo-fenced' },
+          { label: 'HANDLING MANDATE', val: 'Zero Transshipment Guarantee' },
+        ],
+        features: [
+          'Dedicated vehicle allocated exclusively to single consignor',
+          'Direct refinery, port & plant evacuation with zero transshipment',
+          'Supported by a team of well-trained and professional driver staff',
+        ],
+        ctaText: 'Deploy FTL Corridor',
+        ctaHref: '/contact',
+        isFeatured: false,
+        featuredBadge: '',
+      },
+      {
+        id: 'ptl',
+        unitCode: 'SRTC // PTL-02',
+        unitType: 'PART TRUCK LOAD',
+        statusTag: 'DAILY SCHEDULED DEPARTURE',
+        metricBadge: 'SUPERFAST CARGO',
+        title: 'Part Truck Load (PTL) & Superfast Cargo',
+        category: 'CONSOLIDATED FREIGHT & PARCELS',
+        description:
+          'Cost-effective consolidated transit for partial truck loads, regional commercial distribution, and urgent small packages with reliable, guaranteed on-time delivery.',
+        image: '/images/services/service-truck-2.jpg',
+        icon: 'Package',
+        specs: [
+          { label: 'CONSIGNMENT WT', val: 'Small Packages to Heavy Part Loads' },
+          { label: 'DISPATCH FREQ', val: 'Daily Scheduled Highway Departures' },
+          { label: 'NETWORK TYPE', val: 'Hub & Spoke Logistics Grid' },
+          { label: 'DELIVERY SPEED', val: 'Superfast Cargo Guarantee' },
+        ],
+        features: [
+          'Consolidated freight rates with high vehicle volumetric efficiency',
+          'Priority cargo bay allocation for time-critical industrial goods',
+          'Full compliance with highway traffic rules and safety mandates',
+        ],
+        ctaText: 'Book PTL Freight',
+        ctaHref: '/contact',
+        isFeatured: true,
+        featuredBadge: 'HIGH DEMAND',
+      },
+      {
+        id: 'warehousing',
+        unitCode: 'SRTC // WAREHOUSE-03',
+        unitType: 'WAREHOUSE HANDLING',
+        statusTag: 'OPERATIONAL 24/7',
+        metricBadge: 'GRADE-A STORAGE',
+        title: 'Warehousing & Handling Services',
+        category: 'CONTRACT LOGISTICS & STORAGE',
+        description:
+          'Modern, technology-driven, and scalable logistics & warehouse solutions designed to eliminate bottlenecks for corporates and individuals nationwide.',
+        image: '/images/services/service-truck-3.jpg',
+        icon: 'Warehouse',
+        specs: [
+          { label: 'FACILITY GRADE', val: 'Grade-A Scalable Logistics Hubs' },
+          { label: 'HANDLING TYPE', val: 'Modern Dock Handling & Storage' },
+          { label: 'CONTRACT MODEL', val: 'Flexible 3PL & Dedicated Storage' },
+          { label: 'INVENTORY SAFETY', val: '24/7 Monitored Secure Staging' },
+        ],
+        features: [
+          'Strategically positioned near major industrial corridors and transit nodes',
+          'Dedicated cargo handling, sorting, palletizing, and contract logistics',
+          'Tailored logistics solutions meeting growing enterprise demands',
+        ],
+        ctaText: 'Inquire Warehousing Space',
+        ctaHref: '/contact',
+        isFeatured: false,
+        featuredBadge: '',
+      },
+    ],
+  },
+  industries: {
+    kicker: 'EXACT 6 INDUSTRY VERTICALS • BROCHURE CERTIFIED',
+    title: 'Industry Sectors We Serve',
+    subtitle:
+      'Tailored transportation and handling solutions engineered for India’s premier commercial and industrial sectors.',
+    industryCards: [
+      {
+        id: 'd2c-b2b',
+        serial: 'SRTC-D2C-B2B',
+        isoCode: 'OMNI-CHANNEL',
+        title: 'D to C & B to B',
+        badge: 'FAST DISTRIBUTION',
+        icon: 'ShoppingBag',
+        clients: 'CONSUMER BRANDS & B2B DISTRIBUTORS',
+        description:
+          'High-velocity omni-channel distribution connecting mother warehouses, regional fulfillment hubs, carrying & forwarding agents (CFAs), and retail endpoints.',
+        specs: [
+          { label: 'DISTRIBUTION MODEL', val: 'Direct Plant to Distributor & B2B Hubs' },
+          { label: 'SHIPMENT SIZES', val: 'Carton Consignments to Full Truckloads' },
+          { label: 'DISPATCH FREQ', val: 'Daily Scheduled Highway Departures' },
+        ],
+        highlight: 'Fast and reliable linehaul connectivity for commercial distribution nationwide.',
+        isFeatured: false,
+      },
+      {
+        id: 'manufacturer',
+        serial: 'SRTC-MANUFACTURING',
+        isoCode: 'PLANT LOGISTICS',
+        title: 'Manufacturer',
+        badge: 'PRODUCTION LINE INFEED',
+        icon: 'Factory',
+        clients: 'MANUFACTURING PLANTS & HEAVY FACTORIES',
+        description:
+          'Integrated manufacturing supply chain support — managing inbound raw material infeed to factory production lines and outbound finished goods evacuation.',
+        specs: [
+          { label: 'SERVICE TYPE', val: 'Just-In-Time (JIT) Factory Dock Infeed' },
+          { label: 'EQUIPMENT FLEET', val: 'Heavy Multi-Axle Dedicated Trailers' },
+          { label: 'TURNAROUND SLA', val: 'Zero Factory Gate Stoppage Mandate' },
+        ],
+        highlight: 'Dedicated fleet deployment ensuring seamless factory operations without supply chain bottlenecks.',
+        isFeatured: false,
+      },
+      {
+        id: 'industrial',
+        serial: 'SRTC-INDUSTRIAL',
+        isoCode: 'HEAVY EQUIPMENT',
+        title: 'Industrial',
+        badge: 'HEAVY HAULAGE',
+        icon: 'Cpu',
+        clients: 'INDUSTRIAL & ENGINEERING ENTERPRISES',
+        description:
+          'Engineered road transportation for industrial hardware, heavy machinery, engineering assemblies, structural steel, and plant equipment across India.',
+        specs: [
+          { label: 'FLEET CONFIG', val: 'Multi-Axle High-Strength Heavy Trailers' },
+          { label: 'PAYLOAD RATING', val: 'Up to 38-42 Metric Tons' },
+          { label: 'SAFETY COMPLIANCE', val: 'High-Tensile Securing & Full Road Compliance' },
+        ],
+        highlight: 'Two decades of proven heavy haulage discipline across Gujarat and national highway spines.',
+        isFeatured: false,
+      },
+      {
+        id: 'pharmaceuticals',
+        serial: 'SRTC-PHARMA',
+        isoCode: 'HEALTHCARE POD',
+        title: 'Pharmaceuticals',
+        badge: 'SEALED & SECURE',
+        icon: 'Thermometer',
+        clients: 'PHARMA & HEALTHCARE ENTERPRISES',
+        description:
+          'High-security, weather-sealed cargo transit for active pharmaceutical ingredients (APIs), formulations, healthcare supplies, and sensitive consignments.',
+        specs: [
+          { label: 'POD GRADE', val: '100% Sealed Weather-Proof Containers' },
+          { label: 'CARGO INTEGRITY', val: 'Zero Dust Ingress & Tamper-Evident Seals' },
+          { label: 'TRACKING SLA', val: '24/7 Real-Time GPS Highway Visibility' },
+        ],
+        highlight: 'Dedicated sealed freight protecting critical medical supply chains nationwide.',
+        isFeatured: false,
+      },
+      {
+        id: 'food-beverages',
+        serial: 'SRTC-FOOD-BEVERAGES',
+        isoCode: 'FOOD GRADE',
+        title: 'Food & Beverages',
+        badge: 'HYGIENE SEALED',
+        icon: 'Utensils',
+        clients: 'GAAY CHHAP BESAN (SHREE BHAGAWATI FLOUR & FOODS)',
+        description:
+          'Hygiene-compliant, weather-sealed transport for flour mills, packaged foods, spices, grains, and FMCG agro-distribution networks.',
+        specs: [
+          { label: 'CONTAINER SPEC', val: '40ft High Cube Moisture-Proof Dry Vans' },
+          { label: 'SANITATION', val: 'Certified Clean, Odorless, Food-Grade' },
+          { label: 'LONGTIME CLIENT', val: 'Gaay Chhap Besan (Decade-Long Trust)' },
+        ],
+        highlight: 'Primary transit carrier for Gujarat’s leading flour & besan brands.',
+        isFeatured: true,
+      },
+      {
+        id: 'polymers',
+        serial: 'SRTC-POLYMERS',
+        isoCode: 'PETROCHEMICAL BULK',
+        title: 'Polymers',
+        badge: 'HIGH-VOLUME BULK',
+        icon: 'Layers',
+        clients: 'IOCL / NAYARA ENERGY / RELIANCE / OPAL / HMEL',
+        description:
+          'High-capacity bulk container transport engineered for polymer pellets, resins, HDPE, and petrochemical supply chains from premier refinery hubs.',
+        specs: [
+          { label: 'REFINERY CORRIDORS', val: 'Jamnagar, Dahej & Hazira Complexes' },
+          { label: 'PAYLOAD RATING', val: '18 to 26 Metric Tons Multi-Axle' },
+          { label: 'ESTEEMED CLIENTS', val: 'Indian Oil, Nayara, Reliance, OPaL, HMEL' },
+        ],
+        highlight: 'High-volume refinery evacuation with proven multi-axle bulk safety.',
+        isFeatured: false,
+      },
+    ],
+  },
+  workflow: {
+    kicker: 'STANDARDIZED OPERATIONAL EXCELLENCE',
+    title: 'Streamlined 4-Step Pan-India Freight Execution Pipeline',
+    description:
+      'From instant vehicle allocation to electronic seal verification, our operating lifecycle ensures zero demurrage and maximum transit velocity.',
+    steps: [
+      {
+        stepNum: '01',
+        plateCode: 'GJ-01-SRTC-01',
+        title: 'Consignment Booking & Fleet Allocation',
+        tag: 'DISPATCH PLANNING',
+        desc: 'Direct requirement confirmation, load-to-vehicle allocation, and corridor route planning with trained drivers.',
+        icon: 'FileText',
+        metric: '< 15 Mins Allocation',
+      },
+      {
+        stepNum: '02',
+        plateCode: 'GJ-01-SRTC-02',
+        title: 'Secure Loading & Digital Verification',
+        tag: 'TERMINAL GATE-IN',
+        desc: 'Weight verification, cargo securing, digital e-Way bill linkage, and tamper-evident container sealing.',
+        icon: 'ShieldCheck',
+        metric: '100% Sealed & Insured',
+      },
+      {
+        stepNum: '03',
+        plateCode: 'GJ-01-SRTC-03',
+        title: 'Dedicated Express Linehaul',
+        tag: 'HIGHWAY TRANSIT',
+        desc: 'Continuous highway haulage with strict traffic compliance, dual-driver shifts, and 24/7 central tracking.',
+        icon: 'Truck',
+        metric: '24/7 Live Monitoring',
+      },
+      {
+        stepNum: '04',
+        plateCode: 'GJ-01-SRTC-04',
+        title: 'Punctual Delivery & Instant e-POD',
+        tag: 'TERMINAL DELIVERY',
+        desc: 'Safe destination arrival, dock unloading, and instant electronic proof of delivery (e-POD) verification.',
+        icon: 'CheckCircle',
+        metric: 'Guaranteed On-Time',
+      },
+    ],
+  },
+  trustClients: {
+    kicker: 'PDF BROCHURE: OUR TOP CLIENTS',
+    title: 'Pan-India Highway Conveyor: Trusted By Industrial Giants',
+    subtitle:
+      'SRTC’s compact commercial linehaul fleet in continuous motion across National Highways. Dedicated container trucks transporting petrochemicals, polymers, agro commodities, and heavy industrial freight.',
+    stats: [
+      { num: '23+', lbl: 'Years Industry Legacy' },
+      { num: '100%', lbl: 'Insured Cargo Transit' },
+      { num: '840+', lbl: 'Commercial Linehaul Fleet' },
+      { num: '99.8%', lbl: 'On-Time SLA Delivery' },
+    ],
+    laneEast: [
+      {
+        id: 'reliance',
+        name: 'Reliance Industries Limited',
+        displayName: 'Reliance Industries',
+        logo: '/images/clients/real/reliance.png',
+        primaryColor: '#003366',
+        accentColor: '#D32F2F',
+        truckModel: 'Volvo FM 420 Cute Express',
+        trailerType: '28ft Express Container',
+        cargoType: 'Polymer Pellets & Petrochemical Freight',
+        corridor: 'Jamnagar Petrochem Belt ➔ Hazira Port',
+        verifiedSince: '2008',
+        slaScore: '99.9%',
+      },
+      {
+        id: 'indianoil',
+        name: 'Indian Oil Corporation',
+        displayName: 'IndianOil (IOCL)',
+        logo: '/images/clients/real/indianoil.png',
+        primaryColor: '#F37021',
+        accentColor: '#0B2545',
+        truckModel: 'Tata Signa City Express',
+        trailerType: '24ft Weatherproof Container',
+        cargoType: 'Refined Bulk Polymers & Industrial Lube Packs',
+        corridor: 'Koyali Refinery ➔ Pan-India Regional Depots',
+        verifiedSince: '2011',
+        slaScore: '99.8%',
+      },
+      {
+        id: 'nayara',
+        name: 'Nayara Energy',
+        displayName: 'Nayara Energy',
+        logo: '/images/clients/real/nayara.png',
+        primaryColor: '#004F71',
+        accentColor: '#00A3E0',
+        truckModel: 'Scania P360 Urban Hauler',
+        trailerType: '28ft High Cube Container',
+        cargoType: 'Specialized Polymers & Downstream Energy',
+        corridor: 'Vadinar Refinery ➔ Hazira SEZ',
+        verifiedSince: '2014',
+        slaScore: '99.7%',
+      },
+      {
+        id: 'ongc',
+        name: 'Oil & Natural Gas Corporation',
+        displayName: 'ONGC',
+        logo: '/images/clients/real/ongc.png',
+        primaryColor: '#A72B2A',
+        accentColor: '#F59E0B',
+        truckModel: 'BharatBenz 2823R Energy Liner',
+        trailerType: '26ft Industrial Rig Container',
+        cargoType: 'Industrial Valves & Energy Hardware',
+        corridor: 'Ankleshwar Assets ➔ Hazira Logistics Base',
+        verifiedSince: '2009',
+        slaScore: '99.8%',
+      },
+    ],
+    laneWest: [
+      {
+        id: 'gaay-besan',
+        name: 'Gaay Chhap Besan',
+        displayName: 'Gaay Chhap Besan',
+        logo: '/images/clients/real/gaay-besan.png',
+        primaryColor: '#D32F2F',
+        accentColor: '#F59E0B',
+        truckModel: 'Eicher Pro 3019 Clean Food Carrier',
+        trailerType: '24ft Food-Grade FMCG Container',
+        cargoType: 'Packaged Food Grade Besan & Flour Distribution',
+        corridor: 'Ahmedabad Hub ➔ Interstate Retail Corridors',
+        verifiedSince: '2005',
+        slaScore: '99.9%',
+      },
+      {
+        id: 'hpcl',
+        name: 'Hindustan Petroleum Corporation',
+        displayName: 'Hindustan Petroleum',
+        logo: '/images/clients/real/hpcl.png',
+        primaryColor: '#154284',
+        accentColor: '#DE2010',
+        truckModel: 'Volvo FM 380 Clean Linehaul',
+        trailerType: '28ft Insulated Lube Container',
+        cargoType: 'Packed Industrial Lubricants & Petroleum Goods',
+        corridor: 'Mumbai / Vadodara ➔ Gujarat Industrial Belts',
+        verifiedSince: '2007',
+        slaScore: '99.8%',
+      },
+      {
+        id: 'opal',
+        name: 'ONGC Petro additions Limited',
+        displayName: 'OPaL',
+        logo: '/images/clients/real/opal.png',
+        primaryColor: '#851A1D',
+        accentColor: '#0D9488',
+        truckModel: 'Tata Ultra T.16 High Cube',
+        trailerType: '24ft Polymer Heavy Container',
+        cargoType: 'High-Density Polyethylene & Polypropylene',
+        corridor: 'Dahej SEZ Complex ➔ Pan-India Belts',
+        verifiedSince: '2015',
+        slaScore: '99.9%',
+      },
+      {
+        id: 'hmel',
+        name: 'HPCL-Mittal Energy Limited',
+        displayName: 'HMEL',
+        logo: '/images/clients/real/hmel.png',
+        primaryColor: '#1B4D3E',
+        accentColor: '#0A2540',
+        truckModel: 'Scania G410 Cute Liner',
+        trailerType: '28ft High Cube Specialized Liner',
+        cargoType: 'Petrochemical Polymers & Specialty Plastics',
+        corridor: 'Bathinda Refinery / Gujarat ➔ Export Ports',
+        verifiedSince: '2013',
+        slaScore: '99.8%',
+      },
+    ],
+  },
+  truckContactCTA: {
+    statusText: 'CENTRAL DISPATCH DESK ACTIVE • 24/7 PAN-INDIA FREIGHT SUPPORT',
+    buttonText: 'Contact Dispatch / Book Linehaul',
+    buttonLink: '/contact',
+  },
+};
+
+async function seedServices() {
+  try {
+    const mongoUri = process.env.MONGODB_URI;
+    if (!mongoUri) throw new Error('MONGODB_URI not set');
+
+    console.log('Connecting to MongoDB Atlas for Services...');
+    await mongoose.connect(mongoUri);
+
+    let doc = await ServicesPageContent.findOne();
+    if (!doc) {
+      doc = new ServicesPageContent(servicesSeedData);
+      await doc.save();
+      console.log('ServicesPageContent created successfully!');
+    } else {
+      Object.assign(doc, servicesSeedData);
+      await doc.save();
+      console.log('ServicesPageContent updated with 100% brochure-aligned data!');
+    }
+
+    await mongoose.disconnect();
+    console.log('Services seeding complete.');
+    process.exit(0);
+  } catch (err) {
+    console.error('Services seeding failed:', err.message);
+    process.exit(1);
+  }
+}
+
+seedServices();

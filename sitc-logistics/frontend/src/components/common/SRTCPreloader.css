@@ -1,0 +1,455 @@
+/* ==========================================================================
+   SRTC PREMIUM PRELOADER  —  Ultra-Realistic Wheel Spin + Semi-Truck Sweep
+   Light Linear Gradient BG · Zero External Jitter · 60 FPS
+   ========================================================================== */
+
+/* ── 1. ROOT CONTAINER ───────────────────────────────────────────────────── */
+.srtc-preloader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background: linear-gradient(145deg, #f8fafc 0%, #edf3f8 35%, #dce8f2 70%, #edf3f8 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  opacity: 1;
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), filter 500ms ease;
+  will-change: opacity, filter;
+}
+
+/* Exit fade */
+.srtc-preloader.srtc-phase--exit {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  filter: blur(10px) !important;
+}
+
+/* ── 2. SKIP BUTTON ──────────────────────────────────────────────────────── */
+.srtc-skip {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(10, 37, 64, 0.2);
+  color: #0a2540;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(10, 37, 64, 0.08);
+}
+
+.srtc-skip span {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.srtc-skip:hover {
+  background: #0a2540;
+  color: #f5c842;
+  border-color: #0a2540;
+  box-shadow: 0 6px 20px rgba(10, 37, 64, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ── 3. AMBIENT GLOW ORBS ────────────────────────────────────────────────── */
+.srtc-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(70px);
+  opacity: 0.6;
+}
+
+.srtc-orb--1 {
+  width: 500px;
+  height: 500px;
+  top: -120px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(10, 37, 64, 0.14) 0%, rgba(14, 80, 140, 0.05) 60%, transparent 75%);
+  animation: srtcOrbDrift 7s ease-in-out infinite alternate;
+}
+
+.srtc-orb--2 {
+  width: 420px;
+  height: 420px;
+  bottom: -80px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(212, 155, 40, 0.18) 0%, rgba(245, 200, 66, 0.05) 55%, transparent 75%);
+  animation: srtcOrbDrift 9s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes srtcOrbDrift {
+  0%   { transform: scale(0.92) translateY(0px); }
+  100% { transform: scale(1.08) translateY(-20px); }
+}
+
+/* ==========================================================================
+   ACT 1 — WHEEL STAGE (Spinning Heavy Truck Tire with Official SRTC Hub)
+   ========================================================================== */
+
+.srtc-wheel-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  z-index: 20;
+}
+
+/* Transition to Truck: wheel scales down and fades */
+.srtc-phase--truckSweep .srtc-wheel-stage,
+.srtc-phase--exit .srtc-wheel-stage {
+  opacity: 0;
+  transform: scale(0.78) translateY(-40px);
+  pointer-events: none;
+}
+
+
+
+/* ── Brand Header above Wheel ── */
+.srtc-brand-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.srtc-brand-title {
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.srtc-brand-navy {
+  color: #0a2540;
+}
+
+.srtc-brand-gold {
+  color: #d49b28;
+  background: linear-gradient(135deg, #e5a932 0%, #b88118 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.srtc-brand-tagline {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  color: #5c748d;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+/* ── Wheel wrapper + realistic drop shadow ── */
+.srtc-wheel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.srtc-wheel-shadow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76%;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(10, 37, 64, 0.35) 0%, rgba(0, 0, 0, 0.15) 45%, transparent 70%);
+  filter: blur(12px);
+}
+
+.srtc-wheel-svg {
+  width: min(72vw, 360px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 22px 42px rgba(10, 37, 64, 0.22)) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+}
+
+/* Spinning Tire + Rim group */
+.srtc-wheel-spin-group {
+  transform-origin: 250px 250px;
+  animation: srtcWheelRotate 1.5s cubic-bezier(0.28, 0.05, 0.28, 1) infinite;
+  will-change: transform;
+}
+
+@keyframes srtcWheelRotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ── Minimal Loading HUD (Zero numbers!) ── */
+.srtc-hud {
+  margin-top: 32px;
+  width: min(84vw, 340px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.srtc-hud-bar {
+  position: relative;
+  width: 100%;
+  height: 4.5px;
+  background: rgba(10, 37, 64, 0.12);
+  border-radius: 9999px;
+  overflow: visible;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.srtc-hud-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #0a2540 0%, #175287 50%, #f5c842 100%);
+  transition: width 0.08s linear;
+  box-shadow: 0 0 12px rgba(245, 200, 66, 0.6);
+}
+
+.srtc-hud-glow {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #f5c842;
+  box-shadow: 0 0 10px 3px rgba(245, 200, 66, 0.7);
+  pointer-events: none;
+  transition: left 0.08s linear;
+}
+
+.srtc-hud-status {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #3f5a77;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* ==========================================================================
+   ACT 2 — TRUCK STAGE (Ultra-Realistic Side-Profile Semi Truck on Highway)
+   ========================================================================== */
+
+.srtc-truck-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.srtc-phase--wheel .srtc-truck-stage {
+  opacity: 0;
+}
+
+.srtc-freeze--wheel .srtc-truck-stage {
+  display: none !important;
+}
+
+/* ── Realistic Highway Road ── */
+.srtc-road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.srtc-road-surface {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(180deg, #242c35 0%, #181f26 40%, #0e1318 100%);
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Road surface asphalt grain texture */
+.srtc-road-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(90deg, transparent 0, transparent 40px, rgba(255, 255, 255, 0.015) 40px, rgba(255, 255, 255, 0.015) 41px);
+}
+
+/* Road top edge kerb highlight */
+.srtc-road::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent 0%, #d49b28 20%, #f5c842 50%, #d49b28 80%, transparent 100%);
+  opacity: 0.8;
+  z-index: 6;
+}
+
+/* Dashed highway center dividers */
+.srtc-road-dash-wrap {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 200%;
+  display: flex;
+  gap: 0;
+  pointer-events: none;
+  animation: srtcRoadDashScroll 0.5s linear infinite;
+}
+
+.srtc-road-dash {
+  flex-shrink: 0;
+  width: 80px;
+  height: 5px;
+  background: #f5c842;
+  opacity: 0.85;
+  border-radius: 2px;
+  margin-right: 55px;
+  box-shadow: 0 0 6px rgba(245, 200, 66, 0.35);
+}
+
+@keyframes srtcRoadDashScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-135px); }
+}
+
+.srtc-phase--wheel .srtc-road-dash-wrap {
+  animation: none;
+}
+
+/* ── Truck Viewport & Position ── */
+.srtc-truck-viewport {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 30px; /* Aligns truck tires exactly with road line */
+  z-index: 12;
+}
+
+.srtc-truck-svg {
+  width: min(96vw, 1150px);
+  height: auto;
+  display: block;
+  /* Default start off-screen to the left */
+  transform: translate3d(-125vw, 0, 0);
+  will-change: transform;
+}
+
+/* Cinematic Truck Sweep Animation */
+.srtc-phase--truckSweep .srtc-truck-svg,
+.srtc-phase--exit .srtc-truck-svg {
+  animation: srtcTruckSweepAcross 1.65s cubic-bezier(0.22, 0.45, 0.35, 1) forwards;
+}
+
+@keyframes srtcTruckSweepAcross {
+  0%   { transform: translate3d(-125vw, 0, 0); }
+  22%  { transform: translate3d(-35vw, 0, 0); }
+  55%  { transform: translate3d(5vw, 0, 0); }
+  100% { transform: translate3d(125vw, 0, 0); }
+}
+
+/* Safe fallback animation */
+
+/* ── Side-Profile Truck Wheels Rotation ── */
+.srtc-truck-wheel-spin {
+  transform-origin: 0px 0px;
+  animation: srtcTruckWheelRoll 0.22s linear infinite;
+  will-change: transform;
+}
+
+@keyframes srtcTruckWheelRoll {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.srtc-freeze--truck .srtc-truck-wheel-spin {
+  animation-duration: 0.6s;
+}
+
+/* ── Ambient Motion Glow / Light Flare Overlay ── */
+.srtc-speed-flare {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 60%, rgba(245, 200, 66, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 40;
+  transition: opacity 0.4s ease;
+}
+
+.srtc-phase--truckSweep .srtc-speed-flare {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 768px) {
+  .srtc-wheel-svg {
+    width: 78vw;
+  }
+  .srtc-brand-title {
+    font-size: 1.25rem;
+    letter-spacing: 0.2em;
+  }
+  .srtc-hud {
+    width: 86vw;
+    margin-top: 24px;
+  }
+  .srtc-truck-viewport {
+    margin-bottom: 24px;
+  }
+  .srtc-truck-svg {
+    width: 98vw;
+  }
+  .srtc-road {
+    height: 90px;
+  }
+  .srtc-road-surface {
+    height: 80px;
+  }
+  .srtc-skip {
+    top: 16px;
+    right: 18px;
+    font-size: 0.65rem;
+    padding: 6px 14px;
+  }
+}

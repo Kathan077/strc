@@ -1,0 +1,1011 @@
+/* ==========================================================================
+   SRTC LOGISTICS - INTERMODAL CONTAINER LINEHAUL KNOWLEDGE HUB
+   Authentic Heavy-Duty Shipping Container Architecture
+   - Photorealistic Corten Steel Intermodal Container Bodies
+   - Heavy-Gauge Welded Structural Steel Box Framing (Top & Bottom Rails)
+   - 3D Embossed Hexagonal Steel Rivet Lines along Structural Beams
+   - Forged ISO 1161 Corner Castings with Beveled Twist-Lock Sockets
+   - Metallic CSC Safety Approval Certification Data Plates
+   - Realistic 3D Corrugated Sheet Metal Fluting (खांचेदार शीट)
+   Palette: Imperial Navy (#0B2F4A, #071F33), Radiant Gold (#E8B94F, #D49D28)
+   ========================================================================== */
+
+.srtc-blog-page {
+  background-color: #F8FAFC;
+  color: #0B2F4A;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   HERO BANNER: Clean, Simple & Impactful
+   -------------------------------------------------------------------------- */
+.srtc-blog-hero {
+  position: relative;
+  background: linear-gradient(180deg, #051320 0%, #0B2F4A 100%);
+  color: #FFFFFF;
+  padding: clamp(3.5rem, 5vw, 4.5rem) 1.5rem clamp(2.5rem, 4vw, 3.25rem);
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 3px solid #E8B94F;
+}
+
+.srtc-blog-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 15%, rgba(232, 185, 79, 0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.srtc-blog-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(232, 185, 79, 0.8) 50%, transparent 100%);
+  box-shadow: 0 0 12px rgba(232, 185, 79, 0.5);
+}
+
+.srtc-blog-hero__container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.srtc-blog-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, 'Consolas', monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94A3B8;
+  margin-bottom: 1rem;
+}
+
+.srtc-blog-breadcrumb a {
+  color: #CBD5E1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.srtc-blog-breadcrumb a:hover {
+  color: #E8B94F;
+}
+
+.srtc-blog-breadcrumb__sep {
+  color: #E8B94F;
+}
+
+.srtc-blog-hero__title {
+  font-size: clamp(2.4rem, 4.8vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  margin: 0 0 0.85rem 0;
+}
+
+.srtc-blog-hero__title span {
+  color: #E8B94F;
+}
+
+.srtc-blog-hero__subtitle {
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.6;
+  color: #CBD5E1;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   BLOG CONTENT SECTION
+   -------------------------------------------------------------------------- */
+.srtc-blog-content-section {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: clamp(3rem, 5vw, 4.5rem) 1.5rem clamp(4rem, 6vw, 5.5rem);
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   HYPER-REALISTIC INTERMODAL CONTAINER VAULT ARCHITECTURE
+   -------------------------------------------------------------------------- */
+.srtc-container-showcase-wrap {
+  margin-bottom: clamp(3.5rem, 6vw, 5rem);
+}
+
+.srtc-container-vault {
+  position: relative;
+  display: block;
+  background: #FFFFFF;
+  border: 3px solid #0B2F4A;
+  border-radius: 6px;
+  box-shadow: 0 18px 45px rgba(11, 47, 74, 0.12), 0 4px 12px rgba(11, 47, 74, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  overflow: visible;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
+.srtc-container-vault:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(11, 47, 74, 0.2), 0 8px 20px rgba(11, 47, 74, 0.12);
+  border-color: #E8B94F;
+}
+
+/* Forged Steel ISO 1161 Corner Castings */
+.srtc-iso-casting {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, #1E293B 0%, #071F33 60%, #030810 100%);
+  border: 2px solid #E8B94F;
+  z-index: 10;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Oval twist-lock receptacle socket inside each casting */
+.srtc-iso-casting::after {
+  content: '';
+  width: 12px;
+  height: 7px;
+  background: #000000;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.srtc-iso-tl {
+  top: -8px;
+  left: -8px;
+  border-top-left-radius: 4px;
+}
+
+.srtc-iso-tr {
+  top: -8px;
+  right: -8px;
+  border-top-right-radius: 4px;
+}
+
+.srtc-iso-bl {
+  bottom: -8px;
+  left: -8px;
+  border-bottom-left-radius: 4px;
+}
+
+.srtc-iso-br {
+  bottom: -8px;
+  right: -8px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Container Structural Steel Rails (Top & Bottom Beams) */
+.srtc-container-top-rail {
+  background: #0B2F4A;
+  height: 10px;
+  border-bottom: 1px solid #1E466A;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.srtc-top-rail--compact {
+  height: 8px;
+}
+
+.srtc-container-bottom-rail {
+  background: #0B2F4A;
+  border-top: 1px solid #1E466A;
+  box-sizing: border-box;
+}
+
+.srtc-container-rivet-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.srtc-rivet-head {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #94A3B8 0%, #475569 60%, #1E293B 100%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+/* Industrial Stencil Header Strip */
+.srtc-container-stencil-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #071F33;
+  color: #FFFFFF;
+  padding: 0.65rem 1.4rem;
+  border-bottom: 2px solid #0B2F4A;
+  font-family: var(--font-mono, 'Consolas', 'Courier New', monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.srtc-stencil-bar--compact {
+  padding: 0.5rem 1rem;
+}
+
+.srtc-stencil-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.srtc-stencil-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 8px #22C55E;
+}
+
+.srtc-stencil-unit {
+  color: #E8B94F;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.srtc-stencil-type {
+  color: #94A3B8;
+  font-size: 0.68rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  padding-left: 0.75rem;
+}
+
+.srtc-stencil-status-pill {
+  background: rgba(34, 197, 94, 0.12);
+  color: #4ADE80;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.srtc-unit-axle-tag {
+  color: #CBD5E1;
+  font-size: 0.65rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+}
+
+.srtc-stencil-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.srtc-stencil-spec {
+  color: #CBD5E1;
+  font-size: 0.68rem;
+}
+
+.srtc-stencil-chevrons {
+  color: #E8B94F;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+}
+
+/* --------------------------------------------------------------------------
+   FEATURED 40FT CONTAINER SHOWCASE LAYOUT
+   -------------------------------------------------------------------------- */
+.srtc-featured-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  background: #FFFFFF;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.srtc-container-media-frame {
+  position: relative;
+  background: #071F33;
+  overflow: hidden;
+  min-height: 400px;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.srtc-media-standard {
+  min-height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.srtc-container-img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.srtc-container-vault:hover .srtc-container-img {
+  transform: scale(1.04);
+}
+
+.srtc-corrugated-flute-depth {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(7, 31, 51, 0.4) 0%, transparent 12%, transparent 88%, rgba(7, 31, 51, 0.4) 100%);
+  pointer-events: none;
+}
+
+.srtc-container-lock-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(7, 31, 51, 0.92);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  border: 1px solid rgba(232, 185, 79, 0.6);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.srtc-corridor-stamp {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  background: rgba(7, 31, 51, 0.9);
+  backdrop-filter: blur(6px);
+  color: #E8B94F;
+  border: 1px solid rgba(232, 185, 79, 0.5);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.srtc-corridor-stamp--featured {
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.7rem;
+  padding: 0.35rem 0.85rem;
+}
+
+/* Subtle, Soft Container Corrugation (Light & Non-intrusive) */
+.srtc-container-corrugated-wall {
+  background-color: #FFFFFF;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #FFFFFF 0px,
+    #FFFFFF 44px,
+    #F8FAFC 44px,
+    #F1F5F9 46px,
+    #E2E8F0 47px,
+    #F1F5F9 48px,
+    #F8FAFC 50px,
+    #FFFFFF 50px,
+    #FFFFFF 94px
+  );
+}
+
+.srtc-container-body {
+  padding: clamp(2rem, 3.5vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.srtc-body-standard {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.srtc-post-meta-top {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  color: #64748B;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.srtc-post-category-tag {
+  background: #FEF3C7;
+  color: #92400E;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid #FDE68A;
+}
+
+.srtc-meta-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.srtc-container-title {
+  color: #0B2F4A;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 0 0.85rem 0;
+  transition: color 0.2s ease;
+}
+
+.srtc-container-vault:hover .srtc-container-title {
+  color: #1E527B;
+}
+
+.srtc-container-title--featured {
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  letter-spacing: -0.02em;
+}
+
+.srtc-container-title--standard {
+  font-size: 1.15rem;
+  letter-spacing: -0.015em;
+}
+
+.srtc-container-excerpt {
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.srtc-excerpt--clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 1.1rem;
+}
+
+/* Industrial Telemetry Dashboard Cockpit Gauges */
+.srtc-telemetry-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  background: #F8FAFC;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  margin: 1.5rem 0;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.srtc-telemetry-gauge {
+  text-align: center;
+}
+
+.srtc-telemetry-val {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0B2F4A;
+  line-height: 1.1;
+}
+
+.srtc-telemetry-lbl {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #64748B;
+  margin-top: 0.35rem;
+}
+
+/* Metal CSC Safety Approval Certification Plate */
+.srtc-csc-data-plate {
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 50%, #94A3B8 100%);
+  border: 1.5px solid #475569;
+  border-radius: 4px;
+  padding: 0.45rem 0.65rem;
+  margin-bottom: 1.1rem;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.srtc-csc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #475569;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  font-weight: 900;
+  color: #0F172A;
+  letter-spacing: 0.08em;
+}
+
+.srtc-csc-id {
+  color: #1E3A5F;
+  font-weight: 800;
+}
+
+.srtc-csc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+}
+
+.srtc-csc-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.srtc-csc-lbl {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.52rem;
+  font-weight: 800;
+  color: #475569;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.srtc-csc-val {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: #0F172A;
+  margin-top: 0.15rem;
+  line-height: 1;
+}
+
+/* Container Footer Action */
+.srtc-container-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px dashed #CBD5E1;
+}
+
+.srtc-footer--compact {
+  padding-top: 1rem;
+}
+
+.srtc-route-dispatch-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748B;
+  letter-spacing: 0.06em;
+}
+
+.srtc-date-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.srtc-dispatch-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #0B2F4A;
+  background: #E8B94F;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  letter-spacing: 0.06em;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(232, 185, 79, 0.4);
+}
+
+.srtc-container-vault:hover .srtc-dispatch-cta-btn {
+  background: #D49D28;
+  color: #FFFFFF;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(212, 157, 40, 0.5);
+}
+
+.srtc-cta-compact {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.7rem;
+}
+
+/* Bottom Warning Hazard Tape (Yellow & Black Industrial Chevron Conspicuity Tape) */
+.srtc-container-hazard-strip {
+  height: 9px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #E8B94F 0px,
+    #E8B94F 12px,
+    #0F172A 12px,
+    #0F172A 24px
+  );
+  border-bottom: 1px solid #070B12;
+}
+
+.srtc-hazard-strip--compact {
+  height: 7px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #E8B94F 0px,
+    #E8B94F 9px,
+    #0F172A 9px,
+    #0F172A 18px
+  );
+}
+
+/* --------------------------------------------------------------------------
+   FLEET GRID (THREE 20-FOOT INTERMODAL UNITS)
+   -------------------------------------------------------------------------- */
+.srtc-fleet-container-block {
+  margin-top: 1rem;
+}
+
+.srtc-convoy-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: #071F33;
+  border-radius: 6px;
+  border: 1px solid #0B2F4A;
+  border-bottom: 2px solid #E8B94F;
+  margin-bottom: 2rem;
+  color: #FFFFFF;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 12px rgba(7, 31, 51, 0.12);
+}
+
+.srtc-convoy-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 700;
+  color: #CBD5E1;
+}
+
+.srtc-convoy-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 8px #22C55E;
+}
+
+.srtc-convoy-route-indicator {
+  color: #E8B94F;
+  font-weight: 800;
+}
+
+.srtc-container-fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.srtc-container-vault--standard {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE ADAPTATIONS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .srtc-container-fleet-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  .srtc-featured-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .srtc-container-media-frame {
+    min-height: 280px;
+  }
+
+  .srtc-convoy-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .srtc-stencil-bar--compact {
+    padding: 0.5rem 0.85rem;
+  }
+
+  .srtc-csc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .srtc-blog-hero {
+    padding: 3rem 1.25rem 2.5rem;
+  }
+
+  .srtc-blog-content-section {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .srtc-blog-content-section {
+    padding: 2rem 1rem 3.5rem;
+  }
+
+  .srtc-container-stencil-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .srtc-stencil-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .srtc-telemetry-strip {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .srtc-container-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .srtc-dispatch-cta-btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .srtc-blog-hero {
+    padding: 2.5rem 0.85rem 2rem;
+  }
+
+  .srtc-blog-hero__title {
+    font-size: 1.85rem;
+    word-break: break-word;
+  }
+
+  .srtc-blog-hero__subtitle {
+    font-size: 0.88rem;
+  }
+
+  .srtc-blog-content-section {
+    padding: 1.75rem 0.85rem 3rem;
+  }
+
+  .srtc-iso-casting {
+    width: 18px;
+    height: 18px;
+  }
+
+  .srtc-iso-tl { top: -6px; left: -6px; }
+  .srtc-iso-tr { top: -6px; right: -6px; }
+  .srtc-iso-bl { bottom: -6px; left: -6px; }
+  .srtc-iso-br { bottom: -6px; right: -6px; }
+
+  .srtc-container-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .srtc-body-standard {
+    padding: 1.25rem 0.85rem;
+  }
+
+  .srtc-container-title--featured {
+    font-size: 1.25rem;
+  }
+
+  .srtc-container-title--standard {
+    font-size: 1.05rem;
+  }
+
+  .srtc-container-excerpt {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .srtc-csc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+
+  .srtc-csc-header {
+    font-size: 0.58rem;
+  }
+
+  .srtc-csc-lbl {
+    font-size: 0.5rem;
+  }
+
+  .srtc-csc-val {
+    font-size: 0.6rem;
+  }
+
+  .srtc-convoy-header-bar {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .srtc-blog-hero__title {
+    font-size: 1.6rem;
+  }
+
+  .srtc-blog-content-section {
+    padding: 1.5rem 0.65rem 2.5rem;
+  }
+
+  .srtc-iso-casting {
+    width: 16px;
+    height: 16px;
+  }
+
+  .srtc-iso-tl { top: -5px; left: -5px; }
+  .srtc-iso-tr { top: -5px; right: -5px; }
+  .srtc-iso-bl { bottom: -5px; left: -5px; }
+  .srtc-iso-br { bottom: -5px; right: -5px; }
+
+  .srtc-container-body {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .srtc-body-standard {
+    padding: 1rem 0.65rem;
+  }
+
+  .srtc-container-title--featured {
+    font-size: 1.15rem;
+  }
+
+  .srtc-container-title--standard {
+    font-size: 0.98rem;
+  }
+
+  .srtc-stencil-left {
+    gap: 0.4rem;
+  }
+
+  .srtc-stencil-unit {
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .srtc-blog-hero__title {
+    font-size: 1.45rem;
+  }
+
+  .srtc-blog-content-section {
+    padding: 1.35rem 0.5rem 2rem;
+  }
+
+  .srtc-container-body {
+    padding: 1rem 0.6rem;
+  }
+
+  .srtc-body-standard {
+    padding: 0.85rem 0.5rem;
+  }
+
+  .srtc-container-title--featured {
+    font-size: 1.05rem;
+  }
+
+  .srtc-container-title--standard {
+    font-size: 0.92rem;
+  }
+
+  .srtc-dispatch-cta-btn {
+    font-size: 0.68rem;
+    padding: 0.45rem 0.65rem;
+  }
+}
+
+/* 4K UHD TV Display Support */
+@media (min-width: 1921px) {
+  .srtc-blog-hero__container {
+    max-width: 1400px;
+  }
+
+  .srtc-blog-hero__title {
+    font-size: 4.8rem;
+  }
+
+  .srtc-blog-hero__subtitle {
+    font-size: 1.4rem;
+    max-width: 950px;
+  }
+
+  .srtc-blog-content-section {
+    max-width: 1800px;
+  }
+
+  .srtc-container-title--featured {
+    font-size: 2.4rem;
+  }
+
+  .srtc-container-title--standard {
+    font-size: 1.5rem;
+  }
+
+  .srtc-container-excerpt {
+    font-size: 1.15rem;
+  }
+
+  .srtc-telemetry-val {
+    font-size: 1.6rem;
+  }
+
+  .srtc-telemetry-lbl {
+    font-size: 0.82rem;
+  }
+}
