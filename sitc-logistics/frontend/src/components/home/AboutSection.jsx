@@ -17,40 +17,40 @@ import {
 } from 'lucide-react';
 import './AboutSection.css';
 
-// Ground Truth Capabilities from Official SRTC Brochure (Pages 1, 2, 3 & 6)
+// Exact 3 Core Services from Official SRTC Brochure (Page 3)
 const BROCHURE_CAPABILITIES = [
   {
     id: '01',
-    title: 'Full Truck Load (FTL) & Part Truck Load (PTL)',
-    detail: 'Specializing in small packages, superfast cargo, warehousing, and contract logistics nationwide.',
+    title: 'Full Truck Load (FTL)',
+    detail: 'Dedicated point-to-point heavy commercial transport across pan-India industrial corridors.',
   },
   {
     id: '02',
-    title: "One of India's Largest Privately Owned Fleets",
-    detail: '23+ years of industry experience setting benchmarks in service excellence and road transit safety.',
+    title: 'Part Truck Load (PTL)',
+    detail: 'Scheduled, safe, and cost-effective freight movement ensuring reliable on-time delivery.',
   },
   {
     id: '03',
-    title: 'Modern Warehousing & Scalable Handling',
-    detail: 'High-efficiency, technology-driven storage and contract handling designed to eliminate supply chain bottlenecks.',
-  },
-  {
-    id: '04',
-    title: 'Professional Drivers & 100% Traffic Compliance',
-    detail: 'Supported by a dedicated team of well-trained professional driver staff ensuring safe, on-time delivery.',
-  },
-  {
-    id: '05',
-    title: 'Proprietary, Easy & Convenient Logistics',
-    detail: 'Tailored logistics solutions committed to delivering reliability, speed, and value every single time.',
+    title: 'Warehousing & Storage',
+    detail: 'Scalable, secure storage and modern handling facilities designed to eliminate corporate bottlenecks.',
   },
 ];
 
 function AboutSection({ data }) {
-  const capabilitiesList =
-    data?.capabilities && data.capabilities.length > 0
-      ? data.capabilities
+  const rawCaps = data?.capabilities;
+  const sanitizedCaps =
+    Array.isArray(rawCaps) && rawCaps.length > 0
+      ? rawCaps
+          .filter(
+            (c) =>
+              !c.title?.toLowerCase().includes('eco-friendly') &&
+              !c.title?.toLowerCase().includes('small package') &&
+              !c.title?.toLowerCase().includes('privately owned')
+          )
+          .slice(0, 3)
       : BROCHURE_CAPABILITIES;
+  const capabilitiesList =
+    sanitizedCaps.length >= 3 ? sanitizedCaps : BROCHURE_CAPABILITIES;
 
   // Default to 100% visible so mobile, tablets, and slow connections never see blank space
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
@@ -272,14 +272,10 @@ function AboutSection({ data }) {
             ========================================================================== */}
         <header ref={headerRef} className={`sitc-about-header ${isHeaderVisible ? 'is-visible' : ''}`}>
           <div className="sitc-about-header__left">
-            <div className="sitc-about-kicker">
-              <Truck size={14} className="sitc-about-kicker__icon" />
-              <span>{data?.kicker || 'SRTC SUPPLY CHAIN PVT. LTD.'}</span>
-            </div>
             <h2 className="sitc-about-title">
-              {data?.titleLine1 || 'Legacy of'} <br />
-              <span className="sitc-about-title--highlight">{data?.highlightText || 'Reliability,'}</span> Delivering <br />
-              {(data?.titleLine2 || 'Value Every Single Time.').replace(/^Delivering\s+/i, '')}
+              {data?.titleLine1 || 'Pan-India'} <br />
+              <span className="sitc-about-title--highlight">{data?.highlightText || 'Logistics & Warehouse'}</span> <br />
+              {data?.titleLine2 || 'Handling Services.'}
             </h2>
           </div>
 
@@ -374,9 +370,9 @@ function AboutSection({ data }) {
             >
               <div className="sitc-capabilities-header">
                 <h3 className="sitc-capabilities-title">
-                  Why Choose Us? <span className="sitc-capabilities-title--gold">Core Capabilities</span>
+                  Our <span className="sitc-capabilities-title--gold">Core Services</span>
                 </h3>
-                <span className="sitc-capabilities-badge">Fastest ★ Secured ★ Trustable</span>
+                <span className="sitc-capabilities-badge">Proprietary • Easy • Convenient</span>
               </div>
 
               <div className="sitc-capabilities-list">

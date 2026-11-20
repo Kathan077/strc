@@ -80,9 +80,9 @@ const initialHomepageData = {
   },
   about: {
     kicker: 'SRTC SUPPLY CHAIN PVT. LTD.',
-    titleLine1: 'Legacy of',
-    highlightText: 'Reliability,',
-    titleLine2: 'Value Every Single Time.',
+    titleLine1: 'Pan-India',
+    highlightText: 'Logistics & Warehouse',
+    titleLine2: 'Handling Services.',
     description:
       'Shree Ram Transportation Corporation, founded in 2003 by Mr. Menandbhai Odedara, has been Gujarat’s trusted transport benchmark for over two decades. Building on this legacy, SRTC Supply Chain Pvt. Ltd. delivers modern, technology-driven, end-to-end logistics & warehousing nationwide.',
     ctaText: 'Contact Us',
@@ -96,38 +96,24 @@ const initialHomepageData = {
     capabilities: [
       {
         id: '01',
-        title: 'Full Truck Load (FTL) & Part Truck Load (PTL)',
+        title: 'Full Truck Load (FTL)',
         detail:
-          'Specializing in small packages, superfast cargo, warehousing, and contract logistics nationwide.',
-        tag: 'FTL & PTL Network',
+          'Dedicated point-to-point heavy commercial transport across pan-India industrial corridors.',
+        tag: 'FTL Pan-India',
       },
       {
         id: '02',
-        title: "One of India's Largest Privately Owned Fleets",
+        title: 'Part Truck Load (PTL)',
         detail:
-          '23+ years of industry experience setting benchmarks in service excellence and road transit safety.',
-        tag: '23+ Years Safety',
+          'Scheduled, safe, and cost-effective freight movement ensuring reliable on-time delivery.',
+        tag: 'PTL Express',
       },
       {
         id: '03',
-        title: 'Modern Warehousing & Scalable Handling',
+        title: 'Warehousing & Storage',
         detail:
-          'High-efficiency, technology-driven storage and contract handling designed to eliminate supply chain bottlenecks.',
-        tag: 'Scalable Storage',
-      },
-      {
-        id: '04',
-        title: 'Professional Drivers & 100% Traffic Compliance',
-        detail:
-          'Supported by a dedicated team of well-trained professional driver staff ensuring safe, on-time delivery.',
-        tag: 'Trained Drivers',
-      },
-      {
-        id: '05',
-        title: 'Proprietary, Easy & Convenient Logistics',
-        detail:
-          'Tailored logistics solutions committed to delivering reliability, speed, and value every single time.',
-        tag: 'Convenient & Fast',
+          'Scalable, secure storage and modern handling facilities designed to eliminate corporate bottlenecks.',
+        tag: 'Secure Storage',
       },
     ],
   },
