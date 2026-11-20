@@ -82,7 +82,7 @@ const initialHomepageData = {
     kicker: 'SRTC SUPPLY CHAIN PVT. LTD.',
     titleLine1: 'Legacy of',
     highlightText: 'Reliability,',
-    titleLine2: 'Delivering Value Every Single Time.',
+    titleLine2: 'Value Every Single Time.',
     description:
       'Shree Ram Transportation Corporation, founded in 2003 by Mr. Menandbhai Odedara, has been Gujarat’s trusted transport benchmark for over two decades. Building on this legacy, SRTC Supply Chain Pvt. Ltd. delivers modern, technology-driven, end-to-end logistics & warehousing nationwide.',
     ctaText: 'Contact Us',
@@ -96,38 +96,38 @@ const initialHomepageData = {
     capabilities: [
       {
         id: '01',
-        title: 'FTL & PTL Dedicated Freight Services',
+        title: 'Full Truck Load (FTL) & Part Truck Load (PTL)',
         detail:
-          'Specialized Full Truck Load and Part Truck Load logistics tailored for corporate industrial movements across India.',
+          'Specializing in small packages, superfast cargo, warehousing, and contract logistics nationwide.',
         tag: 'FTL & PTL Network',
       },
       {
         id: '02',
         title: "One of India's Largest Privately Owned Fleets",
         detail:
-          'Over two decades of fleet excellence operated by a dedicated team of well-trained, professional driver staff.',
+          '23+ years of industry experience setting benchmarks in service excellence and road transit safety.',
         tag: '23+ Years Safety',
       },
       {
         id: '03',
-        title: 'Modern Logistics & Warehouse Handling',
+        title: 'Modern Warehousing & Scalable Handling',
         detail:
-          'Scalable, technology-driven warehousing and contract logistics solutions designed to eliminate bottlenecks.',
+          'High-efficiency, technology-driven storage and contract handling designed to eliminate supply chain bottlenecks.',
         tag: 'Scalable Storage',
       },
       {
         id: '04',
-        title: 'Superfast Cargo & Small Package Delivery',
+        title: 'Professional Drivers & 100% Traffic Compliance',
         detail:
-          'Expedited transit network connecting Gujarat hubs to pan-India corporate and individual destinations.',
-        tag: 'Superfast Delivery',
+          'Supported by a dedicated team of well-trained professional driver staff ensuring safe, on-time delivery.',
+        tag: 'Trained Drivers',
       },
       {
         id: '05',
-        title: 'Eco-Friendly & Technology-Driven Solutions',
+        title: 'Proprietary, Easy & Convenient Logistics',
         detail:
-          'Committed to reducing environmental impact with high-efficiency fleet routing and full traffic rule compliance.',
-        tag: 'Tech-Driven',
+          'Tailored logistics solutions committed to delivering reliability, speed, and value every single time.',
+        tag: 'Convenient & Fast',
       },
     ],
   },

@@ -17,10 +17,40 @@ import {
 } from 'lucide-react';
 import './AboutSection.css';
 
+// Ground Truth Capabilities from Official SRTC Brochure (Pages 1, 2, 3 & 6)
+const BROCHURE_CAPABILITIES = [
+  {
+    id: '01',
+    title: 'Full Truck Load (FTL) & Part Truck Load (PTL)',
+    detail: 'Specializing in small packages, superfast cargo, warehousing, and contract logistics nationwide.',
+  },
+  {
+    id: '02',
+    title: "One of India's Largest Privately Owned Fleets",
+    detail: '23+ years of industry experience setting benchmarks in service excellence and road transit safety.',
+  },
+  {
+    id: '03',
+    title: 'Modern Warehousing & Scalable Handling',
+    detail: 'High-efficiency, technology-driven storage and contract handling designed to eliminate supply chain bottlenecks.',
+  },
+  {
+    id: '04',
+    title: 'Professional Drivers & 100% Traffic Compliance',
+    detail: 'Supported by a dedicated team of well-trained professional driver staff ensuring safe, on-time delivery.',
+  },
+  {
+    id: '05',
+    title: 'Proprietary, Easy & Convenient Logistics',
+    detail: 'Tailored logistics solutions committed to delivering reliability, speed, and value every single time.',
+  },
+];
+
 function AboutSection({ data }) {
-  const capabilities = data?.capabilities || [];
-  const [activeCap, setActiveCap] = useState(0);
-  const [isAutoCycling, setIsAutoCycling] = useState(true);
+  const capabilitiesList =
+    data?.capabilities && data.capabilities.length > 0
+      ? data.capabilities
+      : BROCHURE_CAPABILITIES;
 
   // Default to 100% visible so mobile, tablets, and slow connections never see blank space
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
@@ -133,16 +163,7 @@ function AboutSection({ data }) {
     return () => cancelAnimationFrame(anim);
   }, [isTabsVisible]);
 
-  // 3. Smooth Auto-cycle for Capability Items with manual pause on hover
-  useEffect(() => {
-    if (!isAutoCycling) return;
-    const timer = setInterval(() => {
-      setActiveCap((prev) => (prev + 1) % capabilities.length);
-    }, 4200);
-    return () => clearInterval(timer);
-  }, [isAutoCycling]);
-
-  // 4. Subtle 3D Card Tilt Interaction on Mouse Move (Desktop Only)
+  // 3. Subtle 3D Card Tilt Interaction on Mouse Move (Desktop Only)
   const handleMouseMove = (e) => {
     if (typeof window !== 'undefined' && window.innerWidth <= 1024) return;
     if (!visualCardRef.current) return;
@@ -258,7 +279,7 @@ function AboutSection({ data }) {
             <h2 className="sitc-about-title">
               {data?.titleLine1 || 'Legacy of'} <br />
               <span className="sitc-about-title--highlight">{data?.highlightText || 'Reliability,'}</span> Delivering <br />
-              {data?.titleLine2 || 'Value Every Single Time.'}
+              {(data?.titleLine2 || 'Value Every Single Time.').replace(/^Delivering\s+/i, '')}
             </h2>
           </div>
 
@@ -346,43 +367,30 @@ function AboutSection({ data }) {
               RIGHT COLUMN: Bespoke Architectural Capabilities Matrix
               ------------------------------------------------------------------ */}
           <div className="sitc-about-details-col">
-            {/* Core Capabilities Showcase: Architectural Hairline Matrix */}
+            {/* Core Capabilities Showcase: Clean, Simple Brochure-Aligned Structure */}
             <div
               ref={capabilitiesRef}
               className={`sitc-about-capabilities-card ${isCapabilitiesVisible ? 'is-visible' : ''}`}
-              onMouseEnter={() => setIsAutoCycling(false)}
-              onMouseLeave={() => setIsAutoCycling(true)}
             >
               <div className="sitc-capabilities-header">
                 <h3 className="sitc-capabilities-title">
-                  Why Choose Us? <span className="sitc-capabilities-title--gold">Core Capabilities</span> That Deliver
+                  Why Choose Us? <span className="sitc-capabilities-title--gold">Core Capabilities</span>
                 </h3>
-                <span className="sitc-capabilities-badge">Audited Enterprise Standards</span>
+                <span className="sitc-capabilities-badge">Fastest ★ Secured ★ Trustable</span>
               </div>
 
-              <div className="sitc-capabilities-matrix">
-                {capabilities.map((cap, idx) => {
-                  const isActive = activeCap === idx;
-                  return (
-                    <div
-                      key={cap.id}
-                      className={`sitc-cap-row ${isActive ? 'is-active' : ''}`}
-                      onClick={() => setActiveCap(idx)}
-                    >
-                      <div className="sitc-cap-row__main">
-                        <span className="sitc-cap-row__num">{cap.id}</span>
-                        <div className="sitc-cap-row__content">
-                          <span className="sitc-cap-row__title">{cap.title}</span>
-                          {isActive && (
-                            <p className="sitc-cap-row__detail">{cap.detail}</p>
-                          )}
-                        </div>
-                        <span className="sitc-cap-row__tag">{cap.tag}</span>
-                      </div>
-                      <div className="sitc-cap-row__line" />
+              <div className="sitc-capabilities-list">
+                {capabilitiesList.map((cap) => (
+                  <div key={cap.id || cap.title} className="sitc-cap-item">
+                    <div className="sitc-cap-item__icon-wrap">
+                      <CheckCircle2 size={16} className="sitc-cap-item__icon" />
                     </div>
-                  );
-                })}
+                    <div className="sitc-cap-item__body">
+                      <h4 className="sitc-cap-item__title">{cap.title}</h4>
+                      {cap.detail && <p className="sitc-cap-item__detail">{cap.detail}</p>}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
