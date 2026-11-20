@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   ArrowUpRight,
@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import './AboutSection.css';
 
-export default function AboutSection({ data }) {
+function AboutSection({ data }) {
   const capabilities = data?.capabilities || [];
   const [activeCap, setActiveCap] = useState(0);
   const [isAutoCycling, setIsAutoCycling] = useState(true);
@@ -408,3 +408,5 @@ export default function AboutSection({ data }) {
     </section>
   );
 }
+
+export default React.memo(AboutSection);

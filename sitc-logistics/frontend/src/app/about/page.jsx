@@ -4,8 +4,10 @@ import AboutCompanySection from '@/components/about/AboutCompanySection';
 import AboutVisionMission from '@/components/about/AboutVisionMission';
 import AboutProcessSection from '@/components/about/AboutProcessSection';
 import TruckContactCTA from '@/components/home/TruckContactCTA';
+import LazySection from '@/components/common/LazySection';
 
-export const dynamic = 'force-dynamic';
+// ISR Edge Caching (revalidates every 60s)
+export const revalidate = 60;
 
 export const metadata = {
   title: 'About Us | SRTC Logistics — Pan-India Industrial Linehaul & Supply Chain',
@@ -18,7 +20,8 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 async function getAboutContent() {
   try {
     const res = await fetch(`${API_BASE}/api/about`, {
-      cache: 'no-store',
+      next: { revalidate: 60 },
+      signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) {
       console.error('[API Fetch Error] About endpoint responded with status:', res.status);
@@ -37,23 +40,33 @@ export default async function AboutPage() {
 
   return (
     <main className="srtc-about-page" style={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
-      {/* 1. Header Hero Banner (Clean Reference Style with Navy & Gold Theme) */}
+      {/* 1. Header Hero Banner (Clean Reference Style with Navy & Gold Theme) — Eager */}
       <AboutHero data={content?.hero} />
 
       {/* 2. Digital & Trusted Transport Logistics (Chamfered Image & 2x2 Metric Cards) */}
-      <AboutStatsSection data={content?.stats} />
+      <LazySection minHeight="450px">
+        <AboutStatsSection data={content?.stats} />
+      </LazySection>
 
       {/* 3. Core Company Section: Visual Collage, Executive Heritage Milestones & Clients */}
-      <AboutCompanySection data={content?.company} />
+      <LazySection minHeight="700px">
+        <AboutCompanySection data={content?.company} />
+      </LazySection>
 
       {/* 4. Strategic Compass: Vision & Mission Intermodal Container Architecture */}
-      <AboutVisionMission data={content?.visionMission} />
+      <LazySection minHeight="650px">
+        <AboutVisionMission data={content?.visionMission} />
+      </LazySection>
 
       {/* 5. How It Works: Simple & Creative 4-Step Freight Lifecycle */}
-      <AboutProcessSection data={content?.process} />
+      <LazySection minHeight="550px">
+        <AboutProcessSection data={content?.process} />
+      </LazySection>
 
       {/* 6. Interactive Linehaul Fleet CTA: CAD Heavy-Haul Truck */}
-      <TruckContactCTA data={content?.truckContactCTA} />
+      <LazySection minHeight="580px">
+        <TruckContactCTA data={content?.truckContactCTA} />
+      </LazySection>
     </main>
   );
 }

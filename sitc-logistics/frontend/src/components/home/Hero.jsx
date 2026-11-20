@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import {
   ArrowUpRight,
@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import './Hero.css';
 
-export default function Hero({ data }) {
+function Hero({ data }) {
   const slides = data?.slides || [];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFading, setIsFading] = useState(false);
@@ -30,21 +30,49 @@ export default function Hero({ data }) {
     }
   }, [slides.length]);
 
-  // Scroll parallax effect across hero section
+  // High-performance scroll parallax effect with RAF throttling & dead-band guard
   const [scrollProgress, setScrollProgress] = useState(0);
   const heroRef = useRef(null);
 
   useEffect(() => {
+    let ticking = false;
+    let lastProgress = 0;
+
     const handleScroll = () => {
       if (typeof window !== 'undefined' && window.innerWidth <= 768) {
-        setScrollProgress(0);
+        if (lastProgress !== 0) {
+          lastProgress = 0;
+          setScrollProgress(0);
+        }
         return;
       }
-      if (heroRef.current) {
-        const currentY = window.scrollY;
-        const heroHeight = heroRef.current.offsetHeight || window.innerHeight;
-        const progress = Math.min(1, Math.max(0, currentY / (heroHeight * 0.92)));
-        setScrollProgress(progress);
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (heroRef.current) {
+            const currentY = window.scrollY;
+            const heroHeight = heroRef.current.offsetHeight || window.innerHeight;
+
+            // Scrolled past hero — lock at 1 and stop updating
+            if (currentY > heroHeight * 1.1) {
+              if (lastProgress !== 1) {
+                lastProgress = 1;
+                setScrollProgress(1);
+              }
+              ticking = false;
+              return;
+            }
+
+            const progress = Math.min(1, Math.max(0, currentY / (heroHeight * 0.92)));
+            // Dead-band threshold: only update if delta is at least 0.015
+            if (Math.abs(progress - lastProgress) >= 0.015) {
+              lastProgress = progress;
+              setScrollProgress(progress);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -253,3 +281,5 @@ export default function Hero({ data }) {
     </section>
   );
 }
+
+export default React.memo(Hero);

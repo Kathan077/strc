@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import './FAQSection.css';
 
-export default function FAQSection({ data }) {
+function FAQSection({ data }) {
   // Support opening multiple or one at a time (default first open)
   const [openIndex, setOpenIndex] = useState(0);
 
@@ -210,4 +210,6 @@ export default function FAQSection({ data }) {
     </section>
   );
 }
+
+export default React.memo(FAQSection);
 

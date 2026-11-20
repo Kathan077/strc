@@ -1,0 +1,90 @@
+/* ==========================================================================
+   SRTC LazySection — Instagram-Style Progressive Hydration Skeleton
+   Ultra-Lightweight CSS Shimmer · Zero Layout Shift (CLS = 0) · 60 FPS
+   ========================================================================== */
+
+.srtc-lazy-section {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.srtc-lazy-section.is-hydrated {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
+.srtc-skeleton-placeholder {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #F8FAFC 0%, #EDF2F7 50%, #F8FAFC 100%);
+  border: 1px solid rgba(232, 185, 79, 0.15);
+  box-sizing: border-box;
+}
+
+.srtc-skeleton-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(232, 185, 79, 0.08) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: srtcSkeletonShimmer 1.8s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes srtcSkeletonShimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.srtc-skeleton-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(232, 185, 79, 0.35);
+  box-shadow: 0 4px 12px rgba(11, 47, 74, 0.04);
+  color: #64748B;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.srtc-skeleton-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #E8B94F;
+  box-shadow: 0 0 8px rgba(232, 185, 79, 0.6);
+  animation: skeletonDotPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes skeletonDotPulse {
+  0%   { opacity: 0.4; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
+@media (max-width: 768px) {
+  .srtc-skeleton-placeholder {
+    border-radius: 12px;
+    margin: 0 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
+}
+

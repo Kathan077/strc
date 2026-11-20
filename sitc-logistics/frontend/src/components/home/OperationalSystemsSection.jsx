@@ -24,34 +24,40 @@ import {
 } from 'lucide-react';
 import './OperationalSystemsSection.css';
 
-export default function OperationalSystemsSection({ data }) {
+function OperationalSystemsSection({ data }) {
   const LIFECYCLE_STAGES = data?.stages || [];
   const [activeStage, setActiveStage] = useState(LIFECYCLE_STAGES[0]?.id || 'stage-1');
   const cardRefs = useRef({});
 
-  // Robust scroll spy to highlight the corresponding stage in sticky column
+  // High-performance IntersectionObserver to track active stage without scroll reflow thrashing
   useEffect(() => {
-    const handleScroll = () => {
-      const triggerY = window.innerHeight * 0.45;
-      let currentStage = LIFECYCLE_STAGES[0].id;
+    if (!LIFECYCLE_STAGES || LIFECYCLE_STAGES.length === 0) return;
 
-      LIFECYCLE_STAGES.forEach((stage) => {
-        const el = cardRefs.current[stage.id];
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= triggerY) {
-            currentStage = stage.id;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const stageId = entry.target.getAttribute('data-stage-id');
+            if (stageId) setActiveStage(stageId);
           }
-        }
-      });
+        });
+      },
+      {
+        rootMargin: '-20% 0px -55% 0px',
+        threshold: 0.1,
+      }
+    );
 
-      setActiveStage(currentStage);
-    };
+    LIFECYCLE_STAGES.forEach((stage) => {
+      const el = cardRefs.current[stage.id];
+      if (el) {
+        el.setAttribute('data-stage-id', stage.id);
+        observer.observe(el);
+      }
+    });
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // run once on mount
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => observer.disconnect();
+  }, [LIFECYCLE_STAGES]);
 
   const scrollToStage = (stageId) => {
     const el = cardRefs.current[stageId];
@@ -403,3 +409,5 @@ export default function OperationalSystemsSection({ data }) {
     </section>
   );
 }
+
+export default React.memo(OperationalSystemsSection);

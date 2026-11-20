@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Truck, Gauge, Warehouse, Thermometer, ShieldCheck, Zap, Sparkles } from 'lucide-react';
 import './ServicesSection.css';
 
-export default function ServicesSection({ data }) {
+function ServicesSection({ data }) {
   const allCards = data?.serviceCards || [];
   const card1 = allCards.find((c) => c.id === 'truck-1') || allCards[0] || {};
   const card2 = allCards.find((c) => c.id === 'truck-2') || allCards[1] || {};
@@ -315,3 +315,5 @@ export default function ServicesSection({ data }) {
     </section>
   );
 }
+
+export default React.memo(ServicesSection);

@@ -1,11 +1,31 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 
 // Helper to prevent floating-point SSR hydration mismatch
 const r2 = (num) => Math.round(num * 100) / 100;
 
-export default function CodedTruckRealistic({ isDipper = false }) {
+function CodedTruckRealistic({ isDipper = false }) {
+  const containerRef = useRef(null);
+  const [isInView, setIsInView] = useState(true);
+
+  // Auto-pause heavy GPU SVG animations when truck is offscreen
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { rootMargin: '120px' }
+    );
+    const el = containerRef.current;
+    if (el) observer.observe(el);
+    return () => {
+      if (el) observer.unobserve(el);
+      observer.disconnect();
+    };
+  }, []);
+
   // 28 Vertical corrugation ribs for the 40ft container (100% untouched)
   const containerRibs = Array.from({ length: 28 }, (_, i) => 105 + i * 28);
 
@@ -20,7 +40,10 @@ export default function CodedTruckRealistic({ isDipper = false }) {
   ];
 
   return (
-    <div className={`sitc-coded-truck-wrap ${isDipper ? 'is-dipper-active' : ''}`}>
+    <div
+      ref={containerRef}
+      className={`sitc-coded-truck-wrap ${isDipper ? 'is-dipper-active' : ''} ${!isInView ? 'is-truck-paused' : ''}`}
+    >
       <svg
         viewBox="0 0 1440 450"
         fill="none"
@@ -33,6 +56,9 @@ export default function CodedTruckRealistic({ isDipper = false }) {
               INLINE ANIMATION STYLES (Self-contained, cross-browser bulletproof)
               =============================================================== */}
           <style>{`
+            .is-truck-paused * {
+              animation-play-state: paused !important;
+            }
             @keyframes sitcWheelSpinClockwise {
               0% { transform: rotate(0deg); }
               100% { transform: rotate(360deg); }
@@ -1253,3 +1279,5 @@ export default function CodedTruckRealistic({ isDipper = false }) {
     </div>
   );
 }
+
+export default memo(CodedTruckRealistic);

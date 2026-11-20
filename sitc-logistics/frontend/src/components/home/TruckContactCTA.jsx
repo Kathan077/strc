@@ -1,17 +1,43 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import CodedTruckRealistic from './CodedTruckRealistic';
 import './TruckContactCTA.css';
 
-export default function TruckContactCTA({ data }) {
-  // Dipper active state
+function TruckContactCTA({ data }) {
+  const sectionRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
   const [isDipper, setIsDipper] = useState(false);
 
-  // Periodic automatic realistic highway dipper (every 4.5 seconds, double quick flash)
+  // Monitor visibility to only run dipper timer when visible
   useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { rootMargin: '100px' }
+    );
+
+    const el = sectionRef.current;
+    if (el) observer.observe(el);
+
+    return () => {
+      if (el) observer.unobserve(el);
+      observer.disconnect();
+    };
+  }, []);
+
+  // Periodic automatic realistic highway dipper (only when visible in viewport)
+  useEffect(() => {
+    if (!isInView) return;
+
     const interval = setInterval(() => {
       // First quick flash
       setIsDipper(true);
@@ -28,7 +54,7 @@ export default function TruckContactCTA({ data }) {
     }, 4500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isInView]);
 
   const buttonText = data?.buttonText || 'CONTACT US';
   const buttonLink = data?.buttonLink || '/contact';
@@ -36,6 +62,7 @@ export default function TruckContactCTA({ data }) {
 
   return (
     <section
+      ref={sectionRef}
       id="truck-contact"
       className="sitc-truck-real-section"
       data-section-name="CONTACT US"
@@ -83,3 +110,5 @@ export default function TruckContactCTA({ data }) {
     </section>
   );
 }
+
+export default memo(TruckContactCTA);

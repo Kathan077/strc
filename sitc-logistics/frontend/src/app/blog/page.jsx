@@ -5,7 +5,7 @@ import BlogClient from '@/components/blog/BlogClient';
 import TruckContactCTA from '@/components/home/TruckContactCTA';
 import './blog.css';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 export const metadata = {
   title: 'Logistics Knowledge Hub & Fleet Insights | SRTC Logistics',
@@ -45,7 +45,8 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 async function getBlogs() {
   try {
     const res = await fetch(`${API_BASE}/api/blogs`, {
-      cache: 'no-store',
+      next: { revalidate: 60 },
+      signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) {
       console.error('[API Fetch Error] Blogs endpoint responded with status:', res.status);

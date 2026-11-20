@@ -4,8 +4,10 @@ import ServicesIndustryContainerSection from '@/components/services/ServicesIndu
 import ServicesProcessWorkflowSection from '@/components/services/ServicesProcessWorkflowSection';
 import ServicesClientsTrustSection from '@/components/services/ServicesClientsTrustSection';
 import TruckContactCTA from '@/components/home/TruckContactCTA';
+import LazySection from '@/components/common/LazySection';
 
-export const dynamic = 'force-dynamic';
+// ISR Edge Caching (revalidates every 60s)
+export const revalidate = 60;
 
 export const metadata = {
   title: 'Logistics & Warehouse Handling Services | SRTC Supply Chain',
@@ -18,7 +20,8 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 async function getServicesContent() {
   try {
     const res = await fetch(`${API_BASE}/api/services`, {
-      cache: 'no-store',
+      next: { revalidate: 60 },
+      signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) {
       console.error('[API Fetch Error] Services endpoint responded with status:', res.status);
@@ -37,23 +40,33 @@ export default async function ServicesPage() {
 
   return (
     <main className="srtc-services-page" style={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
-      {/* 1. Header Hero Banner */}
+      {/* 1. Header Hero Banner — Eager */}
       <ServicesHero data={content?.hero} />
 
       {/* 2. Core Service Pillars: FTL, PTL & Superfast Cargo, Warehousing */}
-      <ServicesCoreSection data={content?.core} />
+      <LazySection minHeight="650px">
+        <ServicesCoreSection data={content?.core} />
+      </LazySection>
 
       {/* 3. Specialized Intermodal Container Architecture (6 Vertical Industry Solutions) */}
-      <ServicesIndustryContainerSection data={content?.industries} />
+      <LazySection minHeight="750px">
+        <ServicesIndustryContainerSection data={content?.industries} />
+      </LazySection>
 
       {/* 4. 4-Step Pan-India Freight Execution Pipeline & Quality Compliance */}
-      <ServicesProcessWorkflowSection data={content?.workflow} />
+      <LazySection minHeight="600px">
+        <ServicesProcessWorkflowSection data={content?.workflow} />
+      </LazySection>
 
       {/* 5. Enterprise Client Trust & Verified Corporate Corridors */}
-      <ServicesClientsTrustSection data={content?.trustClients} />
+      <LazySection minHeight="550px">
+        <ServicesClientsTrustSection data={content?.trustClients} />
+      </LazySection>
 
       {/* 6. Grand Finale Interactive Highway Container Truck Contact CTA */}
-      <TruckContactCTA data={content?.truckContactCTA} />
+      <LazySection minHeight="580px">
+        <TruckContactCTA data={content?.truckContactCTA} />
+      </LazySection>
     </main>
   );
 }

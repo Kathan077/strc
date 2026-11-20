@@ -18,7 +18,7 @@ const PILLAR_CONFIGS = [
   { icon: TrendingUp, iconTheme: 'blue', positionClass: 'sitc-card-pos--bot-right' },
 ];
 
-export default function ValuesSection({ data }) {
+function ValuesSection({ data }) {
   const [activeStage, setActiveStage] = useState(null);
   const pillars = data?.pillars || [];
 
@@ -182,3 +182,5 @@ export default function ValuesSection({ data }) {
     </section>
   );
 }
+
+export default React.memo(ValuesSection);
