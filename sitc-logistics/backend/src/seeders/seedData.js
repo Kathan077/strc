@@ -80,9 +80,9 @@ const initialHomepageData = {
   },
   about: {
     kicker: 'SRTC SUPPLY CHAIN PVT. LTD.',
-    titleLine1: 'Pan-India',
-    highlightText: 'Logistics & Warehouse',
-    titleLine2: 'Handling Services.',
+    titleLine1: 'Legacy of',
+    highlightText: 'Reliability,',
+    titleLine2: 'Delivering Value Every Single Time.',
     description:
       'Shree Ram Transportation Corporation, founded in 2003 by Mr. Menandbhai Odedara, has been Gujarat’s trusted transport benchmark for over two decades. Building on this legacy, SRTC Supply Chain Pvt. Ltd. delivers modern, technology-driven, end-to-end logistics & warehousing nationwide.',
     ctaText: 'Contact Us',

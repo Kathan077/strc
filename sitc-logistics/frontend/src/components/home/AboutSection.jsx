@@ -273,9 +273,10 @@ function AboutSection({ data }) {
         <header ref={headerRef} className={`sitc-about-header ${isHeaderVisible ? 'is-visible' : ''}`}>
           <div className="sitc-about-header__left">
             <h2 className="sitc-about-title">
-              {data?.titleLine1 || 'Pan-India'} <br />
-              <span className="sitc-about-title--highlight">{data?.highlightText || 'Logistics & Warehouse'}</span> <br />
-              {data?.titleLine2 || 'Handling Services.'}
+              {data?.titleLine1 || 'Legacy of'} <br />
+              <span className="sitc-about-title--highlight">{data?.highlightText || 'Reliability,'}</span> <br />
+              Delivering Value Every <br />
+              Single Time.
             </h2>
           </div>
 
