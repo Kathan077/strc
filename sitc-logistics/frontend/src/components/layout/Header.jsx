@@ -32,6 +32,7 @@ export default function Header() {
                 src="/images/logo/srtc-logo.png"
                 alt="SRTC - Fastest, Secured, Trustable"
                 className="sitc-header-brand__img"
+                style={{ height: '72px', width: 'auto', maxHeight: '72px', objectFit: 'contain' }}
               />
             </Link>
           </div>

@@ -1,6 +1,8 @@
 /* ==========================================================================
    SRTC PREMIUM PRELOADER  —  Ultra-Realistic Wheel Spin + Semi-Truck Sweep
-   Light Linear Gradient BG · Zero External Jitter · 60 FPS
+   100% Pro-Level Responsive Architecture for ALL Screen Sizes
+   Mobile (320px-480px) · Tablets · Laptops · Desktop (1440px-1920px) · 4K UHD
+   Landscape Support · Zero Layout Shift · 60 FPS Smooth GPU Acceleration
    ========================================================================== */
 
 /* ── 1. ROOT CONTAINER ───────────────────────────────────────────────────── */
@@ -9,6 +11,7 @@
   inset: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   z-index: 999999;
   background: linear-gradient(145deg, #f8fafc 0%, #edf3f8 35%, #dce8f2 70%, #edf3f8 100%);
   overflow: hidden;
@@ -21,6 +24,7 @@
   opacity: 1;
   transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), filter 500ms ease;
   will-change: opacity, filter;
+  box-sizing: border-box;
 }
 
 /* Exit fade */
@@ -33,25 +37,27 @@
 /* ── 2. SKIP BUTTON ──────────────────────────────────────────────────────── */
 .srtc-skip {
   position: absolute;
-  top: 24px;
-  right: 28px;
+  top: calc(env(safe-area-inset-top, 20px) + 8px);
+  right: calc(env(safe-area-inset-right, 24px) + 8px);
   z-index: 100;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1.5px solid rgba(10, 37, 64, 0.2);
   color: #0a2540;
   font-family: inherit;
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: clamp(0.64rem, 1.5vw, 0.74rem);
+  font-weight: 800;
   letter-spacing: 0.16em;
-  padding: 8px 18px;
+  padding: 7px 18px;
   border-radius: 9999px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 16px rgba(10, 37, 64, 0.08);
+  white-space: nowrap;
 }
 
 .srtc-skip span {
@@ -67,6 +73,10 @@
   transform: translateY(-1px);
 }
 
+.srtc-skip:active {
+  transform: translateY(1px);
+}
+
 /* ── 3. AMBIENT GLOW ORBS ────────────────────────────────────────────────── */
 .srtc-orb {
   position: absolute;
@@ -77,8 +87,8 @@
 }
 
 .srtc-orb--1 {
-  width: 500px;
-  height: 500px;
+  width: min(500px, 60vw);
+  height: min(500px, 60vw);
   top: -120px;
   right: -100px;
   background: radial-gradient(circle, rgba(10, 37, 64, 0.14) 0%, rgba(14, 80, 140, 0.05) 60%, transparent 75%);
@@ -86,8 +96,8 @@
 }
 
 .srtc-orb--2 {
-  width: 420px;
-  height: 420px;
+  width: min(420px, 50vw);
+  height: min(420px, 50vw);
   bottom: -80px;
   left: -80px;
   background: radial-gradient(circle, rgba(212, 155, 40, 0.18) 0%, rgba(245, 200, 66, 0.05) 55%, transparent 75%);
@@ -110,7 +120,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0;
+  padding: 1rem;
+  box-sizing: border-box;
   transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
   z-index: 20;
@@ -120,30 +131,31 @@
 .srtc-phase--truckSweep .srtc-wheel-stage,
 .srtc-phase--exit .srtc-wheel-stage {
   opacity: 0;
-  transform: scale(0.78) translateY(-40px);
+  transform: scale(0.82) translateY(-30px);
   pointer-events: none;
 }
-
-
 
 /* ── Brand Header above Wheel ── */
 .srtc-brand-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 22px;
+  margin-bottom: clamp(14px, 2.5vh, 24px);
+  text-align: center;
 }
 
 .srtc-brand-title {
-  font-size: 1.55rem;
+  font-size: clamp(1.2rem, 4.5vw, 1.75rem);
   font-weight: 900;
-  letter-spacing: 0.26em;
+  letter-spacing: clamp(0.12em, 2vw, 0.26em);
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: clamp(6px, 1.5vw, 12px);
   margin: 0;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .srtc-brand-navy {
@@ -158,12 +170,13 @@
 }
 
 .srtc-brand-tagline {
-  font-size: 0.65rem;
+  font-size: clamp(0.54rem, 1.8vw, 0.68rem);
   font-weight: 700;
-  letter-spacing: 0.34em;
+  letter-spacing: clamp(0.14em, 2vw, 0.32em);
   color: #5c748d;
-  margin-top: 6px;
+  margin-top: 5px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 /* ── Wheel wrapper + realistic drop shadow ── */
@@ -172,11 +185,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
 }
 
 .srtc-wheel-shadow {
   position: absolute;
-  bottom: -20px;
+  bottom: -18px;
   left: 50%;
   transform: translateX(-50%);
   width: 76%;
@@ -187,10 +201,11 @@
 }
 
 .srtc-wheel-svg {
-  width: min(72vw, 360px);
+  width: clamp(190px, min(65vw, 36vh), 370px);
   height: auto;
+  aspect-ratio: 1 / 1;
   display: block;
-  filter: drop-shadow(0 22px 42px rgba(10, 37, 64, 0.22)) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+  filter: drop-shadow(0 20px 42px rgba(10, 37, 64, 0.22)) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
 }
 
 /* Spinning Tire + Rim group */
@@ -207,8 +222,8 @@
 
 /* ── Minimal Loading HUD (Zero numbers!) ── */
 .srtc-hud {
-  margin-top: 32px;
-  width: min(84vw, 340px);
+  margin-top: clamp(18px, 3vh, 32px);
+  width: clamp(220px, 80vw, 350px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -247,12 +262,13 @@
 }
 
 .srtc-hud-status {
-  font-size: 0.62rem;
+  font-size: clamp(0.54rem, 1.8vw, 0.64rem);
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: clamp(0.08em, 1.4vw, 0.2em);
   color: #3f5a77;
   text-transform: uppercase;
   text-align: center;
+  white-space: nowrap;
 }
 
 /* ==========================================================================
@@ -279,13 +295,62 @@
   display: none !important;
 }
 
+/* ── Top Telemetry Badge during Truck Transit ── */
+.srtc-truck-hud {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 24px) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  pointer-events: none;
+  animation: truckHudFadeIn 0.4s ease forwards;
+}
+
+@keyframes truckHudFadeIn {
+  from { opacity: 0; transform: translate(-50%, -10px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.srtc-truck-hud-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 37, 64, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 200, 66, 0.35);
+  padding: 5px 14px;
+  border-radius: 9999px;
+  color: #f5c842;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: clamp(0.56rem, 1.5vw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(10, 37, 64, 0.25);
+}
+
+.srtc-hud-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: hudPulse 1.2s infinite alternate;
+}
+
+@keyframes hudPulse {
+  0%   { opacity: 0.4; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
 /* ── Realistic Highway Road ── */
 .srtc-road {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 110px;
+  height: clamp(80px, 14vh, 120px);
   pointer-events: none;
   overflow: hidden;
   z-index: 5;
@@ -295,7 +360,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: clamp(70px, 12vh, 106px);
   background: linear-gradient(180deg, #242c35 0%, #181f26 40%, #0e1318 100%);
   box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.4);
 }
@@ -305,42 +370,48 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(90deg, transparent 0, transparent 40px, rgba(255, 255, 255, 0.015) 40px, rgba(255, 255, 255, 0.015) 41px);
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 40px,
+    rgba(255, 255, 255, 0.015) 40px,
+    rgba(255, 255, 255, 0.015) 41px
+  );
 }
 
 /* Road top edge kerb highlight */
 .srtc-road::before {
   content: '';
   position: absolute;
-  top: 10px;
+  top: calc(clamp(80px, 14vh, 120px) - clamp(70px, 12vh, 106px));
   left: 0;
   right: 0;
   height: 2.5px;
   background: linear-gradient(90deg, transparent 0%, #d49b28 20%, #f5c842 50%, #d49b28 80%, transparent 100%);
-  opacity: 0.8;
+  opacity: 0.85;
   z-index: 6;
 }
 
 /* Dashed highway center dividers */
 .srtc-road-dash-wrap {
   position: absolute;
-  top: 50px;
+  top: 45%;
   left: 0;
   width: 200%;
   display: flex;
   gap: 0;
   pointer-events: none;
-  animation: srtcRoadDashScroll 0.5s linear infinite;
+  animation: srtcRoadDashScroll 0.45s linear infinite;
 }
 
 .srtc-road-dash {
   flex-shrink: 0;
-  width: 80px;
-  height: 5px;
+  width: clamp(50px, 8vw, 80px);
+  height: clamp(3.5px, 0.6vh, 5px);
   background: #f5c842;
   opacity: 0.85;
   border-radius: 2px;
-  margin-right: 55px;
+  margin-right: clamp(35px, 5vw, 55px);
   box-shadow: 0 0 6px rgba(245, 200, 66, 0.35);
 }
 
@@ -353,40 +424,41 @@
   animation: none;
 }
 
-/* ── Truck Viewport & Position ── */
+/* ── Truck Viewport & Position: Perfectly flush with top kerb of road! ── */
 .srtc-truck-viewport {
-  position: relative;
+  position: absolute;
+  bottom: clamp(70px, 12vh, 106px); /* Exact height of .srtc-road-surface! */
+  left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-bottom: 30px; /* Aligns truck tires exactly with road line */
+  margin-bottom: 0px;
   z-index: 12;
+  pointer-events: none;
 }
 
 .srtc-truck-svg {
-  width: min(96vw, 1150px);
+  width: min(94vw, 1200px);
   height: auto;
   display: block;
-  /* Default start off-screen to the left */
-  transform: translate3d(-125vw, 0, 0);
+  /* Start off-screen to the left */
+  transform: translate3d(-130vw, 0, 0);
   will-change: transform;
 }
 
-/* Cinematic Truck Sweep Animation */
+/* Cinematic Truck Sweep Across Highway */
 .srtc-phase--truckSweep .srtc-truck-svg,
 .srtc-phase--exit .srtc-truck-svg {
   animation: srtcTruckSweepAcross 1.65s cubic-bezier(0.22, 0.45, 0.35, 1) forwards;
 }
 
 @keyframes srtcTruckSweepAcross {
-  0%   { transform: translate3d(-125vw, 0, 0); }
+  0%   { transform: translate3d(-130vw, 0, 0); }
   22%  { transform: translate3d(-35vw, 0, 0); }
   55%  { transform: translate3d(5vw, 0, 0); }
-  100% { transform: translate3d(125vw, 0, 0); }
+  100% { transform: translate3d(130vw, 0, 0); }
 }
-
-/* Safe fallback animation */
 
 /* ── Side-Profile Truck Wheels Rotation ── */
 .srtc-truck-wheel-spin {
@@ -420,36 +492,212 @@
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVENESS
+   MULTI-DEVICE RESPONSIVE BREAKPOINTS (PRO-LEVEL FIDELITY)
    ========================================================================== */
+
+/* 1. Large Tablets & Small Laptops (769px - 1024px) */
+@media (max-width: 1024px) {
+  .srtc-truck-svg {
+    width: min(96vw, 980px);
+  }
+}
+
+/* 2. Standard Tablets & Phablets (481px - 768px) */
 @media (max-width: 768px) {
+  .srtc-brand-wrap {
+    margin-bottom: 16px;
+  }
+  .srtc-brand-title {
+    font-size: 1.35rem;
+    letter-spacing: 0.18em;
+  }
   .srtc-wheel-svg {
-    width: 78vw;
+    width: clamp(220px, 58vw, 310px);
+  }
+  .srtc-hud {
+    margin-top: 22px;
+    width: 82vw;
+  }
+  .srtc-truck-svg {
+    width: clamp(520px, 120vw, 840px);
+  }
+  .srtc-skip {
+    top: calc(env(safe-area-inset-top, 16px) + 6px);
+    right: 18px;
+    font-size: 0.66rem;
+    padding: 6px 14px;
+  }
+}
+
+/* 3. Standard Modern Smartphones (361px - 480px: iPhone 13/14/15/16, Galaxy S) */
+@media (max-width: 480px) {
+  .srtc-brand-wrap {
+    margin-bottom: 14px;
   }
   .srtc-brand-title {
     font-size: 1.25rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.14em;
+  }
+  .srtc-brand-tagline {
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+  }
+  .srtc-wheel-svg {
+    width: clamp(190px, 62vw, 260px);
   }
   .srtc-hud {
-    width: 86vw;
-    margin-top: 24px;
+    margin-top: 18px;
+    width: 84vw;
   }
-  .srtc-truck-viewport {
-    margin-bottom: 24px;
+  .srtc-truck-hud-badge {
+    font-size: 0.58rem;
+    padding: 4px 11px;
   }
   .srtc-truck-svg {
-    width: 98vw;
-  }
-  .srtc-road {
-    height: 90px;
-  }
-  .srtc-road-surface {
-    height: 80px;
+    /* Majestic cinematic presence on phone: big enough to read SRTC lettering */
+    width: clamp(480px, 135vw, 680px);
   }
   .srtc-skip {
-    top: 16px;
-    right: 18px;
-    font-size: 0.65rem;
-    padding: 6px 14px;
+    top: calc(env(safe-area-inset-top, 14px) + 6px);
+    right: 14px;
+    font-size: 0.64rem;
+    padding: 5px 12px;
+  }
+}
+
+/* 4. Compact Smartphones (321px - 360px: Galaxy A, Small Androids) */
+@media (max-width: 360px) {
+  .srtc-brand-title {
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
+    gap: 6px;
+  }
+  .srtc-brand-tagline {
+    font-size: 0.52rem;
+    letter-spacing: 0.14em;
+  }
+  .srtc-wheel-svg {
+    width: 190px;
+  }
+  .srtc-hud {
+    margin-top: 14px;
+    width: 88vw;
+  }
+  .srtc-hud-status {
+    font-size: 0.52rem;
+    letter-spacing: 0.08em;
+  }
+  .srtc-truck-svg {
+    width: clamp(420px, 140vw, 540px);
+  }
+  .srtc-skip {
+    font-size: 0.6rem;
+    padding: 4px 10px;
+  }
+}
+
+/* 5. Ultra-Small / Foldable Closed (<= 320px) */
+@media (max-width: 320px) {
+  .srtc-brand-title {
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+  }
+  .srtc-wheel-svg {
+    width: 170px;
+  }
+  .srtc-truck-hud-badge {
+    font-size: 0.5rem;
+    padding: 3px 8px;
+  }
+}
+
+/* 6. Landscape Orientation on Mobile Devices (Short Screen Height <= 520px) */
+@media (max-height: 520px) {
+  .srtc-wheel-stage {
+    padding: 8px;
+  }
+  .srtc-brand-wrap {
+    margin-bottom: 6px;
+  }
+  .srtc-brand-title {
+    font-size: 1.1rem;
+    letter-spacing: 0.14em;
+  }
+  .srtc-brand-tagline {
+    display: none; /* Hide tagline in extreme landscape to save vertical room */
+  }
+  .srtc-wheel-svg {
+    width: min(44vh, 200px);
+  }
+  .srtc-hud {
+    margin-top: 8px;
+  }
+  .srtc-hud-status {
+    font-size: 0.52rem;
+  }
+  .srtc-road {
+    height: 65px;
+  }
+  .srtc-road-surface {
+    height: 56px;
+  }
+  .srtc-truck-viewport {
+    bottom: 56px;
+  }
+  .srtc-truck-svg {
+    width: clamp(480px, 75vw, 850px);
+  }
+  .srtc-truck-hud {
+    top: 8px;
+  }
+  .srtc-skip {
+    top: 8px;
+    right: 14px;
+    padding: 4px 12px;
+  }
+}
+
+/* 7. Ultra-Wide & 4K UHD Displays (>= 1921px) */
+@media (min-width: 1921px) {
+  .srtc-brand-title {
+    font-size: 2.6rem;
+    letter-spacing: 0.28em;
+  }
+  .srtc-brand-tagline {
+    font-size: 1rem;
+    letter-spacing: 0.38em;
+  }
+  .srtc-wheel-svg {
+    width: 480px;
+  }
+  .srtc-hud {
+    width: 480px;
+    margin-top: 42px;
+  }
+  .srtc-hud-bar {
+    height: 6px;
+  }
+  .srtc-hud-status {
+    font-size: 0.82rem;
+  }
+  .srtc-road {
+    height: 180px;
+  }
+  .srtc-road-surface {
+    height: 160px;
+  }
+  .srtc-truck-viewport {
+    bottom: 160px;
+  }
+  .srtc-truck-svg {
+    width: min(90vw, 1750px);
+  }
+  .srtc-skip {
+    font-size: 1rem;
+    padding: 12px 28px;
+  }
+  .srtc-truck-hud-badge {
+    font-size: 0.92rem;
+    padding: 8px 22px;
   }
 }

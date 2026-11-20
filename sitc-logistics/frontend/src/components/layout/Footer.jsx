@@ -47,6 +47,7 @@ export default function Footer() {
                   src="/images/logo/srtc-logo.png"
                   alt="SRTC - Fastest, Secured, Trustable"
                   className="sitc-footer-logo-img"
+                  style={{ height: '60px', width: 'auto', maxHeight: '60px', objectFit: 'contain' }}
                   loading="lazy"
                 />
               </Link>

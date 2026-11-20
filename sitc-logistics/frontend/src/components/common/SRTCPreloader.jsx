@@ -336,6 +336,14 @@ export default function SRTCPreloader({ forceShow = false }) {
           ACT 2 — TRUCK STAGE (Ultra-Realistic 18-Wheeler Semi Truck)
           ═══════════════════════════════════════════════════════ */}
       <div className="srtc-truck-stage" aria-hidden="true">
+        {/* Top Telemetry Badge during Truck Transit */}
+        <div className="srtc-truck-hud">
+          <div className="srtc-truck-hud-badge">
+            <span className="srtc-hud-dot" />
+            <span>HIGHWAY TELEMETRY // DISPATCH CORRIDOR ACTIVE</span>
+          </div>
+        </div>
+
         {/* Realistic Modern Highway with Scrolling Dashed Lanes */}
         <div className="srtc-road">
           <div className="srtc-road-surface">
@@ -347,11 +355,11 @@ export default function SRTCPreloader({ forceShow = false }) {
           </div>
         </div>
 
-        {/* ── TRUCK VIEWPORT & SVG ── */}
+        {/* ── TRUCK VIEWPORT & SVG (viewBox cropped exactly to wheel contact baseline y=282) ── */}
         <div className="srtc-truck-viewport">
           <svg
             className="srtc-truck-svg"
-            viewBox="0 0 1400 320"
+            viewBox="0 0 1400 282"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
