@@ -13,7 +13,19 @@
   box-sizing: border-box;
 }
 
-/* Background Technical CAD Grid &भाई ब्लॉग पेज एंड कॉन्टैक्ट अस भी एकदम रेस्पॉन्सिव कर दे हर एक स्क्रीन में एकदम परफेक्टली दिखना चाहिए टेक्स्ट एंड ऑल भी सब ध्यान रखना वो भी एकदम परफेक्टली रेस्पॉन्सिव होने चाहिए भाई.
+/* Background Technical CAD Grid & Ambient Lighting */
+.srtc-vm-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.srtc-vm-bg__grid {
+  position: absolute;
   inset: 0;
   background-image:
     linear-gradient(to right, rgba(11, 47, 74, 0.04) 1px, transparent 1px),
