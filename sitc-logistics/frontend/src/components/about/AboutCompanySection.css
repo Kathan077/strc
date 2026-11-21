@@ -60,6 +60,7 @@
   from {
     stroke-dashoffset: 600;
   }
+
   to {
     stroke-dashoffset: 0;
   }
@@ -92,13 +93,27 @@
 }
 
 @keyframes srtcOrbPulseGold {
-  0% { transform: scale(0.92) translate(0, 0); opacity: 0.6; }
-  100% { transform: scale(1.14) translate(25px, 20px); opacity: 0.95; }
+  0% {
+    transform: scale(0.92) translate(0, 0);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1.14) translate(25px, 20px);
+    opacity: 0.95;
+  }
 }
 
 @keyframes srtcOrbPulseNavy {
-  0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
-  100% { transform: scale(1.12) translate(-25px, -20px); opacity: 0.85; }
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1.12) translate(-25px, -20px);
+    opacity: 0.85;
+  }
 }
 
 /* ==========================================================================
@@ -114,19 +129,26 @@
   display: grid;
   grid-template-columns: minmax(0, 490px) minmax(0, 1fr);
   gap: 4.5rem;
-  align-items: stretch; /* Forces both left and right columns to EXACT same height! */
+  align-items: stretch;
+  /* Forces both left and right columns to EXACT same height! */
   min-height: 560px;
 }
 
 /* ==========================================================================
-   3. LEFT COLUMN: Multi-Layered Visual Collage (Exact Height Match)
+   3. LEFT COLUMN: Executive Architectural Dual-Photo Collage
+   Layout:
+     - Gold architectural corner brackets framing the ensemble
+     - Top card: Founder / Executive portrait (anchored top-right)
+     - Bottom card: Fleet / Highway truck (anchored bottom-left)
+     - Clean, calibrated overlap with zero cuts or hidden content
    ========================================================================== */
 
 .srtc-about-company__media-col {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
   min-width: 0;
   box-sizing: border-box;
 }
@@ -134,125 +156,104 @@
 .srtc-about-company__collage {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 560px;
-  min-width: 0;
+  max-width: 480px;
+  height: 540px;
+  min-height: 540px;
+  margin: 0 auto;
 }
 
-/* Top-Right Card: Operations Supervisor (Entrance Animation) */
+/* Golden architectural corner accent - Top Right */
+.srtc-about-company__collage::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 120px;
+  height: 120px;
+  border-top: 3px solid rgba(232, 185, 79, 0.65);
+  border-right: 3px solid rgba(232, 185, 79, 0.65);
+  border-radius: 0 24px 0 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Golden architectural corner accent - Bottom Left */
+.srtc-about-company__collage::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: -10px;
+  width: 120px;
+  height: 120px;
+  border-bottom: 3px solid rgba(232, 185, 79, 0.65);
+  border-left: 3px solid rgba(232, 185, 79, 0.65);
+  border-radius: 0 0 0 22px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Portrait Card: Founder — top-right, full head & suit visible */
 .srtc-about-company__card-top {
   position: absolute;
   top: 0;
   right: 0;
-  width: 330px;
-  height: 63%;
-  min-height: 340px;
-  border-radius: 32px;
+  width: 335px;
+  height: 355px;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 20px 48px rgba(11, 47, 74, 0.14);
+  box-shadow: 0 18px 45px rgba(11, 47, 74, 0.14), 0 2px 8px rgba(0, 0, 0, 0.04);
   border: 4px solid #FFFFFF;
+  background-color: #F8FAFC;
   z-index: 2;
   animation: collageTopEnter 650ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
-  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease;
 }
 
 @keyframes collageTopEnter {
   0% {
     opacity: 0;
-    transform: translate(-25px, -15px) scale(0.96);
+    transform: translateY(-18px) scale(0.97);
   }
   100% {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
 .srtc-about-company__card-top:hover {
-  transform: translateY(-3px) scale(1.01);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 24px 55px rgba(11, 47, 74, 0.18);
 }
 
 .srtc-about-company__img-supervisor {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 20%;
+  object-position: 50% 0%;
   display: block;
 }
 
-/* ESTD. 2003 Ribbon Badge with Unfurl Animation */
-.srtc-about-company__ribbon-badge {
-  position: absolute;
-  top: 20px;
-  left: -10px;
-  background: linear-gradient(135deg, #E8B94F 0%, #D49D28 100%);
-  color: #0B2F4A;
-  padding: 0.5rem 1.35rem;
-  border-radius: 0 12px 12px 0;
-  box-shadow: 0 8px 24px rgba(212, 157, 40, 0.45);
-  display: flex;
-  flex-direction: column;
-  z-index: 10;
-  animation: ribbonUnfurl 550ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
-}
-
-@keyframes ribbonUnfurl {
-  0% {
-    opacity: 0;
-    transform: translateX(-25px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.srtc-about-company__ribbon-badge::before {
-  content: '';
-  position: absolute;
-  bottom: -7px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-top: 7px solid #9A7015;
-  border-left: 7px solid transparent;
-}
-
-.srtc-ribbon-tag {
-  font-size: 0.64rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  opacity: 0.9;
-}
-
-.srtc-ribbon-text {
-  font-size: 0.92rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  white-space: nowrap;
-}
-
-/* Bottom-Left Card: Heavy Blue Rig on Highway (Entrance Animation) */
+/* Fleet Card: Truck — bottom-left, fully visible within frame */
 .srtc-about-company__card-truck {
   position: absolute;
-  bottom: 0;
+  bottom: 12px;
   left: 0;
-  width: 310px;
-  height: 46%;
-  min-height: 250px;
-  border-radius: 28px;
+  width: 290px;
+  height: 220px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 18px 44px rgba(7, 31, 51, 0.18);
+  box-shadow: 0 22px 50px rgba(7, 31, 51, 0.22), 0 2px 8px rgba(0, 0, 0, 0.08);
   border: 4px solid #FFFFFF;
-  z-index: 3;
-  animation: collageTruckEnter 650ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
-  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: #0B2F4A;
+  z-index: 4;
+  animation: collageTruckEnter 650ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease;
 }
 
 @keyframes collageTruckEnter {
   0% {
     opacity: 0;
-    transform: translateY(35px) scale(0.96);
+    transform: translateY(22px) scale(0.96);
   }
   100% {
     opacity: 1;
@@ -261,112 +262,16 @@
 }
 
 .srtc-about-company__card-truck:hover {
-  transform: translateY(-3px) scale(1.01);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 26px 58px rgba(7, 31, 51, 0.28);
 }
 
 .srtc-about-company__img-truck {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 50%;
   display: block;
-}
-
-/* Center Metallic Seal Badge: "BEST ROAD FREIGHT • SRTC FLEET" (Pop & Rotate Entrance) */
-.srtc-about-company__seal-badge {
-  position: absolute;
-  top: 56%;
-  left: 48%;
-  transform: translate(-50%, -50%);
-  width: 102px;
-  height: 102px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #FFF2A8 0%, #E8B94F 50%, #C89020 100%);
-  padding: 4px;
-  box-shadow: 0 12px 32px rgba(200, 144, 32, 0.45), 0 0 20px rgba(232, 185, 79, 0.3);
-  z-index: 5;
-  animation: sealPopRotate 700ms cubic-bezier(0.16, 1, 0.3, 1) 280ms both;
-}
-
-@keyframes sealPopRotate {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.3) rotate(-30deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1) rotate(0deg);
-  }
-}
-
-.srtc-seal-outer {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: #0B2F4A;
-  border: 2px dashed rgba(232, 185, 79, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.srtc-seal-core {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.srtc-seal-icon {
-  color: #E8B94F;
-  margin-bottom: 2px;
-}
-
-.srtc-seal-label {
-  font-size: 0.52rem;
-  font-weight: 900;
-  color: #FFFFFF;
-  letter-spacing: 0.05em;
-  line-height: 1.1;
-}
-
-.srtc-seal-sub {
-  font-size: 0.48rem;
-  font-weight: 800;
-  color: #E8B94F;
-  letter-spacing: 0.04em;
-  line-height: 1;
-}
-
-/* Bottom-Right Circular Detail: Chrome Grille & Headlights (Scale Entrance) */
-.srtc-about-company__circle-truck {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 14px 36px rgba(11, 47, 74, 0.2);
-  border: 4px solid #FFFFFF;
-  z-index: 4;
-  animation: circleScalePop 650ms cubic-bezier(0.16, 1, 0.3, 1) 220ms both;
-  transition: transform 300ms ease;
-}
-
-@keyframes circleScalePop {
-  0% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.srtc-about-company__circle-truck:hover {
-  transform: scale(1.06);
 }
 
 .srtc-about-company__img-detail {
@@ -454,6 +359,7 @@
     opacity: 0;
     transform: translateY(18px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -486,6 +392,7 @@
     opacity: 0;
     transform: translateY(24px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -701,21 +608,24 @@
 
 @media (max-width: 1120px) {
   .srtc-about-company__container {
-    grid-template-columns: 430px 1fr;
+    grid-template-columns: 420px 1fr;
     gap: 3rem;
   }
 
+  .srtc-about-company__collage {
+    height: 500px;
+    min-height: 500px;
+  }
+
   .srtc-about-company__card-top {
-    width: 290px;
+    width: 300px;
+    height: 320px;
   }
 
   .srtc-about-company__card-truck {
-    width: 280px;
-  }
-
-  .srtc-about-company__circle-truck {
-    width: 140px;
-    height: 140px;
+    width: 260px;
+    height: 200px;
+    bottom: 10px;
   }
 
   .srtc-about-company__history-grid {
@@ -743,23 +653,25 @@
   .srtc-about-company__collage {
     height: 480px;
     min-height: auto;
-    max-width: 480px;
+    max-width: 440px;
     margin: 0 auto;
   }
 
+  .srtc-about-company__collage::before,
+  .srtc-about-company__collage::after {
+    width: 90px;
+    height: 90px;
+  }
+
   .srtc-about-company__card-top {
-    width: 300px;
+    width: 290px;
     height: 310px;
   }
 
   .srtc-about-company__card-truck {
-    width: 270px;
-    height: 220px;
-  }
-
-  .srtc-about-company__circle-truck {
-    width: 130px;
-    height: 130px;
+    width: 250px;
+    height: 190px;
+    bottom: 8px;
   }
 
   .srtc-ambient-orb--gold {
@@ -797,42 +709,34 @@
   }
 
   .srtc-about-company__media-col {
-    height: 340px;
+    height: 360px;
   }
 
   .srtc-about-company__collage {
-    height: 340px;
-    max-width: 100%;
+    height: 360px;
+    max-width: 320px;
+  }
+
+  .srtc-about-company__collage::before,
+  .srtc-about-company__collage::after {
+    width: 60px;
+    height: 60px;
+    border-width: 2px;
   }
 
   .srtc-about-company__card-top {
     width: 215px;
     height: 230px;
-    border-radius: 22px;
+    border-radius: 18px;
+    border-width: 3px;
   }
 
   .srtc-about-company__card-truck {
-    width: 195px;
-    height: 160px;
-    border-radius: 20px;
-  }
-
-  .srtc-about-company__circle-truck {
-    width: 95px;
-    height: 95px;
-  }
-
-  .srtc-about-company__seal-badge {
-    width: 76px;
-    height: 76px;
-  }
-
-  .srtc-about-company__ribbon-badge {
-    padding: 0.35rem 0.95rem;
-  }
-
-  .srtc-ribbon-text {
-    font-size: 0.78rem;
+    width: 185px;
+    height: 145px;
+    border-radius: 16px;
+    border-width: 3px;
+    bottom: 4px;
   }
 
   .srtc-about-company__actions-row {
@@ -867,31 +771,30 @@
   }
 
   .srtc-about-company__media-col {
-    height: 300px;
+    height: 310px;
   }
 
   .srtc-about-company__collage {
-    height: 300px;
+    height: 310px;
+    max-width: 280px;
+  }
+
+  .srtc-about-company__collage::before,
+  .srtc-about-company__collage::after {
+    display: none;
   }
 
   .srtc-about-company__card-top {
     width: 190px;
-    height: 205px;
+    height: 200px;
+    border-radius: 16px;
   }
 
   .srtc-about-company__card-truck {
-    width: 175px;
-    height: 140px;
-  }
-
-  .srtc-about-company__circle-truck {
-    width: 82px;
-    height: 82px;
-  }
-
-  .srtc-about-company__seal-badge {
-    width: 68px;
-    height: 68px;
+    width: 165px;
+    height: 125px;
+    border-radius: 14px;
+    bottom: 2px;
   }
 
   .srtc-history-card {
@@ -927,28 +830,20 @@
 
   .srtc-about-company__collage {
     height: 270px;
+    max-width: 250px;
   }
 
   .srtc-about-company__card-top {
     width: 170px;
-    height: 180px;
-    border-radius: 18px;
+    height: 175px;
+    border-radius: 14px;
   }
 
   .srtc-about-company__card-truck {
-    width: 155px;
-    height: 125px;
-    border-radius: 16px;
-  }
-
-  .srtc-about-company__circle-truck {
-    width: 72px;
-    height: 72px;
-  }
-
-  .srtc-about-company__seal-badge {
-    width: 60px;
-    height: 60px;
+    width: 145px;
+    height: 110px;
+    border-radius: 12px;
+    bottom: 0;
   }
 
   .srtc-action-btn {

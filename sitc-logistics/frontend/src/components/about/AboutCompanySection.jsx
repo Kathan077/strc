@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import {
   Truck,
-  Award,
   PhoneCall,
   ArrowRight,
   ShieldCheck,
@@ -18,7 +17,6 @@ const ICON_MAP = {
   Truck,
   ShieldCheck,
   History,
-  Award,
   Building2,
 };
 
@@ -27,37 +25,26 @@ export default function AboutCompanySection({ data }) {
   const topClients = data?.topClients || [];
 
   const imgSupervisor = data?.imgSupervisor || '/images/about/operations-supervisor.jpg';
-  const ribbonTag = data?.ribbonTag || 'ESTD. 2003';
-  const ribbonText = data?.ribbonText || '23+ Years Experience';
   const imgTruck = data?.imgTruck || '/images/about/srtc-highway-truck.jpg';
-  const sealLabel = data?.sealLabel || 'BEST ROAD FREIGHT';
-  const sealSub = data?.sealSub || 'SRTC FLEET';
-  const imgDetail = data?.imgDetail || '/images/about/highway-truck-detail.jpg';
 
   const eyebrowText = data?.eyebrowText || 'ABOUT OUR COMPANY & HERITAGE';
-  const title = data?.title || 'Our services increase the';
-  const titleAccent = data?.titleAccent || 'velocity & productivity';
-  const titleSuffix = data?.titleSuffix || 'of your supply chain.';
+  const title = data?.title || 'Delivering reliability, speed, and';
+  const titleAccent = data?.titleAccent || 'value every single time';
+  const titleSuffix = data?.titleSuffix || 'our trucks hit the highway.';
   const leadText =
     data?.leadText ||
     'Shree Ram Transportation Corporation, founded in 2003 by Mr. Menandbhai Odedara, has set road logistics benchmarks across Gujarat and Pan-India for over two decades. Building on this legacy, SRTC Supply Chain Pvt. Ltd. commands 840+ heavy commercial vehicles delivering scalable FTL, container haulage, and warehouse handling for India’s premier industrial leaders.';
 
-  const actionBtnText = data?.actionBtnText || 'Explore Fleet Services';
+  const actionBtnText = data?.actionBtnText || 'Explore Our Services';
   const actionBtnLink = data?.actionBtnLink || '/services';
-  const phoneLabel = data?.phoneLabel || 'Call Central Dispatch:';
+  const phoneLabel = data?.phoneLabel || 'Direct Linehaul Hotline:';
   const phoneNumber = data?.phoneNumber || '+91 9426646095';
   const phoneTel = data?.phoneTel || 'tel:+919426646095';
 
   return (
     <section className="srtc-about-company" aria-label="About SRTC Supply Chain Company">
-      {/* ====================================================================
-          1. PREMIUM BACKGROUND ANIMATION:
-             - Smooth Animated SVG Highway Transit Flow Lines
-             - Soft Breathing Ambient Radial Orbs
-             - Floating Glassmorphic Fleet Live-Status Indicators
-          ==================================================================== */}
+      {/* Background Highway Transit Animation Canvas */}
       <div className="srtc-bg-animation-canvas" aria-hidden="true">
-        {/* Animated Highway Transit SVG Routes */}
         <svg
           className="srtc-highway-flow-svg"
           viewBox="0 0 1440 700"
@@ -75,33 +62,29 @@ export default function AboutCompanySection({ data }) {
           />
         </svg>
 
-        {/* Ambient Breathing Glow Orbs */}
         <div className="srtc-ambient-orb srtc-ambient-orb--gold" />
         <div className="srtc-ambient-orb srtc-ambient-orb--navy" />
       </div>
 
       <div className="srtc-about-company__container">
         {/* ====================================================================
-            2. LEFT COLUMN: Multi-Layered Visual Collage (Exact Height Match)
-               Starts at exact top baseline and finishes at exact bottom baseline
+            LEFT COLUMN: Refined Dual-Media Collage
+            - Round circle image removed completely
+            - Square truck image aligned cleanly in bottom-left
+            - Badges positioned cleanly with ZERO image cutoff or obstruction
             ==================================================================== */}
         <div className="srtc-about-company__media-col">
           <div className="srtc-about-company__collage">
-            {/* Top-Right Card: Operations Supervisor / Founder */}
+            {/* Top Main Card: Operations Supervisor / Founder */}
             <div className="srtc-about-company__card-top">
               <img
                 src={imgSupervisor}
                 alt="Mr. Menand Balubhai Odedara, Founder of Shree Ram Transportation Corporation"
                 className="srtc-about-company__img-supervisor"
               />
-              {/* ESTD. 2003 Ribbon Badge */}
-              <div className="srtc-about-company__ribbon-badge">
-                <span className="srtc-ribbon-tag">{ribbonTag}</span>
-                <span className="srtc-ribbon-text">{ribbonText}</span>
-              </div>
             </div>
 
-            {/* Bottom-Left Card: Heavy Highway Blue Rig in Motion */}
+            {/* Bottom-Left Card: Square Commercial Heavy Blue Rig */}
             <div className="srtc-about-company__card-truck">
               <img
                 src={imgTruck}
@@ -109,32 +92,11 @@ export default function AboutCompanySection({ data }) {
                 className="srtc-about-company__img-truck"
               />
             </div>
-
-            {/* Center Metallic Seal: "BEST ROAD FREIGHT • SRTC FLEET" */}
-            <div className="srtc-about-company__seal-badge" aria-hidden="true">
-              <div className="srtc-seal-outer">
-                <div className="srtc-seal-core">
-                  <Award size={22} className="srtc-seal-icon" />
-                  <span className="srtc-seal-label">{sealLabel}</span>
-                  <span className="srtc-seal-sub">{sealSub}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom-Right Circular Detail: Chrome Grille & LED Headlights */}
-            <div className="srtc-about-company__circle-truck">
-              <img
-                src={imgDetail}
-                alt="SRTC Commercial Transport Truck Chrome Grille and LED Headlights"
-                className="srtc-about-company__img-detail"
-              />
-            </div>
           </div>
         </div>
 
         {/* ====================================================================
-            3. RIGHT COLUMN: Content Column
-               Synchronized 1:1 in height with the left image collage
+            RIGHT COLUMN: Content Column (100% Preserved Styles & Class Names)
             ==================================================================== */}
         <div className="srtc-about-company__content-col">
           {/* Eyebrow Micro-Kicker */}
@@ -161,7 +123,7 @@ export default function AboutCompanySection({ data }) {
               const IconComp = ICON_MAP[item.icon] || Calendar;
               return (
                 <div
-                  key={idx}
+                  key={item._id || item.year || idx}
                   className="srtc-history-card"
                   style={{ '--milestone-delay': item.delay || `${(idx + 1) * 80}ms` }}
                 >
@@ -180,19 +142,21 @@ export default function AboutCompanySection({ data }) {
           </div>
 
           {/* Trusted Industrial Clients Ribbon */}
-          <div className="srtc-about-company__clients-bar">
-            <div className="srtc-clients-bar__label">
-              <Building2 size={13} className="srtc-clients-bar__icon" />
-              <span>TRUSTED PARTNER FOR INDUSTRY LEADERS:</span>
+          {topClients && topClients.length > 0 && (
+            <div className="srtc-about-company__clients-bar">
+              <div className="srtc-clients-bar__label">
+                <Building2 size={13} className="srtc-clients-bar__icon" />
+                <span>TRUSTED PARTNER FOR INDUSTRY LEADERS:</span>
+              </div>
+              <div className="srtc-clients-bar__pills">
+                {topClients.map((client, idx) => (
+                  <span key={client._id || idx} className="srtc-client-tag">
+                    {typeof client === 'string' ? client : client.name}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="srtc-clients-bar__pills">
-              {topClients.map((client, idx) => (
-                <span key={idx} className="srtc-client-tag">
-                  {client}
-                </span>
-              ))}
-            </div>
-          </div>
+          )}
 
           {/* Bottom Action Row: Action Button + Call Helpline */}
           <div className="srtc-about-company__actions-row">

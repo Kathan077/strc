@@ -1,15 +1,13 @@
 /* ==========================================================================
-   SRTC Digital & Trusted Transport Logistics (Compact Stats & Chamfered Cards)
-   Theme: Deep Navy Blue (#0B2F4A), Imperial Gold (#E8B94F), Pure White (#FFFFFF)
-   Signature Chamfered Top-Right Corner Styling (45° Precision Cut)
-   Both Columns (Left Image + Right Cards) Share EXACT SAME HEIGHT!
+   SRTC Logistics — Executive 2x2 Instrument Grid (Clean, Box-Free, Professional)
+   Theme: Imperial Navy (#0B2F4A), Signature Gold (#E8B94F), Slate (#475569)
    ========================================================================== */
 
 .srtc-about-stats {
   position: relative;
   width: 100%;
   background-color: #FFFFFF;
-  padding: 3.5rem 1.5rem 4rem; /* Reduced height of entire section */
+  padding: 3.5rem 1.5rem 4rem;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -22,11 +20,11 @@
   display: grid;
   grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
   gap: 3.5rem;
-  align-items: stretch; /* Enforces 100% identical height for both columns! */
+  align-items: stretch;
 }
 
 /* ==========================================================================
-   1. LEFT COLUMN: Chamfered Image + Title + Request A Quote CTA
+   1. LEFT COLUMN: Hero Image + Headline + Action CTA
    ========================================================================== */
 
 .srtc-about-stats__left-col {
@@ -38,31 +36,17 @@
   box-sizing: border-box;
 }
 
-/* Compact Top Chamfered Hero Image Card */
 .srtc-stats-image-card {
   position: relative;
   width: 100%;
-  height: 195px; /* Compact height */
-  /* Signature 45° Chamfered Cut on Top-Right Corner */
+  height: 200px;
   clip-path: polygon(0 0, calc(100% - 38px) 0, 100% 38px, 100% 100%, 0 100%);
   border-radius: 20px 0 20px 20px;
   overflow: hidden;
   box-shadow: 0 12px 32px rgba(11, 47, 74, 0.12);
   background-color: #071F33;
-  margin-bottom: 1.15rem;
-  animation: statsImageEnter 650ms cubic-bezier(0.16, 1, 0.3, 1) 50ms both;
+  margin-bottom: 1.25rem;
   transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes statsImageEnter {
-  0% {
-    opacity: 0;
-    transform: translateX(-30px) scale(0.97);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
 }
 
 .srtc-stats-image-card:hover {
@@ -77,7 +61,6 @@
   display: block;
 }
 
-/* Subtle Chamfer Accent Line */
 .srtc-stats-image-chamfer-edge {
   position: absolute;
   top: 0;
@@ -85,10 +68,9 @@
   width: 55px;
   height: 55px;
   pointer-events: none;
-  background: linear-gradient(135deg, transparent 48%, rgba(232, 185, 79, 0.75) 49%, rgba(232, 185, 79, 0.75) 52%, transparent 53%);
+  background: linear-gradient(135deg, transparent 48%, rgba(232, 185, 79, 0.8) 49%, rgba(232, 185, 79, 0.8) 52%, transparent 53%);
 }
 
-/* Bottom Text Group */
 .srtc-about-stats__text-group {
   display: flex;
   flex-direction: column;
@@ -99,13 +81,12 @@
 .srtc-stats-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #D49D28;
-  margin-bottom: 0.4rem;
-  animation: statsTextFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+  margin-bottom: 0.45rem;
 }
 
 .srtc-stats-kicker__icon {
@@ -113,35 +94,21 @@
 }
 
 .srtc-about-stats__title {
-  margin: 0 0 0.55rem;
-  font-size: clamp(1.55rem, 2.1vw, 1.95rem); /* Compact proportional title */
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.55rem, 2.1vw, 1.95rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.22;
   color: #071F33;
   letter-spacing: -0.025em;
-  animation: statsTextFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
 }
 
 .srtc-about-stats__desc {
-  margin: 0 0 1.15rem;
+  margin: 0 0 1.25rem;
   font-size: 0.88rem;
-  line-height: 1.5;
+  line-height: 1.52;
   color: #475569;
-  animation: statsTextFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 260ms both;
 }
 
-@keyframes statsTextFadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Request A Quote! CTA Button */
 .srtc-stats-cta-btn {
   display: inline-flex;
   align-items: center;
@@ -155,7 +122,6 @@
   border-radius: 9999px;
   text-decoration: none;
   box-shadow: 0 8px 22px rgba(212, 157, 40, 0.35);
-  animation: statsTextFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 340ms both;
   transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -182,247 +148,161 @@
 }
 
 /* ==========================================================================
-   2. RIGHT COLUMN: 2x2 Grid of Compact Chamfered Stat Cards
+   2. RIGHT COLUMN: Professional Unified Instrument Panel
    ========================================================================== */
 
 .srtc-about-stats__right-col {
+  position: relative;
   width: 100%;
   height: 100%;
   min-width: 0;
   box-sizing: border-box;
 }
 
-.srtc-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.15rem; /* Compact 18px gap */
+.srtc-pro-stats-panel {
+  position: relative;
+  width: 100%;
   height: 100%;
-  min-width: 0;
+  background: #FAFBFD;
+  border: 1px solid #E2E8F0;
+  border-radius: 24px;
+  box-shadow: 0 14px 36px -10px rgba(11, 47, 74, 0.05);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* Base Chamfered Card Styling */
-.srtc-stat-card {
+.srtc-pro-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.srtc-pro-stat-item {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 1.45rem 1.4rem; /* Compact padding */
+  justify-content: flex-start;
+  padding: 2.2rem 2.25rem;
   box-sizing: border-box;
-  /* Signature 45° Chamfered Cut on Top-Right Corner */
-  clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 0 100%);
-  border-radius: 20px 0 20px 20px;
-  min-height: 180px; /* Reduced from 260px! */
-  animation: statCardCascade 650ms cubic-bezier(0.16, 1, 0.3, 1) var(--card-delay, 100ms) both;
-  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 260ms ease;
+  text-align: left;
+  transition: background-color 220ms ease;
 }
 
-/* Ensure all content inside card sits above pseudo-element background */
-.srtc-stat-card > * {
-  position: relative;
-  z-index: 2;
+.srtc-pro-stat-item:hover {
+  background-color: rgba(232, 185, 79, 0.035);
 }
 
-@keyframes statCardCascade {
-  0% {
-    opacity: 0;
-    transform: translateY(24px) scale(0.97);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+/* Precision Clean Dividers between quadrants */
+.srtc-pro-stat-item--1 {
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
 }
 
-.srtc-stat-card:hover {
-  transform: translateY(-3px) scale(1.015);
+.srtc-pro-stat-item--2 {
+  border-bottom: 1px solid #E2E8F0;
 }
 
-/* Card Title */
-.srtc-stat-card__title {
-  margin: 0;
-  font-size: 0.98rem; /* Proportional title */
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+.srtc-pro-stat-item--3 {
+  border-right: 1px solid #E2E8F0;
 }
 
-/* Middle Stat Row: Icon + Proportional Big Number */
-.srtc-stat-card__stat-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0.75rem 0 0.85rem; /* Tightened spacing */
+.srtc-pro-stat-item--4 {
+  border-right: none;
+  border-bottom: none;
 }
 
-.srtc-stat-card__icon-box {
+/* Icon Badge */
+.srtc-pro-stat-item__icon-wrap {
+  margin-bottom: 1rem;
+}
+
+.srtc-pro-stat-item__icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0B2F4A 0%, #071F33 100%);
+  color: #E8B94F;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 260ms ease;
+  box-shadow: 0 6px 16px rgba(11, 47, 74, 0.12);
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
-.srtc-stat-card:hover .srtc-stat-card__icon-box {
-  transform: scale(1.1);
+.srtc-pro-stat-item:hover .srtc-pro-stat-item__icon-badge {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212, 157, 40, 0.28);
 }
 
-.srtc-stat-card__number {
-  font-size: 2.35rem; /* Reduced from 3.25rem! Crisp, bold, punchy */
+/* Metric Display */
+.srtc-pro-stat-item__number {
+  font-size: clamp(2.15rem, 2.6vw, 2.65rem);
   font-weight: 900;
   letter-spacing: -0.035em;
   line-height: 1;
+  color: #071F33;
+  margin-bottom: 0.35rem;
+  transition: color 200ms ease;
 }
 
-/* Subtle Separator Divider */
-.srtc-stat-card__divider {
-  width: 100%;
-  height: 1px;
-  margin-bottom: 0.7rem;
+.srtc-pro-stat-item:hover .srtc-pro-stat-item__number {
+  color: #0B2F4A;
 }
 
-/* Card Description */
-.srtc-stat-card__desc {
+/* Title */
+.srtc-pro-stat-item__title {
+  margin: 0 0 0.55rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0B2F4A;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+/* Subtle Gold Accent Bar */
+.srtc-pro-stat-item__accent-bar {
+  width: 32px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #E8B94F, #D49D28);
+  margin-bottom: 0.75rem;
+  transition: width 240ms ease;
+}
+
+.srtc-pro-stat-item:hover .srtc-pro-stat-item__accent-bar {
+  width: 52px;
+}
+
+/* Description */
+.srtc-pro-stat-item__desc {
   margin: 0;
-  font-size: 0.78rem; /* Compact readable font */
-  line-height: 1.45;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #475569;
 }
 
 /* ==========================================================================
-   3. COLOR VARIANTS (White, Solid Radiant Gold, Solid Deep Navy)
-   ========================================================================== */
-
-/* Variant 1 & 4: White Cards (Card 1 & Card 4) - Flawless Continuous Border without Line Cuts */
-.srtc-stat-card--white {
-  position: relative;
-  background-color: #EDF2F7; /* Outer perimeter border line */
-  border: none !important; /* Prevents rectangular border from being chopped by clip-path */
-  box-shadow: 0 8px 24px rgba(11, 47, 74, 0.05);
-  transition: background-color 260ms ease, box-shadow 260ms ease, transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.srtc-stat-card--white::after {
-  content: '';
-  position: absolute;
-  inset: 1.5px;
-  clip-path: polygon(0 0, calc(100% - 31px) 0, 100% 31px, 100% 100%, 0 100%);
-  border-radius: 19px 0 19px 19px;
-  background-color: #FFFFFF;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.srtc-stat-card--white:hover {
-  background-color: #E8B94F; /* Continuous unbroken gold border wraps all 5 edges including chamfer! */
-  box-shadow: 0 14px 34px rgba(212, 157, 40, 0.22);
-}
-
-.srtc-stat-card--white .srtc-stat-card__title {
-  color: #0B2F4A;
-}
-
-.srtc-stat-card--white .srtc-stat-card__icon-box {
-  color: #0B2F4A;
-}
-
-.srtc-stat-card--white .srtc-stat-card__number {
-  color: #071F33;
-}
-
-.srtc-stat-card--white .srtc-stat-card__divider {
-  background-color: #F1F5F9;
-}
-
-.srtc-stat-card--white .srtc-stat-card__desc {
-  color: #64748B;
-}
-
-/* Variant 2: Solid Radiant Gold Card (Card 2) */
-.srtc-stat-card--gold {
-  background: linear-gradient(135deg, #E8B94F 0%, #D49D28 100%);
-  color: #0B2F4A;
-  box-shadow: 0 10px 28px rgba(212, 157, 40, 0.3);
-}
-
-.srtc-stat-card--gold:hover {
-  box-shadow: 0 16px 38px rgba(212, 157, 40, 0.45);
-  transform: translateY(-4px) scale(1.015);
-}
-
-.srtc-stat-card--gold .srtc-stat-card__title {
-  color: #0B2F4A;
-  font-weight: 900;
-}
-
-.srtc-stat-card--gold .srtc-stat-card__icon-box {
-  color: #0B2F4A;
-}
-
-.srtc-stat-card--gold .srtc-stat-card__number {
-  color: #0B2F4A;
-}
-
-.srtc-stat-card--gold .srtc-stat-card__divider {
-  background-color: rgba(11, 47, 74, 0.22);
-}
-
-.srtc-stat-card--gold .srtc-stat-card__desc {
-  color: #071F33;
-  font-weight: 600;
-}
-
-/* Variant 3: Solid Deep Imperial Navy Card (Card 3) */
-.srtc-stat-card--navy {
-  background: linear-gradient(135deg, #0B2F4A 0%, #071F33 100%);
-  color: #FFFFFF;
-  box-shadow: 0 12px 32px rgba(7, 31, 51, 0.28);
-}
-
-.srtc-stat-card--navy:hover {
-  box-shadow: 0 18px 40px rgba(7, 31, 51, 0.4);
-  transform: translateY(-4px) scale(1.015);
-}
-
-.srtc-stat-card--navy .srtc-stat-card__title {
-  color: #FFFFFF;
-}
-
-.srtc-stat-card--navy .srtc-stat-card__icon-box {
-  color: #E8B94F;
-}
-
-.srtc-stat-card--navy .srtc-stat-card__number {
-  color: #FFFFFF;
-}
-
-.srtc-stat-card--navy .srtc-stat-card__divider {
-  background-color: rgba(255, 255, 255, 0.18);
-}
-
-.srtc-stat-card--navy .srtc-stat-card__desc {
-  color: #CBD5E1;
-}
-
-/* ==========================================================================
-   4. RESPONSIVE BREAKPOINTS
+   3. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 
 @media (max-width: 1120px) {
   .srtc-about-stats__container {
-    grid-template-columns: 370px 1fr;
+    grid-template-columns: 360px 1fr;
     gap: 2.5rem;
   }
 
   .srtc-stats-image-card {
-    height: 175px;
+    height: 180px;
   }
 
-  .srtc-stat-card {
-    padding: 1.25rem 1.15rem;
-    min-height: 165px;
+  .srtc-pro-stat-item {
+    padding: 1.75rem 1.6rem;
   }
 
-  .srtc-stat-card__number {
-    font-size: 2.1rem;
+  .srtc-pro-stat-item__number {
+    font-size: 2.15rem;
   }
 }
 
@@ -440,29 +320,27 @@
     height: 220px;
     max-width: 480px;
   }
-
-  .srtc-stats-grid {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
-@media (max-width: 600px) {
-  .srtc-stats-grid {
+@media (max-width: 640px) {
+  .srtc-pro-stats-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-rows: auto;
   }
 
-  .srtc-stats-image-card {
-    height: 190px;
+  .srtc-pro-stat-item--1,
+  .srtc-pro-stat-item--2,
+  .srtc-pro-stat-item--3 {
+    border-right: none;
+    border-bottom: 1px solid #E2E8F0;
   }
 
-  .srtc-stat-card {
-    min-height: auto;
-    padding: 1.2rem 1.1rem;
+  .srtc-pro-stat-item {
+    padding: 1.65rem 1.4rem;
   }
 
-  .srtc-stat-card__number {
-    font-size: 2.1rem;
+  .srtc-pro-stat-item__number {
+    font-size: 2.2rem;
   }
 }
 
@@ -473,144 +351,10 @@
 
   .srtc-about-stats__title {
     font-size: 1.45rem;
-    line-height: 1.22;
-  }
-
-  .srtc-about-stats__desc {
-    font-size: 0.84rem;
-    margin-bottom: 1rem;
-  }
-
-  .srtc-stats-image-card {
-    height: 170px;
-    clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%);
-    border-radius: 16px 0 16px 16px;
-  }
-
-  .srtc-stat-card {
-    padding: 1.15rem 1rem;
-    clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
-    border-radius: 16px 0 16px 16px;
-  }
-
-  .srtc-stat-card__number {
-    font-size: 1.95rem;
   }
 
   .srtc-stats-cta-btn {
     width: 100%;
     justify-content: center;
-    box-sizing: border-box;
-  }
-}
-
-@media (max-width: 380px) {
-  .srtc-about-stats {
-    padding: 2rem 0.85rem 2.25rem;
-  }
-
-  .srtc-about-stats__title {
-    font-size: 1.35rem;
-  }
-
-  .srtc-stat-card {
-    padding: 1.05rem 0.9rem;
-  }
-
-  .srtc-stat-card__number {
-    font-size: 1.78rem;
-  }
-
-  .srtc-stats-cta-btn {
-    font-size: 0.84rem;
-    padding: 0.72rem 1.25rem;
-  }
-}
-
-@media (max-width: 340px) {
-  .srtc-about-stats {
-    padding: 1.75rem 0.65rem 2rem;
-  }
-
-  .srtc-about-stats__title {
-    font-size: 1.22rem;
-    line-height: 1.24;
-  }
-
-  .srtc-about-stats__desc {
-    font-size: 0.8rem;
-  }
-
-  .srtc-stats-image-card {
-    height: 155px;
-  }
-
-  .srtc-stat-card {
-    padding: 0.95rem 0.75rem;
-  }
-
-  .srtc-stat-card__title {
-    font-size: 0.9rem;
-  }
-
-  .srtc-stat-card__number {
-    font-size: 1.62rem;
-  }
-
-  .srtc-stat-card__desc {
-    font-size: 0.74rem;
-  }
-
-  .srtc-stats-cta-btn {
-    font-size: 0.8rem;
-    padding: 0.68rem 1rem;
-    gap: 0.5rem;
-  }
-}
-
-/* 4K UHD TV Display Support */
-@media (min-width: 1921px) {
-  .srtc-about-stats {
-    padding: 5.5rem 3rem 6rem;
-  }
-
-  .srtc-about-stats__container {
-    max-width: 1800px;
-    grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
-    gap: 5rem;
-  }
-
-  .srtc-stats-image-card {
-    height: 290px;
-  }
-
-  .srtc-about-stats__title {
-    font-size: 2.75rem;
-  }
-
-  .srtc-about-stats__desc {
-    font-size: 1.15rem;
-  }
-
-  .srtc-stats-cta-btn {
-    font-size: 1.05rem;
-    padding: 1rem 2.2rem;
-  }
-
-  .srtc-stat-card {
-    padding: 2.2rem 2rem;
-    min-height: 230px;
-  }
-
-  .srtc-stat-card__title {
-    font-size: 1.25rem;
-  }
-
-  .srtc-stat-card__number {
-    font-size: 3.2rem;
-  }
-
-  .srtc-stat-card__desc {
-    font-size: 0.95rem;
   }
 }

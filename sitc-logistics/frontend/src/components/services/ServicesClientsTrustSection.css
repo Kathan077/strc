@@ -1,19 +1,19 @@
 /* ==========================================================================
-   SRTC Clients Trust Section - Clean Cute Highway Convoy
-   Dual-Direction Animated Moving Commercial Truck System
+   SRTC Clients Trust Section - Official Brochure Top Clients
+   Clean Rounded White Cards with Gold Trim (Matching PDF Brochure Page 5)
    ========================================================================== */
 
 .srtc-clients-trust-section {
   position: relative;
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  padding: clamp(4.5rem, 7vw, 6.5rem) clamp(1rem, 3.5vw, 2.5rem);
+  padding: clamp(3.5rem, 5.5vw, 5rem) clamp(1rem, 3.5vw, 2.5rem);
   box-sizing: border-box;
   border-bottom: 1px solid #E2E8F0;
   overflow: hidden;
 }
 
 .srtc-clients-container {
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -23,42 +23,16 @@
 .srtc-clients-header {
   text-align: center;
   max-width: 860px;
-  margin: 0 auto 2.5rem;
-}
-
-.srtc-clients-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.95rem;
-  background: rgba(11, 47, 74, 0.06);
-  border: 1px solid rgba(11, 47, 74, 0.15);
-  border-radius: 9999px;
-  color: #07557A;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 0.85rem;
-}
-
-.srtc-clients-kicker-icon {
-  color: #E8B94F;
+  margin: 0 auto 3rem;
 }
 
 .srtc-clients-title {
-  margin: 0 0 1rem;
+  margin: 0 0 0.85rem;
   font-size: clamp(1.9rem, 3.2vw, 2.7rem);
   font-weight: 900;
   color: #0B2F4A;
   line-height: 1.22;
   letter-spacing: -0.025em;
-}
-
-.srtc-clients-title-gold {
-  color: #E8B94F;
-  position: relative;
-  display: inline-block;
 }
 
 .srtc-clients-subtitle {
@@ -67,431 +41,115 @@
   color: #475569;
   line-height: 1.6;
   font-weight: 400;
+  max-width: 760px;
 }
 
 /* --------------------------------------------------------------------------
-   Highway Surface Corridor Container (Clean & Rounded)
+   Brochure Client Cards Grid (100% Matching Official Brochure Page 5)
    -------------------------------------------------------------------------- */
-.srtc-highway-corridor {
-  position: relative;
-  background: #0B131E;
-  border-radius: 16px;
-  overflow: hidden;
-  max-width: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  border: 2px solid #0B2F4A;
-  box-shadow: inset 0 0 32px rgba(0, 0, 0, 0.65), 0 14px 40px rgba(11, 47, 74, 0.16);
-  padding: 0.75rem 0;
-  margin-bottom: 3.5rem;
+.srtc-brochure-clients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
-/* --------------------------------------------------------------------------
-   Individual Highway Lanes (Eastbound & Westbound)
-   -------------------------------------------------------------------------- */
-.srtc-highway-lane {
+.srtc-brochure-client-card {
   position: relative;
-  padding: 0.65rem 0 0.45rem;
-  background: linear-gradient(180deg, #101824 0%, #0D141E 50%, #101824 100%);
-  overflow: hidden;
-  max-width: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  border-top: 1px dashed rgba(255, 255, 255, 0.06);
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
-}
-
-/* Median Barrier & Yellow Marking with Road Studs */
-.srtc-highway-median {
-  position: relative;
-  height: 10px;
-  background: #060B12;
-  border-top: 1.5px solid #EAB308;
-  border-bottom: 1.5px solid #EAB308;
+  background: #FFFFFF;
+  border: 2.5px solid #C89D35;
+  border-radius: 22px;
+  height: 145px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1.25rem 1.6rem;
+  box-shadow: 0 4px 18px rgba(11, 47, 74, 0.05);
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 250ms ease,
+              border-color 250ms ease;
+  box-sizing: border-box;
 }
 
-.srtc-highway-catseye-row {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
+.srtc-brochure-client-card:hover {
+  transform: translateY(-5px);
+  border-color: #E8B94F;
+  box-shadow: 0 14px 32px rgba(200, 157, 53, 0.22);
 }
 
-.srtc-highway-catseye {
-  width: 3.5px;
-  height: 3.5px;
-  border-radius: 1px;
-  background: #FACC15;
-  box-shadow: 0 0 3px #FACC15;
-}
-
-/* --------------------------------------------------------------------------
-   Infinite Moving Cute Truck Conveyor Track
-   -------------------------------------------------------------------------- */
-.srtc-truck-track {
-  display: flex;
-  width: max-content;
+.srtc-brochure-client-logo {
+  max-width: 88%;
+  max-height: 78px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 250ms ease;
   user-select: none;
 }
 
-.srtc-truck-group {
-  display: flex;
-  align-items: center;
-  gap: 2.25rem;
-  padding: 0 1.25rem;
-  flex-shrink: 0;
-}
-
-/* LANE 1 (EASTBOUND): Left to Right */
-.srtc-truck-track--east {
-  animation: srtcHighwayEastbound 24s linear infinite;
-}
-
-@keyframes srtcHighwayEastbound {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-/* LANE 2 (WESTBOUND): Right to Left */
-.srtc-truck-track--west {
-  animation: srtcHighwayWestbound 22s linear infinite;
-}
-
-@keyframes srtcHighwayWestbound {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Pause on Hover */
-.srtc-highway-corridor:hover .srtc-truck-track {
-  animation-play-state: paused;
-}
-
-/* Synchronized Wheel Rotation */
-.srtc-wheel-spin-cw {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: srtcWheelRollCW 0.7s linear infinite;
-}
-
-@keyframes srtcWheelRollCW {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.srtc-highway-corridor:hover .srtc-wheel-spin-cw {
-  animation-play-state: paused;
-}
-
-/* --------------------------------------------------------------------------
-   Individual Cute Truck Item Styling
-   -------------------------------------------------------------------------- */
-.srtc-cute-truck {
-  position: relative;
-  flex-shrink: 0;
-  cursor: pointer;
-  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 240ms ease;
-  outline: none;
-}
-
-.srtc-cute-truck-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.srtc-cute-truck:hover {
-  transform: translateY(-4px) scale(1.03);
-  filter: drop-shadow(0 8px 18px rgba(232, 185, 79, 0.5));
-}
-
-.srtc-cute-truck--selected {
-  transform: translateY(-5px) scale(1.04);
-  filter: drop-shadow(0 10px 22px rgba(232, 185, 79, 0.75));
-}
-
-/* Headlight Lens Pulse */
-.srtc-headlight-lens {
-  animation: srtcHeadlightPulse 2s infinite ease-in-out;
-}
-
-@keyframes srtcHeadlightPulse {
-  0%, 100% { opacity: 0.9; }
-  50% { opacity: 1; filter: drop-shadow(0 0 5px #38BDF8); }
-}
-
-/* --------------------------------------------------------------------------
-   Telematics Modal / HUD Card
-   -------------------------------------------------------------------------- */
-.srtc-telematics-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(7, 31, 51, 0.75);
-  backdrop-filter: blur(6px);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.25rem;
-  animation: srtcModalFadeIn 200ms ease;
-}
-
-@keyframes srtcModalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.srtc-telematics-modal-card {
-  position: relative;
-  background: #FFFFFF;
-  border: 2px solid #E8B94F;
-  border-radius: 16px;
-  max-width: 600px;
-  width: 100%;
-  padding: 1.8rem;
-  box-shadow: 0 25px 60px rgba(7, 31, 51, 0.4);
-  animation: srtcModalCardUp 220ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes srtcModalCardUp {
-  from { transform: translateY(16px) scale(0.96); opacity: 0; }
-  to { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-.srtc-telematics-close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #F1F5F9;
-  border: 1px solid #CBD5E1;
-  color: #475569;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 180ms ease;
-}
-
-.srtc-telematics-close-btn:hover {
-  background: #0B2F4A;
-  color: #FFFFFF;
-  border-color: #0B2F4A;
-}
-
-.srtc-telematics-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding-bottom: 1.15rem;
-  border-bottom: 1px solid #E2E8F0;
-  margin-bottom: 1.25rem;
-}
-
-.srtc-telematics-logo-wrap {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.srtc-telematics-title-group {
-  flex: 1;
-}
-
-.srtc-telematics-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.65rem;
-  font-weight: 800;
-  color: #10B981;
-  letter-spacing: 0.06em;
-  background: rgba(16, 185, 129, 0.1);
-  padding: 0.2rem 0.55rem;
-  border-radius: 4px;
-  margin-bottom: 0.3rem;
-}
-
-.srtc-telematics-name {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 900;
-  color: #0B2F4A;
-  line-height: 1.25;
-}
-
-.srtc-telematics-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.4rem;
-}
-
-.srtc-telematics-item {
-  display: flex;
-  flex-direction: column;
-  background: #F8FAFC;
-  padding: 0.8rem 0.95rem;
-  border-radius: 8px;
-  border: 1px solid #E2E8F0;
-}
-
-.srtc-telematics-lbl {
-  font-size: 0.66rem;
-  font-weight: 700;
-  color: #64748B;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.2rem;
-}
-
-.srtc-telematics-val {
-  font-size: 0.84rem;
-  font-weight: 800;
-  color: #0B2F4A;
-  line-height: 1.35;
-}
-
-.srtc-telematics-footer {
-  text-align: center;
-}
-
-.srtc-telematics-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  width: 100%;
-  padding: 0.8rem 1.3rem;
-  background: #0B2F4A;
-  color: #FFFFFF;
-  border-radius: 8px;
-  font-size: 0.86rem;
-  font-weight: 800;
-  text-decoration: none;
-  transition: all 200ms ease;
-  box-shadow: 0 4px 14px rgba(11, 47, 74, 0.18);
-}
-
-.srtc-telematics-cta:hover {
-  background: #E8B94F;
-  color: #071F33;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(232, 185, 79, 0.35);
-}
-
-/* --------------------------------------------------------------------------
-   Stats Credentials Bar (PDF Brochure Trust Stats)
-   -------------------------------------------------------------------------- */
-.srtc-clients-stats-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background: #0B2F4A;
-  border-radius: 14px;
-  padding: 2rem 2.4rem;
-  border: 1px solid rgba(232, 185, 79, 0.35);
-  box-shadow: 0 14px 34px rgba(11, 47, 74, 0.16);
-}
-
-.srtc-clients-stat-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.srtc-clients-stat-num {
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  font-weight: 900;
-  color: #E8B94F;
-  line-height: 1.05;
-  font-family: Consolas, monospace;
-}
-
-.srtc-clients-stat-lbl {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #D6E2EC;
-  margin-top: 0.4rem;
-  letter-spacing: 0.02em;
-}
-
-.srtc-clients-stat-sep {
-  width: 1px;
-  height: 48px;
-  background: rgba(232, 185, 79, 0.28);
+.srtc-brochure-client-card:hover .srtc-brochure-client-logo {
+  transform: scale(1.05);
 }
 
 /* --------------------------------------------------------------------------
    Responsive Media Queries
    -------------------------------------------------------------------------- */
-@media (max-width: 900px) {
-  .srtc-telematics-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 1024px) {
+  .srtc-brochure-clients-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+
+  .srtc-brochure-client-card {
+    height: 130px;
+    padding: 1.1rem 1.3rem;
+    border-radius: 18px;
+  }
+
+  .srtc-brochure-client-logo {
+    max-height: 70px;
   }
 }
 
 @media (max-width: 768px) {
   .srtc-clients-trust-section {
-    padding: 4rem 1.25rem 3.5rem;
+    padding: 3rem 1.25rem 2.5rem;
   }
 
   .srtc-clients-header {
     margin-bottom: 2rem;
   }
 
-  .srtc-clients-stats-bar {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.75rem;
+  .srtc-brochure-clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 480px;
   }
 
-  .srtc-clients-stat-sep {
-    width: 60%;
-    height: 1px;
+  .srtc-brochure-client-card {
+    height: 115px;
+    padding: 0.9rem 1.1rem;
+    border-radius: 16px;
+    border-width: 2px;
   }
 
-  .srtc-truck-group {
-    gap: 1.5rem;
-    padding: 0 0.75rem;
+  .srtc-brochure-client-logo {
+    max-height: 62px;
   }
 }
 
 @media (max-width: 480px) {
   .srtc-clients-trust-section {
-    padding: 3.5rem 0.85rem 3rem;
+    padding: 2.5rem 0.85rem 2rem;
   }
 
   .srtc-clients-header {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 
   .srtc-clients-title {
-    font-size: 1.75rem;
+    font-size: 1.7rem;
     word-break: break-word;
   }
 
@@ -499,119 +157,18 @@
     font-size: 0.88rem;
   }
 
-  .srtc-highway-corridor {
-    border-radius: 12px;
-    margin-bottom: 2.5rem;
-    padding: 0.5rem 0;
+  .srtc-brochure-clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
 
-  .srtc-highway-lane {
-    padding: 0.5rem 0 0.35rem;
+  .srtc-brochure-client-card {
+    height: 98px;
+    padding: 0.7rem 0.8rem;
+    border-radius: 14px;
   }
 
-  .srtc-clients-stats-bar {
-    padding: 1.4rem 1rem;
-    border-radius: 12px;
-    gap: 1.25rem;
-  }
-
-  .srtc-clients-stat-num {
-    font-size: 1.75rem;
-  }
-
-  .srtc-clients-stat-lbl {
-    font-size: 0.76rem;
-  }
-
-  .srtc-telematics-modal-card {
-    padding: 1.25rem;
-  }
-
-  .srtc-telematics-name {
-    font-size: 1.05rem;
-  }
-
-  .srtc-telematics-item {
-    padding: 0.65rem 0.75rem;
-  }
-
-  .srtc-telematics-val {
-    font-size: 0.78rem;
-  }
-}
-
-@media (max-width: 380px) {
-  .srtc-clients-trust-section {
-    padding: 3rem 0.65rem 2.5rem;
-  }
-
-  .srtc-clients-title {
-    font-size: 1.55rem;
-  }
-
-  .srtc-clients-stats-bar {
-    padding: 1.2rem 0.75rem;
-  }
-
-  .srtc-clients-stat-num {
-    font-size: 1.55rem;
-  }
-
-  .srtc-clients-stat-lbl {
-    font-size: 0.72rem;
-  }
-}
-
-@media (max-width: 340px) {
-  .srtc-clients-trust-section {
-    padding: 2.75rem 0.5rem 2.25rem;
-  }
-
-  .srtc-clients-title {
-    font-size: 1.4rem;
-  }
-
-  .srtc-clients-subtitle {
-    font-size: 0.82rem;
-  }
-
-  .srtc-clients-stats-bar {
-    padding: 1rem 0.5rem;
-  }
-
-  .srtc-clients-stat-num {
-    font-size: 1.4rem;
-  }
-
-  .srtc-clients-stat-lbl {
-    font-size: 0.68rem;
-  }
-}
-
-/* 4K UHD TV Display Support */
-@media (min-width: 1921px) {
-  .srtc-clients-container {
-    max-width: 1800px;
-  }
-
-  .srtc-clients-title {
-    font-size: 3.8rem;
-  }
-
-  .srtc-clients-subtitle {
-    font-size: 1.35rem;
-    max-width: 1000px;
-  }
-
-  .srtc-clients-stat-num {
-    font-size: 3.5rem;
-  }
-
-  .srtc-clients-stat-lbl {
-    font-size: 1.1rem;
-  }
-
-  .srtc-clients-stats-bar {
-    padding: 2.75rem 3.5rem;
+  .srtc-brochure-client-logo {
+    max-height: 52px;
   }
 }

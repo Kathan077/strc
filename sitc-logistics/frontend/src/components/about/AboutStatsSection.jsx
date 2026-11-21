@@ -8,10 +8,6 @@ import {
   ShieldCheck,
   ArrowRight,
   Sparkles,
-  Calendar,
-  Building2,
-  Zap,
-  Target,
 } from 'lucide-react';
 import './AboutStatsSection.css';
 
@@ -20,22 +16,58 @@ const ICON_MAP = {
   Route,
   Truck,
   ShieldCheck,
-  Calendar,
-  Building2,
-  Zap,
-  Target,
 };
 
+const DEFAULT_STATS = [
+  {
+    id: 'experience',
+    title: 'Years Of Experience',
+    number: '23+',
+    icon: 'History',
+    description: 'Established in 2003 with over two decades of highway transport trust.',
+  },
+  {
+    id: 'fleet',
+    title: 'Privately Owned Fleet',
+    number: 'Largest',
+    icon: 'Truck',
+    description: 'One of India’s largest privately owned fleets operating 24/7.',
+  },
+  {
+    id: 'services',
+    title: 'Specialized Offerings',
+    number: '6 Core',
+    icon: 'Route',
+    description: 'FTL, PTL, small packages, superfast cargo, warehousing & contract logistics.',
+  },
+  {
+    id: 'safety',
+    title: 'Compliance & Safety',
+    number: '100%',
+    icon: 'ShieldCheck',
+    description: 'Full traffic rule compliance with trained professional driver staff.',
+  },
+];
+
 export default function AboutStatsSection({ data }) {
-  const statCards = data?.statCards || [];
+  // Guarantee exactly 4 valid stats even if backend returns incomplete array
+  const rawCards = data?.statCards && data.statCards.length >= 4 
+    ? data.statCards 
+    : DEFAULT_STATS;
+
+  const statCards = DEFAULT_STATS.map((defaultItem, idx) => ({
+    ...defaultItem,
+    ...(rawCards[idx] || {}),
+  }));
+
   const imgUrl = data?.image || '/images/about/srtc-dryport-terminal.jpg';
   const imgAlt = data?.imageAlt || 'SRTC Inland Container Depot Dry Port Freight Logistics Terminal';
-  const kicker = data?.kicker || 'HIGH-VELOCITY ROAD FREIGHT';
+  const kicker = data?.kicker || 'PROVEN LINEHAUL EXCELLENCE';
   const title = data?.title || 'Digital & Trusted Transport Logistic Company';
   const desc =
     data?.description ||
-    'Pioneering technology-driven road transport, real-time GPS tracking, and guaranteed zero-demurrage turnaround nationwide.';
-  const ctaText = data?.ctaText || 'Request A Quote!';
+    'Delivering high-quality, end-to-end logistics solutions to corporates and individuals nationwide with guaranteed on-time delivery.';
+  const ctaText = data?.ctaText || 'Contact Us';
   const ctaLink = data?.ctaLink || '/contact';
 
   return (
@@ -43,24 +75,20 @@ export default function AboutStatsSection({ data }) {
       <div className="srtc-about-stats__container">
         {/* ====================================================================
             LEFT COLUMN: Chamfered Hero Image + Headline + Action CTA
-            Synchronized to EXACT SAME HEIGHT as the 2x2 stat cards
             ==================================================================== */}
         <div className="srtc-about-stats__left-col">
-          {/* Top Image with Chamfered Top-Right Corner */}
           <div className="srtc-stats-image-card">
             <img
               src={imgUrl}
               alt={imgAlt}
               className="srtc-stats-image"
             />
-            {/* Chamfer Accent Cut Line */}
             <div className="srtc-stats-image-chamfer-edge" aria-hidden="true" />
           </div>
 
-          {/* Bottom Headline and CTA Button */}
           <div className="srtc-about-stats__text-group">
             <div className="srtc-stats-kicker">
-              <Sparkles size={12} className="srtc-stats-kicker__icon" />
+              <Sparkles size={13} className="srtc-stats-kicker__icon" />
               <span>{kicker}</span>
             </div>
 
@@ -82,40 +110,47 @@ export default function AboutStatsSection({ data }) {
         </div>
 
         {/* ====================================================================
-            RIGHT COLUMN: 2x2 Grid of 4 Compact Chamfered Stat Cards
+            RIGHT COLUMN: Clean, Professional 2x2 Instrument Grid
+            (Zero box clutter, no green dots, no WP tags, no + icons)
             ==================================================================== */}
         <div className="srtc-about-stats__right-col">
-          <div className="srtc-stats-grid">
-            {statCards.map((card, idx) => {
-              const IconComp = ICON_MAP[card.icon] || Truck;
-              return (
-                <div
-                  key={card.id || idx}
-                  className={`srtc-stat-card srtc-stat-card--${card.variant || 'white'}`}
-                  style={{ '--card-delay': card.delay || `${(idx + 1) * 80}ms` }}
-                >
-                  {/* Decorative Chamfered Corner Accent */}
-                  <div className="srtc-stat-card__chamfer-line" aria-hidden="true" />
-
-                  {/* Card Title */}
-                  <h3 className="srtc-stat-card__title">{card.title}</h3>
-
-                  {/* Center Stat Row: Icon + Proportional Big Number */}
-                  <div className="srtc-stat-card__stat-row">
-                    <div className="srtc-stat-card__icon-box">
-                      <IconComp size={22} strokeWidth={1.9} />
+          <div className="srtc-pro-stats-panel">
+            <div className="srtc-pro-stats-grid">
+              {statCards.map((stat, idx) => {
+                const IconComp = ICON_MAP[stat.icon] || Truck;
+                return (
+                  <div
+                    key={stat.id || idx}
+                    className={`srtc-pro-stat-item srtc-pro-stat-item--${idx + 1}`}
+                  >
+                    {/* Executive Icon Badge */}
+                    <div className="srtc-pro-stat-item__icon-wrap">
+                      <div className="srtc-pro-stat-item__icon-badge">
+                        <IconComp size={20} strokeWidth={2.2} />
+                      </div>
                     </div>
-                    <span className="srtc-stat-card__number">{card.number}</span>
+
+                    {/* Bold Metric Value */}
+                    <div className="srtc-pro-stat-item__number">
+                      {stat.number}
+                    </div>
+
+                    {/* Clean Professional Title */}
+                    <h3 className="srtc-pro-stat-item__title">
+                      {stat.title}
+                    </h3>
+
+                    {/* Elegant Gold Accent Line */}
+                    <div className="srtc-pro-stat-item__accent-bar" />
+
+                    {/* Informative Description */}
+                    <p className="srtc-pro-stat-item__desc">
+                      {stat.description}
+                    </p>
                   </div>
-
-                  {/* Subtle Separator Line */}
-                  <div className="srtc-stat-card__divider" />
-
-                  {/* Card Description */}
-                  <p className="srtc-stat-card__desc">{card.description}</p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

@@ -6,7 +6,6 @@ import {
   PackageCheck,
   Navigation,
   ShieldCheck,
-  Sparkles,
   Route,
   CheckCircle2,
 } from 'lucide-react';
@@ -22,19 +21,72 @@ const ICON_MAP = {
   ShieldCheck,
   Route,
   CheckCircle2,
-  Sparkles,
 };
+
+const DEFAULT_STEPS = [
+  {
+    number: '01',
+    stepNum: '01',
+    km: 'ORIGIN HUB',
+    terminal: 'ALLOCATION',
+    icon: 'CalendarCheck',
+    badge: 'Guaranteed Allocation',
+    title: 'Consignment Booking',
+    tagline: 'Freight Scheduling & Fleet Allocation',
+    desc: 'Consignment specifications and cargo weight are verified, followed by prompt allocation of dedicated company-owned trucks.',
+    tireModel: 'SRTC LINEHAUL 295/80 R22.5',
+    tireSpec: 'STEEL BELTED RADIAL • TUBELESS • 152/148M',
+  },
+  {
+    number: '02',
+    stepNum: '02',
+    km: 'TRANSIT CORRIDOR',
+    terminal: 'PRE-CHECK',
+    icon: 'Route',
+    badge: 'Full Traffic Compliance',
+    title: 'Safety & Route Planning',
+    tagline: 'Pre-Trip Inspection & Compliance',
+    desc: 'Comprehensive multi-point vehicle safety inspection, toll mapping, and driver safety protocol compliance before rollout.',
+    tireModel: 'SRTC EXPRESS 295/80 R22.5',
+    tireSpec: 'DUAL DRIVE AXLE • HIGHWAY SPEED RATED',
+  },
+  {
+    number: '03',
+    stepNum: '03',
+    km: 'HIGHWAY TRANSIT',
+    terminal: 'LINEHAUL',
+    icon: 'Navigation',
+    badge: '24/7 Live GPS Tracking',
+    title: 'Continuous Linehaul',
+    tagline: '24/7 GPS Tracking & Telematics',
+    desc: '24/7 en-route GPS tracking with trained, professional commercial drivers ensuring secure, punctual, and non-stop highway haulage.',
+    tireModel: 'SRTC HAULAGE 295/80 R22.5',
+    tireSpec: 'MAX LOAD 3750 KG • PAN-INDIA RATED',
+  },
+  {
+    number: '04',
+    stepNum: '04',
+    km: 'DESTINATION DOCK',
+    terminal: 'HANDOVER',
+    icon: 'CheckCircle2',
+    badge: 'Verified e-POD Handover',
+    title: 'Dock Delivery & Handover',
+    tagline: 'Zero-Demurrage Arrival & Delivery',
+    desc: 'On-time arrival at receiving plant or warehouse dock, verified consignment unloading, and immediate digital Proof of Delivery (e-POD).',
+    tireModel: 'SRTC TERMINAL MASTER',
+    tireSpec: 'ZERO TRANSIT LOSS • SLA COMPLIANT',
+  },
+];
 
 export default function AboutProcessSection({ data }) {
   const [hoveredIdx, setHoveredIdx] = useState(null);
 
-  const steps = data?.steps || [];
-  const kicker = data?.kicker || 'HOW IT WORKS • 4-STEP FREIGHT LIFECYCLE';
+  const steps = data?.steps && data.steps.length > 0 ? data.steps : DEFAULT_STEPS;
   const title = data?.title || 'Simple, Transparent &';
   const titleGold = data?.titleGold || 'Precision-Driven.';
   const desc =
     data?.description ||
-    'From instant freight allocation to zero-demurrage gate delivery, our heavy linehaul fleet moves your cargo across 180+ express corridors with guaranteed SLA precision.';
+    'From verified consignment booking to scheduled dock delivery, our dedicated company-owned fleet ensures safe, compliant, and punctual freight transit across Gujarat and national highway corridors.';
 
   return (
     <section className="srtc-process-clean" aria-label="How We Work: 4-Step Freight Lifecycle">
@@ -43,11 +95,6 @@ export default function AboutProcessSection({ data }) {
             HEADER: 100% English, Confident & Minimalist
             ==================================================================== */}
         <div className="srtc-process-clean__header">
-          <div className="srtc-process-kicker">
-            <Sparkles size={13} className="srtc-process-kicker__icon" />
-            <span>{kicker}</span>
-          </div>
-
           <h2 className="srtc-process-clean__title">
             {title} <span className="srtc-process-gold">{titleGold}</span>
           </h2>
@@ -61,8 +108,6 @@ export default function AboutProcessSection({ data }) {
             ==================================================================== */}
         <div className="srtc-wheel-fleet-grid">
           {steps.map((step, idx) => {
-            const IconComponent =
-              (typeof step.icon === 'string' ? ICON_MAP[step.icon] : step.icon) || Navigation;
             const isHovered = hoveredIdx === idx;
 
             return (
@@ -382,40 +427,18 @@ export default function AboutProcessSection({ data }) {
                   </svg>
 
                   {/* ----------------------------------------------------------
-                      10. CENTER WHEEL HUB DISC: Crisp 100% English Content
+                      10. CENTER WHEEL HUB DISC: Pure Focused Content
                       Deeply recessed in the rim with authentic depth!
                       ---------------------------------------------------------- */}
                   <div className="srtc-wheel-hub-content">
-                    {/* Top Milestone Badge */}
-                    <div className="srtc-wheel-meta-row">
-                      <div className="srtc-wheel-km-pill">
-                        <span className="srtc-wheel-km">{step.km}</span>
-                        <span className="srtc-wheel-dot">•</span>
-                        <span className="srtc-wheel-terminal">{step.terminal}</span>
-                      </div>
-                    </div>
-
-                    {/* Center Icon & Watermark Step Number */}
-                    <div className="srtc-wheel-badge-group">
-                      <div className="srtc-wheel-icon-box">
-                        <IconComponent size={18} className="srtc-wheel-icon" />
-                      </div>
-                      <span className="srtc-wheel-step-watermark">{step.number}</span>
-                    </div>
-
-                    {/* Title & Tagline */}
+                    {/* Title */}
                     <h3 className="srtc-wheel-title">{step.title}</h3>
+
+                    {/* Tagline */}
                     <p className="srtc-wheel-tagline">{step.tagline}</p>
 
                     {/* Description Paragraph */}
                     <p className="srtc-wheel-desc">{step.desc}</p>
-
-                    {/* Bottom Status Pill */}
-                    <div className="srtc-wheel-footer">
-                      <div className="srtc-wheel-pill">
-                        <span>{step.badge}</span>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -430,26 +453,6 @@ export default function AboutProcessSection({ data }) {
         <div className="srtc-highway-road" aria-hidden="true">
           <div className="srtc-highway-road__asphalt" />
           <div className="srtc-highway-road__lane-divider" />
-        </div>
-
-        {/* ====================================================================
-            BOTTOM MINIMALIST TRUST STRIP
-            ==================================================================== */}
-        <div className="srtc-process-trust-strip">
-          <div className="srtc-trust-item">
-            <Route size={16} className="srtc-trust-item__icon" />
-            <span>Dedicated Fleet (No 3rd-Party Brokerage)</span>
-          </div>
-          <span className="srtc-trust-dot" aria-hidden="true">•</span>
-          <div className="srtc-trust-item">
-            <ShieldCheck size={16} className="srtc-trust-item__icon" />
-            <span>100% In-Transit Cargo Insurance</span>
-          </div>
-          <span className="srtc-trust-dot" aria-hidden="true">•</span>
-          <div className="srtc-trust-item">
-            <CheckCircle2 size={16} className="srtc-trust-item__icon" />
-            <span>Guaranteed Zero-Demurrage SLA</span>
-          </div>
         </div>
       </div>
     </section>
