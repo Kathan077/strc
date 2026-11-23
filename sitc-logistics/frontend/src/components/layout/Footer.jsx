@@ -132,7 +132,7 @@ export default function Footer() {
               <ul className="sitc-footer-links-list">
                 <li>
                   <Link href="/services#industry-containers" className="sitc-footer-link">
-                    D to C &amp; B to B
+                    Engineering
                   </Link>
                 </li>
                 <li>
@@ -143,6 +143,11 @@ export default function Footer() {
                 <li>
                   <Link href="/services#industry-containers" className="sitc-footer-link">
                     Industrial
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services#industry-containers" className="sitc-footer-link">
+                    Chemical
                   </Link>
                 </li>
                 <li>
@@ -158,6 +163,16 @@ export default function Footer() {
                 <li>
                   <Link href="/services#industry-containers" className="sitc-footer-link">
                     Polymers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services#industry-containers" className="sitc-footer-link">
+                    Furniture
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services#industry-containers" className="sitc-footer-link">
+                    Cosmetics
                   </Link>
                 </li>
               </ul>
@@ -185,6 +200,11 @@ export default function Footer() {
                 <li>
                   <Link href="/services" className="sitc-footer-link">
                     Transportation &amp; Warehousing
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/technology" className="sitc-footer-link">
+                    Technology &amp; Fleet Software
                   </Link>
                 </li>
                 <li>
@@ -265,29 +285,7 @@ export default function Footer() {
       {/* ===================================================================
           PAN-INDIA FREIGHT CORRIDOR DISPATCH TICKER
           =================================================================== */}
-      <div className="sitc-footer-corridors-bar">
-        <div className="sitc-footer-container sitc-corridors-inner">
-          <span className="sitc-corridors-label">KEY TRANSIT CORRIDORS:</span>
-          <div className="sitc-corridors-tags">
-            <span className="sitc-corridor-tag">AHMEDABAD (HQ)</span>
-            <span className="sitc-corridor-dot">&bull;</span>
-            <span className="sitc-corridor-tag">JAMNAGAR (RELIANCE)</span>
-            <span className="sitc-corridor-dot">&bull;</span>
-            <span className="sitc-corridor-tag">VADODARA / KOYALI (IOCL)</span>
-            <span className="sitc-corridor-dot">&bull;</span>
-            <span className="sitc-corridor-tag">DAHEJ SEZ (OPAL)</span>
-            <span className="sitc-corridor-dot">&bull;</span>
-            <span className="sitc-corridor-tag">VADINAR (NAYARA)</span>
-            <span className="sitc-corridor-dot">&bull;</span>
-            <span className="sitc-corridor-tag">HAZIRA / SURAT</span>
-            <span className="sitc-corridor-dot">&bull;</span>
-            <span className="sitc-corridor-tag">MUMBAI</span>
-            <span className="sitc-corridor-dot">&bull;</span>
-            <span className="sitc-corridor-tag">DELHI NCR</span>
-          </div>
-        </div>
-      </div>
-
+    
       {/* ===================================================================
           SUB-FOOTER LEGAL & COPYRIGHT ROW WITH SMOOTH BACK-TO-TOP
           =================================================================== */}
@@ -297,19 +295,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} <strong>Shree Ram Transportation Corporation</strong> (SRTC Supply Chain Pvt. Ltd. | Estd. 2003). All rights reserved.
           </p>
 
-          <div className="sitc-footer-legal-links">
-            <Link href="/privacy-policy" className="sitc-legal-link">
-              Privacy Policy
-            </Link>
-            <span className="sitc-legal-sep">&bull;</span>
-            <Link href="/privacy-policy" className="sitc-legal-link">
-              Terms of Carriage
-            </Link>
-            <span className="sitc-legal-sep">&bull;</span>
-            <Link href="/tracking" className="sitc-legal-link">
-              Carrier Security & SLA
-            </Link>
-          </div>
+      
 
           <button
             type="button"

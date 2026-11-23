@@ -1,0 +1,423 @@
+/* ==========================================================================
+   TechMockupsSection.css - Alternating 2-Row Hardware Mockup Showcase
+   Row 1: Photorealistic Laptop Mockup (Left) + Console Text (Right)
+   Row 2: Mobile Text (Left) + Photorealistic Smartphone Mockup (Right)
+   Pure White Background, Deep Navy (#0B2F4A), Signature Gold (#E8B94F)
+   ========================================================================== */
+
+.srtc-tech-mockups-section {
+  position: relative;
+  background-color: #FFFFFF;
+  padding: clamp(4rem, 7vw, 6.5rem) 1.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.srtc-tech-mockups-container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 7vw, 7rem);
+}
+
+/* ==========================================================================
+   SHOWCASE ROW ARCHITECTURE (ALTERNATING 2-COLUMN GRID)
+   ========================================================================== */
+
+.srtc-showcase-row {
+  display: grid;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  width: 100%;
+}
+
+/* Row 1: Laptop is wider (1.25fr) vs Text (1fr) */
+.srtc-showcase-row--laptop {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+}
+
+/* Row 2: Text on Left (1.15fr), Phone on Right (0.85fr) */
+.srtc-showcase-row--phone {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.srtc-showcase-col {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.srtc-showcase-col--phone-center {
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   TEXT COLUMN STYLING
+   ========================================================================== */
+
+.srtc-feature-title {
+  color: #0B2F4A;
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  font-weight: 850;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.1rem;
+}
+
+.srtc-feature-lead {
+  color: #5A6E82;
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  line-height: 1.65;
+  font-weight: 450;
+  margin: 0 0 1.75rem;
+}
+
+.srtc-feature-points {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.srtc-fpoint-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.95rem;
+}
+
+.srtc-fpoint-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #FFF9E6;
+  border: 1px solid #F1DC99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.srtc-fpoint-icon {
+  color: #D99B16;
+}
+
+.srtc-fpoint-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.srtc-fpoint-text strong {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0B2F4A;
+  line-height: 1.3;
+}
+
+.srtc-fpoint-text span {
+  font-size: 0.88rem;
+  color: #64748B;
+  line-height: 1.52;
+}
+
+.srtc-feature-output-box {
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  border-left: 4px solid #E8B94F;
+  border-radius: 9px;
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: all 250ms ease;
+}
+
+.srtc-feature-output-box:hover {
+  background: #FFFDF5;
+  border-color: #F1DC99;
+  border-left-color: #0B2F4A;
+}
+
+.srtc-foutput-lbl {
+  font-family: var(--font-mono, 'Consolas', monospace);
+  font-size: 0.65rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  color: #64748B;
+}
+
+.srtc-foutput-val {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #0B2F4A;
+}
+
+/* ==========================================================================
+   REALISTIC MOCKUP IMAGE FRAMES & VISUALS
+   ========================================================================== */
+
+.srtc-mockup-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  box-shadow: 0 20px 48px rgba(11, 47, 74, 0.1), 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 320ms ease,
+              border-color 320ms ease;
+  box-sizing: border-box;
+}
+
+.srtc-mockup-wrapper:hover {
+  transform: translateY(-5px);
+  border-color: #E8B94F;
+  box-shadow: 0 28px 60px rgba(11, 47, 74, 0.16), 0 0 25px rgba(232, 185, 79, 0.2);
+}
+
+.srtc-mockup-ambient-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(232, 185, 79, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Laptop Image */
+.srtc-mockup-wrapper--laptop {
+  max-width: 100%;
+}
+
+.srtc-mockup-img--laptop {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.srtc-mockup-wrapper--laptop:hover .srtc-mockup-img--laptop {
+  transform: scale(1.015);
+}
+
+/* Smartphone Image */
+.srtc-mockup-wrapper--phone {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.srtc-mockup-img--phone {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.srtc-mockup-wrapper--phone:hover .srtc-mockup-img--phone {
+  transform: scale(1.02);
+}
+
+
+
+/* ==========================================================================
+   RESPONSIVE SUITE: 1024px, 786px, 640px, 425px, 375px, 320px
+   ========================================================================== */
+
+/* 1. Tablet Landscape & Small Desktop (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .srtc-showcase-row--laptop,
+  .srtc-showcase-row--phone {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* Keep Text Above Mockup on Mobile / Tablet */
+  .srtc-showcase-row--laptop .srtc-showcase-col--mockup {
+    order: 2;
+  }
+
+  .srtc-showcase-row--laptop .srtc-showcase-col--text {
+    order: 1;
+  }
+
+  .srtc-showcase-row--phone .srtc-showcase-col--mockup {
+    order: 2;
+  }
+
+  .srtc-showcase-row--phone .srtc-showcase-col--text {
+    order: 1;
+  }
+
+  .srtc-mockup-wrapper--phone {
+    max-width: 380px;
+  }
+}
+
+/* 2. Tablet Portrait (max-width: 786px) */
+@media (max-width: 786px) {
+  .srtc-tech-mockups-section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .srtc-tech-mockups-container {
+    gap: 4rem;
+  }
+
+  .srtc-feature-title {
+    font-size: 1.95rem;
+  }
+
+  .srtc-feature-lead {
+    font-size: 0.94rem;
+    line-height: 1.58;
+    margin-bottom: 1.5rem;
+  }
+
+  .srtc-mockup-wrapper {
+    border-radius: 14px;
+  }
+}
+
+/* 3. Phablets / Narrow Tablets (max-width: 640px) */
+@media (max-width: 640px) {
+  .srtc-tech-mockups-section {
+    padding: 3rem 1rem;
+  }
+
+  .srtc-feature-title {
+    font-size: 1.75rem;
+  }
+
+  .srtc-feature-points {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .srtc-mockup-wrapper--phone {
+    max-width: 340px;
+  }
+}
+
+/* 4. Large Mobile (max-width: 440px - Covers 425px Pixel & Galaxy) */
+@media (max-width: 440px) {
+  .srtc-tech-mockups-section {
+    padding: 2.5rem 0.85rem;
+  }
+
+  .srtc-tech-mockups-container {
+    gap: 3.25rem;
+  }
+
+  .srtc-feature-title {
+    font-size: 1.52rem;
+    line-height: 1.25;
+    margin-bottom: 0.85rem;
+  }
+
+  .srtc-feature-lead {
+    font-size: 0.88rem;
+    line-height: 1.52;
+    margin-bottom: 1.25rem;
+  }
+
+  .srtc-fpoint-item {
+    gap: 0.75rem;
+  }
+
+  .srtc-fpoint-icon-box {
+    width: 28px;
+    height: 28px;
+  }
+
+  .srtc-fpoint-text strong {
+    font-size: 0.92rem;
+  }
+
+  .srtc-fpoint-text span {
+    font-size: 0.82rem;
+  }
+
+  .srtc-mockup-wrapper {
+    border-radius: 12px;
+  }
+
+  .srtc-mockup-wrapper--phone {
+    max-width: 310px;
+  }
+}
+
+/* 5. Standard Mobile (max-width: 385px - Covers 375px iPhone 12/13/14/15/16) */
+@media (max-width: 385px) {
+  .srtc-tech-mockups-section {
+    padding: 2.25rem 0.75rem;
+  }
+
+  .srtc-feature-title {
+    font-size: 1.42rem;
+  }
+
+  .srtc-feature-lead {
+    font-size: 0.84rem;
+  }
+
+  .srtc-fpoint-text strong {
+    font-size: 0.88rem;
+  }
+
+  .srtc-fpoint-text span {
+    font-size: 0.78rem;
+  }
+
+  .srtc-foutput-lbl {
+    font-size: 0.6rem;
+  }
+
+  .srtc-foutput-val {
+    font-size: 0.84rem;
+  }
+
+  .srtc-mockup-wrapper--phone {
+    max-width: 280px;
+  }
+}
+
+/* 6. Small Mobile (max-width: 330px - Covers 320px iPhone SE 1st Gen & Compact) */
+@media (max-width: 330px) {
+  .srtc-tech-mockups-section {
+    padding: 2rem 0.55rem;
+  }
+
+  .srtc-tech-mockups-container {
+    gap: 2.5rem;
+  }
+
+  .srtc-feature-title {
+    font-size: 1.32rem;
+  }
+
+  .srtc-feature-lead {
+    font-size: 0.8rem;
+    line-height: 1.48;
+  }
+
+  .srtc-fpoint-text strong {
+    font-size: 0.84rem;
+  }
+
+  .srtc-fpoint-text span {
+    font-size: 0.74rem;
+  }
+
+  .srtc-mockup-wrapper {
+    border-radius: 10px;
+  }
+
+  .srtc-mockup-wrapper--phone {
+    max-width: 250px;
+  }
+}

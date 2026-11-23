@@ -13,6 +13,10 @@ import {
   ArrowRight,
   Layers,
   Sparkles,
+  Wrench,
+  FlaskConical,
+  Armchair,
+  Cpu,
 } from 'lucide-react';
 import './ServicesIndustryContainerSection.css';
 
@@ -26,7 +30,13 @@ const ICON_MAP = {
   Truck,
   ShieldCheck,
   Sparkles,
+  Wrench,
+  FlaskConical,
+  Armchair,
+  Cpu,
 };
+
+
 
 export default function ServicesIndustryContainerSection({ data }) {
   const industries = data?.industryCards || [];
@@ -59,13 +69,15 @@ export default function ServicesIndustryContainerSection({ data }) {
 
         {/* 6 Industrial Shipping Container Cards */}
         <div className="srtc-ind-cards-grid">
-          {industries.map((item) => {
+          {industries.map((item, idx) => {
             const Icon = (typeof item.icon === 'string' ? ICON_MAP[item.icon] : item.icon) || Boxes;
             return (
               <article
                 key={item.id}
                 className={`srtc-ind-card ${item.isFeatured ? 'srtc-ind-card--featured' : ''}`}
               >
+
+
                 {/* 4 Authentic Industrial Corner Castings */}
                 <span className="srtc-casting srtc-casting--tl" aria-hidden="true" />
                 <span className="srtc-casting srtc-casting--tr" aria-hidden="true" />

@@ -69,6 +69,7 @@ const ServicesPageContentSchema = new mongoose.Schema(
           title: { type: String, default: '' },
           badge: { type: String, default: '' },
           icon: { type: String, default: 'Layers' },
+          image: { type: String, default: '' },
           clients: { type: String, default: '' },
           description: { type: String, default: '' },
           specs: [

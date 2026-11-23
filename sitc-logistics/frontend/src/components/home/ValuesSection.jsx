@@ -51,11 +51,6 @@ function ValuesSection({ data }) {
         <div className="sitc-trust-container">
           {/* Header */}
           <header className="sitc-trust-header">
-            <div className="sitc-trust-badge-pill">
-              <Sparkles size={13} className="sitc-badge-pill-icon" />
-              <span>{data?.kicker || 'TRUST & QUALITY'}</span>
-            </div>
-
             <h2 className="sitc-trust-title">
               {data?.title || (
                 <>
@@ -101,35 +96,15 @@ function ValuesSection({ data }) {
 
             {/* Central Circle */}
             <div className="sitc-central-circle-truck" aria-label="SRTC Fleet Transportation">
-              <div className="sitc-core-guarantee-badge">
-                <Sparkles size={11} className="sitc-core-guarantee-icon" />
-                <span>CORE GUARANTEE</span>
-              </div>
               <div className="sitc-circle-halo" aria-hidden="true" />
               <div className="sitc-circle-frame">
                 <img
-                  src="/images/values/truck-circle-clean.png"
-                  alt="SRTC Road Freight Truck in Motion"
+                  src={data?.image || "/images/values/srtc-blue-linehaul-truck.jpg"}
+                  alt="SRTC Dedicated Fleet Truck in Motion"
                   className="sitc-circle-img"
                   loading="lazy"
                 />
                 <div className="sitc-circle-vignette" aria-hidden="true" />
-                <div className="sitc-circle-hud-badge">
-                  <span className="sitc-hud-beacon-dot" />
-                  <span className="sitc-hud-badge-text">
-                    LIVE FLEET TELEMATICS • 99.4% SLA
-                  </span>
-                </div>
-                <div className="sitc-circle-trust-badges">
-                  <span className="sitc-circle-micro-badge">
-                    <span className="sitc-micro-badge-dot sitc-micro-badge-dot--green" />
-                    100% Insured
-                  </span>
-                  <span className="sitc-circle-micro-badge">
-                    <span className="sitc-micro-badge-dot sitc-micro-badge-dot--blue" />
-                    24/7 Monitored
-                  </span>
-                </div>
               </div>
             </div>
 

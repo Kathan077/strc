@@ -37,6 +37,10 @@
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
+.sitc-truck-top-bar--btn-only {
+  justify-content: flex-end;
+}
+
 .sitc-truck-status-badge {
   display: inline-flex;
   align-items: center;

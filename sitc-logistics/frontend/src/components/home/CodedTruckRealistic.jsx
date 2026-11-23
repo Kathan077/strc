@@ -548,70 +548,7 @@ function CodedTruckRealistic({ isDipper = false }) {
               <rect x="89" y="218" width="6" height="12" fill="#10B981" rx="1.5" />
             </g>
 
-            {/* Container Stencils & Markings */}
-            <text
-              x="115"
-              y="130"
-              fontFamily="Consolas, monospace"
-              fontSize="8"
-              fontWeight="800"
-              letterSpacing="0.12em"
-              fill="#0B2F4A"
-            >
-              SRTC-U 940215 [7] &bull; 45G1 HC
-            </text>
-            <text
-              x="115"
-              y="142"
-              fontFamily="Consolas, monospace"
-              fontSize="6.8"
-              fontWeight="700"
-              letterSpacing="0.06em"
-              fill="#64748B"
-            >
-              MAX. GR. 32,500 KG &bull; PAYLOAD 28,680 KG
-            </text>
-            <text
-              x="865"
-              y="130"
-              fontFamily="Consolas, monospace"
-              fontSize="7.5"
-              fontWeight="800"
-              letterSpacing="0.08em"
-              fill="#0B2F4A"
-              textAnchor="end"
-            >
-              ISO 6346 / CSC SAFETY APPROVAL
-            </text>
-            <text
-              x="865"
-              y="142"
-              fontFamily="Consolas, monospace"
-              fontSize="6.8"
-              fontWeight="700"
-              letterSpacing="0.06em"
-              fill="#64748B"
-              textAnchor="end"
-            >
-              ALL-INDIA HIGHWAY EXPRESS CORRIDOR
-            </text>
-
             {/* Central CONTACT US Display */}
-            <rect x="360" y="148" width="250" height="24" rx="12" fill="#0B2F4A" stroke="#E8B94F" strokeWidth="1.5" />
-            <circle cx="376" cy="160" r="4.5" fill="#10B981" />
-            <text
-              x="485"
-              y="164"
-              fontFamily="Consolas, monospace"
-              fontSize="8.5"
-              fontWeight="800"
-              letterSpacing="0.14em"
-              fill="#FFFFFF"
-              textAnchor="middle"
-            >
-              24/7 CENTRAL FREIGHT DISPATCH
-            </text>
-
             <text
               x="485"
               y="218"
@@ -635,7 +572,7 @@ function CodedTruckRealistic({ isDipper = false }) {
               fill="#0284C7"
               textAnchor="middle"
             >
-              IMMEDIATE ROUTE ASSIGNMENT &bull; PAN-INDIA FLEET
+              IMMEDIATE ROUTE ASSIGNMENT &bull; DEDICATED FLEET
             </text>
 
             <rect

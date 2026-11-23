@@ -69,13 +69,8 @@ function TruckContactCTA({ data }) {
       aria-label="Contact SRTC Logistics"
     >
       <div className="sitc-truck-real-container">
-        {/* Simple Minimal Top Bar: Status Badge + Single Clean Contact Us Button */}
-        <div className="sitc-truck-top-bar">
-          <div className="sitc-truck-status-badge">
-            <span className="sitc-truck-live-dot" />
-            <span className="sitc-truck-status-text">{statusText}</span>
-          </div>
-
+        {/* Simple Minimal Top Bar: Single Clean Contact Us Button */}
+        <div className="sitc-truck-top-bar sitc-truck-top-bar--btn-only">
           <div className="sitc-truck-action-group">
             {/* Clean Contact Us Button */}
             <Link

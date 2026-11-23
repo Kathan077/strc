@@ -174,7 +174,7 @@ export default function ProcessSection({ data }) {
               {/* HUD Body Description */}
               <div className="sitc-proc-hud-body">
                 <p className="sitc-proc-hud-body-text">
-                  SRTC’s highway routing engine evaluates live industrial corridor traffic, toll booth wait times, and road conditions across NH-48 and pan-India expressways to assign optimal dual-driver linehauls.
+                  SRTC’s highway routing engine evaluates live industrial corridor traffic, toll booth wait times, and road conditions across NH-48 and major freight expressways to assign optimal dual-driver linehauls.
                 </p>
 
                 {/* Technical Protocol Checklist */}

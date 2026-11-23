@@ -36,6 +36,7 @@ const HomepageContentSchema = new mongoose.Schema(
       description: { type: String, default: '' },
       ctaText: { type: String, default: 'Learn More About Us' },
       ctaLink: { type: String, default: '/about' },
+      image: { type: String, default: '/images/about/srtc-blue-container-truck.jpg' },
       stats: {
         shipments: { type: Number, default: 50000 },
         corridors: { type: Number, default: 28 },
@@ -84,8 +85,13 @@ const HomepageContentSchema = new mongoose.Schema(
           id: { type: String, default: '' },
           number: { type: String, default: '' },
           category: { type: String, default: '' },
+          stepTag: { type: String, default: '' },
           title: { type: String, default: '' },
           subtitle: { type: String, default: '' },
+          description: { type: String, default: '' },
+          highlight: { type: String, default: '' },
+          icon: { type: String, default: 'ClipboardCheck' },
+          meta: { type: String, default: '' },
           clientPain: { type: String, default: '' },
           srtcSolution: { type: String, default: '' },
           specs: [{ type: String }],
@@ -134,7 +140,7 @@ const HomepageContentSchema = new mongoose.Schema(
       ],
     },
     values: {
-      kicker: { type: String, default: 'OUR COMMITMENT & FOUNDATIONAL VALUES' },
+      image: { type: String, default: '/images/values/srtc-blue-linehaul-truck.jpg' },
       title: { type: String, default: 'Built on Trust, Safety & Operational Excellence' },
       subtitle: {
         type: String,
@@ -155,7 +161,7 @@ const HomepageContentSchema = new mongoose.Schema(
     truckContactCTA: {
       statusText: {
         type: String,
-        default: 'HIGHWAY DISPATCH DESK ACTIVE - 24/7 NATIONWIDE LINEHAUL SUPPORT',
+        default: 'SRTC CENTRAL FREIGHT DISPATCH // ACTIVE FLEET',
       },
       buttonText: { type: String, default: 'Contact Dispatch / Book Linehaul' },
       buttonLink: { type: String, default: '/contact' },

@@ -22,7 +22,7 @@ const BROCHURE_CAPABILITIES = [
   {
     id: '01',
     title: 'Full Truck Load (FTL)',
-    detail: 'Dedicated point-to-point heavy commercial transport across pan-India industrial corridors.',
+    detail: 'Dedicated point-to-point heavy commercial transport across primary industrial corridors.',
   },
   {
     id: '02',
@@ -198,7 +198,7 @@ function AboutSection({ data }) {
         <div className="sitc-about-glow sitc-about-glow--navy" />
         <div className="sitc-about-glow sitc-about-glow--accent" />
 
-        {/* Animated Pan-India Logistics Arterial Corridors (SVG) */}
+        {/* Animated Regional Logistics Arterial Corridors (SVG) */}
         <svg
           className="sitc-about-transit-svg"
           viewBox="0 0 1440 900"
@@ -262,7 +262,7 @@ function AboutSection({ data }) {
 
         {/* Floating Dispatch Watermark */}
         <div className="sitc-about-watermark">
-          SRTC CENTRAL FREIGHT DISPATCH // 24/7 FLEET COMMAND // PAN-INDIA EXPRESS CORRIDORS
+          SRTC CENTRAL FREIGHT DISPATCH // 24/7 FLEET COMMAND // INDUSTRIAL EXPRESS CORRIDORS
         </div>
       </div>
 
@@ -273,16 +273,23 @@ function AboutSection({ data }) {
         <header ref={headerRef} className={`sitc-about-header ${isHeaderVisible ? 'is-visible' : ''}`}>
           <div className="sitc-about-header__left">
             <h2 className="sitc-about-title">
-              {data?.titleLine1 || 'Legacy of'} <br />
-              <span className="sitc-about-title--highlight">{data?.highlightText || 'Reliability,'}</span> <br />
-              Delivering Value Every <br />
-              Single Time.
+              {data?.titleLine1 && !data.titleLine1.includes('Legacy') ? data.titleLine1 : 'Reliable'} <br />
+              <span className="sitc-about-title--highlight">
+                {data?.highlightText && !data.highlightText.includes('Reliability')
+                  ? data.highlightText
+                  : 'Logistics & Warehouse'}
+              </span> <br />
+              {data?.titleLine2 && !data.titleLine2.includes('Single Time')
+                ? data.titleLine2
+                : 'Handling Services.'}
             </h2>
           </div>
 
           <div className="sitc-about-header__right">
             <p className="sitc-about-desc">
-              {data?.description || 'Shree Ram Transportation Corporation, founded in 2003 by Mr. Menandbhai Odedara, has been Gujarat’s trusted transport benchmark for over two decades. Building on this legacy, SRTC Supply Chain Pvt. Ltd. delivers modern, technology-driven, end-to-end logistics & warehousing nationwide.'}
+              {data?.description && !data.description.includes('Shree Ram')
+                ? data.description
+                : 'SRTC Supply Chain Pvt. Ltd. delivers modern, technology-driven, end-to-end logistics and warehousing solutions across Gujarat and regional industrial corridors. Specializing in dedicated Full Truck Load (FTL), Part Truck Load (PTL), specialized container haulage, and scalable warehousing, we ensure secure, punctual, and transparent freight movement for industrial enterprises.'}
             </p>
 
             <div className="sitc-about-header__actions">
@@ -317,8 +324,8 @@ function AboutSection({ data }) {
             {/* Cinematic Truck Image Canvas with Multi-Stop Brand Vignette */}
             <div className="sitc-about-image-canvas">
               <img
-                src="/images/about/about-truck-tunnel.jpg"
-                alt="SRTC Heavy Duty Transport Truck in High-Speed Transit Corridor"
+                src={data?.image || "/images/about/srtc-blue-container-truck.jpg"}
+                alt="SRTC Dedicated Container Fleet on Gujarat Industrial Highway"
                 className="sitc-about-image"
               />
               <div className="sitc-about-image-overlay" />
@@ -348,7 +355,7 @@ function AboutSection({ data }) {
                 <div className="sitc-sculpted-tab__notch-cut" />
                 <div className="sitc-sculpted-tab__inner">
                   <div className="sitc-sculpted-tab__meta">
-                    <span className="sitc-sculpted-tab__label">Pan-India Network</span>
+                    <span className="sitc-sculpted-tab__label">Freight Network</span>
                     <MapPin size={14} className="sitc-sculpted-tab__icon" />
                   </div>
                   <div className="sitc-sculpted-tab__stat">

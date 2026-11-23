@@ -1,13 +1,14 @@
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import SRTCPreloader from '../components/common/SRTCPreloader';
+import FloatingWhatsApp from '../components/common/FloatingWhatsApp';
 import './globals.css';
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'SRTC – Logistics & Transportation | Fastest, Secured, Trustable',
   description:
-    'SRTC delivers premier FTL & PTL transportation, port-to-plant container haulage, warehousing, and nationwide freight supply chain solutions with guaranteed transit integrity.',
+    'SRTC delivers premier FTL & PTL transportation, port-to-plant container haulage, warehousing, and dedicated freight supply chain solutions with guaranteed transit integrity.',
   keywords: [
     'SRTC logistics',
     'SITC logistics',
@@ -57,6 +58,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

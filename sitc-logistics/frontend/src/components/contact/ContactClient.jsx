@@ -1,20 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import {
   Phone,
   Mail,
   MapPin,
   Clock,
   Send,
-  Truck,
   ShieldCheck,
   CheckCircle2,
-  Zap,
   ArrowRight,
   Boxes,
-  FileCheck2,
   Navigation,
   Building2,
   User,
@@ -22,61 +18,10 @@ import {
   Sparkles,
 } from 'lucide-react';
 
-/**
- * Industrial Rivet Line (Row of high-tensile steel rivets along container structural beams)
- */
-function ContainerRivetLine({ count = 28 }) {
-  return (
-    <div className="srtc-container-rivet-line" aria-hidden="true">
-      {Array.from({ length: count }).map((_, i) => (
-        <span key={`rivet-c-${i}`} className="srtc-rivet-head" />
-      ))}
-    </div>
-  );
-}
-
-/**
- * CSC Safety Approval Metal Plate for Booking Container
- */
-function CscBookingPlate({ config }) {
-  const terminalUnit = config?.terminalUnit || 'SRTC-45G1-HC';
-  const maxGvw = config?.maxGvw || '42,000 KG';
-  const fleetRating = config?.fleetRating || 'EST. 2003 • 23+ YRS';
-  const customsStatus = config?.customsStatus || '100% e-WAY SYNC';
-
-  return (
-    <div className="srtc-csc-data-plate srtc-csc-data-plate--contact" aria-label="CSC Safety Approval Plate">
-      <div className="srtc-csc-header">
-        <span>CSC SAFETY APPROVAL</span>
-        <span className="srtc-csc-id">IND/SRTC/DISPATCH-2026</span>
-      </div>
-      <div className="srtc-csc-grid">
-        <div className="srtc-csc-cell">
-          <span className="srtc-csc-lbl">TERMINAL UNIT</span>
-          <span className="srtc-csc-val">{terminalUnit}</span>
-        </div>
-        <div className="srtc-csc-cell">
-          <span className="srtc-csc-lbl">MAX HIGHWAY GVW</span>
-          <span className="srtc-csc-val">{maxGvw}</span>
-        </div>
-        <div className="srtc-csc-cell">
-          <span className="srtc-csc-lbl">FLEET RATING</span>
-          <span className="srtc-csc-val">{fleetRating}</span>
-        </div>
-        <div className="srtc-csc-cell">
-          <span className="srtc-csc-lbl">CUSTOMS STATUS</span>
-          <span className="srtc-csc-val">{customsStatus}</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function ContactClient({ data }) {
   const vaultPhone = data?.vaultPhone;
   const vaultWhatsApp = data?.vaultWhatsApp;
   const vaultEmail = data?.vaultEmail;
-  const vaultHubs = data?.vaultHubs;
   const bookingFormConfig = data?.bookingFormConfig;
 
   const defaultServices = [
@@ -92,18 +37,6 @@ export default function ContactClient({ data }) {
     bookingFormConfig?.servicesList && bookingFormConfig.servicesList.length > 0
       ? bookingFormConfig.servicesList
       : defaultServices;
-
-  const defaultHubs = [
-    'Mundra & Kandla Port',
-    'Nhava Sheva (JNPT)',
-    'Delhi-NCR Corridor',
-    'Pune / Chakan Industrial',
-    'Ahmedabad Logistics Hub',
-    'Vapi / Surat Chemical Belt',
-  ];
-
-  const hubsList =
-    vaultHubs?.hubsList && vaultHubs.hubsList.length > 0 ? vaultHubs.hubsList : defaultHubs;
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -142,41 +75,18 @@ export default function ContactClient({ data }) {
     <div className="srtc-contact-universe">
       <div className="srtc-contact-container">
         {/* ====================================================================
-            2. TWO-COLUMN INDUSTRIAL LOGISTICS ARCHITECTURE (CONTAINERS ONLY)
-            Left Deck: 4 Pro-Level Intermodal Container Vaults
-            Right Deck: Master 40ft High-Cube Freight Dispatch Booking Container
+            TWO-COLUMN ARCHITECTURE
+            Left Deck: 3 Clean Contact Cards (Phone, WhatsApp, Email & HQ)
+            Right Deck: Freight Dispatch Booking Form Card
             ==================================================================== */}
         <div className="srtc-contact-main-grid">
           {/* ------------------------------------------------------------------
-              LEFT COLUMN: 4 CONTAINER DISPATCH VAULTS
+              LEFT COLUMN: 3 CONTACT CARDS
               ------------------------------------------------------------------ */}
           <div className="srtc-contact-vaults-col">
-            {/* CONTAINER VAULT 1: 24/7 CENTRAL VOICE HOTLINE */}
+            {/* CARD 1: 24/7 CENTRAL VOICE HOTLINE */}
             <div className="srtc-contact-mini-container">
-              {/* 4 Corner Castings */}
-              <div className="srtc-iso-casting srtc-iso-tl" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-tr" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-bl" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-br" aria-hidden="true" />
-
-              {/* Top Structural Steel Rail with Rivets */}
-              <div className="srtc-container-top-rail srtc-top-rail--compact">
-                <ContainerRivetLine count={18} />
-              </div>
-
-              {/* Stencil Bar */}
-              <div className="srtc-container-stencil-bar srtc-stencil-bar--compact">
-                <div className="srtc-stencil-left">
-                  <span className="srtc-stencil-dot" />
-                  <span className="srtc-stencil-unit">{vaultPhone?.unitCode || 'SRTC-LINE-01'}</span>
-                  <span className="srtc-unit-axle-tag">{vaultPhone?.tag || 'VOICE CONTROL'}</span>
-                </div>
-                <div className="srtc-stencil-right">
-                  <span className="srtc-stencil-chevrons" aria-hidden="true">///</span>
-                </div>
-              </div>
-
-              <div className="srtc-vault-card-body srtc-container-corrugated-wall">
+              <div className="srtc-vault-card-body">
                 <div className="srtc-vault-icon-badge">
                   <Phone size={22} className="srtc-vault-icon" />
                 </div>
@@ -201,37 +111,11 @@ export default function ContactClient({ data }) {
                   </a>
                 </div>
               </div>
-
-              {/* Bottom Structural Sill Rail with Rivets */}
-              <div className="srtc-container-bottom-rail srtc-bottom-rail--compact">
-                <div className="srtc-container-hazard-strip srtc-hazard-strip--compact" aria-hidden="true" />
-                <ContainerRivetLine count={18} />
-              </div>
             </div>
 
-            {/* CONTAINER VAULT 2: INSTANT WHATSAPP FREIGHT DISPATCH */}
+            {/* CARD 2: INSTANT WHATSAPP FREIGHT DISPATCH */}
             <div className="srtc-contact-mini-container">
-              <div className="srtc-iso-casting srtc-iso-tl" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-tr" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-bl" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-br" aria-hidden="true" />
-
-              <div className="srtc-container-top-rail srtc-top-rail--compact">
-                <ContainerRivetLine count={18} />
-              </div>
-
-              <div className="srtc-container-stencil-bar srtc-stencil-bar--compact">
-                <div className="srtc-stencil-left">
-                  <span className="srtc-stencil-dot" />
-                  <span className="srtc-stencil-unit">{vaultWhatsApp?.unitCode || 'SRTC-LINE-02'}</span>
-                  <span className="srtc-unit-axle-tag">{vaultWhatsApp?.tag || 'WHATSAPP CHAT'}</span>
-                </div>
-                <div className="srtc-stencil-right">
-                  <span className="srtc-stencil-chevrons" aria-hidden="true">///</span>
-                </div>
-              </div>
-
-              <div className="srtc-vault-card-body srtc-container-corrugated-wall">
+              <div className="srtc-vault-card-body">
                 <div className="srtc-vault-icon-badge srtc-vault-icon-badge--wa">
                   <Send size={22} className="srtc-vault-icon" />
                 </div>
@@ -266,36 +150,11 @@ export default function ContactClient({ data }) {
                   </a>
                 </div>
               </div>
-
-              <div className="srtc-container-bottom-rail srtc-bottom-rail--compact">
-                <div className="srtc-container-hazard-strip srtc-hazard-strip--compact" aria-hidden="true" />
-                <ContainerRivetLine count={18} />
-              </div>
             </div>
 
-            {/* CONTAINER VAULT 3: OFFICIAL EMAIL & GUJARAT CORPORATE HQ */}
+            {/* CARD 3: OFFICIAL EMAIL & GUJARAT CORPORATE HQ */}
             <div className="srtc-contact-mini-container">
-              <div className="srtc-iso-casting srtc-iso-tl" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-tr" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-bl" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-br" aria-hidden="true" />
-
-              <div className="srtc-container-top-rail srtc-top-rail--compact">
-                <ContainerRivetLine count={18} />
-              </div>
-
-              <div className="srtc-container-stencil-bar srtc-stencil-bar--compact">
-                <div className="srtc-stencil-left">
-                  <span className="srtc-stencil-dot" />
-                  <span className="srtc-stencil-unit">{vaultEmail?.unitCode || 'SRTC-HQ-03'}</span>
-                  <span className="srtc-unit-axle-tag">{vaultEmail?.tag || 'EDI & CORPORATE HQ'}</span>
-                </div>
-                <div className="srtc-stencil-right">
-                  <span className="srtc-stencil-chevrons" aria-hidden="true">///</span>
-                </div>
-              </div>
-
-              <div className="srtc-vault-card-body srtc-container-corrugated-wall">
+              <div className="srtc-vault-card-body">
                 <div className="srtc-vault-icon-badge">
                   <Mail size={22} className="srtc-vault-icon" />
                 </div>
@@ -327,111 +186,21 @@ export default function ContactClient({ data }) {
                   </div>
                 </div>
               </div>
-
-              <div className="srtc-container-bottom-rail srtc-bottom-rail--compact">
-                <div className="srtc-container-hazard-strip srtc-hazard-strip--compact" aria-hidden="true" />
-                <ContainerRivetLine count={18} />
-              </div>
-            </div>
-
-            {/* CONTAINER VAULT 4: MULTIMODAL CORRIDOR HUBS & PORT YARDS */}
-            <div className="srtc-contact-mini-container">
-              <div className="srtc-iso-casting srtc-iso-tl" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-tr" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-bl" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-br" aria-hidden="true" />
-
-              <div className="srtc-container-top-rail srtc-top-rail--compact">
-                <ContainerRivetLine count={18} />
-              </div>
-
-              <div className="srtc-container-stencil-bar srtc-stencil-bar--compact">
-                <div className="srtc-stencil-left">
-                  <span className="srtc-stencil-dot" />
-                  <span className="srtc-stencil-unit">{vaultHubs?.unitCode || 'SRTC-YARD-04'}</span>
-                  <span className="srtc-unit-axle-tag">{vaultHubs?.tag || 'PORT & TRANSIT YARDS'}</span>
-                </div>
-                <div className="srtc-stencil-right">
-                  <span className="srtc-stencil-chevrons" aria-hidden="true">///</span>
-                </div>
-              </div>
-
-              <div className="srtc-vault-card-body srtc-container-corrugated-wall">
-                <div className="srtc-vault-icon-badge">
-                  <Navigation size={22} className="srtc-vault-icon" />
-                </div>
-                <div className="srtc-vault-info">
-                  <span className="srtc-vault-kicker">{vaultHubs?.kicker || 'KEY PAN-INDIA CORRIDOR HUBS'}</span>
-                  <strong className="srtc-vault-headline-static">
-                    {vaultHubs?.title || 'Strategic Gateway Terminals'}
-                  </strong>
-
-                  <div className="srtc-hubs-chips-grid">
-                    {hubsList.map((hub, idx) => (
-                      <span key={idx} className="srtc-hub-chip">
-                        {hub}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="srtc-container-bottom-rail srtc-bottom-rail--compact">
-                <div className="srtc-container-hazard-strip srtc-hazard-strip--compact" aria-hidden="true" />
-                <ContainerRivetLine count={18} />
-              </div>
             </div>
           </div>
 
           {/* ------------------------------------------------------------------
-              RIGHT COLUMN: 40-FOOT HIGH-CUBE DISPATCH BOOKING MANIFEST FORM
+              RIGHT COLUMN: FREIGHT DISPATCH BOOKING FORM
               ------------------------------------------------------------------ */}
           <div className="srtc-contact-manifest-col">
             <div className="srtc-booking-container-vault">
-              {/* 4 Heavy ISO Corner Castings */}
-              <div className="srtc-iso-casting srtc-iso-tl" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-tr" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-bl" aria-hidden="true" />
-              <div className="srtc-iso-casting srtc-iso-br" aria-hidden="true" />
-
-              {/* Top Structural Steel Rail with Rivets */}
-              <div className="srtc-container-top-rail">
-                <ContainerRivetLine count={28} />
-              </div>
-
-              {/* Container Top Stencil Bar */}
-              <div className="srtc-container-stencil-bar">
-                <div className="srtc-stencil-left">
-                  <span className="srtc-stencil-dot" />
-                  <span className="srtc-stencil-unit">SRTC-U 992014 [0]</span>
-                  <span className="srtc-stencil-type">45G1 HC DISPATCH MANIFEST</span>
-                  <span className="srtc-stencil-status-pill">CENTRAL DISPATCH READY</span>
-                </div>
-                <div className="srtc-stencil-right">
-                  <span className="srtc-stencil-spec">ALL-INDIA CORRIDOR GATEWAY</span>
-                  <span className="srtc-stencil-chevrons" aria-hidden="true">///</span>
-                </div>
-              </div>
-
-              {/* Form Body with 3D Corrugated Sheet Styling */}
-              <div className="srtc-booking-manifest-body srtc-container-corrugated-wall">
+              <div className="srtc-booking-manifest-body">
                 {/* Form Header */}
                 <div className="srtc-manifest-header">
-                  <div className="srtc-manifest-kicker">
-                    <Truck size={14} color="#D49D28" />
-                    <span>INSTANT FREIGHT ALLOCATION &bull; SHIPMENT MANIFEST</span>
-                  </div>
                   <h2 className="srtc-manifest-title">
                     Request Immediate Freight Allocation &amp; Rate Dossier
                   </h2>
-                  <p className="srtc-manifest-desc">
-                    Submit your corridor specifications below. Our central logistics controllers verify payload
-                    weight, route permits, and dispatch immediate freight availability within 15 minutes.
-                  </p>
                 </div>
-
-                {/* CSC Metal Data Plate */}
-                <CscBookingPlate config={bookingFormConfig} />
 
                 {/* Success Banner if submitted */}
                 {isSubmitted ? (
@@ -650,65 +419,11 @@ export default function ContactClient({ data }) {
                         )}
                       </button>
 
-                      <div className="srtc-form-trust-text">
-                        <ShieldCheck size={14} color="#16A34A" />
-                        <span>Instant 15-Minute Response Guaranteed &bull; Zero Spam</span>
-                      </div>
+                     
                     </div>
                   </form>
                 )}
               </div>
-
-              {/* Bottom Structural Sill Rail with Rivets & Hazard Tape */}
-              <div className="srtc-container-bottom-rail">
-                <div className="srtc-container-hazard-strip" aria-hidden="true" />
-                <ContainerRivetLine count={28} />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ====================================================================
-            3. FREIGHT CORRIDOR DISPATCH TELEMETRY BANNER (4 TRUST METRICS)
-            ==================================================================== */}
-        <div className="srtc-contact-metrics-hud">
-          <div className="srtc-hud-metric-card">
-            <div className="srtc-hud-icon-wrap">
-              <Zap size={20} color="#E8B94F" />
-            </div>
-            <div className="srtc-hud-info">
-              <strong className="srtc-hud-val">15-Min SLA</strong>
-              <span className="srtc-hud-lbl">Fastest Rate &amp; Fleet Allocation</span>
-            </div>
-          </div>
-
-          <div className="srtc-hud-metric-card">
-            <div className="srtc-hud-icon-wrap">
-              <ShieldCheck size={20} color="#E8B94F" />
-            </div>
-            <div className="srtc-hud-info">
-              <strong className="srtc-hud-val">100% Sealed</strong>
-              <span className="srtc-hud-lbl">Fastest, Secured &amp; Tamper-Evident</span>
-            </div>
-          </div>
-
-          <div className="srtc-hud-metric-card">
-            <div className="srtc-hud-icon-wrap">
-              <Navigation size={20} color="#E8B94F" />
-            </div>
-            <div className="srtc-hud-info">
-              <strong className="srtc-hud-val">180+ Corridors</strong>
-              <span className="srtc-hud-lbl">Pan-India Industrial Expressways</span>
-            </div>
-          </div>
-
-          <div className="srtc-hud-metric-card">
-            <div className="srtc-hud-icon-wrap">
-              <CheckCircle2 size={20} color="#E8B94F" />
-            </div>
-            <div className="srtc-hud-info">
-              <strong className="srtc-hud-val">Zero Demurrage</strong>
-              <span className="srtc-hud-lbl">Guaranteed On-Time Gate Arrival</span>
             </div>
           </div>
         </div>

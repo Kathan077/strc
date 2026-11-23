@@ -6,7 +6,6 @@ import ServicesClientsTrustSection from '@/components/services/ServicesClientsTr
 import TruckContactCTA from '@/components/home/TruckContactCTA';
 import LazySection from '@/components/common/LazySection';
 
-// ISR Edge Caching (revalidates every 60s)
 export const revalidate = 60;
 
 export const metadata = {

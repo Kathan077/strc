@@ -7,7 +7,6 @@ import ValuesSection from '../components/home/ValuesSection';
 import TruckContactCTA from '../components/home/TruckContactCTA';
 import LazySection from '../components/common/LazySection';
 
-// ISR Edge Caching (revalidates every 60s for ultra-fast <50ms first loads)
 export const revalidate = 60;
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';

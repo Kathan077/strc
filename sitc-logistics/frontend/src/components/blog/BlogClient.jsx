@@ -8,7 +8,6 @@ import {
   Clock,
   Calendar,
   Truck,
-  ShieldCheck,
   Award,
   Layers,
 } from 'lucide-react';
@@ -50,8 +49,8 @@ function CscSafetyPlate({ containerId, maxGross = '32,500 KG' }) {
           <span className="srtc-csc-val">192,000 KG</span>
         </div>
         <div className="srtc-csc-cell">
-          <span className="srtc-csc-lbl">CUSTOMS SEAL</span>
-          <span className="srtc-csc-val">SRTC-SEALED</span>
+          <span className="srtc-csc-lbl">TRANSIT VERIFIED</span>
+          <span className="srtc-csc-val">SRTC 100%</span>
         </div>
       </div>
     </div>
@@ -87,21 +86,6 @@ export default function BlogClient({ posts }) {
               <ContainerRivetLine count={32} />
             </div>
 
-            {/* Industrial Stencil Header Strip */}
-            <div className="srtc-container-stencil-bar">
-              <div className="srtc-stencil-left">
-                <span className="srtc-stencil-dot" />
-                <span className="srtc-stencil-unit">{featuredPost.containerId}</span>
-                <span className="srtc-stencil-type">{featuredPost.containerType}</span>
-                <span className="srtc-stencil-status-pill">SEALED FOR LINEHAUL</span>
-              </div>
-              <div className="srtc-stencil-right">
-                <span className="srtc-stencil-spec">{featuredPost.corridor}</span>
-                <span className="srtc-stencil-spec">{featuredPost.maxGross}</span>
-                <span className="srtc-stencil-chevrons" aria-hidden="true">///</span>
-              </div>
-            </div>
-
             {/* Main Container Card Grid */}
             <div className="srtc-featured-grid">
               {/* Media with Container Inspection Frame */}
@@ -116,12 +100,6 @@ export default function BlogClient({ posts }) {
                 />
                 {/* 3D Corrugated Flute Shadow Overlay */}
                 <div className="srtc-corrugated-flute-depth" aria-hidden="true" />
-
-                {/* Customs Security Seal Badge */}
-                <div className="srtc-container-lock-badge">
-                  <ShieldCheck size={13} color="#E8B94F" />
-                  <span>CUSTOMS SEAL // VERIFIED LINEHAUL</span>
-                </div>
 
                 {/* Highway Corridor Location GPS Stamp */}
                 <div className="srtc-corridor-stamp srtc-corridor-stamp--featured">
@@ -221,18 +199,6 @@ export default function BlogClient({ posts }) {
                 {/* Top Rivet Line */}
                 <div className="srtc-container-top-rail srtc-top-rail--compact">
                   <ContainerRivetLine count={18} />
-                </div>
-
-                {/* Stencil Bar */}
-                <div className="srtc-container-stencil-bar srtc-stencil-bar--compact">
-                  <div className="srtc-stencil-left">
-                    <span className="srtc-stencil-dot" />
-                    <span className="srtc-stencil-unit">{post.containerId}</span>
-                    <span className="srtc-unit-axle-tag">{post.containerType || '22G1'}</span>
-                  </div>
-                  <div className="srtc-stencil-right">
-                    <span className="srtc-stencil-chevrons" aria-hidden="true">///</span>
-                  </div>
                 </div>
 
                 {/* Card Media with Stamped Photo Border */}

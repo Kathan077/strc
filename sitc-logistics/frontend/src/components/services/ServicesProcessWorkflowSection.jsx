@@ -76,12 +76,6 @@ export default function ServicesProcessWorkflowSection({ data }) {
                     <span className="srtc-cab-roof-led" />
                     <span className="srtc-cab-roof-led" />
                   </div>
-
-                  <div className="srtc-cab-visor">
-                    <span className="srtc-cab-visor-step">STEP {item.stepNum}</span>
-                    <span className="srtc-cab-visor-sep">·</span>
-                    <span className="srtc-cab-visor-tag">{item.tag}</span>
-                  </div>
                 </div>
 
                 {/* 3. Truck Windshield (Stage Icon & Prominent Title) */}
@@ -95,28 +89,7 @@ export default function ServicesProcessWorkflowSection({ data }) {
                   <h3 className="srtc-windshield-title">{item.title}</h3>
                 </div>
 
-                {/* 4. Front Radiator Grille (Slats & Operational Description) */}
-                <div className="srtc-truck-cab-grille">
-                  {/* Chrome / Navy Horizontal Grille Slats */}
-                  <div className="srtc-grille-slats-bg" aria-hidden="true">
-                    <span className="srtc-grille-slat" />
-                    <span className="srtc-grille-slat" />
-                    <span className="srtc-grille-slat" />
-                    <span className="srtc-grille-slat" />
-                  </div>
-
-                  {/* Brand Monogram Plaque */}
-                  <div className="srtc-grille-brand-badge">
-                    <span className="srtc-grille-falcon">SRTC</span>
-                    <span className="srtc-grille-dot" />
-                    <span className="srtc-grille-model">LINEHAUL · 0{idx + 1}</span>
-                  </div>
-
-                  {/* Description placed inside the truck front body */}
-                  <p className="srtc-grille-desc">{item.desc}</p>
-                </div>
-
-                {/* 5. Heavy Front Bumper, Headlamps & Commercial Number Plate */}
+                {/* 4. Heavy Front Bumper & Headlamps */}
                 <div className="srtc-truck-cab-bumper">
                   {/* Left Headlamp with DRL strip */}
                   <div className="srtc-cab-headlamp srtc-cab-headlamp--left" aria-hidden="true">
@@ -125,15 +98,11 @@ export default function ServicesProcessWorkflowSection({ data }) {
                     <div className="srtc-headlamp-amber" />
                   </div>
 
-                  {/* Center Indian Commercial Number Plate */}
-                  <div className="srtc-cab-number-plate">
-                    <div className="srtc-plate-ind-tag">
-                      <span className="srtc-plate-ind-text">IND</span>
-                    </div>
-                    <div className="srtc-plate-data">
-                      <span className="srtc-plate-num">{item.plateCode}</span>
-                      <span className="srtc-plate-metric">{item.metric}</span>
-                    </div>
+                  {/* Clean Center Bumper Lower Intake Bar */}
+                  <div className="srtc-cab-bumper-bar" aria-hidden="true">
+                    <span className="srtc-cab-bumper-slot" />
+                    <span className="srtc-cab-bumper-slot" />
+                    <span className="srtc-cab-bumper-slot" />
                   </div>
 
                   {/* Right Headlamp with DRL strip */}

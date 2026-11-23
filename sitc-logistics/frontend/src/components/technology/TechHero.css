@@ -1,0 +1,354 @@
+/* ==========================================================================
+   TechHero.css - SRTC Technology Platform Hero Banner
+   Matches AboutHero & ServicesHero exactly: Clean, Cinematic, Compact, Deep Navy & Gold Theme
+   ========================================================================== */
+
+.srtc-technology-page {
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.srtc-tech-hero {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #071F33;
+  padding: 3.5rem 1.5rem 2.75rem;
+  box-sizing: border-box;
+}
+
+/* 1. Cinematic Background Layer */
+.srtc-tech-hero__bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.srtc-tech-hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: brightness(0.72) saturate(1.15) contrast(1.08);
+  animation: techHeroBgZoom 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.srtc-tech-hero:hover .srtc-tech-hero__bg-img {
+  transform: scale(1.05);
+}
+
+@keyframes techHeroBgZoom {
+  0% {
+    opacity: 0.6;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+/* Layered Dark Vignette Gradient Overlays */
+.srtc-tech-hero__overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 47, 74, 0.85) 0%,
+    rgba(7, 31, 51, 0.65) 40%,
+    rgba(7, 31, 51, 0.85) 80%,
+    #071F33 100%
+  );
+}
+
+.srtc-tech-hero__overlay-radial {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(11, 47, 74, 0.25) 0%,
+    rgba(7, 31, 51, 0.88) 100%
+  );
+}
+
+/* 2. Content Container */
+.srtc-tech-hero__container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Main Heading with Entrance Animation */
+.srtc-tech-hero__title {
+  margin: 0 0 0.65rem;
+  font-size: clamp(2.3rem, 4.8vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.7);
+  animation: techHeroTitleEnter 800ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+}
+
+@keyframes techHeroTitleEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.srtc-tech-hero__title-gold {
+  color: #E8B94F;
+  position: relative;
+  display: inline-block;
+}
+
+.srtc-tech-hero__title-gold::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 3px;
+  background: linear-gradient(90deg, #E8B94F, rgba(232, 185, 79, 0.3));
+  border-radius: 2px;
+  animation: techHeroUnderlineGrow 900ms cubic-bezier(0.16, 1, 0.3, 1) 450ms both;
+}
+
+@keyframes techHeroUnderlineGrow {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Subtitle / Single Clean Description Line */
+.srtc-tech-hero__subtitle {
+  margin: 0 0 1.25rem;
+  max-width: 720px;
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.5;
+  color: #D6E2EC;
+  font-weight: 400;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+  animation: techHeroSubtitleEnter 800ms cubic-bezier(0.16, 1, 0.3, 1) 250ms both;
+}
+
+@keyframes techHeroSubtitleEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Breadcrumb Navigation */
+.srtc-tech-hero__breadcrumb-nav {
+  margin-bottom: 0.5rem;
+  animation: techHeroBreadcrumbEnter 800ms cubic-bezier(0.16, 1, 0.3, 1) 380ms both;
+}
+
+@keyframes techHeroBreadcrumbEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.srtc-tech-hero__breadcrumb-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.srtc-tech-hero__breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.srtc-tech-hero__breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #D6E2EC;
+  text-decoration: none;
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+.srtc-tech-hero__breadcrumb-link:hover {
+  color: #E8B94F;
+  transform: translateY(-1px);
+}
+
+.srtc-tech-hero__breadcrumb-home-icon {
+  opacity: 0.85;
+}
+
+.srtc-tech-hero__breadcrumb-sep {
+  color: rgba(232, 185, 79, 0.7);
+  display: flex;
+  align-items: center;
+}
+
+.srtc-tech-hero__breadcrumb-item--active {
+  color: #E8B94F;
+  font-weight: 700;
+}
+
+/* 3. Bottom Radiant Gold Transition Edge Line */
+.srtc-tech-hero__bottom-edge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(232, 185, 79, 0.35) 15%,
+    #E8B94F 50%,
+    rgba(232, 185, 79, 0.35) 85%,
+    transparent 100%
+  );
+  box-shadow: 0 0 14px rgba(232, 185, 79, 0.6);
+  z-index: 3;
+}
+
+/* ==========================================================================
+   PRO-LEVEL RESPONSIVE BREAKPOINTS (320px, 375px, 425px, 786px & ALL SCREENS)
+   ========================================================================== */
+
+/* Tablet & iPad Portrait (786px - 768px) */
+@media (max-width: 786px) {
+  .srtc-tech-hero {
+    min-height: 250px;
+    padding: 3rem 1.25rem 2.25rem;
+  }
+
+  .srtc-tech-hero__title {
+    font-size: clamp(2rem, 5.2vw, 2.7rem);
+    margin-bottom: 0.55rem;
+  }
+
+  .srtc-tech-hero__subtitle {
+    font-size: 0.95rem;
+    max-width: 580px;
+    margin-bottom: 1.15rem;
+  }
+
+  .srtc-tech-hero__breadcrumb-item {
+    font-size: 0.84rem;
+  }
+}
+
+/* Large Mobile (480px - 425px - Pixel, iPhone Pro Max, Galaxy) */
+@media (max-width: 480px) {
+  .srtc-tech-hero {
+    min-height: 220px;
+    padding: 2.5rem 1rem 2rem;
+  }
+
+  .srtc-tech-hero__title {
+    font-size: clamp(1.7rem, 6.8vw, 2.15rem);
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+
+  .srtc-tech-hero__subtitle {
+    font-size: 0.88rem;
+    line-height: 1.52;
+    margin-bottom: 1rem;
+    padding: 0 0.25rem;
+  }
+
+  .srtc-tech-hero__breadcrumb-list {
+    gap: 0.4rem;
+  }
+
+  .srtc-tech-hero__breadcrumb-item {
+    font-size: 0.78rem;
+  }
+}
+
+/* Standard Mobile (375px - iPhone 12/13/14/15/16) */
+@media (max-width: 380px) {
+  .srtc-tech-hero {
+    min-height: 210px;
+    padding: 2.25rem 0.85rem 1.85rem;
+  }
+
+  .srtc-tech-hero__title {
+    font-size: 1.62rem;
+  }
+
+  .srtc-tech-hero__subtitle {
+    font-size: 0.84rem;
+  }
+
+  .srtc-tech-hero__breadcrumb-item {
+    font-size: 0.75rem;
+  }
+}
+
+/* Small Mobile (320px - iPhone SE 1st Gen & Compact Screens) */
+@media (max-width: 340px) {
+  .srtc-tech-hero {
+    min-height: 195px;
+    padding: 2rem 0.75rem 1.65rem;
+  }
+
+  .srtc-tech-hero__title {
+    font-size: 1.48rem;
+  }
+
+  .srtc-tech-hero__subtitle {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    margin-bottom: 0.85rem;
+  }
+
+  .srtc-tech-hero__breadcrumb-list {
+    gap: 0.3rem;
+  }
+
+  .srtc-tech-hero__breadcrumb-item {
+    font-size: 0.7rem;
+  }
+}

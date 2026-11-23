@@ -2,8 +2,28 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Truck, Gauge, Warehouse, Thermometer, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import {
+  Truck,
+  Gauge,
+  Warehouse,
+  Thermometer,
+  ShieldCheck,
+  Zap,
+  Sparkles,
+  Wrench,
+  FlaskConical,
+  Armchair,
+  Cpu,
+  Factory,
+  Utensils,
+  Layers,
+} from 'lucide-react';
 import './ServicesSection.css';
+
+const getContainerImage = (card) => {
+  if (card?.image && card.image.trim() !== '') return card.image;
+  return '';
+};
 
 function ServicesSection({ data }) {
   const allCards = data?.serviceCards || [];
@@ -74,20 +94,26 @@ function ServicesSection({ data }) {
   }, [containerCards.length]);
 
   const getContainerIcon = (idx) => {
-    switch (idx % 6) {
+    switch (idx % 9) {
       case 0:
-        return <Truck size={19} className="sitc-container-card__icon" />;
+        return <Wrench size={19} className="sitc-container-card__icon" />;
       case 1:
-        return <Gauge size={19} className="sitc-container-card__icon" />;
+        return <Factory size={19} className="sitc-container-card__icon" />;
       case 2:
-        return <Thermometer size={19} className="sitc-container-card__icon" />;
+        return <Cpu size={19} className="sitc-container-card__icon" />;
       case 3:
-        return <ShieldCheck size={19} className="sitc-container-card__icon" />;
+        return <FlaskConical size={19} className="sitc-container-card__icon" />;
       case 4:
-        return <Zap size={19} className="sitc-container-card__icon" />;
+        return <Thermometer size={19} className="sitc-container-card__icon" />;
       case 5:
+        return <Utensils size={19} className="sitc-container-card__icon" />;
+      case 6:
+        return <Layers size={19} className="sitc-container-card__icon" />;
+      case 7:
+        return <Armchair size={19} className="sitc-container-card__icon" />;
+      case 8:
       default:
-        return <Warehouse size={19} className="sitc-container-card__icon" />;
+        return <Sparkles size={19} className="sitc-container-card__icon" />;
     }
   };
 
@@ -162,12 +188,6 @@ function ServicesSection({ data }) {
             className={`sitc-services-header ${revealed['services-header'] ? 'is-revealed' : ''}`}
           >
             <div className="sitc-services-header__left">
-              <div className="sitc-services-kicker-capsule">
-                <Truck size={14} className="sitc-services-kicker__icon" />
-                <span className="sitc-services-kicker__text">{data?.kicker || 'SRTC Supply Chain Services'}</span>
-                <span className="sitc-services-kicker__shimmer" aria-hidden="true" />
-              </div>
-
               <h2 className="sitc-services-title">
                 {data?.title || 'Logistics & Warehouse Handling Services'}
               </h2>
@@ -194,17 +214,19 @@ function ServicesSection({ data }) {
                 <h3 className="sitc-svc-card__title">{card1.title || 'Full Truck Load (FTL)'}</h3>
                 <p className="sitc-svc-card__subtitle">
                 {card1.description ||
-                  'Dedicated point-to-point fleet deployment for heavy, bulk, and industrial cargo across Gujarat and nationwide corridors.'}
+                  'Dedicated point-to-point fleet deployment for heavy, bulk, and industrial cargo across Gujarat and connected industrial corridors.'}
               </p>
             </div>
 
             <div className="sitc-svc-card__img-frame sitc-svc-card__img-frame--bottom-sculpt">
-              <img
-                src={card1.image || '/images/services/service-truck-1.jpg'}
-                alt={card1.title || 'Full Truckload FTL Logistics Fleet'}
-                className="sitc-svc-card__img"
-                loading="lazy"
-              />
+              {card1.image && (
+                <img
+                  src={card1.image}
+                  alt={card1.title || 'Full Truckload FTL Logistics Fleet'}
+                  className="sitc-svc-card__img"
+                  loading="lazy"
+                />
+              )}
             </div>
           </article>
 
@@ -216,12 +238,14 @@ function ServicesSection({ data }) {
             }`}
           >
             <div className="sitc-svc-card__bg-frame">
-              <img
-                src={card2.image || '/images/services/service-truck-2.jpg'}
-                alt={card2.title || 'Express Cargo and JIT Linehaul Truck'}
-                className="sitc-svc-card__img"
-                loading="lazy"
-              />
+              {card2.image && (
+                <img
+                  src={card2.image}
+                  alt={card2.title || 'Express Cargo and JIT Linehaul Truck'}
+                  className="sitc-svc-card__img"
+                  loading="lazy"
+                />
+              )}
               <div className="sitc-svc-card__gradient-overlay" />
             </div>
 
@@ -244,12 +268,14 @@ function ServicesSection({ data }) {
             }`}
           >
             <div className="sitc-svc-card__img-frame sitc-svc-card__img-frame--top-sculpt">
-              <img
-                src={card3.image || '/images/services/service-truck-3.jpg'}
-                alt={card3.title || 'Heavy and Project Ground Freight'}
-                className="sitc-svc-card__img"
-                loading="lazy"
-              />
+              {card3.image && (
+                <img
+                  src={card3.image}
+                  alt={card3.title || 'Heavy and Project Ground Freight'}
+                  className="sitc-svc-card__img"
+                  loading="lazy"
+                />
+              )}
             </div>
 
             <div className="sitc-svc-card__text-block sitc-svc-card__text-block--bottom">
@@ -278,6 +304,19 @@ function ServicesSection({ data }) {
                     revealed[revealKey] ? 'is-revealed' : ''
                   }`}
                 >
+                  {/* Industry Working Background Image Canvas & Legibility Scrim */}
+                  {getContainerImage(card) ? (
+                    <div className="sitc-container-card__bg-canvas" aria-hidden="true">
+                      <img
+                        src={getContainerImage(card)}
+                        alt={card.title || 'SRTC Industry Solution'}
+                        className="sitc-container-card__bg-img"
+                        loading="lazy"
+                      />
+                      <div className="sitc-container-card__scrim" />
+                    </div>
+                  ) : null}
+
                   <span className="sitc-casting sitc-casting--tl" aria-hidden="true" />
                   <span className="sitc-casting sitc-casting--tr" aria-hidden="true" />
                   <span className="sitc-casting sitc-casting--bl" aria-hidden="true" />
@@ -316,4 +355,4 @@ function ServicesSection({ data }) {
   );
 }
 
-export default React.memo(ServicesSection);
+export default ServicesSection;

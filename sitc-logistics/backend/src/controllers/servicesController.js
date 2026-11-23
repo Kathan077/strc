@@ -68,6 +68,9 @@ const updateFullServices = async (req, res, next) => {
       content = await ServicesPageContent.create(req.body);
     } else {
       Object.assign(content, req.body);
+      ['hero', 'core', 'industries', 'workflow', 'trustClients', 'truckContactCTA'].forEach((s) => {
+        if (req.body[s]) content.markModified(s);
+      });
       await content.save();
     }
 

@@ -503,7 +503,7 @@
 
 .sitc-container-card {
   position: relative;
-  background-color: #FFFFFF;
+  background-color: #071F33;
   border: 2px solid #0B2F4A;
   border-radius: 18px;
   padding: 2.4rem 2.2rem 1.9rem;
@@ -512,16 +512,53 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: visible;
-  box-shadow: 0 8px 24px rgba(11, 47, 74, 0.07);
+  box-shadow: 0 10px 28px rgba(7, 31, 51, 0.22);
   box-sizing: border-box;
+}
 
-  /* Authentic Container Corrugation Lines */
-  background-image: repeating-linear-gradient(
-    90deg,
-    #FFFFFF,
-    #FFFFFF 28px,
-    #F8FAFC 28px,
-    #F1F5F9 32px
+/* Industry Working Photograph Background Canvas & Legibility Scrim */
+.sitc-container-card__bg-canvas {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sitc-container-card__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.02);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.65s ease;
+  filter: brightness(0.96) contrast(1.08);
+}
+
+.sitc-container-card:hover .sitc-container-card__bg-img {
+  transform: scale(1.08);
+  filter: brightness(1.02) contrast(1.12);
+}
+
+.sitc-container-card__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 31, 51, 0.38) 0%,
+    rgba(7, 31, 51, 0.52) 42%,
+    rgba(7, 31, 51, 0.82) 100%
+  );
+  transition: background 0.4s ease;
+}
+
+.sitc-container-card:hover .sitc-container-card__scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(7, 31, 51, 0.28) 0%,
+    rgba(7, 31, 51, 0.42) 42%,
+    rgba(7, 31, 51, 0.74) 100%
   );
 }
 
@@ -643,18 +680,19 @@
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 0.72rem;
   font-weight: 850;
-  color: #07557A;
-  background: #FFF1A8;
+  color: #FFF1A8;
+  background: rgba(7, 31, 51, 0.88);
   border: 1.2px solid #E8B94F;
   padding: 0.25rem 0.75rem;
   border-radius: 6px;
   letter-spacing: 0.08em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
 .sitc-container-serial--featured {
   background: #E8B94F;
   color: #071F33;
-  border-color: #071F33;
+  border-color: #FFF1A8;
 }
 
 /* Body */
@@ -667,17 +705,20 @@
 .sitc-container-card__title {
   font-size: 1.4rem;
   font-weight: 850;
-  color: #0B2F4A;
+  color: #FFFFFF;
   margin: 0 0 0.8rem;
   line-height: 1.25;
   letter-spacing: -0.01em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.95);
 }
 
 .sitc-container-card__desc {
-  font-size: 0.9rem;
-  color: #5A6E82;
+  font-size: 0.92rem;
+  color: #F8FAFC;
   line-height: 1.62;
   margin: 0;
+  font-weight: 500;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.95);
 }
 
 /* Bottom Industrial Telemetry Strip */
@@ -685,7 +726,7 @@
   position: relative;
   z-index: 2;
   margin-top: auto;
-  border-top: 1.5px solid #E2E8F0;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.22);
   padding-top: 1.2rem;
   display: flex;
   justify-content: space-between;
@@ -698,8 +739,9 @@
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 0.7rem;
   font-weight: 800;
-  color: #64748B;
+  color: #E2E8F0;
   letter-spacing: 0.06em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 .sitc-container-card__link {
@@ -711,21 +753,24 @@
   letter-spacing: 0.09em;
   text-transform: uppercase;
   text-decoration: none;
-  color: #07557A;
+  color: #FFF1A8;
   transition: all 200ms ease;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 .sitc-container-card__arrow {
   transition: transform 200ms ease;
   font-weight: 800;
+  color: #FFF1A8;
 }
 
 .sitc-container-card__link:hover {
-  color: #0B2F4A;
+  color: #FFFFFF;
 }
 
 .sitc-container-card__link:hover .sitc-container-card__arrow {
   transform: translateX(4px);
+  color: #E8B94F;
 }
 
 /* ==========================================================================

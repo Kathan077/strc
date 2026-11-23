@@ -65,6 +65,7 @@ exports.updateHomepageSection = async (req, res) => {
     }
 
     content[sectionName] = req.body;
+    content.markModified(sectionName);
     await content.save();
 
     res.status(200).json({
@@ -91,6 +92,19 @@ exports.updateFullHomepage = async (req, res) => {
     }
 
     Object.assign(content, req.body);
+    const allSections = [
+      'hero',
+      'about',
+      'services',
+      'operationalSystems',
+      'process',
+      'faq',
+      'values',
+      'truckContactCTA',
+    ];
+    allSections.forEach((s) => {
+      if (req.body[s]) content.markModified(s);
+    });
     await content.save();
 
     res.status(200).json({

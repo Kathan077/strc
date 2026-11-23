@@ -8,6 +8,7 @@ import {
   Building2,
   FileText,
   Phone,
+  Cpu,
 } from 'lucide-react';
 import './Navbar.css';
 
@@ -182,6 +183,7 @@ const navItems = [
   { label: 'Home', href: '/', icon: Home, toy: MiniToyTruck },
   { label: 'About Us', href: '/about', icon: Building2, toy: MiniToyTruck },
   { label: 'Services', href: '/services', icon: Boxes, toy: MiniToyTruck },
+  { label: 'Technology', href: '/technology', icon: Cpu, toy: MiniToyTruck },
   { label: 'Blog', href: '/blog', icon: FileText, toy: MiniToyTruck },
   { label: 'Contact Us', href: '/contact', icon: Phone, toy: MiniToyTruck },
 ];

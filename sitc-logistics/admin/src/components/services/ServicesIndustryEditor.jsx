@@ -61,6 +61,7 @@ export default function ServicesIndustryEditor({ initialData, onSave, isSaving }
         { label: 'Payload Rating', val: '24 Metric Tons' },
       ],
       highlight: 'Direct corridor delivery with real-time GPS tracking.',
+      image: '',
       isFeatured: false,
     };
     setData((prev) => ({ ...prev, industryCards: [...prev.industryCards, newCard] }));
@@ -264,6 +265,8 @@ export default function ServicesIndustryEditor({ initialData, onSave, isSaving }
               </select>
             </div>
           </div>
+
+
 
           <div className="form-group">
             <label className="form-label">Description</label>
