@@ -6,7 +6,8 @@ import ServicesClientsTrustSection from '@/components/services/ServicesClientsTr
 import TruckContactCTA from '@/components/home/TruckContactCTA';
 import LazySection from '@/components/common/LazySection';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export const metadata = {
   title: 'Logistics & Warehouse Handling Services | SRTC Supply Chain',
@@ -19,7 +20,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 async function getServicesContent() {
   try {
     const res = await fetch(`${API_BASE}/api/services`, {
-      next: { revalidate: 60 },
+      cache: 'no-store',
       signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) {
@@ -42,17 +43,15 @@ export default async function ServicesPage() {
       {/* 1. Header Hero Banner — Eager */}
       <ServicesHero data={content?.hero} />
 
-      {/* 2. Core Service Pillars: FTL, PTL & Superfast Cargo, Warehousing */}
-      <LazySection minHeight="650px">
-        <ServicesCoreSection data={content?.core} />
-      </LazySection>
+      {/* 2. Core Service Pillars: FTL, PTL & Superfast Cargo, Warehousing (Directly Rendered from Admin Data) */}
+      <ServicesCoreSection data={content?.core} />
 
       {/* 3. Specialized Intermodal Container Architecture (6 Vertical Industry Solutions) */}
       <LazySection minHeight="750px">
         <ServicesIndustryContainerSection data={content?.industries} />
       </LazySection>
 
-      {/* 4. 4-Step Pan-India Freight Execution Pipeline & Quality Compliance */}
+      {/* 4. 4-Step Industrial Freight Execution Pipeline & Quality Compliance */}
       <LazySection minHeight="600px">
         <ServicesProcessWorkflowSection data={content?.workflow} />
       </LazySection>

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Truck,
@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   ArrowRight,
   ShieldCheck,
-  Sparkles,
 } from 'lucide-react';
 import './ServicesCoreSection.css';
 
@@ -20,217 +19,314 @@ const ICON_MAP = {
   ShieldCheck,
 };
 
-// ============================================================================
-// 3 CORE SERVICES - 100% BROCHURE ALIGNED (PAGE 3: SERVICES)
-// ============================================================================
-const DEFAULT_CORE_SERVICES = [
+// 3 Core Services — 100% Brochure Aligned (Page 3: Services)
+// Pure authentic content, sequential scroll-driven card replacement
+const CORE_SERVICES = [
   {
+    step: 1,
     id: 'ftl',
-    badgeText: 'FULL TRUCK LOAD',
+    serviceIndex: '01',
+    category: 'Dedicated Transport',
     title: 'Full Truck Load (FTL)',
-    tagline: 'Dedicated End-to-End Linehaul Deployment',
-    image: '/images/services/service-truck-1.jpg',
-    icon: 'Truck',
+    tagline: 'Dedicated point-to-point road freight with zero mid-route transshipment',
     description:
-      'Dedicated point-to-point vehicle deployment engineered for heavy industrial manufacturers, refineries, and petrochemical producers. Consignments are allocated exclusively to single company-owned heavy linehaul vehicles with guaranteed zero mid-route transshipment, ensuring maximum cargo safety and non-stop highway transit across Gujarat and Pan-India corridors.',
+      'Our Full Truck Load service provides dedicated vehicle deployment for heavy industrial manufacturers, refineries, and commercial enterprises. Consignments are allocated exclusively to single company-managed vehicles from origin to destination, ensuring your cargo remains untouched, fully secured, and delivered on strict highway transit schedules across Gujarat and national corridors.',
+    image: '/images/services/service-truck-1.jpg',
+    imageAlt: 'SRTC Dedicated Full Truck Load (FTL) Freight Transport',
+    icon: Truck,
     specs: [
       { label: 'Payload Capacity', val: '16 to 42 Metric Tons (GVW)' },
-      { label: 'Vehicle Types', val: 'Volvo FM, BharatBenz & Multi-Axle' },
-      { label: 'Container Mandate', val: '24ft, 28ft, 32ft High-Cube Steel' },
-      { label: 'Transit Security', val: 'AIS-140 GPS & Digital E-Seals' },
+      { label: 'Vehicle Types', val: 'Multi-Axle Trailers, Volvo FM & Heavy Haulers' },
+      { label: 'Container Standards', val: '24ft, 28ft, 32ft High-Cube Steel Containers' },
+      { label: 'Transit Security', val: '24/7 GPS Tracking & High-Security E-Seals' },
     ],
     features: [
-      'Dedicated vehicle allocated exclusively to a single consignor',
-      'Direct refinery, port & plant evacuation with zero transshipment',
-      'Non-stop highway corridor transit with trained commercial pilots',
-      'Real-time GPS telematics with 24/7 control room surveillance',
+      'Dedicated vehicle allocated exclusively to a single corporate consignor',
+      'Direct plant-to-warehouse transit with zero transshipment guarantee',
+      'Comprehensive transit marine insurance coverage on every shipment',
+      'Trained commercial drivers with 24/7 central control room monitoring',
     ],
     ctaText: 'Inquire FTL Fleet',
     ctaHref: '/contact',
-    isFeatured: true,
-    featuredBadge: 'HIGH CAPACITY',
   },
   {
+    step: 2,
     id: 'ptl',
-    badgeText: 'PART TRUCK LOAD',
-    title: 'Part Truck Load (PTL)',
-    tagline: 'Consolidated Freight & Superfast Cargo Parcels',
-    image: '/images/services/service-truck-2.jpg',
-    icon: 'Package',
+    serviceIndex: '02',
+    category: 'Consolidated Freight',
+    title: 'Part Truck Load (PTL) & Superfast Cargo',
+    tagline: 'Scheduled daily departures for partial consignments and express parcels',
     description:
-      'Cost-optimized consolidated highway logistics engineered for partial consignments, regional commercial distribution, and urgent small packages. Operating on scheduled daily departures across Gujarat and national transport nodes, PTL maximizes volumetric efficiency while delivering express linehaul speed and complete shipment visibility.',
+      'Part Truck Load provides cost-effective highway logistics for shipments that do not require an entire vehicle. Operating on fixed daily departure schedules across regional transit centers, our PTL network combines volumetric cargo efficiency with express transit speed, reliable handling, and transparent pay-per-weight pricing for commercial distribution.',
+    image: '/images/services/service-truck-2.jpg',
+    imageAlt: 'SRTC Part Truck Load and Express Cargo Logistics',
+    icon: Package,
     specs: [
-      { label: 'Consignment Size', val: '50 Kg to 12 Metric Tons' },
+      { label: 'Consignment Range', val: '50 Kg to 12 Metric Tons' },
       { label: 'Departure Schedule', val: 'Daily Fixed Evening Linehaul' },
-      { label: 'Consolidation Grid', val: 'Hub & Spoke Network Routing' },
-      { label: 'Handling Mandate', val: 'Zero-Damage Stacking & Palletizing' },
+      { label: 'Network Coverage', val: '28+ Hub and Spoke Regional Centers' },
+      { label: 'Handling Mandate', val: 'Palletized Staging & Zero-Damage Stacking' },
     ],
     features: [
-      'Economical shared capacity with flexible pay-per-weight pricing',
-      'Daily scheduled linehaul departures with strict arrival SLAs',
-      'Door-to-door express pickup and last-mile delivery available',
-      'Full compliance with highway safety rules and digital e-Way bills',
+      'Economical shared capacity with transparent pay-per-weight pricing',
+      'Daily scheduled linehaul departures with committed delivery windows',
+      'Doorstep pickup and verified last-mile delivery available',
+      'Full compliance with highway safety standards and digital e-Way bills',
     ],
     ctaText: 'Book PTL Cargo',
     ctaHref: '/contact',
-    isFeatured: false,
-    featuredBadge: '',
   },
   {
+    step: 3,
     id: 'warehousing',
-    badgeText: 'WAREHOUSING',
-    title: 'Warehousing & Storage',
-    tagline: 'Grade-A Strategic Inventory & Distribution Hubs',
-    image: '/images/services/service-truck-3.jpg',
-    icon: 'Warehouse',
+    serviceIndex: '03',
+    category: 'Contract Storage',
+    title: 'Warehousing & Storage Handling Services',
+    tagline: 'Modern Grade-A storage facilities along major industrial corridors and ports',
     description:
-      'Modern, scalable, technology-driven warehousing and contract logistics facilities strategically positioned along key industrial corridors and port links. We provide climate-controlled staging, automated inventory management, high-density racking, and seamless multi-modal transshipment to eliminate logistics bottlenecks for corporate enterprises.',
+      'Our warehousing and contract logistics facilities are strategically positioned near major industrial belts, state highways, and ports such as Mundra and Kandla. We provide secure staging, automated inventory tracking, heavy-duty racking, and cross-docking to eliminate supply chain bottlenecks, supporting raw material infeed and finished goods distribution.',
+    image: '/images/services/service-truck-3.jpg',
+    imageAlt: 'SRTC Modern Industrial Warehouse and Contract Storage Facilities',
+    icon: Warehouse,
     specs: [
       { label: 'Facility Grade', val: 'Grade-A Industrial Warehousing Hubs' },
-      { label: 'Handling Equipment', val: 'Hydraulic Docks, Reach Trucks & WMS' },
-      { label: 'Security & Access', val: '24/7 High-Definition CCTV & Biometric' },
-      { label: 'Contract Models', val: 'Flexible 3PL, Dedicated & Shared Space' },
+      { label: 'Handling Equipment', val: 'Hydraulic Dock Levelers & Reach Trucks' },
+      { label: 'Security & Safety', val: '24/7 HD CCTV & Fire Suppression Compliance' },
+      { label: 'Contract Models', val: 'Flexible 3PL, Dedicated & Shared Storage' },
     ],
     features: [
-      'Strategic locations near major state highways, ports & freight corridors',
-      'Dedicated cargo handling, sorting, palletizing and cross-docking',
-      'Customized inventory staging with digital barcoding and tracking',
-      '24/7 operational surveillance with fire suppression compliance',
+      'Strategic locations near major state highways, ports, and transit nodes',
+      'Dedicated cargo handling, sorting, palletizing, and cross-docking',
+      'Customized inventory staging with digital barcoding and lot tracking',
+      'Climate-buffered staging for sensitive consumer goods and chemicals',
     ],
-    ctaText: 'Inquire Warehouse Space',
+    ctaText: 'Inquire Warehouse Storage',
     ctaHref: '/contact',
-    isFeatured: false,
-    featuredBadge: '',
   },
 ];
 
 export default function ServicesCoreSection({ data }) {
-  const kicker = data?.kicker || 'PROPRIETARY, EASY, CONVENIENT';
+  const sectionRef = useRef(null);
+  const [activeStage, setActiveStage] = useState(1); // 1, 2, or 3
+  const [isDesktop, setIsDesktop] = useState(true);
+
   const title = data?.title || 'Core Logistics & Warehouse Solutions';
-  const description =
-    data?.description ||
-    'We specialize in FTL (Full Truck Load), PTL (Part Truck Load), small packages, superfast cargo, warehousing, and contract logistics, ensuring reliable and on-time delivery through a strong network and professional team.';
-  const rawServices =
+
+  // Dynamic services array directly sourced from Admin CMS / MongoDB
+  const dynamicServices =
     data?.coreServices && data.coreServices.length > 0
-      ? data.coreServices
-      : DEFAULT_CORE_SERVICES;
-
-  return (
-    <section className="srtc-core-services-section" aria-label="Core Logistics Solutions">
-      <div className="srtc-core-container">
-        {/* Section Header */}
-        <div className="srtc-core-header">
-          <div className="srtc-core-kicker">
-            <Sparkles size={14} className="srtc-core-kicker-icon" />
-            <span>{kicker}</span>
-          </div>
-
-          <h2 className="srtc-core-title">{title}</h2>
-
-          <p className="srtc-core-subtitle">{description}</p>
-        </div>
-
-        {/* 3 Executive Modern Service Cards */}
-        <div className="srtc-services-grid">
-          {rawServices.map((service, idx) => {
-            const fallbackItem = DEFAULT_CORE_SERVICES[idx] || DEFAULT_CORE_SERVICES[0];
-            const IconComponent =
-              (typeof service.icon === 'string' ? ICON_MAP[service.icon] : service.icon) ||
-              ICON_MAP[fallbackItem.icon] ||
-              Truck;
-            const badgeText =
-              service.badgeText ||
-              (service.id === 'ftl'
-                ? 'FULL TRUCK LOAD'
-                : service.id === 'ptl'
-                  ? 'PART TRUCK LOAD'
-                  : 'WAREHOUSING');
-            const tagline = service.tagline || fallbackItem.tagline;
-            const description =
-              service.description || fallbackItem.description || '';
-            const specs =
-              service.specs && service.specs.length > 0
-                ? service.specs
-                : fallbackItem.specs;
-            const features =
+      ? data.coreServices.map((service, idx) => {
+          const fallback = CORE_SERVICES[idx] || {};
+          const IconComponent =
+            (typeof service.icon === 'string' ? ICON_MAP[service.icon] : service.icon) ||
+            fallback.icon ||
+            Truck;
+          return {
+            step: idx + 1,
+            id: service.id || fallback.id || `service-${idx + 1}`,
+            serviceIndex: String(idx + 1).padStart(2, '0'),
+            category:
+              service.category ||
+              fallback.category ||
+              (idx === 0
+                ? 'Dedicated Transport'
+                : idx === 1
+                ? 'Consolidated Freight'
+                : 'Contract Storage'),
+            title: service.title || fallback.title || '',
+            tagline:
+              service.tagline ||
+              fallback.tagline ||
+              (service.description ? service.description.slice(0, 80) + '...' : ''),
+            description: service.description || fallback.description || '',
+            image: service.image || fallback.image || '',
+            imageAlt: service.title || fallback.imageAlt || 'SRTC Dedicated Freight Transport',
+            icon: IconComponent,
+            specs:
+              service.specs && service.specs.length > 0 ? service.specs : fallback.specs || [],
+            features:
               service.features && service.features.length > 0
                 ? service.features
-                : fallbackItem.features;
-            const ctaText = service.ctaText || fallbackItem.ctaText || 'Inquire Service';
-            const ctaHref = service.ctaHref || fallbackItem.ctaHref || '/contact';
-            const isFeatured = service.isFeatured ?? fallbackItem.isFeatured;
+                : fallback.features || [],
+            ctaText: service.ctaText || fallback.ctaText || 'Inquire Fleet',
+            ctaHref: service.ctaHref || fallback.ctaHref || '/contact',
+          };
+        })
+      : CORE_SERVICES;
 
-            return (
-              <article
-                key={service.id || idx}
-                className={`srtc-service-card ${isFeatured ? 'srtc-service-card--featured' : ''}`}
-              >
-                {/* 1. Header Pill: Official Brochure Badge */}
-                <div className="srtc-service-card-top">
-                  <div className="srtc-service-pill">
-                    <div className="srtc-service-pill-icon">
-                      <IconComponent size={18} strokeWidth={2.2} />
+  // Detect desktop vs mobile viewport
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1025);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Sticky scroll-pinned tracking
+  useEffect(() => {
+    if (!isDesktop) return;
+
+    let rafId = null;
+
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const trackHeight = sectionRef.current.offsetHeight - window.innerHeight;
+
+      if (trackHeight <= 0) return;
+
+      // Progress from 0.0 to 1.0 through the 280vh track
+      const progress = Math.min(1, Math.max(0, -rect.top / trackHeight));
+
+      if (progress < 0.35) {
+        setActiveStage(1);
+      } else if (progress < 0.7) {
+        setActiveStage(2);
+      } else {
+        setActiveStage(3);
+      }
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, [isDesktop]);
+
+  return (
+    <section
+      className="srtc-core-scroll-section"
+      id="core-logistics-solutions"
+      ref={sectionRef}
+      aria-label="Core Logistics and Warehouse Solutions"
+    >
+      {/* Sticky Viewport Stage (Desktop pins until all 3 cards are shown) */}
+      <div className="srtc-core-sticky-viewport">
+        <div className="srtc-core-inner-container">
+          {/* ===================================================================
+              1. Compact Executive Top Header (Clean & Minimal)
+              =================================================================== */}
+          <header className="srtc-core-top-nav-bar">
+            <div className="srtc-top-nav-left">
+              <h2 className="srtc-top-main-title">{title}</h2>
+            </div>
+          </header>
+
+          {/* ===================================================================
+              2. Perfectly Centered Card Stacking Deck Stage:
+                 - Expanded width (1420px max)
+                 - Fits comfortably within 100vh on any desktop/laptop
+                 - Zero clipping at top and bottom
+              =================================================================== */}
+          <div className="srtc-cards-stack-deck">
+            {dynamicServices.map((service) => {
+              const ServiceIcon = service.icon;
+              const isCurrent = activeStage === service.step;
+              const isPassed = activeStage > service.step;
+              const isUpcoming = activeStage < service.step;
+
+              let cardStateClass = 'is-active';
+              if (isDesktop) {
+                if (isCurrent) cardStateClass = 'is-active';
+                else if (isPassed) cardStateClass = 'is-passed';
+                else if (isUpcoming) cardStateClass = 'is-upcoming';
+              }
+
+              return (
+                <article
+                  key={service.id}
+                  id={service.id}
+                  className={`srtc-stack-card ${cardStateClass}`}
+                  data-step={service.step}
+                >
+                  {/* Left Column: Pure Photography (Natural, Zero Text Overlay) */}
+                  <div className="srtc-stack-image-col">
+                    <div className="srtc-stack-image-frame">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={service.image}
+                        alt={service.imageAlt}
+                        className="srtc-stack-pure-img"
+                        loading={service.step === 1 ? 'eager' : 'lazy'}
+                        fetchPriority={service.step === 1 ? 'high' : 'auto'}
+                      />
                     </div>
-                    <span className="srtc-service-pill-text">{badgeText}</span>
                   </div>
-                  {isFeatured && (
-                    <span className="srtc-service-featured-pill">
-                      <Sparkles size={12} className="srtc-service-sparkle" />
-                      {service.featuredBadge || fallbackItem.featuredBadge || 'FEATURED'}
-                    </span>
-                  )}
-                </div>
 
-                {/* 2. Cinematic Image Box */}
-                <div className="srtc-service-img-wrap">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={service.image || fallbackItem.image}
-                    alt={service.title}
-                    className="srtc-service-img"
-                    loading="lazy"
-                  />
-                  <div className="srtc-service-img-overlay" />
-                </div>
-
-                {/* 3. Card Body: Title, Tagline & Detailed Content */}
-                <div className="srtc-service-card-body">
-                  <h3 className="srtc-service-title">{service.title}</h3>
-                  <span className="srtc-service-tagline">{tagline}</span>
-
-                  <p className="srtc-service-desc">{description}</p>
-
-                  {/* 4. Structured Technical Specifications Grid */}
-                  <div className="srtc-service-specs-grid">
-                    {specs.map((item, sIdx) => (
-                      <div key={sIdx} className="srtc-service-spec-tile">
-                        <span className="srtc-service-spec-label">{item.label}</span>
-                        <strong className="srtc-service-spec-val">{item.val}</strong>
+                  {/* Right Column: Pure Content & Technical Specs */}
+                  <div className="srtc-stack-content-col">
+                    {/* Meta Row */}
+                    <div className="srtc-stack-meta-row">
+                      <div className="srtc-stack-icon-box">
+                        <ServiceIcon size={16} strokeWidth={2.2} />
                       </div>
-                    ))}
+                      <span className="srtc-stack-category">{service.category}</span>
+                      <span className="srtc-stack-counter">
+                        Service {service.serviceIndex} of 03
+                      </span>
+                    </div>
+
+                    {/* Title & Tagline */}
+                    <h3 className="srtc-stack-title">{service.title}</h3>
+                    <p className="srtc-stack-tagline">{service.tagline}</p>
+
+                    {/* Description Paragraph */}
+                    <p className="srtc-stack-desc">{service.description}</p>
+
+                    {/* 4-Tile Technical Specifications Matrix */}
+                    <div className="srtc-stack-specs-box">
+                      <div className="srtc-stack-specs-grid">
+                        {service.specs.map((spec, sIdx) => (
+                          <div key={sIdx} className="srtc-stack-spec-tile">
+                            <span className="srtc-stack-spec-lbl">{spec.label}</span>
+                            <strong className="srtc-stack-spec-val">{spec.val}</strong>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Key Features & Mandates */}
+                    <ul className="srtc-stack-features-list">
+                      {service.features.map((feat, fIdx) => (
+                        <li key={fIdx} className="srtc-stack-feature-item">
+                          <CheckCircle2 size={14} className="srtc-stack-check-icon" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Action Row */}
+                    <div className="srtc-stack-action-row">
+                      <Link href={service.ctaHref} className="srtc-stack-cta-btn">
+                        <span>{service.ctaText}</span>
+                        <ArrowRight size={14} className="srtc-stack-btn-arrow" />
+                      </Link>
+
+                      <div className="srtc-stack-guarantee-note">
+                        <ShieldCheck size={14} className="srtc-stack-shield-icon" />
+                        <span>100% Insured & GPS Telematics Tracked</span>
+                      </div>
+                    </div>
                   </div>
+                </article>
+              );
+            })}
+          </div>
 
-                  {/* 5. Key Operational Capabilities Checklist */}
-                  <ul className="srtc-service-features-list">
-                    {features.map((feat, fIdx) => (
-                      <li key={fIdx} className="srtc-service-feature-item">
-                        <CheckCircle2 size={15} className="srtc-service-check-icon" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* 6. Card Footer: Direct CTA Button */}
-                <div className="srtc-service-card-footer">
-                  <Link href={ctaHref} className="srtc-service-cta-btn">
-                    <span>{ctaText}</span>
-                    <ArrowRight size={15} className="srtc-service-btn-arrow" />
-                  </Link>
-                </div>
-              </article>
-            );
-          })}
+          {/* Bottom subtle indicator */}
+          <div className="srtc-stack-scroll-hint">
+            <span>Scroll to explore all 3 services • {activeStage} of 3</span>
+          </div>
         </div>
       </div>
     </section>

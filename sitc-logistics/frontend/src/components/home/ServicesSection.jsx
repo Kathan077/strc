@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import {
   Truck,
   Gauge,
@@ -196,7 +195,7 @@ function ServicesSection({ data }) {
             <div className="sitc-services-header__right">
               <p className="sitc-services-desc">
                 {data?.subtitle ||
-                  'Proprietary, Easy, Convenient. Tailored logistics solutions driven by our commitment to deliver reliability, speed, and value every single time.'}
+                  'Tailored logistics solutions driven by our commitment to deliver reliability, speed, and value every single time.'}
               </p>
             </div>
           </header>
@@ -334,16 +333,6 @@ function ServicesSection({ data }) {
                   <div className="sitc-container-card__body">
                     <h4 className="sitc-container-card__title">{card.title}</h4>
                     <p className="sitc-container-card__desc">{card.description}</p>
-                  </div>
-
-                  <div className="sitc-container-card__bottom">
-                    <span className="sitc-container-spec-tag">
-                      {card.specs?.[0] ? `CLIENTS / SPEC: ${card.specs[0]}` : 'INDUSTRIAL SPEC'}
-                    </span>
-                    <Link href={card.ctaLink || '/services'} className="sitc-container-card__link">
-                      <span>{card.ctaText || 'EXPLORE SYSTEM SPEC'}</span>
-                      <span className="sitc-container-card__arrow">→</span>
-                    </Link>
                   </div>
                 </article>
               );

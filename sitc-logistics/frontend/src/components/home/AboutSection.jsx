@@ -380,7 +380,6 @@ function AboutSection({ data }) {
                 <h3 className="sitc-capabilities-title">
                   Our <span className="sitc-capabilities-title--gold">Core Services</span>
                 </h3>
-                <span className="sitc-capabilities-badge">Proprietary • Easy • Convenient</span>
               </div>
 
               <div className="sitc-capabilities-list">

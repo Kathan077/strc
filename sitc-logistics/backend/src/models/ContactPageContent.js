@@ -70,7 +70,7 @@ const ContactPageContentSchema = new mongoose.Schema(
     vaultHubs: {
       unitCode: { type: String, default: 'SRTC-YARD-04' },
       tag: { type: String, default: 'PORT & TRANSIT YARDS' },
-      kicker: { type: String, default: 'KEY PAN-INDIA CORRIDOR HUBS' },
+      kicker: { type: String, default: 'KEY REGIONAL CORRIDOR HUBS' },
       title: { type: String, default: 'Strategic Gateway Terminals' },
       hubsList: [{ type: String }],
     },

@@ -10,7 +10,7 @@ const ServicesPageContentSchema = new mongoose.Schema(
       subtitle: {
         type: String,
         default:
-          'Comprehensive Transport, Container Linehaul & Scalable Warehouse Solutions Across India.',
+          'Comprehensive Transport, Container Linehaul & Scalable Industrial Warehouse Solutions.',
       },
       breadcrumbHome: { type: String, default: 'Home' },
       breadcrumbCurrent: { type: String, default: 'Our Services' },
@@ -23,7 +23,7 @@ const ServicesPageContentSchema = new mongoose.Schema(
       description: {
         type: String,
         default:
-          'Built upon two decades of logistical leadership, SRTC delivers high-velocity road freight across India with purpose-built equipment and guaranteed SLA precision.',
+          'Built upon two decades of logistical leadership, SRTC delivers high-velocity road freight with purpose-built equipment and guaranteed SLA precision.',
       },
       coreServices: [
         {
@@ -87,7 +87,7 @@ const ServicesPageContentSchema = new mongoose.Schema(
     // Section 4: 4-Step Freight Execution Pipeline
     workflow: {
       kicker: { type: String, default: 'STANDARDIZED OPERATIONAL EXCELLENCE' },
-      title: { type: String, default: 'Streamlined 4-Step Pan-India Freight Execution Pipeline' },
+      title: { type: String, default: 'Streamlined 4-Step Industrial Freight Execution Pipeline' },
       description: {
         type: String,
         default:
@@ -109,7 +109,7 @@ const ServicesPageContentSchema = new mongoose.Schema(
     // Section 5: Enterprise Industrial Partners
     trustClients: {
       kicker: { type: String, default: 'PDF BROCHURE: OUR TOP CLIENTS' },
-      title: { type: String, default: 'Pan-India Highway Conveyor: Trusted By Industrial Giants' },
+      title: { type: String, default: 'Dedicated Highway Fleet: Trusted By Industrial Giants' },
       subtitle: {
         type: String,
         default:

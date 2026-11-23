@@ -59,7 +59,7 @@ export default function Footer() {
               </div>
 
               <p className="sitc-footer-about-text">
-                Shree Ram Transportation Corporation (founded in 2003 by Mr. Menand Balubhai Odedara) and SRTC Supply Chain Pvt. Ltd. deliver premier multimodal logistics, specializing in Full Truck Load (FTL), Part Truck Load (PTL) &amp; Superfast Cargo, and 3PL Warehousing &amp; Handling Services across India.
+                Shree Ram Transportation Corporation (founded in 2003 by Mr. Menand Balubhai Odedara) and SRTC Supply Chain Pvt. Ltd. deliver premier multimodal logistics, specializing in Full Truck Load (FTL), Part Truck Load (PTL) &amp; Superfast Cargo, and 3PL Warehousing &amp; Multimodal Freight Services.
               </p>
 
               {/* Trust Badges & Accreditations */}
@@ -283,7 +283,7 @@ export default function Footer() {
       </div>
 
       {/* ===================================================================
-          PAN-INDIA FREIGHT CORRIDOR DISPATCH TICKER
+          COMMERCIAL FREIGHT CORRIDOR DISPATCH TICKER
           =================================================================== */}
     
       {/* ===================================================================

@@ -1,359 +1,463 @@
 /* ==========================================================================
-   SRTC Modern Core Services Section - Executive Logistics Suite
-   100% Brochure Aligned (Page 3: Services - FTL, PTL, Warehousing)
-   - Clean, professional white executive cards
-   - Official brochure pill badges with golden circular icons
-   - High-contrast typography and comprehensive operational descriptions
-   - Structured 2x2 technical specifications grid
-   - Seamlessly responsive 3-column / 2-column / 1-column layout
+   SRTC Sticky Scroll-Pinned Card Stacking Architecture
+   Core Logistics & Warehouse Solutions (FTL, PTL, Warehousing)
+   Expanded Width (1420px max) + Mathematical Viewport Centering
+   Zero Top/Bottom Clipping Guaranteed on Laptops and Desktops
+   Palette:
+     Navy Primary:    #0B2540 / #102D50
+     Gold Accent:     #C89D35 / #DFB758
+     Surface:         #FFFFFF / #F8FAFC
+     Borders:         #E2E8F0 / #CBD5E1
+     Text Primary:    #0B2540 / #0F172A
+     Text Muted:      #475569 / #64748B
+     Verified Green:  #059669
    ========================================================================== */
 
-.srtc-core-services-section {
+/* Outer Scroll Track: Provides height for the pinned scroll scrubbing */
+.srtc-core-scroll-section {
   position: relative;
   background-color: #F8FAFC;
-  padding: clamp(4.5rem, 7vw, 7rem) clamp(1.25rem, 3.5vw, 3rem);
   box-sizing: border-box;
-  border-bottom: 1px solid #E2E8F0;
-  overflow: hidden;
+  width: 100%;
 }
 
-.srtc-core-container {
-  max-width: 1400px;
-  margin: 0 auto;
+@media (min-width: 1025px) {
+  .srtc-core-scroll-section {
+    /* 280vh provides smooth, gradual scrubbing through the 3 cards */
+    height: 280vh;
+  }
 }
 
 /* --------------------------------------------------------------------------
-   Section Header
+   Sticky Viewport Stage (Pins in viewport and centers card mathematically)
    -------------------------------------------------------------------------- */
-.srtc-core-header {
-  text-align: center;
-  max-width: 860px;
-  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+.srtc-core-sticky-viewport {
+  position: relative;
+  width: 100%;
+  background-color: #F8FAFC;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.srtc-core-kicker {
+@media (min-width: 1025px) {
+  .srtc-core-sticky-viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(0.75rem, 1.8vh, 1.35rem) 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .srtc-core-sticky-viewport {
+    position: relative;
+    height: auto;
+    padding: 3rem 1.25rem 2.5rem;
+  }
+}
+
+/* Expanded Container Width: 1420px Max gives maximum breathing room */
+.srtc-core-inner-container {
+  width: 100%;
+  max-width: 1420px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 2.5vw, 2.5rem);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+  .srtc-core-inner-container {
+    height: auto;
+    padding: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   1. Compact Top Header (Space-Efficient & Centered)
+   -------------------------------------------------------------------------- */
+.srtc-core-top-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  flex-shrink: 0;
+}
+
+.srtc-top-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.srtc-top-kicker-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 1.15rem;
-  background: rgba(200, 157, 53, 0.1);
-  border: 1.5px solid rgba(200, 157, 53, 0.45);
-  border-radius: 9999px;
-  color: #0B2540;
-  font-size: 0.78rem;
+  background: rgba(200, 157, 53, 0.12);
+  border: 1px solid rgba(200, 157, 53, 0.4);
+  color: #9A751F;
+  font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-.srtc-core-kicker-icon {
-  color: #C89D35;
-}
-
-.srtc-core-title {
-  font-size: clamp(2rem, 3.6vw, 3rem);
-  font-weight: 900;
-  line-height: 1.15;
-  color: #0B2540;
-  letter-spacing: -0.025em;
-  margin: 0 0 1rem;
-}
-
-.srtc-core-subtitle {
-  font-size: clamp(1rem, 1.25vw, 1.125rem);
-  line-height: 1.65;
-  color: #475569;
-  margin: 0 auto;
-  max-width: 760px;
-}
-
-/* --------------------------------------------------------------------------
-   3-Column Modern Executive Grid
-   -------------------------------------------------------------------------- */
-.srtc-services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  align-items: stretch;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1100px) {
-  .srtc-services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.75rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .srtc-services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   Individual Service Card
-   -------------------------------------------------------------------------- */
-.srtc-service-card {
-  position: relative;
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 18px rgba(11, 37, 64, 0.04);
-}
-
-.srtc-service-card:hover {
-  transform: translateY(-6px);
-  border-color: #C89D35;
-  box-shadow: 0 20px 35px -10px rgba(11, 37, 64, 0.12),
-              0 0 0 1px rgba(200, 157, 53, 0.25);
-}
-
-.srtc-service-card--featured {
-  border-color: rgba(200, 157, 53, 0.5);
-  box-shadow: 0 6px 22px rgba(200, 157, 53, 0.12);
-}
-
-/* --------------------------------------------------------------------------
-   1. Card Top Bar & Brochure Pill Badge
-   -------------------------------------------------------------------------- */
-.srtc-service-card-top {
-  padding: 1.25rem 1.4rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  background: #FAFBFD;
-  border-bottom: 1px solid #EDF2F7;
-}
-
-.srtc-service-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  background: #0B2540;
-  padding: 0.45rem 1.15rem 0.45rem 0.45rem;
   border-radius: 9999px;
-  box-shadow: 0 2px 8px rgba(11, 37, 64, 0.15);
+  padding: 0.22rem 0.65rem;
+  white-space: nowrap;
 }
 
-.srtc-service-pill-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #DFB758 0%, #C89D35 100%);
+.srtc-top-main-title {
+  font-size: clamp(1.2rem, 1.8vw, 1.65rem);
+  font-weight: 900;
   color: #0B2540;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   2. Card Stacking Deck Stage (Dead-Center in Viewport)
+   -------------------------------------------------------------------------- */
+.srtc-cards-stack-deck {
+  position: relative;
+  width: 100%;
+  margin: auto 0;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
-.srtc-service-pill-text {
-  color: #FFFFFF;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+@media (min-width: 1025px) {
+  .srtc-cards-stack-deck {
+    max-height: clamp(480px, 72vh, 570px);
+    height: 100%;
+  }
 }
 
-.srtc-service-featured-pill {
-  display: inline-flex;
+/* Base Card Styling */
+.srtc-stack-card {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 20px;
+  box-shadow: 0 10px 32px -6px rgba(11, 37, 64, 0.08);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.75rem;
-  background: rgba(200, 157, 53, 0.12);
-  border: 1px solid #C89D35;
-  border-radius: 9999px;
-  color: #8C6A15;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  padding: clamp(1.15rem, 2vw, 1.75rem) clamp(1.35rem, 2.5vw, 2.25rem);
 }
 
-.srtc-service-sparkle {
-  color: #C89D35;
+/* Desktop Stacking Physics (Card Replacements) */
+@media (min-width: 1025px) {
+  .srtc-stack-card {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: 
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.3s ease;
+    will-change: transform, opacity;
+  }
+
+  /* 1. Active Card in View */
+  .srtc-stack-card.is-active {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 20;
+    box-shadow: 0 16px 42px -8px rgba(11, 37, 64, 0.12);
+  }
+
+  /* 2. Passed Card (slides backward / stacks behind) */
+  .srtc-stack-card.is-passed {
+    transform: translateY(-24px) scale(0.96);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* 3. Upcoming Card (waiting below to slide up) */
+  .srtc-stack-card.is-upcoming {
+    transform: translateY(115%) scale(0.98);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 30;
+  }
 }
 
 /* --------------------------------------------------------------------------
-   2. Cinematic Image Box
+   Left Column: Pure Photography Frame (Clean, Natural, No Badges)
    -------------------------------------------------------------------------- */
-.srtc-service-img-wrap {
-  position: relative;
+.srtc-stack-image-col {
   width: 100%;
-  height: 200px;
-  background-color: #0B2540;
-  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
-.srtc-service-img {
+.srtc-stack-image-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  max-height: 480px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+  background-color: #F1F5F9;
+  box-shadow: 0 4px 16px rgba(11, 37, 64, 0.05);
+}
+
+.srtc-stack-pure-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   display: block;
 }
 
-.srtc-service-card:hover .srtc-service-img {
-  transform: scale(1.06);
-}
-
-.srtc-service-img-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(11, 37, 64, 0.1) 0%,
-    rgba(11, 37, 64, 0.5) 100%
-  );
-  pointer-events: none;
-}
-
 /* --------------------------------------------------------------------------
-   3. Card Body: Title, Tagline & Detailed Content
+   Right Column: Pure Content & Technical Specs (Calibrated Spacing)
    -------------------------------------------------------------------------- */
-.srtc-service-card-body {
-  padding: 1.5rem 1.4rem;
+.srtc-stack-content-col {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
+  gap: clamp(0.45rem, 0.9vh, 0.72rem);
+  justify-content: center;
 }
 
-.srtc-service-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: #0B2540;
-  letter-spacing: -0.015em;
-  margin: 0 0 0.35rem;
-  line-height: 1.25;
-}
-
-.srtc-service-tagline {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #C89D35;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 0.95rem;
-}
-
-.srtc-service-desc {
-  font-size: 0.915rem;
-  line-height: 1.6;
-  color: #475569;
-  margin: 0 0 1.35rem;
-  flex-grow: 0;
-}
-
-/* --------------------------------------------------------------------------
-   4. Structured 2x2 Technical Specifications Grid
-   -------------------------------------------------------------------------- */
-.srtc-service-specs-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+/* Meta Row */
+.srtc-stack-meta-row {
+  display: flex;
+  align-items: center;
   gap: 0.65rem;
-  padding: 0.9rem;
-  background: #F8FAFC;
-  border: 1px solid #EDF2F7;
-  border-radius: 12px;
-  margin-bottom: 1.25rem;
 }
 
-.srtc-service-spec-tile {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.srtc-service-spec-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: #64748B;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.srtc-service-spec-val {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #0B2540;
-  line-height: 1.25;
-}
-
-/* --------------------------------------------------------------------------
-   5. Key Operational Capabilities Checklist
-   -------------------------------------------------------------------------- */
-.srtc-service-features-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  margin-top: auto;
-}
-
-.srtc-service-feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-  font-size: 0.835rem;
-  line-height: 1.45;
-  color: #334155;
-}
-
-.srtc-service-check-icon {
-  color: #C89D35;
-  flex-shrink: 0;
-  margin-top: 0.15rem;
-}
-
-/* --------------------------------------------------------------------------
-   6. Card Footer: Direct CTA Button
-   -------------------------------------------------------------------------- */
-.srtc-service-card-footer {
-  padding: 0 1.4rem 1.4rem;
-  margin-top: auto;
-}
-
-.srtc-service-cta-btn {
+.srtc-stack-icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: #0B2540;
+  color: #DFB758;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+}
+
+.srtc-stack-category {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #C89D35;
+}
+
+.srtc-stack-counter {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #94A3B8;
+  margin-left: auto;
+  letter-spacing: 0.04em;
+}
+
+/* Title & Tagline */
+.srtc-stack-title {
+  font-size: clamp(1.3rem, 1.7vw, 1.68rem);
+  font-weight: 900;
+  color: #0B2540;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.srtc-stack-tagline {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #059669;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.srtc-stack-desc {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #475569;
+  margin: 0;
+}
+
+/* 4-Tile Technical Specifications Matrix */
+.srtc-stack-specs-box {
+  background: #F8FAFC;
+  border: 1px solid #EDF2F7;
+  border-radius: 11px;
+  padding: 0.65rem 0.85rem;
+}
+
+.srtc-stack-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.45rem 0.85rem;
+}
+
+.srtc-stack-spec-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.srtc-stack-spec-lbl {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.srtc-stack-spec-val {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #0B2540;
+  line-height: 1.2;
+}
+
+/* Key Features & Mandates */
+.srtc-stack-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.srtc-stack-feature-item {
+  display: flex;
+  align-items: flex-start;
   gap: 0.5rem;
-  width: 100%;
-  padding: 0.85rem 1.25rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: #334155;
+}
+
+.srtc-stack-check-icon {
+  color: #059669;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Action Row */
+.srtc-stack-action-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.srtc-stack-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   background: #0B2540;
   color: #FFFFFF;
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  border-radius: 12px;
+  border-radius: 9px;
+  padding: 0.62rem 1.2rem;
+  font-size: 0.8rem;
+  font-weight: 800;
   text-decoration: none;
+  box-shadow: 0 4px 12px rgba(11, 37, 64, 0.15);
   transition: all 0.25s ease;
-  box-sizing: border-box;
 }
 
-.srtc-service-cta-btn:hover {
+.srtc-stack-cta-btn:hover {
   background: #C89D35;
   color: #0B2540;
-  box-shadow: 0 6px 16px rgba(200, 157, 53, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(200, 157, 53, 0.3);
 }
 
-.srtc-service-btn-arrow {
-  transition: transform 0.25s ease;
+.srtc-stack-btn-arrow {
+  transition: transform 0.2s ease;
 }
 
-.srtc-service-cta-btn:hover .srtc-service-btn-arrow {
+.srtc-stack-cta-btn:hover .srtc-stack-btn-arrow {
   transform: translateX(4px);
+}
+
+.srtc-stack-guarantee-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748B;
+}
+
+.srtc-stack-shield-icon {
+  color: #C89D35;
+  flex-shrink: 0;
+}
+
+/* Bottom Scroll Hint */
+.srtc-stack-scroll-hint {
+  text-align: center;
+  padding-top: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Tablet & Mobile Responsive Architecture (< 1025px)
+   Unpins sticky stage and provides natural, vertical document flow
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .srtc-core-top-nav-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .srtc-cards-stack-deck {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: auto;
+    max-height: none;
+  }
+
+  .srtc-stack-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    height: auto;
+  }
+
+  .srtc-stack-image-frame {
+    min-height: 220px;
+    max-height: 270px;
+    aspect-ratio: 16 / 10;
+  }
+
+  .srtc-stack-scroll-hint {
+    display: none;
+  }
 }

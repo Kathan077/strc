@@ -7,12 +7,12 @@ const ICON_OPTIONS = ['Calendar', 'Truck', 'ShieldCheck', 'History', 'Award', 'B
 export default function AboutCompanyEditor({ initialData, onSave, isSaving }) {
   const [data, setData] = useState(
     initialData || {
-      eyebrowText: 'ABOUT OUR COMPANY & HERITAGE',
+      eyebrowText: '',
       title: 'Our services increase the',
       titleAccent: 'velocity & productivity',
       titleSuffix: 'of your supply chain.',
       leadText:
-        'Shree Ram Transportation Corporation, founded in 2003 by Mr. Menandbhai Odedara, has set road logistics benchmarks across Gujarat and Pan-India for over two decades. Building on this legacy, SRTC Supply Chain Pvt. Ltd. commands 840+ heavy commercial vehicles delivering scalable FTL, container haulage, and warehouse handling for India’s premier industrial leaders.',
+        'Shree Ram Transportation Corporation, founded in 2003 by Mr. Menandbhai Odedara, has set road logistics benchmarks across major industrial corridors for over two decades. Building on this legacy, SRTC Supply Chain Pvt. Ltd. commands 840+ heavy commercial vehicles delivering scalable FTL, container haulage, and warehouse handling for premier industrial leaders.',
       imgSupervisor: '/images/about/operations-supervisor.jpg',
       ribbonTag: 'ESTD. 2003',
       ribbonText: '23+ Years Experience',

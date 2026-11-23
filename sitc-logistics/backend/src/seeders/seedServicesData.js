@@ -13,7 +13,7 @@ const servicesSeedData = {
     breadcrumbCurrent: 'Our Services',
   },
   core: {
-    kicker: 'PROPRIETARY, EASY, CONVENIENT',
+  
     title: 'Core Logistics & Warehouse Solutions',
     description:
       'We specialize in FTL (Full Truck Load), PTL (Part Truck Load), small packages, superfast cargo, warehousing, and contract logistics, ensuring reliable and on-time delivery through a strong network and professional team.',
@@ -29,7 +29,7 @@ const servicesSeedData = {
         tagline: 'Dedicated End-to-End Linehaul Deployment',
         category: 'DEDICATED FLEET DEPLOYMENT',
         description:
-          'Dedicated point-to-point vehicle deployment engineered for heavy industrial manufacturers, refineries, and petrochemical producers. Consignments are allocated exclusively to single company-owned heavy linehaul vehicles with guaranteed zero mid-route transshipment, ensuring maximum cargo safety and non-stop highway transit across Gujarat and Pan-India corridors.',
+          'Dedicated point-to-point vehicle deployment engineered for heavy industrial manufacturers, refineries, and petrochemical producers. Consignments are allocated exclusively to single company-owned heavy linehaul vehicles with guaranteed zero mid-route transshipment, ensuring maximum cargo safety and non-stop highway transit across critical freight corridors.',
         image: '/images/services/service-truck-1.jpg',
         icon: 'Truck',
         specs: [
@@ -114,7 +114,7 @@ const servicesSeedData = {
     ],
   },
   industries: {
-    kicker: 'EXACT 6 INDUSTRY VERTICALS • BROCHURE CERTIFIED',
+    kicker: '',
     title: 'Industry Sectors We Serve',
     subtitle:
       'Tailored transportation and handling solutions engineered for India’s premier commercial and industrial sectors.',
@@ -190,7 +190,7 @@ const servicesSeedData = {
         specs: [
           { label: 'CONTAINMENT', val: 'Secondary Spill-Containment Ready & Weather-Proof Beds' },
           { label: 'PACKAGING SPEC', val: 'Certified Handling for IBC Containers, Steel Drums & Palletized Bags' },
-          { label: 'KEY CORRIDORS', val: 'Dahej, Ankleshwar, Vapi & Hazira to Pan-India Belts' },
+          { label: 'KEY CORRIDORS', val: 'Dahej, Ankleshwar, Vapi & Hazira to Major Industrial Corridors' },
         ],
         highlight: 'Strict adherence to industrial transport safety and driver emergency response compliance.',
         isFeatured: false,
@@ -293,8 +293,8 @@ const servicesSeedData = {
     ],
   },
   workflow: {
-    kicker: 'STANDARDIZED OPERATIONAL EXCELLENCE',
-    title: 'Streamlined 4-Step Pan-India Freight Execution Pipeline',
+    kicker: '',
+    title: 'Streamlined 4-Step Industrial Freight Execution Pipeline',
     description:
       'From instant vehicle allocation to electronic seal verification, our operating lifecycle ensures zero demurrage and maximum transit velocity.',
     steps: [
@@ -338,7 +338,7 @@ const servicesSeedData = {
   },
   trustClients: {
     kicker: 'PDF BROCHURE: OUR TOP CLIENTS',
-    title: 'Pan-India Highway Conveyor: Trusted By Industrial Giants',
+    title: 'Dedicated Highway Fleet: Trusted By Industrial Giants',
     subtitle:
       'SRTC’s compact commercial linehaul fleet in continuous motion across National Highways. Dedicated container trucks transporting petrochemicals, polymers, agro commodities, and heavy industrial freight.',
     stats: [
@@ -372,7 +372,7 @@ const servicesSeedData = {
         truckModel: 'Tata Signa City Express',
         trailerType: '24ft Weatherproof Container',
         cargoType: 'Refined Bulk Polymers & Industrial Lube Packs',
-        corridor: 'Koyali Refinery ➔ Pan-India Regional Depots',
+        corridor: 'Koyali Refinery ➔ Designated Regional Depots',
         verifiedSince: '2011',
         slaScore: '99.8%',
       },
@@ -444,7 +444,7 @@ const servicesSeedData = {
         truckModel: 'Tata Ultra T.16 High Cube',
         trailerType: '24ft Polymer Heavy Container',
         cargoType: 'High-Density Polyethylene & Polypropylene',
-        corridor: 'Dahej SEZ Complex ➔ Pan-India Belts',
+        corridor: 'Dahej SEZ Complex ➔ Major Industrial Belts',
         verifiedSince: '2015',
         slaScore: '99.9%',
       },
@@ -465,7 +465,7 @@ const servicesSeedData = {
     ],
   },
   truckContactCTA: {
-    statusText: 'CENTRAL DISPATCH DESK ACTIVE • 24/7 PAN-INDIA FREIGHT SUPPORT',
+    statusText: 'CENTRAL DISPATCH DESK ACTIVE • 24/7 DEDICATED FREIGHT SUPPORT',
     buttonText: 'Contact Dispatch / Book Linehaul',
     buttonLink: '/contact',
   },

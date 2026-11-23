@@ -10,7 +10,7 @@ const AboutPageContentSchema = new mongoose.Schema(
       subtitle: {
         type: String,
         default:
-          'Two Decades of Heavy Freight Mastery, Port Evacuation & Guaranteed SLA Corridors Across India.',
+          'Two Decades of Heavy Freight Mastery, Port Evacuation & Guaranteed SLA Industrial Corridors.',
       },
       breadcrumbHome: { type: String, default: 'Home' },
       breadcrumbCurrent: { type: String, default: 'About Us' },
@@ -23,7 +23,7 @@ const AboutPageContentSchema = new mongoose.Schema(
       description: {
         type: String,
         default:
-          'Pioneering technology-driven road transport, real-time GPS tracking, and guaranteed zero-demurrage turnaround nationwide.',
+          'Pioneering technology-driven road transport, real-time GPS tracking, and guaranteed zero-demurrage turnaround across key corridors.',
       },
       image: { type: String, default: '/images/about/srtc-dryport-terminal.jpg' },
       imageAlt: {
@@ -47,14 +47,14 @@ const AboutPageContentSchema = new mongoose.Schema(
 
     // Section 3: Company Heritage, Collage & Industrial Clients
     company: {
-      eyebrowText: { type: String, default: 'ABOUT OUR COMPANY & HERITAGE' },
+      eyebrowText: { type: String, default: '' },
       title: { type: String, default: 'Our services increase the' },
       titleAccent: { type: String, default: 'velocity & productivity' },
       titleSuffix: { type: String, default: 'of your supply chain.' },
       leadText: {
         type: String,
         default:
-          'Shree Ram Transportation Corporation, founded in 2003 by Mr. Menandbhai Odedara, has set road logistics benchmarks across Gujarat and Pan-India for over two decades. Building on this legacy, SRTC Supply Chain Pvt. Ltd. commands 840+ heavy commercial vehicles delivering scalable FTL, container haulage, and warehouse handling for India’s premier industrial leaders.',
+          'Shree Ram Transportation Corporation, founded in 2003 by Mr. Menandbhai Odedara, has set road logistics benchmarks across major industrial corridors for over two decades. Building on this legacy, SRTC Supply Chain Pvt. Ltd. commands 840+ heavy commercial vehicles delivering scalable FTL, container haulage, and warehouse handling for premier industrial leaders.',
       },
       imgSupervisor: { type: String, default: '/images/about/operations-supervisor.jpg' },
       ribbonTag: { type: String, default: 'ESTD. 2003' },
@@ -88,7 +88,7 @@ const AboutPageContentSchema = new mongoose.Schema(
       subtitle: {
         type: String,
         default:
-          'Founded on two decades of heavy highway transit leadership, our corporate compass guides every haul, secures every industrial cargo, and powers supply chains across India.',
+          'Founded on two decades of heavy highway transit leadership, our corporate compass guides every haul, secures every industrial cargo, and powers enterprise supply chains.',
       },
       mission: {
         docId: { type: String, default: 'DOC: MSN-2003 / REV-04' },
@@ -135,7 +135,7 @@ const AboutPageContentSchema = new mongoose.Schema(
           },
         ],
         specs: {
-          horizon: { type: String, default: 'PAN-INDIA LEAD' },
+          horizon: { type: String, default: 'INDUSTRY LEADERSHIP' },
           activeFleet: { type: String, default: '840+ HEAVY TRUCKS' },
           reliability: { type: String, default: '23+ YEARS PROVEN' },
         },

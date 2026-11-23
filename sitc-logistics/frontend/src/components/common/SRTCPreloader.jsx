@@ -336,14 +336,6 @@ export default function SRTCPreloader({ forceShow = false }) {
           ACT 2 — TRUCK STAGE (Ultra-Realistic 18-Wheeler Semi Truck)
           ═══════════════════════════════════════════════════════ */}
       <div className="srtc-truck-stage" aria-hidden="true">
-        {/* Top Telemetry Badge during Truck Transit */}
-        <div className="srtc-truck-hud">
-          <div className="srtc-truck-hud-badge">
-            <span className="srtc-hud-dot" />
-            <span>HIGHWAY TELEMETRY // DISPATCH CORRIDOR ACTIVE</span>
-          </div>
-        </div>
-
         {/* Realistic Modern Highway with Scrolling Dashed Lanes */}
         <div className="srtc-road">
           <div className="srtc-road-surface">
@@ -528,7 +520,7 @@ export default function SRTCPreloader({ forceShow = false }) {
                 fontSize="12.5"
                 letterSpacing="4"
               >
-                PAN-INDIA LINEHAUL  •  48-HR EXPRESS  •  HIGHWAY TELEMETRY
+                INDUSTRIAL LINEHAUL  •  48-HR EXPRESS  •  HIGHWAY TELEMETRY
               </text>
 
               <text
@@ -536,7 +528,7 @@ export default function SRTCPreloader({ forceShow = false }) {
                 y="202"
                 textAnchor="middle"
                 fill="rgba(245,200,66,0.55)"
-                fontFamily="'Segoe UI', monospace"
+                fontFamily="var(--font-primary), sans-serif"
                 fontWeight="700"
                 fontSize="9.5"
                 letterSpacing="3"

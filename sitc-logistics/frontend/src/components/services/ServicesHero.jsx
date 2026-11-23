@@ -11,7 +11,7 @@ export default function ServicesHero({ data }) {
   const titleGold = data?.titleGold || 'Services';
   const subtitle =
     data?.subtitle ||
-    'Comprehensive Transport, Container Linehaul & Scalable Warehouse Solutions Across India.';
+    'Comprehensive Transport, Container Linehaul & Scalable Industrial Warehouse Solutions.';
   const breadcrumbHome = data?.breadcrumbHome || 'Home';
   const breadcrumbCurrent = data?.breadcrumbCurrent || 'Our Services';
 

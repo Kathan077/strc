@@ -235,7 +235,7 @@ export default async function BlogDetailPage({ params }) {
           </div>
           <div className="srtc-telematics-item">
             <span className="srtc-telematics-label">CORRIDOR ROUTE</span>
-            <span className="srtc-telematics-val">{post.corridor || 'ALL-INDIA'}</span>
+            <span className="srtc-telematics-val">{post.corridor || 'PRIMARY CORRIDOR'}</span>
           </div>
           <div className="srtc-telematics-item">
             <span className="srtc-telematics-label">PAYLOAD RATING</span>
@@ -348,10 +348,10 @@ export default async function BlogDetailPage({ params }) {
         <div className="srtc-author-bio-card">
           <div style={{ flex: 1 }}>
             <h4 className="srtc-author-bio-name">SRTC Logistics Corridor Advisory Desk</h4>
-            <div className="srtc-author-bio-role">PAN-INDIA INDUSTRIAL LINEHAUL & CONTAINER FLEET</div>
+            <div className="srtc-author-bio-role">ENTERPRISE INDUSTRIAL LINEHAUL & CONTAINER FLEET</div>
             <p className="srtc-author-bio-text">
               Over two decades leading industrial freight corridors, port evacuation infrastructure, and
-              fleet safety engineering across India. Specializing in 40ft high-cube container drayage and
+              fleet safety engineering. Specializing in 40ft high-cube container drayage and
               enterprise SLA delivery.
             </p>
           </div>

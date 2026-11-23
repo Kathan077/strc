@@ -10,7 +10,7 @@ export default function AboutVisionMissionEditor({ initialData, onSave, isSaving
       kicker: 'STRATEGIC COMPASS & CORPORATE PURPOSE',
       title: 'Driven by Mission, Powered by Vision',
       subtitle:
-        'Founded on two decades of heavy highway transit leadership, our corporate compass guides every haul, secures every industrial cargo, and powers supply chains across India.',
+        'Founded on two decades of heavy highway transit leadership, our corporate compass guides every haul, secures every industrial cargo, and powers enterprise supply chains.',
       mission: {
         docId: 'DOC: MSN-2003 / REV-04',
         barcodeText: '||||||| 2003 840 994',
@@ -31,7 +31,7 @@ export default function AboutVisionMissionEditor({ initialData, onSave, isSaving
         tagline: 'Foremost & Most Preferred Transportation Enterprise',
         paragraph: '',
         pillars: [],
-        specs: { horizon: 'PAN-INDIA LEAD', activeFleet: '840+ HEAVY TRUCKS', reliability: '23+ YEARS PROVEN' },
+        specs: { horizon: 'INDUSTRY LEADERSHIP', activeFleet: '840+ HEAVY TRUCKS', reliability: '23+ YEARS PROVEN' },
       },
       chassisCommitments: [],
       founderStrip: {

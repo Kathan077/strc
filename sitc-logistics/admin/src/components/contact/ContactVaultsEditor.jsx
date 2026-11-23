@@ -45,7 +45,7 @@ export default function ContactVaultsEditor({ initialData, onSave, isSaving }) {
     initialData?.vaultHubs || {
       unitCode: 'SRTC-YARD-04',
       tag: 'PORT & TRANSIT YARDS',
-      kicker: 'KEY PAN-INDIA CORRIDOR HUBS',
+      kicker: 'KEY REGIONAL CORRIDOR HUBS',
       title: 'Strategic Gateway Terminals',
       hubsList: [
         'Mundra & Kandla Port',

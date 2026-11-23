@@ -282,7 +282,7 @@
 }
 
 .sitc-mobile-menu__contact-title {
-  font-family: monospace, monospace;
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   font-weight: 850;
   color: #E8B94F;

@@ -10,7 +10,7 @@ export default function ServicesCoreEditor({ initialData, onSave, isSaving }) {
       kicker: 'ENGINEERED FREIGHT ARCHITECTURE',
       title: 'Core Transportation & Warehouse Solutions',
       description:
-        'Built upon two decades of logistical leadership, SRTC delivers high-velocity road freight across India with purpose-built equipment and guaranteed SLA precision.',
+        'Built upon two decades of logistical leadership, SRTC delivers high-velocity road freight with purpose-built equipment and guaranteed SLA precision.',
       coreServices: [],
     }
   );

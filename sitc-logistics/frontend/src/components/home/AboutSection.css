@@ -187,7 +187,7 @@
   position: absolute;
   bottom: 2%;
   left: 3%;
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   color: rgba(11, 47, 74, 0.08);

@@ -333,6 +333,8 @@ export default function ImageUploader({
               alignItems: 'center',
               justifyContent: 'center',
               overflow: 'hidden',
+              padding: '12px',
+              boxSizing: 'border-box',
             }}
           >
             {/* Subtle background checker for transparency check */}
@@ -353,11 +355,16 @@ export default function ImageUploader({
                 src={value}
                 alt="Admin Image Preview"
                 style={{
-                  width: '100%',
-                  height: '100%',
+                  maxWidth: '100%',
+                  maxHeight: '100%',
+                  width: 'auto',
+                  height: 'auto',
                   objectFit: 'contain',
+                  objectPosition: 'center',
                   position: 'relative',
                   zIndex: 1,
+                  display: 'block',
+                  margin: 'auto',
                   transition: 'transform 0.3s ease',
                 }}
                 onError={() => setImageError(true)}
@@ -641,6 +648,8 @@ export default function ImageUploader({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              padding: '20px',
+              boxSizing: 'border-box',
             }}
           >
             <img
@@ -648,7 +657,9 @@ export default function ImageUploader({
               alt="High Resolution Preview"
               style={{
                 maxWidth: '100%',
-                maxHeight: '80vh',
+                maxHeight: 'calc(80vh - 40px)',
+                width: 'auto',
+                height: 'auto',
                 objectFit: 'contain',
               }}
             />

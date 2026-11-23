@@ -55,6 +55,21 @@ export default function ServicesClientsTrustSection({ data }) {
     data?.subtitle ||
     'Proudly partnering with India’s foremost public and private sector enterprises across energy, petrochemicals, manufacturing, and FMCG sectors.';
 
+  // Build dynamic clients list from laneEast and laneWest if present
+  const allLaneClients = [
+    ...(data?.laneEast || []),
+    ...(data?.laneWest || []),
+  ];
+
+  const dynamicClients =
+    allLaneClients.length > 0
+      ? allLaneClients.map((client, idx) => ({
+          id: client.id || `client-${idx}`,
+          name: client.displayName || client.name || 'Enterprise Client',
+          logo: client.logo || TOP_CLIENTS[idx]?.logo || '',
+        }))
+      : TOP_CLIENTS;
+
   return (
     <section className="srtc-clients-trust-section" aria-label="Our Top Clients">
       <div className="srtc-clients-container">
@@ -71,19 +86,23 @@ export default function ServicesClientsTrustSection({ data }) {
 
         {/* ===================================================================
             OFFICIAL BROCHURE CLIENT CARDS (White Rounded Cards with Gold Border)
+            Universal Anti-Clipping Protected Stage Container
             =================================================================== */}
         <div className="srtc-brochure-clients-grid">
-          {TOP_CLIENTS.map((client) => (
+          {dynamicClients.map((client) => (
             <div key={client.id} className="srtc-brochure-client-card" title={client.name}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="srtc-brochure-client-logo"
-                onError={(e) => {
-                  e.currentTarget.src = `/images/clients/client-${client.id}.png`;
-                }}
-              />
+              <div className="srtc-client-logo-stage">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="srtc-brochure-client-logo"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.src = `/images/clients/client-${client.id}.png`;
+                  }}
+                />
+              </div>
             </div>
           ))}
         </div>

@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Get a Freight Quote – SRTC Logistics',
-  description: 'Calculate fast, insured shipping rates for nationwide cargo movements.',
+  description: 'Calculate fast, insured shipping rates for high-priority commercial cargo movements.',
 };
 
 export default function QuotePage() {

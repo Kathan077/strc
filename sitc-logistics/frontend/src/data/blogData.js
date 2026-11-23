@@ -29,7 +29,7 @@ export const BLOG_POSTS = [
     content: `
 ## The Industrial Shift to 40ft High-Cube Shipping Containers
 
-In modern Pan-India industrial supply chains, transport economics are dictated by a single mathematical reality: **cubic capacity utilization versus axle-load compliance**. As manufacturing plants evolve from heavy raw cast parts toward high-density finished components, electronics, auto assemblies, and FMCG pallets, traditional 20-foot shipping containers frequently hit volumetric limitations before reaching maximum payload weight limits.
+In modern enterprise industrial supply chains, transport economics are dictated by a single mathematical reality: **cubic capacity utilization versus axle-load compliance**. As manufacturing plants evolve from heavy raw cast parts toward high-density finished components, electronics, auto assemblies, and FMCG pallets, traditional 20-foot shipping containers frequently hit volumetric limitations before reaching maximum payload weight limits.
 
 By deploying dedicated 40-foot High-Cube (HC) multi-axle trailer combinations across the Western Freight Corridor (Gujarat–Maharashtra–NCR), SRTC Logistics enables enterprise clients to consolidate freight efficiently, driving down the per-ton freight tariff by up to 22%.
 
@@ -182,7 +182,7 @@ By recalculating optimal green corridors in flight, our drivers bypass municipal
     corridor: '48-HR EXPRESS',
     maxGross: 'NON-STOP DUAL-RUN',
     excerpt:
-      "How round-the-clock dual-driver relay stations keep high-priority container trucks continuously moving without overnight stoppages across India's industrial backbone.",
+      "How round-the-clock dual-driver relay stations keep high-priority container trucks continuously moving without overnight stoppages across major industrial freight corridors.",
     author: {
       name: 'Menandbhai Odedara',
       role: 'Founder & Managing Director',
@@ -195,7 +195,7 @@ By recalculating optimal green corridors in flight, our drivers bypass municipal
     ],
     tags: ['Dual Driver Relay', 'Highway Velocity', 'Zero Downtime', 'Port to Plant', 'SLA Guaranteed'],
     content: `
-## The Velocity Equation in Pan-India Supply Chains
+## The Velocity Equation in High-Throughput Industrial Supply Chains
 
 In long-haul commercial road freight, the biggest enemy of on-time delivery is not highway distance—it is **dormant truck downtime**. In conventional single-driver transport models, a commercial truck sits idle for 10 to 14 hours every night while the driver rests, cooks, or waits at unsafe roadside dhabas.
 

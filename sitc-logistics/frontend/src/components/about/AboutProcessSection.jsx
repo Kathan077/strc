@@ -61,7 +61,7 @@ const DEFAULT_STEPS = [
     tagline: '24/7 GPS Tracking & Telematics',
     desc: '24/7 en-route GPS tracking with trained, professional commercial drivers ensuring secure, punctual, and non-stop highway haulage.',
     tireModel: 'SRTC HAULAGE 295/80 R22.5',
-    tireSpec: 'MAX LOAD 3750 KG • PAN-INDIA RATED',
+    tireSpec: 'MAX LOAD 3750 KG • HEAVY DUTY HIGHWAY RATED',
   },
   {
     number: '04',
@@ -295,7 +295,7 @@ export default function AboutProcessSection({ data }) {
                         textAnchor="middle"
                         fill="#05080B"
                         fontSize="8.5"
-                        fontFamily="Consolas, monospace"
+                        fontFamily="var(--font-primary), sans-serif"
                         fontWeight="900"
                         letterSpacing="0.14em"
                       >
@@ -310,7 +310,7 @@ export default function AboutProcessSection({ data }) {
                         textAnchor="middle"
                         fill="#8B98A5"
                         fontSize="8.5"
-                        fontFamily="Consolas, monospace"
+                        fontFamily="var(--font-primary), sans-serif"
                         fontWeight="900"
                         letterSpacing="0.14em"
                       >
@@ -326,7 +326,7 @@ export default function AboutProcessSection({ data }) {
                         textAnchor="middle"
                         fill="#05080B"
                         fontSize="7.2"
-                        fontFamily="Consolas, monospace"
+                        fontFamily="var(--font-primary), sans-serif"
                         fontWeight="800"
                         letterSpacing="0.12em"
                       >
@@ -340,7 +340,7 @@ export default function AboutProcessSection({ data }) {
                         textAnchor="middle"
                         fill="#6B7887"
                         fontSize="7.2"
-                        fontFamily="Consolas, monospace"
+                        fontFamily="var(--font-primary), sans-serif"
                         fontWeight="800"
                         letterSpacing="0.12em"
                       >

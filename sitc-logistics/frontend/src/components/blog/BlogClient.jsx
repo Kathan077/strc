@@ -177,7 +177,7 @@ export default function BlogClient({ posts }) {
               <span>INTERMODAL CONTAINER FLEET // 20-FOOT HEAVY FREIGHT UNITS</span>
             </div>
             <div className="srtc-convoy-route-indicator">
-              <span>ALL-INDIA CORRIDOR COMPLIANT &bull; ISO 6346</span>
+              <span>HIGH-VELOCITY CORRIDOR COMPLIANT &bull; ISO 6346</span>
             </div>
           </div>
 

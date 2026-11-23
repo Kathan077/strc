@@ -16,7 +16,7 @@ import ImageUploader from '../ImageUploader';
 export default function ServicesClientsEditor({ initialData, onSave, isSaving }) {
   const [data, setData] = useState(() => ({
     kicker: initialData?.kicker || 'PDF BROCHURE: OUR TOP CLIENTS',
-    title: initialData?.title || 'Pan-India Highway Conveyor: Trusted By Industrial Giants',
+    title: initialData?.title || 'Dedicated Highway Fleet: Trusted By Industrial Giants',
     subtitle:
       initialData?.subtitle ||
       'SRTC’s compact commercial linehaul fleet in continuous motion across National Highways. Dedicated container trucks transporting petrochemicals, polymers, agro commodities, and heavy industrial freight.',
@@ -198,7 +198,7 @@ export default function ServicesClientsEditor({ initialData, onSave, isSaving })
               value={data.title || ''}
               onChange={(e) => handleFieldChange('title', e.target.value)}
               className="input-field"
-              placeholder="e.g. Pan-India Highway Conveyor: Trusted By Industrial Giants"
+              placeholder="e.g. Dedicated Highway Fleet: Trusted By Industrial Giants"
             />
           </div>
         </div>

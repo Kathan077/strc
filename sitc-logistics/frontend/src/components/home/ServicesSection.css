@@ -167,7 +167,7 @@
   position: absolute;
   bottom: 2%;
   right: 2.5%;
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-family: var(--font-primary);
   font-size: 0.75rem;
   letter-spacing: 0.18em;
   color: rgba(11, 47, 74, 0.08);
@@ -677,7 +677,7 @@
 
 /* Container Serial Code Badge */
 .sitc-container-serial {
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-family: var(--font-primary);
   font-size: 0.72rem;
   font-weight: 850;
   color: #FFF1A8;
@@ -699,7 +699,7 @@
 .sitc-container-card__body {
   position: relative;
   z-index: 2;
-  margin-bottom: 1.8rem;
+  margin-bottom: 0;
 }
 
 .sitc-container-card__title {
@@ -719,58 +719,6 @@
   margin: 0;
   font-weight: 500;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.95);
-}
-
-/* Bottom Industrial Telemetry Strip */
-.sitc-container-card__bottom {
-  position: relative;
-  z-index: 2;
-  margin-top: auto;
-  border-top: 1.5px solid rgba(255, 255, 255, 0.22);
-  padding-top: 1.2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.sitc-container-spec-tag {
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: #E2E8F0;
-  letter-spacing: 0.06em;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
-}
-
-.sitc-container-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.75rem;
-  font-weight: 850;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #FFF1A8;
-  transition: all 200ms ease;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
-}
-
-.sitc-container-card__arrow {
-  transition: transform 200ms ease;
-  font-weight: 800;
-  color: #FFF1A8;
-}
-
-.sitc-container-card__link:hover {
-  color: #FFFFFF;
-}
-
-.sitc-container-card__link:hover .sitc-container-card__arrow {
-  transform: translateX(4px);
-  color: #E8B94F;
 }
 
 /* ==========================================================================
@@ -888,13 +836,6 @@
     min-height: auto;
     border-radius: 16px;
   }
-
-  .sitc-container-card__bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
 }
 
 /* --------------------------------------------------------------------------
@@ -940,12 +881,6 @@
 
   .sitc-container-card {
     min-height: auto;
-  }
-
-  .sitc-container-card__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.55rem;
   }
 }
 
@@ -1041,19 +976,6 @@
     line-height: 1.52;
     margin-bottom: 0.95rem;
   }
-
-  .sitc-container-card__bottom {
-    padding-top: 0.95rem;
-    gap: 0.5rem;
-  }
-
-  .sitc-container-spec-tag {
-    font-size: 0.64rem;
-  }
-
-  .sitc-container-card__link {
-    font-size: 0.72rem;
-  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1131,14 +1053,6 @@
   .sitc-container-card__desc {
     font-size: 0.82rem;
     line-height: 1.48;
-  }
-
-  .sitc-container-spec-tag {
-    font-size: 0.62rem;
-  }
-
-  .sitc-container-card__link {
-    font-size: 0.7rem;
   }
 }
 
@@ -1240,19 +1154,6 @@
     font-size: 0.78rem;
     line-height: 1.42;
     margin-bottom: 0.75rem;
-  }
-
-  .sitc-container-card__bottom {
-    padding-top: 0.75rem;
-    gap: 0.4rem;
-  }
-
-  .sitc-container-spec-tag {
-    font-size: 0.58rem;
-  }
-
-  .sitc-container-card__link {
-    font-size: 0.68rem;
   }
 
   .sitc-casting {

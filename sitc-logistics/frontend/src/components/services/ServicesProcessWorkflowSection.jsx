@@ -37,11 +37,6 @@ export default function ServicesProcessWorkflowSection({ data }) {
       <div className="srtc-proc-container">
         {/* Header */}
         <div className="srtc-proc-header">
-          <div className="srtc-proc-kicker">
-            <Truck size={14} className="srtc-proc-kicker-icon" />
-            <span>{kicker}</span>
-          </div>
-
           <h2 className="srtc-proc-title">
             {title}
           </h2>

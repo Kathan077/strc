@@ -10,9 +10,9 @@ import LazySection from '@/components/common/LazySection';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'About Us | SRTC Logistics — Pan-India Industrial Linehaul & Supply Chain',
+  title: 'About Us | SRTC Logistics — Enterprise Industrial Linehaul & Supply Chain',
   description:
-    'Established in 2003 by Mr. Menandbhai Odedara. Two decades of heavy freight transport, port evacuation, and guaranteed SLA logistics corridors across India.',
+    'Established in 2003 by Mr. Menandbhai Odedara. Two decades of heavy freight transport, port evacuation, and guaranteed SLA logistics corridors.',
 };
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';

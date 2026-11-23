@@ -1,8 +1,23 @@
+import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import SRTCPreloader from '../components/common/SRTCPreloader';
 import FloatingWhatsApp from '../components/common/FloatingWhatsApp';
 import './globals.css';
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-primary',
+  weight: ['400', '500', '600', '700', '800'],
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-secondary',
+  weight: ['400', '500', '600', '700'],
+});
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
@@ -36,7 +51,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${plusJakartaSans.variable} ${inter.variable}`}>
       <head>
         {/* Service Worker Cleanup Script: Guarantees 0 lingering SW on localhost */}
         <script
@@ -53,7 +68,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body>
+      <body className={inter.className}>
         <SRTCPreloader />
         <Header />
         <main id="main-content">{children}</main>

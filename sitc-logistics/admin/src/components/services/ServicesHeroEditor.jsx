@@ -9,7 +9,7 @@ export default function ServicesHeroEditor({ initialData, onSave, isSaving }) {
       title: 'Our',
       titleGold: 'Services',
       subtitle:
-        'Comprehensive Transport, Container Linehaul & Scalable Warehouse Solutions Across India.',
+        'Comprehensive Transport, Container Linehaul & Scalable Industrial Warehouse Solutions.',
       breadcrumbHome: 'Home',
       breadcrumbCurrent: 'Our Services',
     }

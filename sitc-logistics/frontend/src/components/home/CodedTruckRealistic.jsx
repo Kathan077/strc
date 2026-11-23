@@ -565,7 +565,7 @@ function CodedTruckRealistic({ isDipper = false }) {
             <text
               x="485"
               y="238"
-              fontFamily="Consolas, monospace"
+              fontFamily="var(--font-primary), sans-serif"
               fontSize="9"
               fontWeight="800"
               letterSpacing="0.18em"
@@ -589,7 +589,7 @@ function CodedTruckRealistic({ isDipper = false }) {
             <text
               x="485"
               y="273"
-              fontFamily="Consolas, monospace"
+              fontFamily="var(--font-primary), sans-serif"
               fontSize="9.5"
               fontWeight="900"
               letterSpacing="0.1em"
@@ -654,7 +654,7 @@ function CodedTruckRealistic({ isDipper = false }) {
             <circle cx="1125" cy="347" r="1.8" fill="#94A3B8" />
             <circle cx="1163" cy="347" r="1.8" fill="#94A3B8" />
             <rect x="1132" y="342" width="24" height="10" rx="1.5" fill="#E8B94F" opacity="0.85" />
-            <text x="1144" y="349.5" fontFamily="Consolas, monospace" fontSize="4.5" fontWeight="900" fill="#071F33" textAnchor="middle">
+            <text x="1144" y="349.5" fontFamily="var(--font-primary), sans-serif" fontSize="4.5" fontWeight="900" fill="#071F33" textAnchor="middle">
               DEF
             </text>
 
@@ -847,7 +847,7 @@ function CodedTruckRealistic({ isDipper = false }) {
             <text
               x="1052"
               y="242"
-              fontFamily="Consolas, monospace"
+              fontFamily="var(--font-primary), sans-serif"
               fontSize="6.8"
               fontWeight="900"
               letterSpacing="0.1em"
@@ -858,7 +858,7 @@ function CodedTruckRealistic({ isDipper = false }) {
             <text
               x="1052"
               y="253"
-              fontFamily="Consolas, monospace"
+              fontFamily="var(--font-primary), sans-serif"
               fontSize="5.2"
               fontWeight="800"
               letterSpacing="0.08em"
@@ -1013,7 +1013,7 @@ function CodedTruckRealistic({ isDipper = false }) {
               <text
                 x="1287"
                 y="266.5"
-                fontFamily="Consolas, monospace"
+                fontFamily="var(--font-primary), sans-serif"
                 fontSize="4"
                 fontWeight="900"
                 fill="#071F33"
@@ -1069,7 +1069,7 @@ function CodedTruckRealistic({ isDipper = false }) {
               <text
                 x="1286"
                 y="359.5"
-                fontFamily="Consolas, monospace"
+                fontFamily="var(--font-primary), sans-serif"
                 fontSize="4.8"
                 fontWeight="900"
                 fill="#0F172A"

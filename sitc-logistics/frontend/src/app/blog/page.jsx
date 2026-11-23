@@ -15,7 +15,7 @@ export const metadata = {
     'Logistics Insights',
     '40ft Container Haulage',
     'ICD Container Drayage',
-    'Pan-India Linehaul',
+    'Industrial Linehaul',
     'Fleet Telematics',
     'Port to Plant Delivery',
     'Zero Demurrage',

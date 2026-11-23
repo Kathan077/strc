@@ -15,7 +15,7 @@ export default function AboutStatsEditor({ initialData, onSave, isSaving }) {
       kicker: 'HIGH-VELOCITY ROAD FREIGHT',
       title: 'Digital & Trusted Transport Logistic Company',
       description:
-        'Pioneering technology-driven road transport, real-time GPS tracking, and guaranteed zero-demurrage turnaround nationwide.',
+        'Pioneering technology-driven road transport, real-time GPS tracking, and guaranteed zero-demurrage turnaround across key corridors.',
       image: '/images/about/srtc-dryport-terminal.jpg',
       imageAlt: 'SRTC Inland Container Depot Dry Port Freight Logistics Terminal',
       ctaText: 'Request A Quote!',

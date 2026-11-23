@@ -55,27 +55,27 @@ export default function ProcessTruckBlueprint() {
         <g transform="translate(100, 420)">
           <line x1="0" y1="-5" x2="0" y2="12" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
           <circle cx="0" cy="0" r="2.5" fill="currentColor" fillOpacity="0.7" />
-          <text x="6" y="10" fill="currentColor" fillOpacity="0.55" fontSize="8.5" fontFamily="monospace" fontWeight="600">KM 000 • ORIGIN TERMINAL</text>
+          <text x="6" y="10" fill="currentColor" fillOpacity="0.55" fontSize="8.5" fontFamily="var(--font-primary), sans-serif" fontWeight="600">KM 000 • ORIGIN TERMINAL</text>
         </g>
         <g transform="translate(420, 420)">
           <line x1="0" y1="-5" x2="0" y2="12" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
           <circle cx="0" cy="0" r="2.5" fill="currentColor" fillOpacity="0.7" />
-          <text x="6" y="10" fill="currentColor" fillOpacity="0.55" fontSize="8.5" fontFamily="monospace" fontWeight="600">KM 280 • TOLL & WEIGH BRIDGE</text>
+          <text x="6" y="10" fill="currentColor" fillOpacity="0.55" fontSize="8.5" fontFamily="var(--font-primary), sans-serif" fontWeight="600">KM 280 • TOLL & WEIGH BRIDGE</text>
         </g>
         <g transform="translate(800, 420)">
           <line x1="0" y1="-5" x2="0" y2="12" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
           <circle cx="0" cy="0" r="2.5" fill="currentColor" fillOpacity="0.7" />
-          <text x="6" y="10" fill="currentColor" fillOpacity="0.55" fontSize="8.5" fontFamily="monospace" fontWeight="600">KM 560 • INTERSTATE CORRIDOR</text>
+          <text x="6" y="10" fill="currentColor" fillOpacity="0.55" fontSize="8.5" fontFamily="var(--font-primary), sans-serif" fontWeight="600">KM 560 • INTERSTATE CORRIDOR</text>
         </g>
         <g transform="translate(1180, 420)">
           <line x1="0" y1="-5" x2="0" y2="12" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
           <circle cx="0" cy="0" r="2.5" fill="currentColor" fillOpacity="0.7" />
-          <text x="6" y="10" fill="currentColor" fillOpacity="0.55" fontSize="8.5" fontFamily="monospace" fontWeight="600">KM 840 • HIGHWAY TRANSIT CORRIDOR</text>
+          <text x="6" y="10" fill="currentColor" fillOpacity="0.55" fontSize="8.5" fontFamily="var(--font-primary), sans-serif" fontWeight="600">KM 840 • HIGHWAY TRANSIT CORRIDOR</text>
         </g>
         <g transform="translate(1460, 420)">
           <line x1="0" y1="-5" x2="0" y2="12" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
           <circle cx="0" cy="0" r="2.5" fill="currentColor" fillOpacity="0.7" />
-          <text x="6" y="10" fill="currentColor" fillOpacity="0.55" fontSize="8.5" fontFamily="monospace" fontWeight="600">KM 1120 • CFS GATE</text>
+          <text x="6" y="10" fill="currentColor" fillOpacity="0.55" fontSize="8.5" fontFamily="var(--font-primary), sans-serif" fontWeight="600">KM 1120 • CFS GATE</text>
         </g>
 
         {/* Active Highway Transit Pulse Packet (Native Smooth SVG Animation) */}
@@ -368,7 +368,7 @@ export default function ProcessTruckBlueprint() {
           fill="currentColor"
           fillOpacity="0.75"
           fontSize="10"
-          fontFamily="monospace"
+          fontFamily="var(--font-primary), sans-serif"
           fontWeight="700"
           textAnchor="middle"
           letterSpacing="0.1em"
@@ -386,7 +386,7 @@ export default function ProcessTruckBlueprint() {
           fill="currentColor"
           fillOpacity="0.75"
           fontSize="9.5"
-          fontFamily="monospace"
+          fontFamily="var(--font-primary), sans-serif"
           fontWeight="700"
           letterSpacing="0.08em"
         >
@@ -403,7 +403,7 @@ export default function ProcessTruckBlueprint() {
           fill="currentColor"
           fillOpacity="0.6"
           fontSize="8.5"
-          fontFamily="monospace"
+          fontFamily="var(--font-primary), sans-serif"
           fontWeight="600"
           textAnchor="middle"
         >
@@ -423,16 +423,16 @@ export default function ProcessTruckBlueprint() {
             strokeOpacity="0.4"
             fill="none"
           />
-          <text x="12" y="16" fill="currentColor" fillOpacity="0.8" fontSize="8.5" fontFamily="monospace" fontWeight="700" letterSpacing="0.06em">
+          <text x="12" y="16" fill="currentColor" fillOpacity="0.8" fontSize="8.5" fontFamily="var(--font-primary), sans-serif" fontWeight="700" letterSpacing="0.06em">
             SRTC FLEET SPEC // 6x4 HEAVY HAULAGE
           </text>
-          <text x="12" y="30" fill="currentColor" fillOpacity="0.6" fontSize="7.5" fontFamily="monospace" fontWeight="600">
+          <text x="12" y="30" fill="currentColor" fillOpacity="0.6" fontSize="7.5" fontFamily="var(--font-primary), sans-serif" fontWeight="600">
             TRACTOR: 460 HP EURO-VI AMT PRIME MOVER
           </text>
-          <text x="12" y="42" fill="currentColor" fillOpacity="0.6" fontSize="7.5" fontFamily="monospace" fontWeight="600">
+          <text x="12" y="42" fill="currentColor" fillOpacity="0.6" fontSize="7.5" fontFamily="var(--font-primary), sans-serif" fontWeight="600">
             TRAILER: 40FT HIGH CUBE • PAYLOAD 32,000 KG
           </text>
-          <text x="12" y="52" fill="currentColor" fillOpacity="0.6" fontSize="7" fontFamily="monospace" fontWeight="500">
+          <text x="12" y="52" fill="currentColor" fillOpacity="0.6" fontSize="7" fontFamily="var(--font-primary), sans-serif" fontWeight="500">
             TELEMETRICS: ACTIVE DUAL-BAND GPS (24/7)
           </text>
         </g>

@@ -34,8 +34,12 @@
   --gradient-hero: linear-gradient(135deg, #0B2F4A 0%, #07557A 55%, #071F33 100%);
   --gradient-card: linear-gradient(180deg, #FFFFFF 0%, #F4F6F8 100%);
 
-  /* Typography Tokens */
-  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Typography Tokens - Premium Enterprise Pairing (Plus Jakarta Sans + Inter) */
+  --font-primary: var(--font-primary, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  --font-secondary: var(--font-secondary, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  --font-family-sans: var(--font-secondary);
+  --font-family-heading: var(--font-primary);
+  --font-mono: var(--font-primary); /* Modern sharp tabular typography instead of raw AI monospace */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;

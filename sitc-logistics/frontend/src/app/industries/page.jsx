@@ -7,7 +7,7 @@ export default function IndustriesPage() {
   const industries = [
     { title: 'Engineering', desc: 'Specialized heavy-duty road haulage for precision engineering assemblies, plant machinery, turbines, and turnkey project cargo.' },
     { title: 'Manufacturer', desc: 'Raw material procurement, production line infeed, and finished goods factory dock evacuation.' },
-    { title: 'Industrial', desc: 'Engineered transport for industrial equipment, precision engineering assemblies, and structural steel nationwide.' },
+    { title: 'Industrial', desc: 'Engineered transport for industrial equipment, precision engineering assemblies, and structural steel across key corridors.' },
     { title: 'Chemical', desc: 'Safety-certified transportation for specialty chemicals, pigments, dyes, and bulk chemical containers.' },
     { title: 'Pharmaceuticals', desc: 'High-security, weather-sealed cargo transit for active pharmaceutical ingredients (APIs) and healthcare supplies.' },
     { title: 'Food & Beverages', desc: 'Hygiene-compliant, food-grade carriage for consumer edibles, spices, flour, and Gaay Chhap Besan.' },
@@ -26,7 +26,7 @@ export default function IndustriesPage() {
           Specialized Logistics For 9 Core Industries
         </h1>
         <p style={{ color: '#263746', fontSize: '1.05rem', lineHeight: 1.6, maxWidth: '720px', margin: '0 auto 3rem auto' }}>
-          SRTC delivers proprietary, easy, and convenient freight solutions tailored for enterprise clients across India.
+          SRTC delivers dedicated, reliable freight solutions tailored for enterprise industrial clients.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', textAlign: 'left' }}>

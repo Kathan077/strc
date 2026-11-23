@@ -62,11 +62,11 @@ export default function AboutStatsSection({ data }) {
 
   const imgUrl = data?.image || '/images/about/srtc-dryport-terminal.jpg';
   const imgAlt = data?.imageAlt || 'SRTC Inland Container Depot Dry Port Freight Logistics Terminal';
-  const kicker = data?.kicker || 'PROVEN LINEHAUL EXCELLENCE';
+  const kicker = data?.kicker || '';
   const title = data?.title || 'Digital & Trusted Transport Logistic Company';
   const desc =
     data?.description ||
-    'Delivering high-quality, end-to-end logistics solutions to corporates and individuals nationwide with guaranteed on-time delivery.';
+    'Delivering high-quality, end-to-end logistics solutions to corporates and industrial enterprises with guaranteed on-time delivery.';
   const ctaText = data?.ctaText || 'Contact Us';
   const ctaLink = data?.ctaLink || '/contact';
 
@@ -87,11 +87,6 @@ export default function AboutStatsSection({ data }) {
           </div>
 
           <div className="srtc-about-stats__text-group">
-            <div className="srtc-stats-kicker">
-              <Sparkles size={13} className="srtc-stats-kicker__icon" />
-              <span>{kicker}</span>
-            </div>
-
             <h2 className="srtc-about-stats__title">
               {title}
             </h2>

@@ -35,7 +35,7 @@ export default function HeroEditor({ initialData, onSave, isSaving }) {
   const addSlide = () => {
     const newSlide = {
       kicker: 'STRATEGIC LOGISTICS · EXPEDITED',
-      titleLine1: 'NATIONWIDE',
+      titleLine1: 'HIGH-VELOCITY',
       titleLine2: 'EXPRESS',
       titleLine3: 'CORRIDORS',
       description: 'Reliable point-to-point heavy container transit across all industrial corridors.',
@@ -45,7 +45,7 @@ export default function HeroEditor({ initialData, onSave, isSaving }) {
       stats: [
         { num: '24/7', label: 'Telemetry Monitoring' },
         { num: '99.5%', label: 'Transit Reliability' },
-        { num: 'Pan-India', label: 'Direct Corridors' },
+        { num: 'Dedicated', label: 'Direct Corridors' },
       ],
     };
     setData({ ...data, slides: [...data.slides, newSlide] });

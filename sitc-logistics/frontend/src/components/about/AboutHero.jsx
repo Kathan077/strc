@@ -10,7 +10,7 @@ export default function AboutHero({ data }) {
   const titleGold = data?.titleGold || 'SRTC Logistics';
   const subtitle =
     data?.subtitle ||
-    'Two Decades of Heavy Freight Mastery, Port Evacuation & Guaranteed SLA Corridors Across India.';
+    'Two Decades of Heavy Freight Mastery, Port Evacuation & Guaranteed SLA Industrial Corridors.';
   const breadcrumbHome = data?.breadcrumbHome || 'Home';
   const breadcrumbCurrent = data?.breadcrumbCurrent || 'About Us';
 

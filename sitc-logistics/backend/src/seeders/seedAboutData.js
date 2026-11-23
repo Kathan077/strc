@@ -13,10 +13,10 @@ const aboutSeedData = {
     breadcrumbCurrent: 'About Us',
   },
   stats: {
-    kicker: 'PROVEN LINEHAUL EXCELLENCE',
+    kicker: '',
     title: 'Digital & Trusted Transport Logistic Company',
     description:
-      'Delivering high-quality, end-to-end logistics solutions to corporates and individuals nationwide with guaranteed on-time delivery.',
+      'Delivering high-quality, end-to-end logistics solutions to corporates and industrial enterprises with guaranteed on-time delivery.',
     image: '/images/about/srtc-dryport-terminal.jpg',
     imageAlt: 'SRTC Logistics Terminal Hub',
     ctaText: 'Contact Us',
@@ -61,12 +61,12 @@ const aboutSeedData = {
     ],
   },
   company: {
-    eyebrowText: 'ABOUT OUR COMPANY & HERITAGE',
+    eyebrowText: '',
     title: 'Delivering reliability, speed, and value',
     titleAccent: 'every single time',
     titleSuffix: 'our trucks hit the highway.',
     leadText:
-      'Shree Ram Transportation Corporation, established in 2003 by Mr. Menandbhai Odedara, has been a trusted name in Gujarat’s transport sector for over two decades. Building on this strong foundation and legacy of reliability, SRTC Supply Chain Pvt. Ltd. was formed as a new venture to meet the growing demand for modern, technology-driven, and scalable logistics & warehouse solutions. Today, SRTC Supply Chain Pvt. Ltd. delivers high-quality, end-to-end logistics solutions to corporates and individuals nationwide.',
+      'Shree Ram Transportation Corporation, established in 2003 by Mr. Menandbhai Odedara, has been a trusted name in commercial road transport for over two decades. Building on this strong foundation and legacy of reliability, SRTC Supply Chain Pvt. Ltd. was formed as a new venture to meet the growing demand for modern, technology-driven, and scalable logistics & warehouse solutions. Today, SRTC Supply Chain Pvt. Ltd. delivers high-quality, end-to-end logistics solutions to corporates and industrial enterprises.',
     imgSupervisor: '/images/about/founder-menandbhai.jpg',
     ribbonTag: 'ESTD. 2003',
     ribbonText: '23+ Years Experience',
@@ -86,11 +86,11 @@ const aboutSeedData = {
       },
       {
         year: '23+ Yrs',
-        title: 'Pan-India Reach',
+        title: 'Expansive Corridor Reach',
         icon: 'Truck',
         highlight: 'Privately Owned Fleet',
         description:
-          'Expanded nationwide with specialized FTL, PTL, superfast cargo, and modern warehousing facilities.',
+          'Expanded operations with specialized FTL, PTL, superfast cargo, and modern warehousing facilities.',
         delay: '300ms',
       },
       {
@@ -255,7 +255,7 @@ const aboutSeedData = {
         tagline: '24/7 GPS Tracking & Telematics',
         desc: '24/7 en-route GPS tracking with trained, professional commercial drivers ensuring secure, punctual, and non-stop highway haulage.',
         tireModel: 'SRTC HAULAGE 295/80 R22.5',
-        tireSpec: 'MAX LOAD 3750 KG • PAN-INDIA RATED',
+        tireSpec: 'MAX LOAD 3750 KG • HEAVY DUTY HIGHWAY RATED',
       },
       {
         number: '04',

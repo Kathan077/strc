@@ -4,10 +4,18 @@ import React, { useRef, useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import './Hero.css';
 
-function Hero() {
+function Hero({ data }) {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  const videoSrc = data?.videoUrl || '/videos/video_no_logo_clean.mp4';
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   // High-performance scroll parallax / curtain recess effect
   useEffect(() => {
@@ -72,8 +80,10 @@ function Hero() {
             playsInline
             preload="auto"
           >
-            <source src="/videos/8d2bfe1c-f585-40bd-864c-fba1d15f10a0.mp4" type="video/mp4" />
-            <source src="/videos/hero-video.mp4" type="video/mp4" />
+            <source src={videoSrc} type="video/mp4" />
+            {videoSrc !== '/videos/video_no_logo_clean.mp4' && (
+              <source src="/videos/video_no_logo_clean.mp4" type="video/mp4" />
+            )}
             Your browser does not support HTML5 video.
           </video>
 

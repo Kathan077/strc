@@ -60,7 +60,7 @@ export default function CtaEditor({ initialData, onSave, isSaving }) {
           value={data.statusText || ''}
           onChange={(e) => handleFieldChange('statusText', e.target.value)}
           className="input-field"
-          placeholder="HIGHWAY DISPATCH DESK ACTIVE - 24/7 NATIONWIDE LINEHAUL SUPPORT"
+          placeholder="HIGHWAY DISPATCH DESK ACTIVE - 24/7 DEDICATED LINEHAUL SUPPORT"
         />
       </div>
 

@@ -9,7 +9,7 @@ export default function AboutHeroEditor({ initialData, onSave, isSaving }) {
       title: 'About',
       titleGold: 'SRTC Logistics',
       subtitle:
-        'Two Decades of Heavy Freight Mastery, Port Evacuation & Guaranteed SLA Corridors Across India.',
+        'Two Decades of Heavy Freight Mastery, Port Evacuation & Guaranteed SLA Industrial Corridors.',
       breadcrumbHome: 'Home',
       breadcrumbCurrent: 'About Us',
     }

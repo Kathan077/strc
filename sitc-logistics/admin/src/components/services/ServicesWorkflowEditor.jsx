@@ -7,7 +7,7 @@ export default function ServicesWorkflowEditor({ initialData, onSave, isSaving }
   const [data, setData] = useState(
     initialData || {
       kicker: 'STANDARDIZED OPERATIONAL EXCELLENCE',
-      title: 'Streamlined 4-Step Pan-India Freight Execution Pipeline',
+      title: 'Streamlined 4-Step Industrial Freight Execution Pipeline',
       description:
         'From instant algorithmic vehicle allocation to geo-fenced electronic seal verification, our operating lifecycle ensures zero demurrage and maximum transit velocity.',
       steps: [],

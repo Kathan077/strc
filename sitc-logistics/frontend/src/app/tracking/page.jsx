@@ -14,7 +14,7 @@ export default function TrackingPage() {
           Real-Time Cargo & Fleet Tracking
         </h1>
         <p style={{ color: '#263746', fontSize: '1.05rem', lineHeight: 1.6 }}>
-          Track active shipments, verify electronic seals, and monitor real-time highway cruise velocities across nationwide routes.
+          Track active shipments, verify electronic seals, and monitor real-time highway cruise velocities across active highway routes.
         </p>
       </div>
     </div>

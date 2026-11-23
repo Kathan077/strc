@@ -885,7 +885,7 @@ export default function BlogManager({ blogs = [], onRefresh, setToast }) {
                     rows={16}
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                    placeholder="## The Industrial Shift to 40ft Shipping Containers&#10;&#10;In modern Pan-India industrial supply chains...&#10;&#10;---&#10;&#10;## 1. Volumetric Efficiency&#10;&#10;- Pallet Configuration: Up to 25 Euro-pallets&#10;- Payload Balance: Multi-axle air-suspension..."
+                    placeholder="## The Industrial Shift to 40ft Shipping Containers&#10;&#10;In modern enterprise industrial supply chains...&#10;&#10;---&#10;&#10;## 1. Volumetric Efficiency&#10;&#10;- Pallet Configuration: Up to 25 Euro-pallets&#10;- Payload Balance: Multi-axle air-suspension..."
                     className="input-field"
                     style={{
                       fontFamily: 'Consolas, monospace',
