@@ -10,8 +10,8 @@
 }
 
 .srtc-lazy-section.is-hydrated {
-  content-visibility: auto;
-  contain-intrinsic-size: 800px;
+  /* Zero layout shift, no content-visibility jumps */
+  contain: layout style;
 }
 
 .srtc-skeleton-placeholder {

@@ -1,114 +1,114 @@
 /* ==========================================================================
-   Hero.css - SRTC Full-Bleed Cinematic Video Hero with Curtain Reveal Effect
-   Pure Clean Presentation: Full-screen video canvas with sticky scroll reveal
+   Hero.css - SRTC Full-Bleed Cinematic Video Hero (100% Responsive & Zero Lag)
+   Optimized for 60/120 FPS Butter-Smooth Scrolling on All Screens
    ========================================================================== */
 
-/* Outer Wrapper providing the scroll tracking height */
+/* Outer Hero Wrapper */
 .srtc-video-hero-wrapper {
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  height: calc(100vh - 72px);
+  height: calc(100dvh - 72px);
+  min-height: 580px;
+  max-height: 1080px;
   background-color: #071F33;
   margin: 0;
   padding: 0;
+  overflow: hidden;
   box-sizing: border-box;
+  contain: paint layout;
 }
 
-/* Sticky Container: Pins to top while user scrolls, letting subsequent content slide over */
-.srtc-video-hero-sticky {
-  position: sticky;
-  top: 72px; /* Flush right underneath the sticky header */
-  left: 0;
-  right: 0;
+/* Inner Container: GPU accelerated layer */
+.srtc-video-hero-container {
+  position: relative;
   width: 100%;
-  height: calc(100vh - 72px);
-  height: calc(100svh - 72px);
+  height: 100%;
   overflow: hidden;
-  z-index: 1;
   background-color: #071F33;
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-/* Video Canvas with hardware-accelerated transform & will-change */
+/* Video Canvas: Clean full-bleed container */
 .srtc-video-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  will-change: transform, opacity;
-  transition: transform 80ms linear, opacity 80ms linear;
+  pointer-events: none;
 }
 
-/* Video Player: 100% full-bleed covering the screen cleanly */
+/* Video Player: 100% responsive across all screen aspect ratios */
 .srtc-hero-video-player {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 45%;
   display: block;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
-/* Subtle Vignette Overlays for Polished Industrial Depth */
+/* Subtle Vignette Overlay for Depth & Contrast */
 .srtc-video-vignette {
   position: absolute;
   inset: 0;
   background: radial-gradient(
     circle at 50% 50%,
-    transparent 55%,
-    rgba(7, 31, 51, 0.45) 100%
+    transparent 45%,
+    rgba(7, 31, 51, 0.4) 100%
   );
   pointer-events: none;
   z-index: 2;
 }
 
-.srtc-video-scroll-dim {
-  position: absolute;
-  inset: 0;
-  background-color: #071F33;
-  pointer-events: none;
-  z-index: 3;
-  transition: opacity 80ms linear;
-}
-
 /* Scroll Down Prompt Indicator */
 .srtc-video-scroll-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: 2.2rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   cursor: pointer;
-  z-index: 15;
+  z-index: 10;
   color: #FFFFFF;
   text-decoration: none;
-  opacity: 0.88;
-  transition: opacity 220ms ease, transform 220ms ease;
+  opacity: 0.9;
+  transition: opacity 200ms ease, transform 200ms ease;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.srtc-video-scroll-indicator:hover {
+.srtc-video-scroll-indicator:hover,
+.srtc-video-scroll-indicator:focus-visible {
   opacity: 1;
   transform: translateX(-50%) translateY(3px);
   color: #E8B94F;
+  outline: none;
 }
 
 .srtc-scroll-mouse {
   width: 22px;
   height: 34px;
-  border: 2px solid rgba(255, 255, 255, 0.75);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   position: relative;
   display: flex;
   justify-content: center;
-  background: rgba(11, 47, 74, 0.3);
-  backdrop-filter: blur(4px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  background: rgba(7, 31, 51, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 .srtc-scroll-wheel {
@@ -118,6 +118,7 @@
   border-radius: 2px;
   margin-top: 6px;
   animation: srtcScrollBounce 1.8s infinite;
+  transform: translateZ(0);
 }
 
 @keyframes srtcScrollBounce {
@@ -126,8 +127,8 @@
     opacity: 1;
   }
   50% {
-    transform: translateY(10px);
-    opacity: 0.2;
+    transform: translateY(9px);
+    opacity: 0.25;
   }
   100% {
     transform: translateY(0);
@@ -141,11 +142,12 @@
   font-weight: 750;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
 }
 
 .srtc-scroll-chevron {
   animation: srtcChevronBounce 1.8s infinite;
+  transform: translateZ(0);
 }
 
 @keyframes srtcChevronBounce {
@@ -158,17 +160,81 @@
 }
 
 /* ==========================================================================
-   MOBILE & TABLET ADAPTATIONS
+   TABLET & IPAD RESPONSIVE STYLING (768px – 1023px)
    ========================================================================== */
+@media (max-width: 1023px) {
+  .srtc-video-hero-wrapper {
+    height: calc(100vh - 68px);
+    height: calc(100dvh - 68px);
+    min-height: 520px;
+  }
 
-@media (max-width: 768px) {
-  .srtc-video-hero-sticky {
-    top: 65px;
+  .srtc-hero-video-player {
+    object-position: center 46%;
+  }
+
+  .srtc-video-scroll-indicator {
+    bottom: 1.8rem;
+  }
+}
+
+/* ==========================================================================
+   MOBILE PHONES RESPONSIVE STYLING (< 768px)
+   Ultra-Smooth 120Hz Native Touch Scroll & Adaptive Viewport
+   ========================================================================== */
+@media (max-width: 767px) {
+  .srtc-video-hero-wrapper {
     height: calc(100vh - 65px);
-    height: calc(100svh - 65px);
+    height: calc(100dvh - 65px);
+    min-height: 480px;
+    max-height: none;
+  }
+
+  .srtc-hero-video-player {
+    object-position: center 45%;
   }
 
   .srtc-video-scroll-indicator {
     bottom: 1.25rem;
+    gap: 0.35rem;
+  }
+
+  .srtc-scroll-mouse {
+    width: 20px;
+    height: 30px;
+    border-width: 1.75px;
+  }
+
+  .srtc-scroll-wheel {
+    width: 3px;
+    height: 6px;
+    margin-top: 5px;
+  }
+
+  .srtc-scroll-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* Very Small Mobile (< 380px) */
+@media (max-width: 379px) {
+  .srtc-video-hero-wrapper {
+    min-height: 440px;
+  }
+
+  .srtc-video-scroll-indicator {
+    bottom: 0.9rem;
+  }
+
+  .srtc-scroll-label {
+    display: none; /* Keep just the mouse + chevron for clean view */
+  }
+}
+
+/* Ultra-Wide Screens (≥ 1920px) */
+@media (min-width: 1920px) {
+  .srtc-video-hero-wrapper {
+    max-height: 1200px;
   }
 }

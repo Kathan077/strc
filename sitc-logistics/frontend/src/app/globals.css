@@ -7,10 +7,11 @@
 @import "../styles/typography.css";
 @import "../styles/responsive.css";
 
-/* Core HTML & Body Styling - 100% Horizontal Overflow Lock with Sticky Support */
+/* Core HTML & Body Styling - 100% Horizontal Overflow Lock with Sticky Support & Native Momentum */
 html {
   overflow-x: clip;
   max-width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -22,6 +23,7 @@ body {
   flex-direction: column;
   overflow-x: clip;
   max-width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 main {

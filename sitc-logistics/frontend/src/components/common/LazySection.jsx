@@ -10,8 +10,8 @@ import './LazySection.css';
  */
 export default function LazySection({
   children,
-  minHeight = '420px',
-  rootMargin = '250px 0px 250px 0px',
+  minHeight = '300px',
+  rootMargin = '800px 0px 800px 0px',
   fallbackText = 'SRTC FLEET DATA LOADING...',
 }) {
   const [isVisible, setIsVisible] = useState(false);
