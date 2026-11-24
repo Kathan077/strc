@@ -6,8 +6,8 @@ import AboutProcessSection from '@/components/about/AboutProcessSection';
 import TruckContactCTA from '@/components/home/TruckContactCTA';
 import LazySection from '@/components/common/LazySection';
 
-// ISR Edge Caching (revalidates every 60s)
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export const metadata = {
   title: 'About Us | SRTC Logistics — Enterprise Industrial Linehaul & Supply Chain',
@@ -20,7 +20,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 async function getAboutContent() {
   try {
     const res = await fetch(`${API_BASE}/api/about`, {
-      next: { revalidate: 60 },
+      cache: 'no-store',
       signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) {

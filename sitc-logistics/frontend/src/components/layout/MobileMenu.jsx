@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -26,6 +27,20 @@ const navItems = [
 
 export default function MobileMenu({ isOpen, onClose }) {
   const pathname = usePathname();
+  const [contactData, setContactData] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/contact')
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.success && json.data) setContactData(json.data);
+      })
+      .catch(() => {});
+  }, []);
+
+  const phone = contactData?.vaultPhone?.phone || '+91 94266 46095';
+  const phoneTel = contactData?.vaultPhone?.ctaLink || 'tel:+919426646095';
+  const email = contactData?.vaultEmail?.email || 'srtcpvtltd09@gmail.com';
 
   const isActive = (href) => {
     if (href === '/') return pathname === '/';
@@ -115,23 +130,23 @@ export default function MobileMenu({ isOpen, onClose }) {
               <span className="sitc-mobile-menu__contact-title">CENTRAL DISPATCH 24/7</span>
             </div>
 
-            <a href="tel:+919426646095" className="sitc-mobile-contact-row">
+            <a href={phoneTel} className="sitc-mobile-contact-row">
               <span className="sitc-mobile-contact-icon-badge">
                 <Phone size={14} />
               </span>
               <div className="sitc-mobile-contact-data">
                 <span className="sitc-mobile-contact-lbl">Hotline Linehaul</span>
-                <span className="sitc-mobile-contact-val">+91 94266 46095</span>
+                <span className="sitc-mobile-contact-val">{phone}</span>
               </div>
             </a>
 
-            <a href="mailto:srtcpvtltd09@gmail.com" className="sitc-mobile-contact-row">
+            <a href={`mailto:${email}`} className="sitc-mobile-contact-row">
               <span className="sitc-mobile-contact-icon-badge">
                 <Mail size={14} />
               </span>
               <div className="sitc-mobile-contact-data">
                 <span className="sitc-mobile-contact-lbl">Corridor Booking Desk</span>
-                <span className="sitc-mobile-contact-val">srtcpvtltd09@gmail.com</span>
+                <span className="sitc-mobile-contact-val">{email}</span>
               </div>
             </a>
 

@@ -18,7 +18,7 @@ const ServicesPageContentSchema = new mongoose.Schema(
 
     // Section 2: Core Transport & Warehouse Solutions (FTL, PTL, Warehouse)
     core: {
-      kicker: { type: String, default: 'ENGINEERED FREIGHT ARCHITECTURE' },
+      kicker: { type: String, default: '' },
       title: { type: String, default: 'Core Transportation & Warehouse Solutions' },
       description: {
         type: String,
@@ -86,7 +86,7 @@ const ServicesPageContentSchema = new mongoose.Schema(
 
     // Section 4: 4-Step Freight Execution Pipeline
     workflow: {
-      kicker: { type: String, default: 'STANDARDIZED OPERATIONAL EXCELLENCE' },
+      kicker: { type: String, default: '' },
       title: { type: String, default: 'Streamlined 4-Step Industrial Freight Execution Pipeline' },
       description: {
         type: String,
@@ -108,7 +108,7 @@ const ServicesPageContentSchema = new mongoose.Schema(
 
     // Section 5: Enterprise Industrial Partners
     trustClients: {
-      kicker: { type: String, default: 'PDF BROCHURE: OUR TOP CLIENTS' },
+      kicker: { type: String, default: '' },
       title: { type: String, default: 'Dedicated Highway Fleet: Trusted By Industrial Giants' },
       subtitle: {
         type: String,

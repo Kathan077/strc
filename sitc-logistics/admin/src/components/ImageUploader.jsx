@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Upload,
   Image as ImageIcon,
@@ -18,10 +19,19 @@ import {
 export default function ImageUploader({
   label,
   value,
+  currentImage,
+  image,
   onChange,
+  onImageUploaded,
   token,
   placeholder = '/images/... or https://res.cloudinary.com/...',
 }) {
+  const actualValue = value || currentImage || image || '';
+  const triggerChange = (newVal) => {
+    if (onChange) onChange(newVal);
+    if (onImageUploaded) onImageUploaded(newVal);
+  };
+
   const [uploading, setUploading] = useState(false);
   const [copied, setCopied] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -29,19 +39,28 @@ export default function ImageUploader({
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef(null);
 
+  // Close modal on Escape key
+  useEffect(() => {
+    if (!showModal) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setShowModal(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [showModal]);
+
   // Determine image source type for status badges
   const isCloudinary = Boolean(
-    value && (value.includes('cloudinary.com') || value.includes('res.cloudinary'))
+    actualValue && (actualValue.includes('cloudinary.com') || actualValue.includes('res.cloudinary'))
   );
   const isLocalAsset = Boolean(
-    value && (value.startsWith('/images') || value.startsWith('/uploads'))
+    actualValue && (actualValue.startsWith('/images') || actualValue.startsWith('/uploads'))
   );
-  const isExternal = Boolean(value && value.startsWith('http') && !isCloudinary);
+  const isExternal = Boolean(actualValue && actualValue.startsWith('http') && !isCloudinary);
 
   const handleUploadFile = async (file) => {
     if (!file) return;
 
-    // Validate file type
     if (!file.type.startsWith('image/')) {
       alert('Please upload a valid image file (JPEG, PNG, WebP, SVG, AVIF, GIF).');
       return;
@@ -57,7 +76,6 @@ export default function ImageUploader({
     const authToken = token || localStorage.getItem('srtc_admin_token');
 
     try {
-      // Primary: try Cloudinary upload endpoint
       let res = await fetch('/api/upload', {
         method: 'POST',
         headers: {
@@ -66,7 +84,6 @@ export default function ImageUploader({
         body: formData,
       });
 
-      // Fallback: try homepage upload endpoint if 404
       if (!res.ok && res.status === 404) {
         res = await fetch('/api/homepage/upload', {
           method: 'POST',
@@ -80,7 +97,7 @@ export default function ImageUploader({
       const data = await res.json();
       if (data.success && (data.path || data.url)) {
         const uploadedUrl = data.path || data.url;
-        onChange(uploadedUrl);
+        triggerChange(uploadedUrl);
         setImageError(false);
       } else {
         alert(data.message || 'Image upload failed. Please try again.');
@@ -115,15 +132,15 @@ export default function ImageUploader({
   };
 
   const handleCopy = () => {
-    if (!value) return;
-    navigator.clipboard.writeText(value);
+    if (!actualValue) return;
+    navigator.clipboard.writeText(actualValue);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   const handleClear = () => {
     if (confirm('Clear this image?')) {
-      onChange('');
+      triggerChange('');
       setImageError(false);
     }
   };
@@ -140,7 +157,7 @@ export default function ImageUploader({
         }}
       >
         {label && <label className="input-label" style={{ marginBottom: 0 }}>{label}</label>}
-        {value && (
+        {actualValue && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             {isCloudinary && (
               <span
@@ -175,7 +192,7 @@ export default function ImageUploader({
                   padding: '2px 8px',
                   borderRadius: '12px',
                 }}
-                title="Local static asset in /public/images"
+                title="Stored in local project public assets folder"
               >
                 <Folder size={11} /> Local Asset
               </span>
@@ -195,89 +212,64 @@ export default function ImageUploader({
                   borderRadius: '12px',
                 }}
               >
-                <ExternalLink size={11} /> Web URL
+                <ExternalLink size={11} /> External URL
               </span>
             )}
           </div>
         )}
       </div>
 
-      {/* Main Input Row */}
-      <div
-        style={{
-          display: 'flex',
-          gap: '8px',
-          alignItems: 'center',
-        }}
-      >
+      {/* Hidden File Input */}
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        accept="image/jpeg,image/png,image/webp,image/svg+xml,image/avif,image/gif"
+        style={{ display: 'none' }}
+      />
+
+      {/* Main Input Field + Upload / Action Bar */}
+      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
         <div style={{ position: 'relative', flex: 1 }}>
           <input
             type="text"
-            value={value || ''}
+            className="input-field"
+            value={actualValue}
             onChange={(e) => {
-              onChange(e.target.value);
+              triggerChange(e.target.value);
               setImageError(false);
             }}
             placeholder={placeholder}
-            className="input-field"
             style={{
-              paddingRight: value ? '70px' : '14px',
+              paddingRight: actualValue ? '36px' : '14px',
+              fontFamily: actualValue ? 'var(--font-mono)' : 'inherit',
+              fontSize: '0.84rem',
             }}
           />
-          {value && (
-            <div
+          {actualValue && (
+            <button
+              type="button"
+              onClick={handleCopy}
               style={{
                 position: 'absolute',
                 right: '8px',
                 top: '50%',
                 transform: 'translateY(-50%)',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                color: copied ? '#22c55e' : 'var(--text-muted)',
+                padding: '4px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '4px',
+                transition: 'color 0.2s ease',
               }}
+              title="Copy URL"
             >
-              <button
-                type="button"
-                onClick={handleCopy}
-                style={{
-                  border: 'none',
-                  background: 'transparent',
-                  cursor: 'pointer',
-                  padding: '4px',
-                  color: copied ? '#10b981' : '#64748b',
-                  borderRadius: '4px',
-                }}
-                title={copied ? 'Copied!' : 'Copy Image URL'}
-              >
-                {copied ? <Check size={14} /> : <Copy size={14} />}
-              </button>
-              <button
-                type="button"
-                onClick={handleClear}
-                style={{
-                  border: 'none',
-                  background: 'transparent',
-                  cursor: 'pointer',
-                  padding: '4px',
-                  color: '#ef4444',
-                  borderRadius: '4px',
-                }}
-                title="Clear image"
-              >
-                <Trash2 size={14} />
-              </button>
-            </div>
+              {copied ? <Check size={14} /> : <Copy size={14} />}
+            </button>
           )}
         </div>
-
-        {/* Hidden File Input */}
-        <input
-          type="file"
-          ref={fileInputRef}
-          onChange={handleFileChange}
-          accept="image/jpeg,image/png,image/webp,image/svg+xml,image/avif,image/gif"
-          style={{ display: 'none' }}
-        />
 
         {/* Upload Button */}
         <button
@@ -286,26 +278,43 @@ export default function ImageUploader({
           disabled={uploading}
           className="btn-gold"
           style={{
-            whiteSpace: 'nowrap',
+            flexShrink: 0,
             padding: '9px 16px',
-            fontSize: '0.84rem',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px',
+            fontSize: '0.82rem',
           }}
-          title="Upload new image to Cloudinary CDN"
+          title="Upload image from computer to Cloudinary CDN"
         >
           {uploading ? (
-            <Loader2 size={15} className="animate-spin" />
+            <>
+              <Loader2 size={14} className="animate-spin" />
+              <span>Uploading...</span>
+            </>
           ) : (
-            <Upload size={15} />
+            <>
+              <Upload size={14} />
+              <span>Upload Image</span>
+            </>
           )}
-          <span>{uploading ? 'Uploading...' : 'Upload Image'}</span>
         </button>
+
+        {/* Clear Button */}
+        {actualValue && (
+          <button
+            type="button"
+            onClick={handleClear}
+            className="btn-danger"
+            style={{ padding: '9px 12px', flexShrink: 0 }}
+            title="Remove image"
+          >
+            <Trash2 size={14} />
+          </button>
+        )}
       </div>
 
-      {/* Drag & Drop Visual Zone / Preview Card */}
-      {value ? (
+      {/* =========================================================================
+          LIVE EMBEDDED PREVIEW CARD (Shown when actualValue is present)
+          ========================================================================= */}
+      {actualValue ? (
         <div
           onDrop={handleDrop}
           onDragOver={handleDragOver}
@@ -316,24 +325,25 @@ export default function ImageUploader({
             overflow: 'hidden',
             border: isDragOver
               ? '2px dashed var(--gold-primary)'
-              : '1px solid var(--border-subtle)',
+              : '1.5px solid var(--border-subtle)',
             background: isDragOver ? 'rgba(232, 185, 79, 0.08)' : '#ffffff',
-            boxShadow: '0 4px 14px rgba(7, 31, 51, 0.05)',
+            boxShadow: '0 4px 18px rgba(7, 31, 51, 0.06)',
             transition: 'all 0.2s ease',
           }}
         >
-          {/* Preview Canvas Container */}
+          {/* Preview Canvas Container - Spacious & High-Definition */}
           <div
             style={{
               position: 'relative',
               width: '100%',
-              height: '140px',
-              background: '#071f33',
+              minHeight: '180px',
+              maxHeight: '220px',
+              background: 'linear-gradient(180deg, #071f33 0%, #0b2f4a 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               overflow: 'hidden',
-              padding: '12px',
+              padding: '16px',
               boxSizing: 'border-box',
             }}
           >
@@ -342,7 +352,7 @@ export default function ImageUploader({
               style={{
                 position: 'absolute',
                 inset: 0,
-                opacity: 0.15,
+                opacity: 0.12,
                 backgroundImage:
                   'linear-gradient(45deg, #1e293b 25%, transparent 25%), linear-gradient(-45deg, #1e293b 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1e293b 75%), linear-gradient(-45deg, transparent 75%, #1e293b 75%)',
                 backgroundSize: '16px 16px',
@@ -352,11 +362,11 @@ export default function ImageUploader({
 
             {!imageError ? (
               <img
-                src={value}
+                src={actualValue}
                 alt="Admin Image Preview"
                 style={{
                   maxWidth: '100%',
-                  maxHeight: '100%',
+                  maxHeight: '190px',
                   width: 'auto',
                   height: 'auto',
                   objectFit: 'contain',
@@ -365,6 +375,8 @@ export default function ImageUploader({
                   zIndex: 1,
                   display: 'block',
                   margin: 'auto',
+                  borderRadius: '6px',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
                   transition: 'transform 0.3s ease',
                 }}
                 onError={() => setImageError(true)}
@@ -394,7 +406,7 @@ export default function ImageUploader({
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  {value}
+                  {actualValue}
                 </div>
                 <button
                   type="button"
@@ -421,8 +433,8 @@ export default function ImageUploader({
               <div
                 style={{
                   position: 'absolute',
-                  top: '8px',
-                  right: '8px',
+                  top: '10px',
+                  right: '10px',
                   display: 'flex',
                   gap: '6px',
                   zIndex: 3,
@@ -432,46 +444,49 @@ export default function ImageUploader({
                   type="button"
                   onClick={() => setShowModal(true)}
                   style={{
-                    background: 'rgba(7, 31, 51, 0.75)',
-                    backdropFilter: 'blur(6px)',
+                    background: 'rgba(7, 31, 51, 0.85)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
                     color: '#ffffff',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    borderRadius: '6px',
-                    padding: '6px 10px',
-                    fontSize: '0.72rem',
-                    fontWeight: 600,
+                    border: '1px solid rgba(232, 185, 79, 0.4)',
+                    borderRadius: '7px',
+                    padding: '6px 12px',
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '4px',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                    gap: '6px',
+                    boxShadow: '0 3px 10px rgba(0,0,0,0.35)',
+                    transition: 'all 0.2s ease',
                   }}
                   title="View High Resolution Full Image"
                 >
-                  <Maximize2 size={12} color="var(--gold-primary)" />
+                  <Maximize2 size={13} color="var(--gold-primary)" />
                   <span>Full View</span>
                 </button>
 
                 <a
-                  href={value}
+                  href={actualValue}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    background: 'rgba(7, 31, 51, 0.75)',
-                    backdropFilter: 'blur(6px)',
+                    background: 'rgba(7, 31, 51, 0.85)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
                     color: '#ffffff',
                     border: '1px solid rgba(255, 255, 255, 0.2)',
-                    borderRadius: '6px',
-                    padding: '6px 8px',
+                    borderRadius: '7px',
+                    padding: '6px 9px',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     textDecoration: 'none',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                    boxShadow: '0 3px 10px rgba(0,0,0,0.35)',
                   }}
                   title="Open URL in New Tab"
                 >
-                  <ExternalLink size={12} color="#ffffff" />
+                  <ExternalLink size={13} color="#ffffff" />
                 </a>
               </div>
             )}
@@ -480,13 +495,13 @@ export default function ImageUploader({
           {/* Bottom Card Footer Details */}
           <div
             style={{
-              padding: '8px 14px',
+              padding: '10px 14px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               background: '#f8fafc',
               borderTop: '1px solid var(--border-subtle)',
-              fontSize: '0.74rem',
+              fontSize: '0.76rem',
             }}
           >
             <div
@@ -498,17 +513,18 @@ export default function ImageUploader({
                 color: 'var(--text-muted)',
               }}
             >
-              <ImageIcon size={13} color="var(--gold-primary)" />
+              <ImageIcon size={14} color="var(--gold-primary)" />
               <span
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
                   whiteSpace: 'nowrap',
-                  fontWeight: 600,
+                  fontWeight: 650,
                   color: 'var(--navy-primary)',
+                  maxWidth: '380px',
                 }}
               >
-                {value}
+                {actualValue}
               </span>
             </div>
 
@@ -520,15 +536,17 @@ export default function ImageUploader({
                   border: 'none',
                   background: 'transparent',
                   color: 'var(--navy-primary)',
-                  fontWeight: 700,
-                  fontSize: '0.72rem',
+                  fontWeight: 750,
+                  fontSize: '0.74rem',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '4px',
+                  padding: '2px 6px',
+                  borderRadius: '4px',
                 }}
               >
-                <RefreshCw size={11} /> Replace
+                <RefreshCw size={12} color="var(--gold-primary)" /> Replace Image
               </button>
             </div>
           </div>
@@ -545,8 +563,8 @@ export default function ImageUploader({
             border: isDragOver
               ? '2px dashed var(--gold-primary)'
               : '1.5px dashed var(--border-subtle)',
-            borderRadius: '10px',
-            padding: '16px',
+            borderRadius: '12px',
+            padding: '20px',
             textAlign: 'center',
             cursor: 'pointer',
             background: isDragOver ? 'rgba(232, 185, 79, 0.08)' : '#fafbfc',
@@ -554,29 +572,30 @@ export default function ImageUploader({
           }}
         >
           <Upload
-            size={22}
+            size={24}
             color={isDragOver ? 'var(--gold-primary)' : '#94a3b8'}
-            style={{ margin: '0 auto 6px' }}
+            style={{ margin: '0 auto 8px' }}
           />
-          <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--navy-primary)' }}>
+          <div style={{ fontSize: '0.84rem', fontWeight: 650, color: 'var(--navy-primary)' }}>
             Click to upload or drag & drop image here
           </div>
-          <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '3px' }}>
             Supports JPG, PNG, WebP, SVG (Auto-uploaded to Cloudinary CDN)
           </div>
         </div>
       )}
 
-      {/* ================= FULL SCREEN LIGHTBOX MODAL ================= */}
-      {showModal && (
+      {/* ================= FULL SCREEN LIGHTBOX MODAL (RENDERED VIA PORTAL) ================= */}
+      {showModal && typeof document !== 'undefined' && createPortal(
         <div
           onClick={() => setShowModal(false)}
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(7, 31, 51, 0.88)',
-            backdropFilter: 'blur(8px)',
-            zIndex: 9999,
+            background: 'rgba(5, 22, 36, 0.94)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            zIndex: 999999,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -585,86 +604,141 @@ export default function ImageUploader({
             animation: 'fadeIn 0.2s ease',
           }}
         >
-          {/* Modal Header */}
+          {/* Modal Header Bar */}
           <div
             onClick={(e) => e.stopPropagation()}
             style={{
               width: '100%',
-              maxWidth: '900px',
+              maxWidth: '1100px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginBottom: '12px',
+              marginBottom: '14px',
               color: '#ffffff',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span
                 style={{
                   background: 'var(--gold-primary)',
                   color: '#071f33',
                   fontWeight: 800,
-                  fontSize: '0.72rem',
-                  padding: '3px 8px',
-                  borderRadius: '4px',
+                  fontSize: '0.74rem',
+                  padding: '4px 10px',
+                  borderRadius: '6px',
+                  letterSpacing: '0.04em',
                 }}
               >
-                IMAGE PREVIEW
+                HIGH-RES PREVIEW
               </span>
-              <span style={{ fontSize: '0.85rem', color: '#cbd5e1' }}>{value}</span>
+              <span
+                style={{
+                  fontSize: '0.85rem',
+                  color: '#cbd5e1',
+                  maxWidth: '550px',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {actualValue}
+              </span>
             </div>
-            <button
-              type="button"
-              onClick={() => setShowModal(false)}
-              style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#ffffff',
-                borderRadius: '8px',
-                padding: '6px 12px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                fontWeight: 700,
-                fontSize: '0.8rem',
-              }}
-            >
-              <X size={16} /> Close
-            </button>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <a
+                href={actualValue}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: '#ffffff',
+                  borderRadius: '8px',
+                  padding: '7px 14px',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  fontWeight: 650,
+                  fontSize: '0.8rem',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <ExternalLink size={14} color="var(--gold-primary)" />
+                <span>Open in Tab</span>
+              </a>
+
+              <button
+                type="button"
+                onClick={() => setShowModal(false)}
+                className="btn-gold"
+                style={{
+                  padding: '7px 16px',
+                  fontSize: '0.8rem',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                }}
+              >
+                <X size={16} />
+                <span>Close</span>
+              </button>
+            </div>
           </div>
 
-          {/* Modal Image Box */}
+          {/* Modal Image Box with high-res display */}
           <div
             onClick={(e) => e.stopPropagation()}
             style={{
-              maxWidth: '900px',
-              maxHeight: '80vh',
+              width: '100%',
+              maxWidth: '1100px',
+              height: 'calc(85vh - 50px)',
               background: '#071f33',
-              borderRadius: '12px',
-              border: '1.5px solid var(--gold-primary)',
+              borderRadius: '16px',
+              border: '1.5px solid rgba(232, 185, 79, 0.5)',
               overflow: 'hidden',
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
+              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.65)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '20px',
+              padding: '24px',
               boxSizing: 'border-box',
+              position: 'relative',
             }}
           >
+            {/* Subtle transparency grid */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                opacity: 0.1,
+                backgroundImage:
+                  'linear-gradient(45deg, #1e293b 25%, transparent 25%), linear-gradient(-45deg, #1e293b 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1e293b 75%), linear-gradient(-45deg, transparent 75%, #1e293b 75%)',
+                backgroundSize: '20px 20px',
+              }}
+            />
+
             <img
-              src={value}
+              src={actualValue}
               alt="High Resolution Preview"
               style={{
                 maxWidth: '100%',
-                maxHeight: 'calc(80vh - 40px)',
+                maxHeight: '100%',
                 width: 'auto',
                 height: 'auto',
                 objectFit: 'contain',
+                position: 'relative',
+                zIndex: 2,
+                borderRadius: '8px',
+                boxShadow: '0 8px 30px rgba(0,0,0,0.4)',
               }}
             />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

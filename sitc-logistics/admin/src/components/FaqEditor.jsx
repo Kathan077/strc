@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Loader2, Plus, Trash2, ArrowUp, ArrowDown, HelpCircle, PackageCheck } from 'lucide-react';
 
 export default function FaqEditor({ initialData, onSave, isSaving }) {
   const [data, setData] = useState(
     initialData || {
-      kicker: 'FREQUENTLY ASKED QUESTIONS',
+      kicker: '',
       title: 'Commercial Freight & Linehaul Queries',
       subtitle:
         'Everything corporate shippers need to know about booking, transit safety, fleet capacities, and real-time tracking.',
       items: [],
     }
   );
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData({ ...data, [field]: value });

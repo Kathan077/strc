@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Phone,
@@ -20,6 +20,26 @@ import {
 import './Footer.css';
 
 export default function Footer() {
+  const [contactData, setContactData] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/contact')
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.success && json.data) {
+          setContactData(json.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const phone = contactData?.vaultPhone?.phone || '+91 9426646095 / +91 9825646095';
+  const phoneTel = contactData?.vaultPhone?.ctaLink || 'tel:+919426646095';
+  const email = contactData?.vaultEmail?.email || 'srtcpvtltd09@gmail.com';
+  const hqAddress = contactData?.vaultEmail?.hqAddress || 'D/1101, 11th Floor, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad - 380015';
+  const hours = contactData?.vaultEmail?.operationsHours || '365 Days • Non-Stop Dispatch Coverage';
+  const waLink = contactData?.vaultWhatsApp?.waLink || 'https://wa.me/919426646095?text=Hello%20SRTC%20Logistics%2C%20I%20need%20a%20freight%20quote%20for%20my%20shipment.';
+
   const scrollToTop = () => {
     if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -231,42 +251,42 @@ export default function Footer() {
 
               <div className="sitc-footer-contact-stack">
                 {/* 24/7 Phone */}
-                <a href="tel:+919426646095" className="sitc-contact-pill-item" aria-label="Call Dispatch Operations">
+                <a href={phoneTel} className="sitc-contact-pill-item" aria-label="Call Dispatch Operations">
                   <div className="sitc-contact-pill-icon-wrap">
                     <Phone size={15} className="sitc-contact-pill-icon" />
                   </div>
                   <div className="sitc-contact-pill-details">
                     <span className="sitc-contact-pill-label">DIRECT DISPATCH 24/7</span>
-                    <strong className="sitc-contact-pill-val">+91 9426646095 / +91 9825646095</strong>
+                    <strong className="sitc-contact-pill-val">{phone}</strong>
                   </div>
                 </a>
 
                 {/* Operations Email */}
-                <a href="mailto:srtcpvtltd09@gmail.com" className="sitc-contact-pill-item" aria-label="Email Dispatch Desk">
+                <a href={`mailto:${email}`} className="sitc-contact-pill-item" aria-label="Email Dispatch Desk">
                   <div className="sitc-contact-pill-icon-wrap">
                     <Mail size={15} className="sitc-contact-pill-icon" />
                   </div>
                   <div className="sitc-contact-pill-details">
                     <span className="sitc-contact-pill-label">OFFICIAL INQUIRIES</span>
-                    <strong className="sitc-contact-pill-val">srtcpvtltd09@gmail.com</strong>
+                    <strong className="sitc-contact-pill-val">{email}</strong>
                   </div>
                 </a>
 
                 {/* Operations Hours */}
                 <div className="sitc-contact-info-block">
                   <Clock size={15} className="sitc-contact-info-icon" />
-                  <span>365 Days &bull; Non-Stop Dispatch Coverage</span>
+                  <span>{hours}</span>
                 </div>
 
                 {/* Location / Hubs */}
                 <div className="sitc-contact-info-block">
                   <MapPin size={15} className="sitc-contact-info-icon" />
-                  <span>D/1101, 11th Floor, PNTC, Times Of India Press Road, Vejalpur, Ahmedabad - 380015</span>
+                  <span>{hqAddress}</span>
                 </div>
 
                 {/* WhatsApp Dispatch Direct Button */}
                 <a
-                  href="https://wa.me/919426646095?text=Hello%20SRTC%20Logistics%2C%20I%20need%20a%20freight%20quote%20for%20my%20shipment."
+                  href={waLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="sitc-footer-whatsapp-btn"

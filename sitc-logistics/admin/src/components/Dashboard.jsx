@@ -25,8 +25,10 @@ import {
   Compass,
   HelpCircle,
   Truck,
+  Video,
 } from 'lucide-react';
 import Toast from './Toast';
+import ErrorBoundary from './ErrorBoundary';
 
 // ================= HOMEPAGE EDITORS =================
 import HeroEditor from './HeroEditor';
@@ -62,7 +64,7 @@ import ContactFormConfigEditor from './contact/ContactFormConfigEditor';
 import BlogManager from './blog/BlogManager';
 
 const HOMEPAGE_SECTIONS = [
-  { id: 'hero', label: '1. Hero Slides & Stats', icon: Layers },
+  { id: 'hero', label: '1. Cinematic Hero Video', icon: Video },
   { id: 'about', label: '2. About Bento & Counters', icon: FileText },
   { id: 'services', label: '3. Multi-Modal Services', icon: Boxes },
   { id: 'operationalSystems', label: '4. Operational Lifecycle', icon: Workflow },
@@ -359,6 +361,7 @@ export default function Dashboard({ user, onLogout }) {
 
       {/* ================= EXECUTIVE NAVY SIDEBAR ================= */}
       <aside
+        className="admin-sidebar"
         style={{
           width: '300px',
           background: 'linear-gradient(180deg, #071f33 0%, #0b2f4a 100%)',
@@ -767,12 +770,15 @@ export default function Dashboard({ user, onLogout }) {
       </aside>
 
       {/* ================= MAIN CONTENT WORKSPACE ================= */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, overflowY: 'auto' }}>
+      <div className="admin-workspace" style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, minHeight: '100vh' }}>
         {/* Crisp Pure White Topbar with Hierarchical Breadcrumbs */}
         <header
+          className="admin-topbar"
           style={{
             height: '70px',
-            background: '#ffffff',
+            background: 'rgba(255, 255, 255, 0.92)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
             borderBottom: '1px solid var(--border-subtle)',
             padding: '0 32px',
             display: 'flex',
@@ -781,7 +787,7 @@ export default function Dashboard({ user, onLogout }) {
             position: 'sticky',
             top: 0,
             zIndex: 100,
-            boxShadow: '0 1px 4px rgba(11, 47, 74, 0.04)',
+            boxShadow: '0 4px 20px rgba(7, 31, 51, 0.04)',
           }}
         >
           <div>
@@ -880,11 +886,11 @@ export default function Dashboard({ user, onLogout }) {
               </div>
             </div>
           ) : (
-            <>
+            <ErrorBoundary>
               {/* ================= HOMEPAGE SECTION EDITORS ================= */}
               {activeSection === 'hero' && (
                 <HeroEditor
-                  key="hero"
+                  key={`hero-${homepageData?._id || 'init'}`}
                   initialData={homepageData?.hero}
                   onSave={handleSaveHomepageSection}
                   isSaving={savingSection === 'hero'}
@@ -892,7 +898,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'about' && (
                 <AboutEditor
-                  key="about"
+                  key={`about-${homepageData?._id || 'init'}`}
                   initialData={homepageData?.about}
                   onSave={handleSaveHomepageSection}
                   isSaving={savingSection === 'about'}
@@ -900,7 +906,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'services' && (
                 <ServicesEditor
-                  key="services"
+                  key={`services-${homepageData?._id || 'init'}`}
                   initialData={homepageData?.services}
                   onSave={handleSaveHomepageSection}
                   isSaving={savingSection === 'services'}
@@ -908,7 +914,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'operationalSystems' && (
                 <OperationsEditor
-                  key="operationalSystems"
+                  key={`operationalSystems-${homepageData?._id || 'init'}`}
                   initialData={homepageData?.operationalSystems}
                   onSave={handleSaveHomepageSection}
                   isSaving={savingSection === 'operationalSystems'}
@@ -916,7 +922,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'process' && (
                 <ProcessEditor
-                  key="process"
+                  key={`process-${homepageData?._id || 'init'}`}
                   initialData={homepageData?.process}
                   onSave={handleSaveHomepageSection}
                   isSaving={savingSection === 'process'}
@@ -924,7 +930,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'faq' && (
                 <FaqEditor
-                  key="faq"
+                  key={`faq-${homepageData?._id || 'init'}`}
                   initialData={homepageData?.faq}
                   onSave={handleSaveHomepageSection}
                   isSaving={savingSection === 'faq'}
@@ -932,7 +938,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'values' && (
                 <ValuesEditor
-                  key="values"
+                  key={`values-${homepageData?._id || 'init'}`}
                   initialData={homepageData?.values}
                   onSave={handleSaveHomepageSection}
                   isSaving={savingSection === 'values'}
@@ -940,7 +946,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'truckContactCTA' && (
                 <CtaEditor
-                  key="truckContactCTA"
+                  key={`truckContactCTA-${homepageData?._id || 'init'}`}
                   initialData={homepageData?.truckContactCTA}
                   onSave={handleSaveHomepageSection}
                   isSaving={savingSection === 'truckContactCTA'}
@@ -950,7 +956,7 @@ export default function Dashboard({ user, onLogout }) {
               {/* ================= ABOUT US PAGE SECTION EDITORS ================= */}
               {activeSection === 'aboutHero' && (
                 <AboutHeroEditor
-                  key="aboutHero"
+                  key={`aboutHero-${aboutData?._id || 'init'}`}
                   initialData={aboutData?.hero}
                   onSave={handleSaveAboutSection}
                   isSaving={savingSection === 'hero'}
@@ -958,7 +964,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'aboutStats' && (
                 <AboutStatsEditor
-                  key="aboutStats"
+                  key={`aboutStats-${aboutData?._id || 'init'}`}
                   initialData={aboutData?.stats}
                   onSave={handleSaveAboutSection}
                   isSaving={savingSection === 'stats'}
@@ -966,7 +972,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'aboutCompany' && (
                 <AboutCompanyEditor
-                  key="aboutCompany"
+                  key={`aboutCompany-${aboutData?._id || 'init'}`}
                   initialData={aboutData?.company}
                   onSave={handleSaveAboutSection}
                   isSaving={savingSection === 'company'}
@@ -974,7 +980,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'aboutVisionMission' && (
                 <AboutVisionMissionEditor
-                  key="aboutVisionMission"
+                  key={`aboutVisionMission-${aboutData?._id || 'init'}`}
                   initialData={aboutData?.visionMission}
                   onSave={handleSaveAboutSection}
                   isSaving={savingSection === 'visionMission'}
@@ -982,7 +988,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'aboutProcess' && (
                 <AboutProcessEditor
-                  key="aboutProcess"
+                  key={`aboutProcess-${aboutData?._id || 'init'}`}
                   initialData={aboutData?.process}
                   onSave={handleSaveAboutSection}
                   isSaving={savingSection === 'process'}
@@ -992,7 +998,7 @@ export default function Dashboard({ user, onLogout }) {
               {/* ================= SERVICES PAGE SECTION EDITORS ================= */}
               {activeSection === 'servicesHero' && (
                 <ServicesHeroEditor
-                  key="servicesHero"
+                  key={`servicesHero-${servicesData?._id || 'init'}`}
                   initialData={servicesData?.hero}
                   onSave={handleSaveServicesSection}
                   isSaving={savingSection === 'hero'}
@@ -1000,7 +1006,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'servicesCore' && (
                 <ServicesCoreEditor
-                  key="servicesCore"
+                  key={`servicesCore-${servicesData?._id || 'init'}`}
                   initialData={servicesData?.core}
                   onSave={handleSaveServicesSection}
                   isSaving={savingSection === 'core'}
@@ -1008,7 +1014,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'servicesIndustry' && (
                 <ServicesIndustryEditor
-                  key="servicesIndustry"
+                  key={`servicesIndustry-${servicesData?._id || 'init'}`}
                   initialData={servicesData?.industries}
                   onSave={handleSaveServicesSection}
                   isSaving={savingSection === 'industries'}
@@ -1016,7 +1022,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'servicesWorkflow' && (
                 <ServicesWorkflowEditor
-                  key="servicesWorkflow"
+                  key={`servicesWorkflow-${servicesData?._id || 'init'}`}
                   initialData={servicesData?.workflow}
                   onSave={handleSaveServicesSection}
                   isSaving={savingSection === 'workflow'}
@@ -1024,7 +1030,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'servicesTrustClients' && (
                 <ServicesClientsEditor
-                  key="servicesTrustClients"
+                  key={`servicesTrustClients-${servicesData?._id || 'init'}`}
                   initialData={servicesData?.trustClients}
                   onSave={handleSaveServicesSection}
                   isSaving={savingSection === 'trustClients'}
@@ -1034,7 +1040,7 @@ export default function Dashboard({ user, onLogout }) {
               {/* ================= CONTACT US PAGE SECTION EDITORS ================= */}
               {activeSection === 'contactHero' && (
                 <ContactHeroEditor
-                  key="contactHero"
+                  key={`contactHero-${contactData?._id || 'init'}`}
                   initialData={contactData?.hero}
                   onSave={handleSaveContactSection}
                   isSaving={savingSection === 'hero'}
@@ -1042,7 +1048,7 @@ export default function Dashboard({ user, onLogout }) {
               )}
               {activeSection === 'contactVaults' && (
                 <ContactVaultsEditor
-                  key="contactVaults"
+                  key={`contactVaults-${contactData?._id || 'init'}`}
                   initialData={contactData}
                   onSave={handleSaveContactSection}
                   isSaving={savingSection === 'vaults'}
@@ -1074,7 +1080,7 @@ export default function Dashboard({ user, onLogout }) {
                   }}
                 />
               )}
-            </>
+            </ErrorBoundary>
           )}
         </main>
       </div>

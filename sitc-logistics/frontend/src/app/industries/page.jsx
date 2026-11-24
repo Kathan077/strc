@@ -1,20 +1,47 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata = {
   title: 'Industries – SRTC Supply Chain',
   description: 'Specialized supply chain solutions across 9 industry verticals.',
 };
 
-export default function IndustriesPage() {
-  const industries = [
-    { title: 'Engineering', desc: 'Specialized heavy-duty road haulage for precision engineering assemblies, plant machinery, turbines, and turnkey project cargo.' },
-    { title: 'Manufacturer', desc: 'Raw material procurement, production line infeed, and finished goods factory dock evacuation.' },
-    { title: 'Industrial', desc: 'Engineered transport for industrial equipment, precision engineering assemblies, and structural steel across key corridors.' },
-    { title: 'Chemical', desc: 'Safety-certified transportation for specialty chemicals, pigments, dyes, and bulk chemical containers.' },
-    { title: 'Pharmaceuticals', desc: 'High-security, weather-sealed cargo transit for active pharmaceutical ingredients (APIs) and healthcare supplies.' },
-    { title: 'Food & Beverages', desc: 'Hygiene-compliant, food-grade carriage for consumer edibles, spices, flour, and Gaay Chhap Besan.' },
-    { title: 'Polymers', desc: 'High-capacity bulk polymer pellets, resins, and petrochemical supply chains from premier refinery complexes.' },
-    { title: 'Furniture', desc: 'High-volume volumetric transport for modular office furniture, luxury furnishings, and commercial fixtures.' },
-    { title: 'Cosmetics', desc: 'Clean, moisture-sealed container logistics for premium skincare, personal care formulations, and beauty retail goods.' },
-  ];
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
+const FALLBACK_INDUSTRIES = [
+  { title: 'Engineering', desc: 'Specialized heavy-duty road haulage for precision engineering assemblies, plant machinery, turbines, and turnkey project cargo.' },
+  { title: 'Manufacturer', desc: 'Raw material procurement, production line infeed, and finished goods factory dock evacuation.' },
+  { title: 'Industrial', desc: 'Engineered transport for industrial equipment, precision engineering assemblies, and structural steel across key corridors.' },
+  { title: 'Chemical', desc: 'Safety-certified transportation for specialty chemicals, pigments, dyes, and bulk chemical containers.' },
+  { title: 'Pharmaceuticals', desc: 'High-security, weather-sealed cargo transit for active pharmaceutical ingredients (APIs) and healthcare supplies.' },
+  { title: 'Food & Beverages', desc: 'Hygiene-compliant, food-grade carriage for consumer edibles, spices, flour, and Gaay Chhap Besan.' },
+  { title: 'Polymers', desc: 'High-capacity bulk polymer pellets, resins, and petrochemical supply chains from premier refinery complexes.' },
+  { title: 'Furniture', desc: 'High-volume volumetric transport for modular office furniture, luxury furnishings, and commercial fixtures.' },
+  { title: 'Cosmetics', desc: 'Clean, moisture-sealed container logistics for premium skincare, personal care formulations, and beauty retail goods.' },
+];
+
+async function getIndustriesData() {
+  try {
+    const res = await fetch(`${API_BASE}/api/services`, {
+      cache: 'no-store',
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json.data?.industries || null;
+  } catch (err) {
+    return null;
+  }
+}
+
+export default async function IndustriesPage() {
+  const data = await getIndustriesData();
+  const rawCards = data?.industryCards;
+  const industries = Array.isArray(rawCards) && rawCards.length > 0
+    ? rawCards.map(c => ({ title: c.title, desc: c.description }))
+    : FALLBACK_INDUSTRIES;
+  const pageTitle = data?.title || 'Specialized Logistics For Industry Verticals';
+  const pageSubtitle = data?.subtitle || 'SRTC delivers dedicated, reliable freight solutions tailored for enterprise industrial clients.';
 
   return (
     <div style={{ minHeight: '70vh', padding: '6rem 1.5rem', backgroundColor: '#FFFFFF' }}>
@@ -23,10 +50,10 @@ export default function IndustriesPage() {
           Industry Verticals • Specialized Solutions
         </span>
         <h1 style={{ color: '#0B2F4A', fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', marginTop: '0.5rem', marginBottom: '1rem' }}>
-          Specialized Logistics For 9 Core Industries
+          {pageTitle}
         </h1>
         <p style={{ color: '#263746', fontSize: '1.05rem', lineHeight: 1.6, maxWidth: '720px', margin: '0 auto 3rem auto' }}>
-          SRTC delivers dedicated, reliable freight solutions tailored for enterprise industrial clients.
+          {pageSubtitle}
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', textAlign: 'left' }}>

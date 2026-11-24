@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Loader2, Sparkles } from 'lucide-react';
 
 export default function ContactHeroEditor({ initialData, onSave, isSaving }) {
@@ -12,6 +12,10 @@ export default function ContactHeroEditor({ initialData, onSave, isSaving }) {
       breadcrumbCurrent: 'CENTRAL DISPATCH',
     }
   );
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));

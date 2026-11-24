@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, Loader2, Sparkles } from 'lucide-react';
 
 const ICON_OPTIONS = ['FileText', 'Lock', 'Navigation', 'CheckCircle', 'ShieldCheck', 'Truck', 'Zap'];
@@ -6,13 +6,17 @@ const ICON_OPTIONS = ['FileText', 'Lock', 'Navigation', 'CheckCircle', 'ShieldCh
 export default function ServicesWorkflowEditor({ initialData, onSave, isSaving }) {
   const [data, setData] = useState(
     initialData || {
-      kicker: 'STANDARDIZED OPERATIONAL EXCELLENCE',
+      kicker: '',
       title: 'Streamlined 4-Step Industrial Freight Execution Pipeline',
       description:
         'From instant algorithmic vehicle allocation to geo-fenced electronic seal verification, our operating lifecycle ensures zero demurrage and maximum transit velocity.',
       steps: [],
     }
   );
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));

@@ -337,7 +337,7 @@ const servicesSeedData = {
     ],
   },
   trustClients: {
-    kicker: 'PDF BROCHURE: OUR TOP CLIENTS',
+    kicker: '',
     title: 'Dedicated Highway Fleet: Trusted By Industrial Giants',
     subtitle:
       'SRTC’s compact commercial linehaul fleet in continuous motion across National Highways. Dedicated container trucks transporting petrochemicals, polymers, agro commodities, and heavy industrial freight.',

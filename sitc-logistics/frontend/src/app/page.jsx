@@ -7,14 +7,15 @@ import ValuesSection from '../components/home/ValuesSection';
 import TruckContactCTA from '../components/home/TruckContactCTA';
 import LazySection from '../components/common/LazySection';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 async function getHomepageContent() {
   try {
     const res = await fetch(`${API_BASE}/api/homepage`, {
-      next: { revalidate: 60 },
+      cache: 'no-store',
       signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, Loader2, Sparkles, X, FileText } from 'lucide-react';
 
 export default function ContactFormConfigEditor({ initialData, onSave, isSaving }) {
@@ -21,6 +21,10 @@ export default function ContactFormConfigEditor({ initialData, onSave, isSaving 
   );
 
   const [newServiceInput, setNewServiceInput] = useState('');
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));

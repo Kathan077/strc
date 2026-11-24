@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, Loader2, Sparkles, MoveUp, MoveDown } from 'lucide-react';
 
 const ICON_OPTIONS = ['CalendarCheck', 'PackageCheck', 'Navigation', 'ShieldCheck', 'Route', 'Clock', 'CheckCircle2'];
@@ -6,7 +6,7 @@ const ICON_OPTIONS = ['CalendarCheck', 'PackageCheck', 'Navigation', 'ShieldChec
 export default function AboutProcessEditor({ initialData, onSave, isSaving }) {
   const [data, setData] = useState(
     initialData || {
-      kicker: 'HOW IT WORKS • 4-STEP FREIGHT LIFECYCLE',
+      kicker: '',
       title: 'Simple, Transparent &',
       titleGold: 'Precision-Driven.',
       description:
@@ -14,6 +14,10 @@ export default function AboutProcessEditor({ initialData, onSave, isSaving }) {
       steps: [],
     }
   );
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));

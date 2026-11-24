@@ -3,7 +3,8 @@ import Link from 'next/link';
 import ContactClient from '@/components/contact/ContactClient';
 import './contact.css';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export const metadata = {
   title: 'Contact Central Dispatch & Freight Booking | SRTC Logistics',
@@ -43,7 +44,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 async function getContactContent() {
   try {
     const res = await fetch(`${API_BASE}/api/contact`, {
-      next: { revalidate: 60 },
+      cache: 'no-store',
       signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) {

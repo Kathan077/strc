@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Save,
   Plus,
@@ -15,7 +15,7 @@ import ImageUploader from '../ImageUploader';
 
 export default function ServicesClientsEditor({ initialData, onSave, isSaving }) {
   const [data, setData] = useState(() => ({
-    kicker: initialData?.kicker || 'PDF BROCHURE: OUR TOP CLIENTS',
+    kicker: initialData?.kicker || '',
     title: initialData?.title || 'Dedicated Highway Fleet: Trusted By Industrial Giants',
     subtitle:
       initialData?.subtitle ||
@@ -31,6 +31,26 @@ export default function ServicesClientsEditor({ initialData, onSave, isSaving })
   }));
 
   const [activeLaneTab, setActiveLaneTab] = useState('east'); // 'east' (Lane 1) or 'west' (Lane 2)
+
+  useEffect(() => {
+    if (initialData) {
+      setData({
+        kicker: initialData?.kicker || '',
+        title: initialData?.title || 'Dedicated Highway Fleet: Trusted By Industrial Giants',
+        subtitle:
+          initialData?.subtitle ||
+          'SRTC’s compact commercial linehaul fleet in continuous motion across National Highways. Dedicated container trucks transporting petrochemicals, polymers, agro commodities, and heavy industrial freight.',
+        stats: initialData?.stats || [
+          { num: '23+', lbl: 'Years Industry Legacy' },
+          { num: '100%', lbl: 'Insured Cargo Transit' },
+          { num: '840+', lbl: 'Commercial Linehaul Fleet' },
+          { num: '99.8%', lbl: 'On-Time SLA Delivery' },
+        ],
+        laneEast: initialData?.laneEast || [],
+        laneWest: initialData?.laneWest || [],
+      });
+    }
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));

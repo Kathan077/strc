@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, Loader2, Sparkles, X, PhoneCall } from 'lucide-react';
 import ImageUploader from '../ImageUploader';
 
@@ -31,6 +31,10 @@ export default function AboutCompanyEditor({ initialData, onSave, isSaving }) {
   );
 
   const [newClientInput, setNewClientInput] = useState('');
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));

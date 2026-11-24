@@ -51,13 +51,7 @@ function FAQSection({ data }) {
     data?.subtitle ||
     'Key answers to common questions about freight booking, fleet availability, cargo safety, and transit tracking.';
 
-  const rawItems = data?.items && data.items.length > 0 ? data.items : DEFAULT_FAQ_ITEMS;
-  // If raw items still contain the old fake SLA questions, replace with our grounded realistic questions
-  const items =
-    rawItems.length > 0 &&
-    !rawItems.some((it) => it.question?.includes('turnaround SLA') || it.question?.includes('green corridors'))
-      ? rawItems
-      : DEFAULT_FAQ_ITEMS;
+  const items = data?.items && data.items.length > 0 ? data.items : DEFAULT_FAQ_ITEMS;
 
   const toggleItem = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);

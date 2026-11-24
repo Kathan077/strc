@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, Loader2, Sparkles, X } from 'lucide-react';
 import ImageUploader from '../ImageUploader';
 
@@ -7,7 +7,7 @@ const ICON_OPTIONS = ['Truck', 'Package', 'Warehouse', 'ShieldCheck', 'Boxes', '
 export default function ServicesCoreEditor({ initialData, onSave, isSaving }) {
   const [data, setData] = useState(
     initialData || {
-      kicker: 'ENGINEERED FREIGHT ARCHITECTURE',
+      kicker: '',
       title: 'Core Transportation & Warehouse Solutions',
       description:
         'Built upon two decades of logistical leadership, SRTC delivers high-velocity road freight with purpose-built equipment and guaranteed SLA precision.',
@@ -16,6 +16,10 @@ export default function ServicesCoreEditor({ initialData, onSave, isSaving }) {
   );
 
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));

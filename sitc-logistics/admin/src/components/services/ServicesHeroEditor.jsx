@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Loader2, Sparkles } from 'lucide-react';
 import ImageUploader from '../ImageUploader';
 
@@ -14,6 +14,10 @@ export default function ServicesHeroEditor({ initialData, onSave, isSaving }) {
       breadcrumbCurrent: 'Our Services',
     }
   );
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));

@@ -27,6 +27,7 @@ const seedAdminUser = async () => {
 
 const initialHomepageData = {
   hero: {
+    videoUrl: '/videos/video_no_logo_clean.mp4',
     slides: [
       {
         kicker: 'STRATEGIC LINEHAUL INFRASTRUCTURE · ESTD. 2003',

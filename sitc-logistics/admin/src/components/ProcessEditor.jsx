@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Loader2 } from 'lucide-react';
 
 export default function ProcessEditor({ initialData, onSave, isSaving }) {
@@ -10,6 +10,10 @@ export default function ProcessEditor({ initialData, onSave, isSaving }) {
       steps: [],
     }
   );
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData({ ...data, [field]: value });

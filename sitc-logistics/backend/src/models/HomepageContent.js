@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const HomepageContentSchema = new mongoose.Schema(
   {
     hero: {
+      videoUrl: { type: String, default: '/videos/video_no_logo_clean.mp4' },
       slides: [
         {
           kicker: { type: String, default: '' },
@@ -37,6 +38,16 @@ const HomepageContentSchema = new mongoose.Schema(
       ctaText: { type: String, default: 'Learn More About Us' },
       ctaLink: { type: String, default: '/about' },
       image: { type: String, default: '/images/about/srtc-blue-container-truck.jpg' },
+      tabCard1: {
+        label: { type: String, default: 'Industry Experience' },
+        stat: { type: String, default: '23+ Years' },
+        sub: { type: String, default: 'Est. 2003 by Menandbhai' },
+      },
+      tabCard2: {
+        label: { type: String, default: 'Freight Network' },
+        stat: { type: String, default: 'Largest' },
+        sub: { type: String, default: 'Privately Owned Fleets' },
+      },
       stats: {
         shipments: { type: Number, default: 50000 },
         corridors: { type: Number, default: 28 },

@@ -62,7 +62,7 @@ function OperationalSystemsSection({ data }) {
     'From initial vehicle allocation to dock handover, every consignment moves through an accountable, verified operational workflow built on two decades of Gujarat linehaul excellence.';
 
   // Map incoming stages if provided
-  const steps = (data?.stages && data.stages.length >= 4)
+  const steps = (data?.stages && data.stages.length > 0)
     ? data.stages.map((stg, i) => ({
         id: stg.id || `step-${i + 1}`,
         number: stg.number || `0${i + 1}`,

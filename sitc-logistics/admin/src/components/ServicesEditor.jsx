@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, Loader2, Truck } from 'lucide-react';
 import ImageUploader from './ImageUploader';
 
@@ -11,6 +11,10 @@ export default function ServicesEditor({ initialData, onSave, isSaving }) {
       serviceCards: [],
     }
   );
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData({ ...data, [field]: value });

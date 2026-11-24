@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, Loader2, Sparkles, Phone, Send, Mail, MapPin, X } from 'lucide-react';
 
 export default function ContactVaultsEditor({ initialData, onSave, isSaving }) {
@@ -60,6 +60,13 @@ export default function ContactVaultsEditor({ initialData, onSave, isSaving }) {
 
   const [newHubInput, setNewHubInput] = useState('');
   const [activeTab, setActiveTab] = useState('phone'); // 'phone' | 'whatsapp' | 'email' | 'hubs'
+
+  useEffect(() => {
+    if (initialData?.vaultPhone) setPhoneData(initialData.vaultPhone);
+    if (initialData?.vaultWhatsApp) setWaData(initialData.vaultWhatsApp);
+    if (initialData?.vaultEmail) setEmailData(initialData.vaultEmail);
+    if (initialData?.vaultHubs) setHubsData(initialData.vaultHubs);
+  }, [initialData]);
 
   const addHub = () => {
     if (!newHubInput.trim()) return;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, Loader2, Sparkles, Boxes } from 'lucide-react';
 
 const ICON_OPTIONS = ['Layers', 'Utensils', 'Thermometer', 'Factory', 'Boxes', 'ShoppingBag', 'Truck', 'ShieldCheck'];
@@ -6,7 +6,7 @@ const ICON_OPTIONS = ['Layers', 'Utensils', 'Thermometer', 'Factory', 'Boxes', '
 export default function ServicesIndustryEditor({ initialData, onSave, isSaving }) {
   const [data, setData] = useState(
     initialData || {
-      kicker: 'ENGINEERED CONTAINER ARCHITECTURE',
+      kicker: '',
       title: 'Vertical Industry Container Solutions',
       subtitle:
         'From high-cube food-grade dry vans to temperature-monitored reefers, our equipment is certified and configured for India’s premier industrial cargo corridors.',
@@ -15,6 +15,10 @@ export default function ServicesIndustryEditor({ initialData, onSave, isSaving }
   );
 
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));

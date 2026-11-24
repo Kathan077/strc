@@ -37,20 +37,10 @@ const BROCHURE_CAPABILITIES = [
 ];
 
 function AboutSection({ data }) {
-  const rawCaps = data?.capabilities;
-  const sanitizedCaps =
-    Array.isArray(rawCaps) && rawCaps.length > 0
-      ? rawCaps
-          .filter(
-            (c) =>
-              !c.title?.toLowerCase().includes('eco-friendly') &&
-              !c.title?.toLowerCase().includes('small package') &&
-              !c.title?.toLowerCase().includes('privately owned')
-          )
-          .slice(0, 3)
-      : BROCHURE_CAPABILITIES;
   const capabilitiesList =
-    sanitizedCaps.length >= 3 ? sanitizedCaps : BROCHURE_CAPABILITIES;
+    Array.isArray(data?.capabilities) && data.capabilities.length > 0
+      ? data.capabilities
+      : BROCHURE_CAPABILITIES;
 
   // Default to 100% visible so mobile, tablets, and slow connections never see blank space
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
@@ -273,23 +263,18 @@ function AboutSection({ data }) {
         <header ref={headerRef} className={`sitc-about-header ${isHeaderVisible ? 'is-visible' : ''}`}>
           <div className="sitc-about-header__left">
             <h2 className="sitc-about-title">
-              {data?.titleLine1 && !data.titleLine1.includes('Legacy') ? data.titleLine1 : 'Reliable'} <br />
+              {data?.titleLine1 || 'Reliable'} <br />
               <span className="sitc-about-title--highlight">
-                {data?.highlightText && !data.highlightText.includes('Reliability')
-                  ? data.highlightText
-                  : 'Logistics & Warehouse'}
+                {data?.highlightText || 'Logistics & Warehouse'}
               </span> <br />
-              {data?.titleLine2 && !data.titleLine2.includes('Single Time')
-                ? data.titleLine2
-                : 'Handling Services.'}
+              {data?.titleLine2 || 'Handling Services.'}
             </h2>
           </div>
 
           <div className="sitc-about-header__right">
             <p className="sitc-about-desc">
-              {data?.description && !data.description.includes('Shree Ram')
-                ? data.description
-                : 'SRTC Supply Chain Pvt. Ltd. delivers modern, technology-driven, end-to-end logistics and warehousing solutions across Gujarat and regional industrial corridors. Specializing in dedicated Full Truck Load (FTL), Part Truck Load (PTL), specialized container haulage, and scalable warehousing, we ensure secure, punctual, and transparent freight movement for industrial enterprises.'}
+              {data?.description ||
+                'SRTC Supply Chain Pvt. Ltd. delivers modern, technology-driven, end-to-end logistics and warehousing solutions across Gujarat and regional industrial corridors. Specializing in dedicated Full Truck Load (FTL), Part Truck Load (PTL), specialized container haulage, and scalable warehousing, we ensure secure, punctual, and transparent freight movement for industrial enterprises.'}
             </p>
 
             <div className="sitc-about-header__actions">
@@ -338,14 +323,14 @@ function AboutSection({ data }) {
                 <div className="sitc-sculpted-tab__notch-cut" />
                 <div className="sitc-sculpted-tab__inner">
                   <div className="sitc-sculpted-tab__meta">
-                    <span className="sitc-sculpted-tab__label">Industry Experience</span>
+                    <span className="sitc-sculpted-tab__label">{data?.tabCard1?.label || 'Industry Experience'}</span>
                     <TrendingUp size={14} className="sitc-sculpted-tab__icon" />
                   </div>
                   <div className="sitc-sculpted-tab__stat">
-                    23+ Years
+                    {data?.tabCard1?.stat || '23+ Years'}
                   </div>
                   <div className="sitc-sculpted-tab__sub">
-                    <strong>Est. 2003</strong> by Menandbhai
+                    {data?.tabCard1?.sub || 'Est. 2003 by Menandbhai'}
                   </div>
                 </div>
               </div>
@@ -355,13 +340,13 @@ function AboutSection({ data }) {
                 <div className="sitc-sculpted-tab__notch-cut" />
                 <div className="sitc-sculpted-tab__inner">
                   <div className="sitc-sculpted-tab__meta">
-                    <span className="sitc-sculpted-tab__label">Freight Network</span>
+                    <span className="sitc-sculpted-tab__label">{data?.tabCard2?.label || 'Freight Network'}</span>
                     <MapPin size={14} className="sitc-sculpted-tab__icon" />
                   </div>
                   <div className="sitc-sculpted-tab__stat">
-                    Largest
+                    {data?.tabCard2?.stat || 'Largest'}
                   </div>
-                  <div className="sitc-sculpted-tab__sub">Privately Owned Fleets</div>
+                  <div className="sitc-sculpted-tab__sub">{data?.tabCard2?.sub || 'Privately Owned Fleets'}</div>
                 </div>
               </div>
             </div>

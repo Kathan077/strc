@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, Loader2, Sparkles, Target, Eye, Compass, Award, UserCheck } from 'lucide-react';
 import ImageUploader from '../ImageUploader';
 
@@ -7,7 +7,7 @@ const ICON_OPTIONS = ['Leaf', 'ShieldCheck', 'Cpu', 'Award', 'Zap', 'TrendingUp'
 export default function AboutVisionMissionEditor({ initialData, onSave, isSaving }) {
   const [data, setData] = useState(
     initialData || {
-      kicker: 'STRATEGIC COMPASS & CORPORATE PURPOSE',
+      kicker: '',
       title: 'Driven by Mission, Powered by Vision',
       subtitle:
         'Founded on two decades of heavy highway transit leadership, our corporate compass guides every haul, secures every industrial cargo, and powers enterprise supply chains.',
@@ -47,6 +47,10 @@ export default function AboutVisionMissionEditor({ initialData, onSave, isSaving
   );
 
   const [activeTab, setActiveTab] = useState('mission'); // 'mission' | 'vision' | 'founder'
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));

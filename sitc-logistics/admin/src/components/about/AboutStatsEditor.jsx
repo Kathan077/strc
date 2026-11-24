@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, Loader2, Sparkles, MoveUp, MoveDown } from 'lucide-react';
 import ImageUploader from '../ImageUploader';
 
@@ -12,7 +12,7 @@ const VARIANT_OPTIONS = [
 export default function AboutStatsEditor({ initialData, onSave, isSaving }) {
   const [data, setData] = useState(
     initialData || {
-      kicker: 'HIGH-VELOCITY ROAD FREIGHT',
+      kicker: '',
       title: 'Digital & Trusted Transport Logistic Company',
       description:
         'Pioneering technology-driven road transport, real-time GPS tracking, and guaranteed zero-demurrage turnaround across key corridors.',
@@ -23,6 +23,10 @@ export default function AboutStatsEditor({ initialData, onSave, isSaving }) {
       statCards: [],
     }
   );
+
+  useEffect(() => {
+    if (initialData) setData(initialData);
+  }, [initialData]);
 
   const handleFieldChange = (field, value) => {
     setData((prev) => ({ ...prev, [field]: value }));
