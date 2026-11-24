@@ -86,25 +86,57 @@
 
 /* ==========================================================================
    MOBILE PHONES RESPONSIVE STYLING (< 768px)
-   Ultra-Smooth 120Hz Native Touch Scroll & Adaptive Viewport
+   Compact, 100% Uncropped Cinematic 16:9 Framing (Zero Side Cut-off)
    ========================================================================== */
 @media (max-width: 767px) {
   .srtc-video-hero-wrapper {
-    height: calc(100vh - 65px);
-    height: calc(100dvh - 65px);
-    min-height: 480px;
-    max-height: none;
+    /* Proportional mobile height: exactly fits 16:9 video without zoom crop */
+    width: 100%;
+    height: 56.25vw;
+    aspect-ratio: 16 / 9;
+    min-height: 220px;
+    max-height: 380px;
+    background-color: #000000;
+    border-bottom: 2px solid rgba(232, 185, 79, 0.35);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  }
+
+  .srtc-video-hero-container {
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+  }
+
+  .srtc-video-canvas {
+    height: 100%;
+    width: 100%;
   }
 
   .srtc-hero-video-player {
-    object-position: center 45%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
   }
 }
 
 /* Very Small Mobile (< 380px) */
 @media (max-width: 379px) {
   .srtc-video-hero-wrapper {
-    min-height: 440px;
+    height: 56.25vw;
+    aspect-ratio: 16 / 9;
+    min-height: 200px;
+  }
+}
+
+/* Mobile Landscape Orientation */
+@media (max-width: 900px) and (orientation: landscape) {
+  .srtc-video-hero-wrapper {
+    height: calc(100vh - 56px);
+    height: calc(100dvh - 56px);
+    min-height: 260px;
+    max-height: none;
+    aspect-ratio: auto;
   }
 }
 
