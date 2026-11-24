@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Lock, Save, Loader2, KeyRound, ShieldAlert } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 export default function SecurityEditor({ onPasswordChanged }) {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -29,7 +30,7 @@ export default function SecurityEditor({ onPasswordChanged }) {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/update-password', {
+      const res = await fetch(apiUrl('/api/auth/update-password'), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

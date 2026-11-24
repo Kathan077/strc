@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import { Loader2 } from 'lucide-react';
+import { apiUrl } from './config/api';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -18,7 +19,7 @@ export default function App() {
     }
 
     // Verify token with backend
-    fetch('/api/auth/me', {
+    fetch(apiUrl('/api/auth/me'), {
       headers: { Authorization: `Bearer ${savedToken}` },
     })
       .then((res) => res.json())

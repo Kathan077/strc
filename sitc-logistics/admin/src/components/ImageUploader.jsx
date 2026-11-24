@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { apiUrl } from '../config/api';
 import {
   Upload,
   Image as ImageIcon,
@@ -76,7 +77,7 @@ export default function ImageUploader({
     const authToken = token || localStorage.getItem('srtc_admin_token');
 
     try {
-      let res = await fetch('/api/upload', {
+      let res = await fetch(apiUrl('/api/upload'), {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${authToken}`,
@@ -85,7 +86,7 @@ export default function ImageUploader({
       });
 
       if (!res.ok && res.status === 404) {
-        res = await fetch('/api/homepage/upload', {
+        res = await fetch(apiUrl('/api/homepage/upload'), {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${authToken}`,

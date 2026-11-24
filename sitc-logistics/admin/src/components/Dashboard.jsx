@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 import Toast from './Toast';
 import ErrorBoundary from './ErrorBoundary';
+import { apiUrl } from '../config/api';
 
 // ================= HOMEPAGE EDITORS =================
 import HeroEditor from './HeroEditor';
@@ -123,7 +124,7 @@ export default function Dashboard({ user, onLogout }) {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch('/api/blogs?all=true');
+      const res = await fetch(apiUrl('/api/blogs?all=true'));
       const json = await res.json();
       if (json.success && json.data) {
         setBlogsData(json.data);
@@ -137,22 +138,22 @@ export default function Dashboard({ user, onLogout }) {
     setLoading(true);
     try {
       // 1. Fetch Homepage
-      const resHome = await fetch('/api/homepage');
+      const resHome = await fetch(apiUrl('/api/homepage'));
       const jsonHome = await resHome.json();
       if (jsonHome.success && jsonHome.data) setHomepageData(jsonHome.data);
 
       // 2. Fetch About Page
-      const resAbout = await fetch('/api/about');
+      const resAbout = await fetch(apiUrl('/api/about'));
       const jsonAbout = await resAbout.json();
       if (jsonAbout.success && jsonAbout.data) setAboutData(jsonAbout.data);
 
       // 3. Fetch Services Page
-      const resServices = await fetch('/api/services');
+      const resServices = await fetch(apiUrl('/api/services'));
       const jsonServices = await resServices.json();
       if (jsonServices.success && jsonServices.data) setServicesData(jsonServices.data);
 
       // 4. Fetch Contact Page
-      const resContact = await fetch('/api/contact');
+      const resContact = await fetch(apiUrl('/api/contact'));
       const jsonContact = await resContact.json();
       if (jsonContact.success && jsonContact.data) setContactData(jsonContact.data);
 
@@ -174,7 +175,7 @@ export default function Dashboard({ user, onLogout }) {
     setSavingSection(sectionName);
     try {
       const token = localStorage.getItem('srtc_admin_token');
-      const res = await fetch(`/api/homepage/section/${sectionName}`, {
+      const res = await fetch(apiUrl(`/api/homepage/section/${sectionName}`), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -214,7 +215,7 @@ export default function Dashboard({ user, onLogout }) {
     setSavingSection(sectionName);
     try {
       const token = localStorage.getItem('srtc_admin_token');
-      const res = await fetch(`/api/about/section/${sectionName}`, {
+      const res = await fetch(apiUrl(`/api/about/section/${sectionName}`), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -254,7 +255,7 @@ export default function Dashboard({ user, onLogout }) {
     setSavingSection(sectionName);
     try {
       const token = localStorage.getItem('srtc_admin_token');
-      const res = await fetch(`/api/services/section/${sectionName}`, {
+      const res = await fetch(apiUrl(`/api/services/section/${sectionName}`), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -294,7 +295,7 @@ export default function Dashboard({ user, onLogout }) {
     setSavingSection(sectionName);
     try {
       const token = localStorage.getItem('srtc_admin_token');
-      const res = await fetch(`/api/contact/section/${sectionName}`, {
+      const res = await fetch(apiUrl(`/api/contact/section/${sectionName}`), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

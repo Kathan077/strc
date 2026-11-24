@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Lock, Mail, Eye, EyeOff, ShieldCheck, ArrowRight, Loader2, Sparkles } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 export default function Login({ onLoginSuccess }) {
   const [email, setEmail] = useState('');
@@ -19,7 +20,7 @@ export default function Login({ onLoginSuccess }) {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(apiUrl('/api/auth/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
