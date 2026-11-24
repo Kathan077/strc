@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
 import './Hero.css';
 
 function Hero({ data }) {
@@ -37,17 +36,6 @@ function Hero({ data }) {
     startPlayback();
   }, [videoSrc]);
 
-  const scrollToContent = () => {
-    if (typeof window !== 'undefined') {
-      const heroEl = containerRef.current;
-      const targetY = heroEl ? heroEl.offsetHeight : window.innerHeight;
-      window.scrollTo({
-        top: targetY - 60,
-        behavior: 'smooth',
-      });
-    }
-  };
-
   return (
     <section 
       ref={containerRef} 
@@ -55,7 +43,7 @@ function Hero({ data }) {
       aria-label="SRTC Commercial Fleet Video Showcase"
     >
       <div className="srtc-video-hero-container">
-        {/* Hardware-accelerated Full-Bleed Video Canvas (0 scroll-driven React re-renders) */}
+        {/* Hardware-accelerated Full-Bleed Video Canvas */}
         <div className="srtc-video-canvas">
           <video
             ref={videoRef}
@@ -77,21 +65,6 @@ function Hero({ data }) {
 
           {/* Subtle Cinematic Vignette for Depth */}
           <div className="srtc-video-vignette" />
-        </div>
-
-        {/* High-Performance Hardware-Accelerated Scroll Down Indicator */}
-        <div
-          className="srtc-video-scroll-indicator"
-          onClick={scrollToContent}
-          role="button"
-          tabIndex={0}
-          aria-label="Scroll down to explore content"
-        >
-          <span className="srtc-scroll-mouse" aria-hidden="true">
-            <span className="srtc-scroll-wheel" />
-          </span>
-          <span className="srtc-scroll-label">Scroll to Explore</span>
-          <ChevronDown size={14} className="srtc-scroll-chevron" aria-hidden="true" />
         </div>
       </div>
     </section>
